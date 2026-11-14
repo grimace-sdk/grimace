@@ -14,6 +14,18 @@ SECTIONS
         KEEP(*(SORT_BY_INIT_PRIORITY(.fini_array.*)))
         KEEP(*(.fini_array))
         PROVIDE_HIDDEN(__fini_array_end = .);
+        PROVIDE_HIDDEN(__ctors_priority_start = ALIGN(4));
+        KEEP(*(SORT_BY_INIT_PRIORITY(.ctors.*)))
+        PROVIDE_HIDDEN(__ctors_priority_end = .);
+        PROVIDE_HIDDEN(__ctors_start = .);
+        KEEP(*(.ctors))
+        PROVIDE_HIDDEN(__ctors_end = .);
+        PROVIDE_HIDDEN(__dtors_priority_start = .);
+        KEEP(*(SORT_BY_INIT_PRIORITY(.dtors.*)))
+        PROVIDE_HIDDEN(__dtors_priority_end = .);
+        PROVIDE_HIDDEN(__dtors_start = .);
+        KEEP(*(.dtors))
+        PROVIDE_HIDDEN(__dtors_end = .);
     }
     . = ALIGN(0x1000);
     .data : { *(.data .data.* .sdata .sdata.*) *(.got) LONG(0) }

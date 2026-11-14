@@ -9,19 +9,39 @@ extern array_function __init_array_start[];
 extern array_function __init_array_end[];
 extern array_function __fini_array_start[];
 extern array_function __fini_array_end[];
+extern array_function __ctors_priority_start[];
+extern array_function __ctors_priority_end[];
+extern array_function __ctors_start[];
+extern array_function __ctors_end[];
+extern array_function __dtors_priority_start[];
+extern array_function __dtors_priority_end[];
+extern array_function __dtors_start[];
+extern array_function __dtors_end[];
 }
 
 void (*grimace_run_exit_handlers)();
 
 static void run_constructors() {
+    for (array_function *entry = __ctors_priority_start; entry < __ctors_priority_end; entry++) {
+        (*entry)();
+    }
     for (array_function *entry = __init_array_start; entry < __init_array_end; entry++) {
         (*entry)();
+    }
+    for (array_function *entry = __ctors_end; entry > __ctors_start;) {
+        (*--entry)();
     }
 }
 
 static void run_destructors() {
     if (grimace_run_exit_handlers) {
         grimace_run_exit_handlers();
+    }
+    for (array_function *entry = __dtors_start; entry < __dtors_end; entry++) {
+        (*entry)();
+    }
+    for (array_function *entry = __dtors_priority_end; entry > __dtors_priority_start;) {
+        (*--entry)();
     }
     for (array_function *entry = __fini_array_end; entry > __fini_array_start;) {
         (*--entry)();
