@@ -1,11 +1,16 @@
 #include <windows.h>
 #include <alloca.h>
+#include <assert.h>
 #include <dirent.h>
 #include <errno.h>
+#include <fenv.h>
 #include <fcntl.h>
 #include <inttypes.h>
+#include <locale.h>
+#include <memory.h>
 #include <math.h>
 #include <setjmp.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,6 +19,7 @@
 #include <sys/time.h>
 #include <time.h>
 #include <unistd.h>
+#include <wctype.h>
 
 static HANDLE results = INVALID_HANDLE_VALUE;
 static WCHAR summary[1024];
@@ -284,6 +290,12 @@ static void folders(void) {
 static void at_exit(void) {
 }
 
+static volatile sig_atomic_t signalled;
+
+static void on_signal(int number) {
+    signalled = number;
+}
+
 static void library(void) {
     char text[64];
     time_t epoch = 0;
@@ -313,6 +325,12 @@ static void library(void) {
     strcpy(stack, "alloca");
     check("alloca", !strcmp(stack, "alloca"), NULL);
     check("atexit", atexit(at_exit) == 0, NULL);
+    assert(strlen("assert") == 6);
+    static_assert(sizeof(int) == 4, "int is 32-bit");
+    check("setlocale and localeconv", !strcmp(setlocale(LC_ALL, ""), "C") && setlocale(LC_ALL, "de_DE") == NULL && !strcmp(localeconv()->decimal_point, "."), NULL);
+    check("signal and raise", signal(SIGINT, on_signal) == SIG_DFL && raise(SIGINT) == 0 && signalled == SIGINT && signal(SIGTERM, SIG_IGN) == SIG_DFL && raise(SIGTERM) == 0, NULL);
+    check("fenv", fegetround() == FE_TONEAREST && fetestexcept(FE_ALL_EXCEPT) == 0, NULL);
+    check("wctype", iswalpha(L'a') && towupper(L'a') == L'A', NULL);
 }
 
 #pragma clang diagnostic ignored "-Watomic-alignment"

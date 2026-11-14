@@ -23,3 +23,14 @@ void rewind(FILE *stream) {
     fseek(stream, 0, 0);
     clearerr(stream);
 }
+
+__attribute__((noreturn)) void abort(void);
+int _snprintf(char *buffer, size_t count, const char *format, ...);
+
+__attribute__((noreturn)) void __grimace_assert(const char *expression, const char *file, int line, const char *function) {
+    char message[256];
+    _snprintf(message, sizeof message - 1, "Assertion failed: %s, %s, %s line %d\n", expression, function, file, line);
+    message[sizeof message - 1] = 0;
+    fputs(message, _getstdfilex(2));
+    abort();
+}
