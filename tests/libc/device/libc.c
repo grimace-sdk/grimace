@@ -298,6 +298,20 @@ static void folders(void) {
 static void at_exit(void) {
 }
 
+static volatile char constructed[4];
+
+__attribute__((constructor(150))) static void construct_second(void) {
+    constructed[1] = constructed[0] ? 'b' : '?';
+}
+
+__attribute__((constructor(120))) static void construct_first(void) {
+    constructed[0] = 'a';
+}
+
+__attribute__((constructor)) static void construct_last(void) {
+    constructed[2] = constructed[1] ? 'c' : '?';
+}
+
 #if __has_feature(c_thread_local)
 static _Thread_local int thread_value = 5;
 
@@ -344,6 +358,7 @@ static void library(void) {
     strcpy(stack, "alloca");
     check("alloca", !strcmp(stack, "alloca"), NULL);
     check("atexit", atexit(at_exit) == 0, NULL);
+    check("C constructors in priority order", constructed[0] == 'a' && constructed[1] == 'b' && constructed[2] == 'c', NULL);
     assert(strlen("assert") == 6);
     static_assert(sizeof(int) == 4, "int is 32-bit");
     check("setlocale and localeconv", !strcmp(setlocale(LC_ALL, ""), "C") && setlocale(LC_ALL, "de_DE") == NULL && !strcmp(localeconv()->decimal_point, "."), NULL);

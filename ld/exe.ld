@@ -1,4 +1,4 @@
-ENTRY(WinMain)
+ENTRY(__grimace_exe_start)
 SECTIONS
 {
     . = DEFINED(GRIMACE_TEXT_ADDRESS) ? GRIMACE_TEXT_ADDRESS : 0x11000;

@@ -1,4 +1,4 @@
-ENTRY(DllMain)
+ENTRY(__grimace_dll_start)
 SECTIONS
 {
     . = 0x11000;

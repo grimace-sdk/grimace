@@ -2,7 +2,7 @@
 
 int _flushall(void);
 __attribute__((noreturn)) void _Exit(int status);
-extern void __grimace_cxx_finalize(void) __attribute__((weak));
+void __grimace_finalize(void);
 
 static void (*handlers[HANDLERS])(void);
 static int handler_count;
@@ -23,9 +23,7 @@ void __grimace_run_atexit(void) {
 
 __attribute__((noreturn)) void exit(int status) {
     __grimace_run_atexit();
-    if (__grimace_cxx_finalize) {
-        __grimace_cxx_finalize();
-    }
+    __grimace_finalize();
     _flushall();
     _Exit(status);
 }

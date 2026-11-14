@@ -1,10 +1,5 @@
-#include <windows.h>
+typedef void (*array_function)(void);
 
-#include "runtime.h"
-
-using array_function = void (*)();
-
-extern "C" {
 extern array_function __init_array_start[];
 extern array_function __init_array_end[];
 extern array_function __fini_array_start[];
@@ -17,11 +12,17 @@ extern array_function __dtors_priority_start[];
 extern array_function __dtors_priority_end[];
 extern array_function __dtors_start[];
 extern array_function __dtors_end[];
-}
 
-void (*grimace_run_exit_handlers)();
+int WinMain(void *instance, void *previous, unsigned short *command_line, int show);
+int DllMain(void *instance, unsigned long reason, void *reserved);
+void __grimace_run_atexit(void);
 
-static void run_constructors() {
+#define DLL_PROCESS_ATTACH 1
+#define DLL_PROCESS_DETACH 0
+
+void (*grimace_run_exit_handlers)(void);
+
+static void run_constructors(void) {
     for (array_function *entry = __ctors_priority_start; entry < __ctors_priority_end; entry++) {
         (*entry)();
     }
@@ -33,7 +34,7 @@ static void run_constructors() {
     }
 }
 
-static void run_destructors() {
+static void run_destructors(void) {
     if (grimace_run_exit_handlers) {
         grimace_run_exit_handlers();
     }
@@ -48,13 +49,11 @@ static void run_destructors() {
     }
 }
 
-extern "C" void __grimace_run_atexit();
-
-extern "C" void __grimace_cxx_finalize() {
+void __grimace_finalize(void) {
     run_destructors();
 }
 
-extern "C" int WINAPI __grimace_exe_start(HINSTANCE instance, HINSTANCE previous, LPWSTR command_line, int show) {
+int __grimace_exe_start(void *instance, void *previous, unsigned short *command_line, int show) {
     run_constructors();
     int result = WinMain(instance, previous, command_line, show);
     __grimace_run_atexit();
@@ -62,16 +61,16 @@ extern "C" int WINAPI __grimace_exe_start(HINSTANCE instance, HINSTANCE previous
     return result;
 }
 
-extern "C" BOOL WINAPI __grimace_dll_start(HINSTANCE instance, DWORD reason, LPVOID reserved) {
-    static bool constructed;
+int __grimace_dll_start(void *instance, unsigned long reason, void *reserved) {
+    static int constructed;
     if (reason == DLL_PROCESS_ATTACH && !constructed) {
         run_constructors();
-        constructed = true;
+        constructed = 1;
     }
-    BOOL result = DllMain(instance, reason, reserved);
+    int result = DllMain(instance, reason, reserved);
     if (reason == DLL_PROCESS_DETACH && constructed) {
         run_destructors();
-        constructed = false;
+        constructed = 0;
     }
     return result;
 }
