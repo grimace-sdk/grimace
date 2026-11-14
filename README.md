@@ -154,7 +154,7 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 - A target linked as C++ gets `grimace::cxx_runtime`: global constructors and destructors, `operator new` and `delete` on `LocalAlloc`, `__cxa_atexit` and `__cxa_pure_virtual`. Its entry point runs the constructors, calls `WinMain` or `DllMain`, then the destructors.
 - The headers' functions have C linkage in C++. Functions a DLL exports need `extern "C"`.
 - `include/grimace/cxx` is a header-only C++ layer: RAII handles, results instead of exceptions, a checked `format`, and a window base. See [its README](include/grimace/cxx/README.md).
-- On CE 3.0 with llvm-builds v3 or later, the C++ standard library works: strings, containers, `<algorithm>`, `optional`, `variant`, smart pointers, `std::function`, ranges and `std::format`, without threads, locales, iostreams, filesystem or exceptions. See `examples/stl-text` and `examples/stl-collections`. Elsewhere, `include/new` and `include/initializer_list` are the only standard library headers.
+- On CE 3.0 with llvm-builds v3 or later, the C++ standard library works: strings, containers, `<algorithm>`, `optional`, `variant`, smart pointers, `std::function`, ranges, `std::format` and `<stdexcept>`'s exception classes, without threads, locales, iostreams, filesystem or exceptions. See `examples/stl-text` and `examples/stl-collections`. Elsewhere, `include/new` and `include/initializer_list` are the only standard library headers.
 
 ## Debugging
 

@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <grimace/version.h>
+#include <grimace/tm.h>
 
 #ifdef __cplusplus
 extern "C" {

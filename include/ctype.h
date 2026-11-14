@@ -50,6 +50,7 @@ int isupper(int character);
 int isxdigit(int character);
 int isblank(int character);
 
+#ifndef __cplusplus
 #define isalpha(character) _isctype(character, _ALPHA)
 #define isupper(character) _isctype(character, _UPPER)
 #define islower(character) _isctype(character, _LOWER)
@@ -61,6 +62,7 @@ int isblank(int character);
 #define isprint(character) _isctype(character, _BLANK | _PUNCT | _ALPHA | _DIGIT)
 #define isgraph(character) _isctype(character, _PUNCT | _ALPHA | _DIGIT)
 #define iscntrl(character) _isctype(character, _CONTROL)
+#endif
 #define isascii(character) ((unsigned)(character) < 0x80)
 #define iswascii(character) ((unsigned)(character) < 0x80)
 

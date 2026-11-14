@@ -3,7 +3,9 @@
 #include <algorithm>
 #include <any>
 #include <bitset>
+#include <cctype>
 #include <charconv>
+#include <cstring>
 #include <deque>
 #include <expected>
 #include <format>
@@ -19,6 +21,7 @@
 #include <ranges>
 #include <set>
 #include <stack>
+#include <stdexcept>
 #include <string>
 #include <tuple>
 #include <unordered_set>
@@ -54,12 +57,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
         watcher = owner;
     }
     std::expected<int, int> outcome = 3;
+    std::runtime_error failure("failure");
+    int spaces = std::isspace(' ') ? 1 : 0;
     std::string formatted = std::format("{} and {}", 1, 2);
     std::string floating = std::format("{:.2f}", 3.14159);
     std::wstring text = std::to_wstring(twice(std::any_cast<int>(held)) + static_cast<int>(flags.count()) + heap.top() + pile.top() +
                                         static_cast<int>(seen.size()) + std::get<0>(pair) + dice(generator) + even_sum + doubly.front() +
                                         watcher.expired() + *outcome + static_cast<int>(converted.ptr - digits) +
-                                        static_cast<int>(formatted.size() + floating.size()));
+                                        static_cast<int>(formatted.size() + floating.size()) +
+                                        static_cast<int>(std::strlen(failure.what())) + spaces);
     MessageBoxW(nullptr, text.c_str(), L"stdlib", MB_OK);
     return 0;
 }
