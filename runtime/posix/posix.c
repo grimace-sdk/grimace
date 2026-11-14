@@ -133,8 +133,14 @@ static void write_debug_output(const unsigned char *bytes, size_t count) {
 
 ssize_t write(int descriptor, const void *buffer, size_t count) {
     if (descriptor == STDOUT_FILENO || descriptor == STDERR_FILENO) {
-        write_debug_output(buffer, count);
-        return (ssize_t)count;
+        if (!__grimace_stdio_redirected()) {
+            write_debug_output(buffer, count);
+            return (ssize_t)count;
+        }
+        FILE *stream = _getstdfilex(descriptor);
+        size_t written = fwrite(buffer, 1, count, stream);
+        fflush(stream);
+        return written == count ? (ssize_t)count : __grimace_posix_fail(EIO);
     }
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry || (entry->flags & O_ACCMODE) == O_RDONLY) {

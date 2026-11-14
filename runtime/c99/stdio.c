@@ -7,6 +7,9 @@ int fputs(const char *string, FILE *stream);
 int fseek(FILE *stream, long offset, int origin);
 void clearerr(FILE *stream);
 char *strerror(int number);
+int fflush(FILE *stream);
+FILE *_wfreopen(const unsigned short *path, const unsigned short *mode, FILE *stream);
+extern int setvbuf(FILE *stream, char *buffer, int mode, size_t size) __attribute__((weak));
 int *_errno(void);
 
 void perror(const char *prefix) {
@@ -33,4 +36,35 @@ __attribute__((noreturn)) void __grimace_assert(const char *expression, const ch
     message[sizeof message - 1] = 0;
     fputs(message, _getstdfilex(2));
     abort();
+}
+
+#define UNBUFFERED 4
+
+static int redirected;
+
+int __grimace_stdio_redirected(void) {
+    return redirected;
+}
+
+static int reopen(FILE *stream, const unsigned short *path) {
+    static const unsigned short append[] = {'a', 0};
+    if (!_wfreopen(path, append, stream)) {
+        return 0;
+    }
+    if (setvbuf) {
+        setvbuf(stream, NULL, UNBUFFERED, 0);
+    }
+    return 1;
+}
+
+int grimace_redirect_stdio(const unsigned short *path) {
+    FILE *output = _getstdfilex(1);
+    FILE *error = _getstdfilex(2);
+    fflush(output);
+    fflush(error);
+    if (!reopen(output, path)) {
+        return -1;
+    }
+    redirected = 1;
+    return reopen(error, path) ? 0 : 1;
 }

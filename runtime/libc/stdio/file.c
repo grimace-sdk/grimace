@@ -17,6 +17,7 @@ void OutputDebugStringW(const grimace_wchar *text);
 #define GENERIC_READ 0x80000000ul
 #define GENERIC_WRITE 0x40000000ul
 #define FILE_SHARE_READ 1
+#define FILE_SHARE_WRITE 2
 #define CREATE_ALWAYS 2
 #define OPEN_EXISTING 3
 #define OPEN_ALWAYS 4
@@ -133,7 +134,13 @@ static int put_unit(struct stream *stream, unsigned unit, int wide) {
     if (stream->text && unit == '\n' && put_raw(stream, '\r', wide) == EOF) {
         return EOF;
     }
-    return put_raw(stream, unit, wide);
+    if (put_raw(stream, unit, wide) == EOF) {
+        return EOF;
+    }
+    if (unit == '\n' && stream > standard && stream < standard + 3 && flush_writes(stream)) {
+        return EOF;
+    }
+    return (int)unit;
 }
 
 static int get_byte(struct stream *stream) {
@@ -311,8 +318,44 @@ int fclose(FILE *file) {
 }
 
 FILE *_wfreopen(const wchar_t *path, const wchar_t *mode, FILE *file) {
-    fclose(file);
-    return _wfopen(path, mode);
+    struct stream *stream = (struct stream *)file;
+    int is_standard = stream >= standard && stream < standard + 3;
+    int readable = 0;
+    int writable = 0;
+    int append;
+    int text;
+    unsigned long disposition;
+    flush_writes(stream);
+    if (!stream->debug && stream->handle != INVALID_HANDLE) {
+        CloseHandle(stream->handle);
+    }
+    stream->handle = INVALID_HANDLE;
+    void *handle = INVALID_HANDLE;
+    if (parse_mode(mode, &readable, &writable, &append, &text, &disposition)) {
+        handle = CreateFileW(path, (readable ? GENERIC_READ : 0) | (writable ? GENERIC_WRITE : 0), FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
+                             disposition, FILE_ATTRIBUTE_NORMAL, NULL);
+    }
+    if (handle == INVALID_HANDLE) {
+        if (is_standard) {
+            stream->debug = stream->writable;
+            return NULL;
+        }
+        fclose(file);
+        return NULL;
+    }
+    stream->handle = handle;
+    stream->readable = readable;
+    stream->writable = writable;
+    stream->append = append;
+    stream->text = text;
+    stream->debug = 0;
+    stream->error = 0;
+    stream->eof = 0;
+    stream->state = IDLE;
+    stream->unget_count = 0;
+    stream->position = 0;
+    stream->length = 0;
+    return file;
 }
 
 int _fcloseall(void) {

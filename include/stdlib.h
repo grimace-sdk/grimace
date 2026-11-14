@@ -456,6 +456,7 @@ __attribute__((noreturn)) void _Exit(int status);
 __attribute__((noreturn)) void exit(int status);
 int atexit(void (*handler)(void));
 char *getenv(const char *name);
+int system(const char *command);
 #ifdef GRIMACE_POSIX
 int setenv(const char *name, const char *value, int overwrite);
 int unsetenv(const char *name);

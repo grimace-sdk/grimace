@@ -686,6 +686,7 @@ int fwscanf(FILE *stream, const wchar_t *format, ...);
 
 void perror(const char *prefix);
 void rewind(FILE *stream);
+int grimace_redirect_stdio(const wchar_t *path);
 
 #define getc fgetc
 #define putc fputc

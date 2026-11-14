@@ -17,6 +17,7 @@
 #include <strings.h>
 #include <sys/stat.h>
 #include <sys/time.h>
+#include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
 #include <wctype.h>
@@ -331,6 +332,22 @@ static void library(void) {
     check("signal and raise", signal(SIGINT, on_signal) == SIG_DFL && raise(SIGINT) == 0 && signalled == SIGINT && signal(SIGTERM, SIG_IGN) == SIG_DFL && raise(SIGTERM) == 0, NULL);
     check("fenv", fegetround() == FE_TONEAREST && fetestexcept(FE_ALL_EXCEPT) == 0, NULL);
     check("wctype", iswalpha(L'a') && towupper(L'a') == L'A', NULL);
+    check("system and wait", system(NULL) == 0 && system("dir") == -1 && wait(NULL) == -1 && errno == ECHILD, NULL);
+}
+
+static void redirect(void) {
+    char text[128] = "";
+    unlink("/libc-stdio.txt");
+    check("grimace_redirect_stdio", grimace_redirect_stdio(L"\\libc-stdio.txt") == 0, NULL);
+    printf("out %d\n", 1);
+    fputs("err 2\n", stderr);
+    write(STDERR_FILENO, "fd 3\n", 5);
+    printf("out %d\n", 4);
+    int file = open("/libc-stdio.txt", O_RDONLY);
+    ssize_t length = file >= 0 ? read(file, text, sizeof text - 1) : -1;
+    close(file);
+    text[length > 0 ? length : 0] = 0;
+    check_text("redirected output", text, "out 1\r\nerr 2\r\nfd 3\r\nout 4\r\n");
 }
 
 #pragma clang diagnostic ignored "-Watomic-alignment"
@@ -380,6 +397,7 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE previous, LPWSTR command_line, 
     posix();
     folders();
     library();
+    redirect();
     WCHAR text[64];
     swprintf(text, L"libc: %d passed, %d failed\r\n", passed, failed);
     line(text);

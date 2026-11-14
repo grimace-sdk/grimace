@@ -94,3 +94,7 @@ int putenv(char *assignment) {
     }
     return store(assignment, length, assignment + length + 1);
 }
+
+int system(const char *command) {
+    return command ? -1 : 0;
+}
