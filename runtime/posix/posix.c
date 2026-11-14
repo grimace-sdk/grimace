@@ -1,4 +1,4 @@
-#include <windows.h>
+#include "internal.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -12,71 +12,10 @@
 typedef struct {
     HANDLE handle;
     int flags;
+    int borrowed;
 } descriptor_entry;
 
 static descriptor_entry descriptors[DESCRIPTORS];
-
-static int fail(int number) {
-    errno = number;
-    return -1;
-}
-
-static int fail_with_last_error(void) {
-    switch (GetLastError()) {
-    case ERROR_FILE_NOT_FOUND:
-    case ERROR_PATH_NOT_FOUND:
-    case ERROR_INVALID_DRIVE:
-        return fail(ENOENT);
-    case ERROR_ACCESS_DENIED:
-    case ERROR_SHARING_VIOLATION:
-    case ERROR_LOCK_VIOLATION:
-        return fail(EACCES);
-    case ERROR_INVALID_HANDLE:
-        return fail(EBADF);
-    case ERROR_NOT_ENOUGH_MEMORY:
-    case ERROR_OUTOFMEMORY:
-        return fail(ENOMEM);
-    case ERROR_FILE_EXISTS:
-    case ERROR_ALREADY_EXISTS:
-        return fail(EEXIST);
-    case ERROR_DISK_FULL:
-    case ERROR_HANDLE_DISK_FULL:
-        return fail(ENOSPC);
-    case ERROR_DIR_NOT_EMPTY:
-        return fail(ENOTEMPTY);
-    case ERROR_WRITE_PROTECT:
-        return fail(EROFS);
-    case ERROR_INVALID_NAME:
-    case ERROR_INVALID_PARAMETER:
-        return fail(EINVAL);
-    case ERROR_FILENAME_EXCED_RANGE:
-        return fail(ENAMETOOLONG);
-    case ERROR_TOO_MANY_OPEN_FILES:
-        return fail(EMFILE);
-    default:
-        return fail(EIO);
-    }
-}
-
-static int wide_path(WCHAR *output, const char *path) {
-    size_t length = mbstowcs(output, path, MAX_PATH);
-    if (length == (size_t)-1) {
-        return fail(EILSEQ);
-    }
-    if (length >= MAX_PATH) {
-        return fail(ENAMETOOLONG);
-    }
-    output[length] = 0;
-    for (WCHAR *character = output; *character; character++) {
-        if (*character == '/') {
-            *character = '\\';
-        }
-    }
-    while (length > 1 && output[length - 1] == '\\') {
-        output[--length] = 0;
-    }
-    return 0;
-}
 
 static descriptor_entry *file_entry(int descriptor) {
     if (descriptor < FIRST_FILE || descriptor >= DESCRIPTORS || !descriptors[descriptor].handle) {
@@ -109,7 +48,7 @@ static void describe(struct stat *status, DWORD attributes, DWORD size, const FI
 
 int open(const char *path, int flags, ...) {
     WCHAR wide[MAX_PATH + 1];
-    if (wide_path(wide, path) < 0) {
+    if (__grimace_posix_resolve(path, wide) < 0) {
         return -1;
     }
     int descriptor = FIRST_FILE;
@@ -117,7 +56,7 @@ int open(const char *path, int flags, ...) {
         descriptor++;
     }
     if (descriptor == DESCRIPTORS) {
-        return fail(EMFILE);
+        return __grimace_posix_fail(EMFILE);
     }
     DWORD access;
     switch (flags & O_ACCMODE) {
@@ -131,7 +70,7 @@ int open(const char *path, int flags, ...) {
         access = GENERIC_READ | GENERIC_WRITE;
         break;
     default:
-        return fail(EINVAL);
+        return __grimace_posix_fail(EINVAL);
     }
     DWORD disposition;
     if ((flags & O_CREAT) && (flags & O_EXCL)) {
@@ -147,14 +86,15 @@ int open(const char *path, int flags, ...) {
     }
     DWORD attributes = GetFileAttributesW(wide);
     if (attributes != 0xFFFFFFFF && (attributes & FILE_ATTRIBUTE_DIRECTORY)) {
-        return fail(EISDIR);
+        return __grimace_posix_fail(EISDIR);
     }
     HANDLE handle = CreateFileW(wide, access, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, disposition, FILE_ATTRIBUTE_NORMAL, NULL);
     if (handle == INVALID_HANDLE_VALUE) {
-        return fail_with_last_error();
+        return __grimace_posix_fail_with_last_error();
     }
     descriptors[descriptor].handle = handle;
     descriptors[descriptor].flags = flags;
+    descriptors[descriptor].borrowed = 0;
     return descriptor;
 }
 
@@ -168,11 +108,11 @@ ssize_t read(int descriptor, void *buffer, size_t count) {
     }
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry || (entry->flags & O_ACCMODE) == O_WRONLY) {
-        return fail(EBADF);
+        return __grimace_posix_fail(EBADF);
     }
     DWORD transferred;
     if (!ReadFile(entry->handle, buffer, count, &transferred, NULL)) {
-        return fail_with_last_error();
+        return __grimace_posix_fail_with_last_error();
     }
     return (ssize_t)transferred;
 }
@@ -198,14 +138,14 @@ ssize_t write(int descriptor, const void *buffer, size_t count) {
     }
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry || (entry->flags & O_ACCMODE) == O_RDONLY) {
-        return fail(EBADF);
+        return __grimace_posix_fail(EBADF);
     }
     if (entry->flags & O_APPEND) {
         SetFilePointer(entry->handle, 0, NULL, FILE_END);
     }
     DWORD transferred;
     if (!WriteFile(entry->handle, buffer, count, &transferred, NULL)) {
-        return fail_with_last_error();
+        return __grimace_posix_fail_with_last_error();
     }
     return (ssize_t)transferred;
 }
@@ -213,15 +153,15 @@ ssize_t write(int descriptor, const void *buffer, size_t count) {
 off_t lseek(int descriptor, off_t offset, int whence) {
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry) {
-        return fail(descriptor >= 0 && descriptor < FIRST_FILE ? ESPIPE : EBADF);
+        return __grimace_posix_fail(descriptor >= 0 && descriptor < FIRST_FILE ? ESPIPE : EBADF);
     }
     if (whence != SEEK_SET && whence != SEEK_CUR && whence != SEEK_END) {
-        return fail(EINVAL);
+        return __grimace_posix_fail(EINVAL);
     }
     SetLastError(NO_ERROR);
     DWORD position = SetFilePointer(entry->handle, offset, NULL, whence);
     if (position == 0xFFFFFFFF && GetLastError() != NO_ERROR) {
-        return fail_with_last_error();
+        return __grimace_posix_fail_with_last_error();
     }
     return (off_t)position;
 }
@@ -232,11 +172,14 @@ int close(int descriptor) {
     }
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry) {
-        return fail(EBADF);
+        return __grimace_posix_fail(EBADF);
     }
     HANDLE handle = entry->handle;
     entry->handle = NULL;
-    return CloseHandle(handle) ? 0 : fail_with_last_error();
+    if (entry->borrowed) {
+        return 0;
+    }
+    return CloseHandle(handle) ? 0 : __grimace_posix_fail_with_last_error();
 }
 
 int fsync(int descriptor) {
@@ -245,22 +188,22 @@ int fsync(int descriptor) {
     }
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry) {
-        return fail(EBADF);
+        return __grimace_posix_fail(EBADF);
     }
-    return FlushFileBuffers(entry->handle) ? 0 : fail_with_last_error();
+    return FlushFileBuffers(entry->handle) ? 0 : __grimace_posix_fail_with_last_error();
 }
 
 int ftruncate(int descriptor, off_t length) {
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry || (entry->flags & O_ACCMODE) == O_RDONLY) {
-        return fail(EBADF);
+        return __grimace_posix_fail(EBADF);
     }
     if (length < 0) {
-        return fail(EINVAL);
+        return __grimace_posix_fail(EINVAL);
     }
     DWORD position = SetFilePointer(entry->handle, 0, NULL, FILE_CURRENT);
     int truncated = SetFilePointer(entry->handle, length, NULL, FILE_BEGIN) != 0xFFFFFFFF && SetEndOfFile(entry->handle);
-    int result = truncated ? 0 : fail_with_last_error();
+    int result = truncated ? 0 : __grimace_posix_fail_with_last_error();
     SetFilePointer(entry->handle, position, NULL, FILE_BEGIN);
     return result;
 }
@@ -273,46 +216,46 @@ int isatty(int descriptor) {
 
 int unlink(const char *path) {
     WCHAR wide[MAX_PATH + 1];
-    if (wide_path(wide, path) < 0) {
+    if (__grimace_posix_resolve(path, wide) < 0) {
         return -1;
     }
-    return DeleteFileW(wide) ? 0 : fail_with_last_error();
+    return DeleteFileW(wide) ? 0 : __grimace_posix_fail_with_last_error();
 }
 
 int rmdir(const char *path) {
     WCHAR wide[MAX_PATH + 1];
-    if (wide_path(wide, path) < 0) {
+    if (__grimace_posix_resolve(path, wide) < 0) {
         return -1;
     }
-    return RemoveDirectoryW(wide) ? 0 : fail_with_last_error();
+    return RemoveDirectoryW(wide) ? 0 : __grimace_posix_fail_with_last_error();
 }
 
 int mkdir(const char *path, mode_t mode) {
     WCHAR wide[MAX_PATH + 1];
-    if (wide_path(wide, path) < 0) {
+    if (__grimace_posix_resolve(path, wide) < 0) {
         return -1;
     }
-    return CreateDirectoryW(wide, NULL) ? 0 : fail_with_last_error();
+    return CreateDirectoryW(wide, NULL) ? 0 : __grimace_posix_fail_with_last_error();
 }
 
 int access(const char *path, int mode) {
     WCHAR wide[MAX_PATH + 1];
-    if (wide_path(wide, path) < 0) {
+    if (__grimace_posix_resolve(path, wide) < 0) {
         return -1;
     }
     DWORD attributes = GetFileAttributesW(wide);
     if (attributes == 0xFFFFFFFF) {
-        return fail_with_last_error();
+        return __grimace_posix_fail_with_last_error();
     }
     if ((mode & W_OK) && (attributes & FILE_ATTRIBUTE_READONLY)) {
-        return fail(EACCES);
+        return __grimace_posix_fail(EACCES);
     }
     return 0;
 }
 
 int stat(const char *path, struct stat *status) {
     WCHAR wide[MAX_PATH + 1];
-    if (wide_path(wide, path) < 0) {
+    if (__grimace_posix_resolve(path, wide) < 0) {
         return -1;
     }
     if (wide[0] == '\\' && wide[1] == 0) {
@@ -323,7 +266,7 @@ int stat(const char *path, struct stat *status) {
     WIN32_FIND_DATAW found;
     HANDLE search = FindFirstFileW(wide, &found);
     if (search == INVALID_HANDLE_VALUE) {
-        return fail_with_last_error();
+        return __grimace_posix_fail_with_last_error();
     }
     FindClose(search);
     describe(status, found.dwFileAttributes, found.nFileSizeLow, &found.ftCreationTime, &found.ftLastAccessTime, &found.ftLastWriteTime);
@@ -339,15 +282,46 @@ int fstat(int descriptor, struct stat *status) {
     }
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry) {
-        return fail(EBADF);
+        return __grimace_posix_fail(EBADF);
     }
     FILETIME created;
     FILETIME accessed;
     FILETIME written;
     DWORD size = GetFileSize(entry->handle, NULL);
     if (size == 0xFFFFFFFF || !GetFileTime(entry->handle, &created, &accessed, &written)) {
-        return fail_with_last_error();
+        return __grimace_posix_fail_with_last_error();
     }
     describe(status, FILE_ATTRIBUTE_NORMAL, size, &created, &accessed, &written);
     return 0;
+}
+
+int fileno(FILE *stream) {
+    if (!stream) {
+        return __grimace_posix_fail(EBADF);
+    }
+    for (int standard = 0; standard < FIRST_FILE; standard++) {
+        if (stream == _getstdfilex(standard)) {
+            return standard;
+        }
+    }
+    HANDLE handle = _fileno(stream);
+    if (!handle || handle == INVALID_HANDLE_VALUE) {
+        return __grimace_posix_fail(EBADF);
+    }
+    int free_descriptor = -1;
+    for (int descriptor = FIRST_FILE; descriptor < DESCRIPTORS; descriptor++) {
+        if (descriptors[descriptor].handle == handle) {
+            return descriptor;
+        }
+        if (!descriptors[descriptor].handle && free_descriptor < 0) {
+            free_descriptor = descriptor;
+        }
+    }
+    if (free_descriptor < 0) {
+        return __grimace_posix_fail(EMFILE);
+    }
+    descriptors[free_descriptor].handle = handle;
+    descriptors[free_descriptor].flags = O_RDWR;
+    descriptors[free_descriptor].borrowed = 1;
+    return free_descriptor;
 }

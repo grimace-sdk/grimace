@@ -1,4 +1,6 @@
 #include <windows.h>
+#include <alloca.h>
+#include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <inttypes.h>
@@ -7,7 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <sys/stat.h>
+#include <sys/time.h>
+#include <time.h>
 #include <unistd.h>
 
 static HANDLE results = INVALID_HANDLE_VALUE;
@@ -236,6 +241,80 @@ static void posix(void) {
     check("standard descriptors", write(STDOUT_FILENO, "libc: write to stdout\n", 22) == 22 && read(STDIN_FILENO, text, 1) == 0 && !isatty(1), NULL);
 }
 
+static void folders(void) {
+    char original[MAX_PATH * 2];
+    char text[MAX_PATH * 2];
+    check("getcwd", getcwd(original, sizeof original) && original[0] == '\\', original);
+    check("chdir to the root", chdir("/") == 0 && getcwd(text, sizeof text) && !strcmp(text, "\\"), text);
+    check("mkdir and chdir", mkdir("posix-dir", 0755) == 0 && chdir("posix-dir/./") == 0 && getcwd(text, sizeof text) && !strcmp(text, "\\posix-dir"), text);
+    FILE *file = fopen("relative.txt", "w");
+    check("relative fopen", file != NULL, NULL);
+    if (file) {
+        fputs("relative", file);
+        check("fileno", fileno(file) >= 3 && fileno(stdout) == 1, NULL);
+        fclose(file);
+    }
+    struct stat status;
+    check("relative file lands in the folder", stat("/posix-dir/relative.txt", &status) == 0 && status.st_size == 8, NULL);
+    file = fopen("relative.txt", "r");
+    char word[16] = "";
+    check("rewind", file && fgetc(file) == 'r' && (rewind(file), fread(word, 1, 8, file)) == 8 && !memcmp(word, "relative", 8), NULL);
+    if (file) {
+        fclose(file);
+    }
+    DIR *directory = opendir(".");
+    int found = 0;
+    struct dirent *entry;
+    while (directory && (entry = readdir(directory))) {
+        found += !strcmp(entry->d_name, "relative.txt") && entry->d_type == DT_REG;
+    }
+    if (directory) {
+        rewinddir(directory);
+        found += readdir(directory) != NULL;
+        closedir(directory);
+    }
+    check("opendir and readdir", found == 2, NULL);
+    check("relative rename", rename("relative.txt", "../posix-dir/moved.txt") == 0 && access("moved.txt", F_OK) == 0 && access("relative.txt", F_OK) == -1, NULL);
+    check("relative remove", remove("moved.txt") == 0, NULL);
+    check("chdir up and rmdir", chdir("..") == 0 && rmdir("posix-dir") == 0 && opendir("posix-dir") == NULL && errno == ENOENT, NULL);
+    check("chdir to a file fails", chdir("/posix-dir-missing") == -1, NULL);
+    chdir(original);
+}
+
+static void at_exit(void) {
+}
+
+static void library(void) {
+    char text[64];
+    time_t epoch = 0;
+    check("time", time(NULL) > 0, NULL);
+    strftime(text, sizeof text, "%Y-%m-%d %H:%M:%S %a", gmtime(&epoch));
+    check_text("gmtime and strftime", text, "1970-01-01 00:00:00 Thu");
+    time_t now = time(NULL);
+    struct tm local = *localtime(&now);
+    check("mktime", mktime(&local) == now, NULL);
+    struct timeval first;
+    struct timeval second;
+    gettimeofday(&first, NULL);
+    usleep(20000);
+    gettimeofday(&second, NULL);
+    long long elapsed = (second.tv_sec - first.tv_sec) * 1000000LL + (second.tv_usec - first.tv_usec);
+    check("gettimeofday and usleep", elapsed >= 10000 && elapsed < 2000000, NULL);
+    check("getenv and setenv", getenv("GRIMACE_TEST") == NULL && setenv("GRIMACE_TEST", "yes", 1) == 0 && !strcmp(getenv("GRIMACE_TEST"), "yes"), NULL);
+    check("strcasecmp", strcasecmp("Hello", "hELLO") == 0 && strncasecmp("abcX", "ABCy", 3) == 0 && strcasecmp("a", "B") < 0, NULL);
+    char *copy = strndup("abcdef", 3);
+    check("strdup, strndup and strnlen", copy && !strcmp(copy, "abc") && strnlen("abcdef", 4) == 4 && strnlen("ab", 4) == 2, NULL);
+    free(copy);
+    copy = strdup("xyz");
+    check("strdup", copy && !strcmp(copy, "xyz"), NULL);
+    free(copy);
+    check("strtoimax", strtoimax("-123456789012", NULL, 10) == -123456789012LL && strtoumax("ff", NULL, 16) == 255, NULL);
+    char *stack = alloca(32);
+    strcpy(stack, "alloca");
+    check("alloca", !strcmp(stack, "alloca"), NULL);
+    check("atexit", atexit(at_exit) == 0, NULL);
+}
+
 #pragma clang diagnostic ignored "-Watomic-alignment"
 
 static void atomics(void) {
@@ -279,6 +358,8 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE previous, LPWSTR command_line, 
     jumps();
     atomics();
     posix();
+    folders();
+    library();
     WCHAR text[64];
     swprintf(text, L"libc: %d passed, %d failed\r\n", passed, failed);
     line(text);

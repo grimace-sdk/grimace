@@ -32,6 +32,10 @@ int isatty(int descriptor);
 int unlink(const char *path);
 int rmdir(const char *path);
 int access(const char *path, int mode);
+int chdir(const char *path);
+char *getcwd(char *buffer, size_t size);
+int usleep(unsigned int microseconds);
+unsigned int sleep(unsigned int seconds);
 
 #ifdef __cplusplus
 }
