@@ -13,9 +13,9 @@ ARCHITECTURES = {
     "x86": {"target": ["--target=i486-unknown-none-elf", "-malign-double", "-nostdinc++"], "defines": ["-D_X86_", "-Dx86"]},
     "arm": {"target": ["--target=armv4-unknown-none-wince", "-mcpu=strongarm", "-marm", "-mfloat-abi=soft"], "defines": ["-DARM", "-D_ARM_", "-DARMV4"]},
 }
-VERSIONS = {"mips": [1, 2], "sh3": [1, 101, 2], "x86": [2], "arm": [3, 6]}
-WIN32_WCE = {1: 100, 101: 101, 2: 200, 3: 300, 6: 600}
-VERSION_NAMES = {1: "1.0", 101: "1.01", 2: "2.0", 3: "3.0", 6: "6.0"}
+VERSIONS = {"mips": [1, 2], "sh3": [1, 101, 2], "x86": [2], "arm": [3, 52, 6]}
+WIN32_WCE = {1: 100, 101: 101, 2: 200, 3: 300, 52: 502, 6: 600}
+VERSION_NAMES = {1: "1.0", 101: "1.01", 2: "2.0", 3: "3.0", 52: "5.2", 6: "6.0"}
 
 
 def vendored_headers():

@@ -8,6 +8,12 @@ extern "C" {
 #if GRIMACE_WCE == 300 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && defined(GRIMACE_PLATFORM_HPC2000)
 #endif
 
+#if GRIMACE_WCE == 502 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && !defined(GRIMACE_PLATFORM)
+#endif
+
+#if GRIMACE_WCE == 502 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && defined(GRIMACE_PLATFORM_WM)
+#endif
+
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && !defined(GRIMACE_PLATFORM)
 #define __grimace_lazy_CloseToolhelp32Snapshot 1
 extern struct grimace_lazy_import __grimace_lazy_import_CloseToolhelp32Snapshot;
@@ -1355,6 +1361,9 @@ extern struct grimace_lazy_import __grimace_lazy_import_waveOutWrite;
 #endif
 
 #if GRIMACE_WCE == 200 && GRIMACE_X86 && defined(GRIMACE_DEVICE_JOYRIDE)
+#endif
+
+#if GRIMACE_WCE == 502 && GRIMACE_ARM && defined(GRIMACE_DEVICE_JUNOSB)
 #endif
 
 #if GRIMACE_WCE == 100 && GRIMACE_MIPS && defined(GRIMACE_DEVICE_VELO1)

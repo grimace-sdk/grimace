@@ -2,7 +2,7 @@ TOOLCHAIN = $(CURDIR)/cmake/toolchain.cmake
 CLANG ?= $(firstword $(wildcard $(CURDIR)/llvm/bin/clang) $(wildcard $(shell brew --prefix llvm 2>/dev/null)/bin/clang) clang)
 ROM ?= $(GRIMACE_ROM)
 EXPORT_DLLS = addrstor asform ceshell commctrl commdlg coredll cxport htmlview imgdecmp inkx mlang mqoa msgstore msmqrt mshtml ndis ole32 oleaut32 richink secur32 shdocvw tnefutil toolhelp urlmon webview wininet winscard winsock
-TARGETS = mips-ce1 mips-ce2 sh3-ce1 sh3-ce101 sh3-ce2 x86-ce2 arm-ce3 arm-ce6
+TARGETS = mips-ce1 mips-ce2 sh3-ce1 sh3-ce101 sh3-ce2 x86-ce2 arm-ce3 arm-ce52 arm-ce6
 CE6_DEVICES = pwsh2 pwsb1 pwsh4 pwa7300 pwg5300
 
 llvm = $(if $(GRIMACE_$(1)_LLVM),-DGRIMACE_LLVM_ROOT=$(GRIMACE_$(1)_LLVM))
@@ -38,6 +38,7 @@ $(eval $(call target,sh3-ce101,sh3,1.01,SH3))
 $(eval $(call target,sh3-ce2,sh3,2,SH3))
 $(eval $(call target,x86-ce2,x86,2,X86))
 $(eval $(call target,arm-ce3,arm,3,ARM))
+$(eval $(call target,arm-ce52,arm,5.2,ARM))
 $(eval $(call target,arm-ce6,arm,6,ARM))
 
 check: check-abi check-cxx-headers check-stdlib check-lazy check-libc check-ce6 examples

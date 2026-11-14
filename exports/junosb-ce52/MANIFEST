@@ -1,0 +1,5 @@
+arch: arm
+version: 5.2
+platform: wm
+device: junosb
+source: Trimble Juno SB ROM, Windows Mobile 6.1 (OS 1.4.09, and 1.3.04's lists are identical): XIP with tools/cerom.py, IMGFS with tools/imgfs.py

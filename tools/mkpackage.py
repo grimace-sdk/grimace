@@ -85,8 +85,8 @@ def build(description_path):
     return written
 
 
-VERSION_ORDER = {"1": 0, "101": 1, "2": 2, "3": 3, "6": 4}
-LABEL = re.compile(r"-(mips|sh3|x86|arm)-ce(1|101|2|3|6)(-[^.]+)?\.cab$")
+VERSION_ORDER = {"1": 0, "101": 1, "2": 2, "3": 3, "52": 4, "6": 5}
+LABEL = re.compile(r"-(mips|sh3|x86|arm)-ce(1|101|2|3|52|6)(-[^.]+)?\.cab$")
 
 
 def choose_cabs(names):

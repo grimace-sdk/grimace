@@ -14,8 +14,8 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXPORTS = os.path.join(ROOT, "exports")
-WIN32_WCE = {"1": 100, "1.01": 101, "2": 200, "3": 300, "6": 600}
-VERSION_NAMES = {100: "1.0", 101: "1.01", 200: "2.0", 300: "3.0", 600: "6.0"}
+WIN32_WCE = {"1": 100, "1.01": 101, "2": 200, "3": 300, "5.2": 502, "6": 600}
+VERSION_NAMES = {100: "1.0", 101: "1.01", 200: "2.0", 300: "3.0", 502: "5.2", 600: "6.0"}
 
 
 class Manifest:

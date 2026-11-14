@@ -13,7 +13,7 @@ import re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RUNTIME = os.path.join(ROOT, "runtime")
 ARCHITECTURES = {"mips", "sh3", "x86", "arm"}
-C_DEFINITION = re.compile(r"^([A-Za-z_][\w \t*]*?)\b(\w+)\s*\([^;{}]*\)\s*\{", re.M)
+C_DEFINITION = re.compile(r"^((?:__attribute__\(\([\w, ]*\)\)\s*)?[A-Za-z_][\w \t*]*?)\b(\w+)\s*\([^;{}]*\)\s*\{", re.M)
 ASSEMBLY_DEFINITION = re.compile(r"^\s*\.globl\s+(\w+)", re.M)
 
 

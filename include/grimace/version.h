@@ -4,6 +4,8 @@
 #ifndef GRIMACE_CE
 #if defined(_WIN32_WCE) && _WIN32_WCE >= 600
 #define GRIMACE_CE 6
+#elif defined(_WIN32_WCE) && _WIN32_WCE >= 500
+#define GRIMACE_CE 5
 #elif defined(_WIN32_WCE) && _WIN32_WCE >= 300
 #define GRIMACE_CE 3
 #elif defined(_WIN32_WCE) && _WIN32_WCE >= 200
@@ -15,6 +17,8 @@
 #ifndef GRIMACE_WCE
 #if GRIMACE_CE >= 6
 #define GRIMACE_WCE 600
+#elif GRIMACE_CE >= 5
+#define GRIMACE_WCE 502
 #elif GRIMACE_CE >= 3
 #define GRIMACE_WCE 300
 #elif GRIMACE_CE >= 2

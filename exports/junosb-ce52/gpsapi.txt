@@ -1,0 +1,6 @@
+GPSCloseDevice
+GPSGetDeviceParam
+GPSGetDeviceState
+GPSGetPosition
+GPSOpenDevice
+GPSSetDeviceParam

@@ -9,7 +9,7 @@
 #ifndef _ARM_
 #define _ARM_
 #endif
-#if GRIMACE_CE >= 6
+#if GRIMACE_CE >= 5
 #ifndef ARMV4I
 #define ARMV4I
 #endif
@@ -77,6 +77,8 @@
 #undef _WIN32_WCE
 #if GRIMACE_CE >= 6
 #define _WIN32_WCE 0x600
+#elif GRIMACE_CE >= 5
+#define _WIN32_WCE 0x502
 #elif GRIMACE_CE >= 3
 #define _WIN32_WCE 0x300
 #elif GRIMACE_CE >= 2
