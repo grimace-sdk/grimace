@@ -343,7 +343,7 @@ static void atomics(void) {
     unsigned char expected_byte = 3;
     unsigned int expected_word = 99;
     unsigned long long expected_wide = 0x100000000ull;
-#ifndef __mips__
+#if !defined(__mips__) || __CLANG_ATOMIC_INT_LOCK_FREE < 2
     check("atomic 1-byte", __atomic_exchange_n(&bytes[2], 30, __ATOMIC_SEQ_CST) == 3 && __atomic_fetch_add(&bytes[1], 5, __ATOMIC_SEQ_CST) == 2 &&
                                !__atomic_compare_exchange_n(&bytes[2], &expected_byte, 40, 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST) && expected_byte == 30 &&
                                __atomic_load_n(&bytes[0], __ATOMIC_SEQ_CST) == 1 && bytes[1] == 7 && bytes[3] == 4, NULL);
@@ -357,9 +357,11 @@ static void atomics(void) {
     } triple = {{'a', 'b', 'c'}}, replacement = {{'x', 'y', 'z'}}, previous;
     __atomic_exchange(&triple, &replacement, &previous, __ATOMIC_SEQ_CST);
     check("atomic 3-byte", !memcmp(previous.letters, "abc", 3) && !memcmp(triple.letters, "xyz", 3), NULL);
+#if !defined(__mips__) || __CLANG_ATOMIC_INT_LOCK_FREE < 2
     static _Atomic int counter = 5;
     counter += 2;
     check("_Atomic int", counter == 7, NULL);
+#endif
     check("atomic 8-byte", __atomic_fetch_add(&wide, 1, __ATOMIC_SEQ_CST) == 0x100000000ull &&
                                !__atomic_compare_exchange_n(&wide, &expected_wide, 0, 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST) && expected_wide == 0x100000001ull &&
                                __atomic_load_n(&wide, __ATOMIC_SEQ_CST) == 0x100000001ull, NULL);
