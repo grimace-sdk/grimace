@@ -1,4 +1,8 @@
+#include <stddef.h>
 #include <stdint.h>
+
+void *memcpy(void *destination, const void *source, size_t count);
+int memcmp(const void *left, const void *right, size_t count);
 
 void Sleep(unsigned long milliseconds);
 
@@ -274,3 +278,89 @@ LONG_FETCH(and, value & operand)
 LONG_FETCH(or, value | operand)
 LONG_FETCH(xor, value ^ operand)
 LONG_FETCH(nand, ~(value & operand))
+
+static int sized(size_t size, const volatile void *address) {
+    return (size == 1 || size == 2 || size == 4 || size == 8) && !((uintptr_t)address & (size - 1));
+}
+
+void atomic_load(size_t size, const volatile void *address, void *result, int order) __asm__("__atomic_load");
+
+void atomic_load(size_t size, const volatile void *address, void *result, int order) {
+    if (!sized(size, address)) {
+        lock();
+        memcpy(result, (const void *)address, size);
+        unlock();
+    } else if (size == 1) {
+        *(uint8_t *)result = atomic_load_1(address, order);
+    } else if (size == 2) {
+        *(uint16_t *)result = atomic_load_2(address, order);
+    } else if (size == 4) {
+        *(uint32_t *)result = atomic_load_4(address, order);
+    } else {
+        *(uint64_t *)result = atomic_load_8(address, order);
+    }
+}
+
+void atomic_store(size_t size, volatile void *address, void *value, int order) __asm__("__atomic_store");
+
+void atomic_store(size_t size, volatile void *address, void *value, int order) {
+    if (!sized(size, address)) {
+        lock();
+        memcpy((void *)address, value, size);
+        unlock();
+    } else if (size == 1) {
+        atomic_store_1(address, *(uint8_t *)value, order);
+    } else if (size == 2) {
+        atomic_store_2(address, *(uint16_t *)value, order);
+    } else if (size == 4) {
+        atomic_store_4(address, *(uint32_t *)value, order);
+    } else {
+        atomic_store_8(address, *(uint64_t *)value, order);
+    }
+}
+
+void atomic_exchange(size_t size, volatile void *address, void *value, void *previous, int order) __asm__("__atomic_exchange");
+
+void atomic_exchange(size_t size, volatile void *address, void *value, void *previous, int order) {
+    if (!sized(size, address)) {
+        lock();
+        memcpy(previous, (const void *)address, size);
+        memcpy((void *)address, value, size);
+        unlock();
+    } else if (size == 1) {
+        *(uint8_t *)previous = atomic_exchange_1(address, *(uint8_t *)value, order);
+    } else if (size == 2) {
+        *(uint16_t *)previous = atomic_exchange_2(address, *(uint16_t *)value, order);
+    } else if (size == 4) {
+        *(uint32_t *)previous = atomic_exchange_4(address, *(uint32_t *)value, order);
+    } else {
+        *(uint64_t *)previous = atomic_exchange_8(address, *(uint64_t *)value, order);
+    }
+}
+
+_Bool atomic_compare_exchange(size_t size, volatile void *address, void *expected, void *desired, int success, int failure)
+    __asm__("__atomic_compare_exchange");
+
+_Bool atomic_compare_exchange(size_t size, volatile void *address, void *expected, void *desired, int success, int failure) {
+    if (!sized(size, address)) {
+        lock();
+        int exchanged = !memcmp((const void *)address, expected, size);
+        if (exchanged) {
+            memcpy((void *)address, desired, size);
+        } else {
+            memcpy(expected, (const void *)address, size);
+        }
+        unlock();
+        return exchanged;
+    }
+    if (size == 1) {
+        return atomic_compare_exchange_1(address, expected, *(uint8_t *)desired, success, failure);
+    }
+    if (size == 2) {
+        return atomic_compare_exchange_2(address, expected, *(uint16_t *)desired, success, failure);
+    }
+    if (size == 4) {
+        return atomic_compare_exchange_4(address, expected, *(uint32_t *)desired, success, failure);
+    }
+    return atomic_compare_exchange_8(address, expected, *(uint64_t *)desired, success, failure);
+}

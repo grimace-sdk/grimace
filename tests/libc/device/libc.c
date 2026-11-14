@@ -255,6 +255,14 @@ static void atomics(void) {
                                __atomic_compare_exchange_n(&word, &expected_word, 5, 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST) && word == 5, NULL);
 #endif
     __sync_synchronize();
+    static struct {
+        char letters[3];
+    } triple = {{'a', 'b', 'c'}}, replacement = {{'x', 'y', 'z'}}, previous;
+    __atomic_exchange(&triple, &replacement, &previous, __ATOMIC_SEQ_CST);
+    check("atomic 3-byte", !memcmp(previous.letters, "abc", 3) && !memcmp(triple.letters, "xyz", 3), NULL);
+    static _Atomic int counter = 5;
+    counter += 2;
+    check("_Atomic int", counter == 7, NULL);
     check("atomic 8-byte", __atomic_fetch_add(&wide, 1, __ATOMIC_SEQ_CST) == 0x100000000ull &&
                                !__atomic_compare_exchange_n(&wide, &expected_wide, 0, 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST) && expected_wide == 0x100000001ull &&
                                __atomic_load_n(&wide, __ATOMIC_SEQ_CST) == 0x100000001ull, NULL);
