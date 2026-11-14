@@ -360,7 +360,7 @@ def subsystem_version(ce_version):
     return int(major), int(minor or 0)
 
 
-def build(elf_path, output_path, ce_version, exports=None, dll_name=None, resources=None):
+def build(elf_path, output_path, ce_version, exports=None, dll_name=None, resources=None, stack_size=0x10000):
     data, sections, symbols, entry = read_elf(elf_path)
     if entry < IMAGE_BASE:
         sys.exit("mkpe: %s has no entry point, define %s" % (elf_path, "DllMain" if exports else "WinMain"))
@@ -487,7 +487,7 @@ def build(elf_path, output_path, ce_version, exports=None, dll_name=None, resour
         IMAGE_BASE, SECTION_ALIGNMENT, FILE_ALIGNMENT,
         4, 0, 0, 0, *subsystem_version(ce_version), 0,
         image_size, HEADERS_SIZE, 0, IMAGE_SUBSYSTEM_WINDOWS_CE_GUI, 0,
-        0x10000, 0x1000, 0x100000, 0x1000, 0, 16,
+        stack_size, 0x1000, 0x100000, 0x1000, 0, 16,
     ) + b"".join(struct.pack("<II", *directory) for directory in directories)
 
     dos = bytearray(0x80)
@@ -509,10 +509,13 @@ if __name__ == "__main__":
     parser.add_argument("--exports-file", help="exports, one per line; makes a DLL")
     parser.add_argument("--icon")
     parser.add_argument("--resources", action="append", default=[], help="compiled resources (.res)")
+    parser.add_argument("--stack-size", type=lambda text: int(text, 0), default=0x10000, help="stack reserve in bytes, a multiple of 0x1000")
     arguments = parser.parse_args()
+    if arguments.stack_size < 0x1000 or arguments.stack_size % 0x1000:
+        parser.error("--stack-size must be a multiple of 0x1000, at least 0x1000")
     exports = read_exports(arguments)
     dll_name = arguments.output.replace("\\", "/").split("/")[-1]
     resources = icon_resources(arguments.icon) if arguments.icon else []
     for res_path in arguments.resources:
         resources += compiled_resources(res_path)
-    build(arguments.elf, arguments.output, arguments.ce_version, exports or None, dll_name, resources)
+    build(arguments.elf, arguments.output, arguments.ce_version, exports or None, dll_name, resources, arguments.stack_size)
