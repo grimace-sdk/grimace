@@ -469,4 +469,8 @@ int putenv(char *assignment);
 }
 #endif
 
+#ifdef GRIMACE_POSIX
+#include <alloca.h>
+#endif
+
 #endif

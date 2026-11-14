@@ -136,6 +136,7 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 
 - Descriptors 3 to 63 are files, always binary. Descriptors 1 and 2 write to the debug output as Latin-1, and 0 is always at its end. None is a terminal.
 - CE has no current folder, so `grimace::posix` keeps one, starting at the program's folder (`\` on CE 1.0, which can't say where that is). Relative paths, `.` and `..` resolve against it, here and in `fopen`, `freopen`, `remove` and `rename`, which it replaces. Paths go through `mbstowcs`, and `/` becomes `\`.
+- As glibc does, `string.h` includes `strings.h` and `stdlib.h` includes `alloca.h`.
 - `fileno` gives a `FILE`'s descriptor. Closing that descriptor leaves the `FILE` open.
 - `readdir` gives no `.` or `..`. `gettimeofday` counts milliseconds from `GetTickCount`, since many devices' clocks only give seconds.
 - `off_t` is 32-bit. `st_mode` has no execute bits, and write permission unless the file is read-only. Times are UTC.

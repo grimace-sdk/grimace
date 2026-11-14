@@ -377,4 +377,8 @@ char *strndup(const char *string, size_t limit);
 }
 #endif
 
+#ifdef GRIMACE_POSIX
+#include <strings.h>
+#endif
+
 #endif
