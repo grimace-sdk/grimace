@@ -38,8 +38,10 @@ int iswctype(wchar_type character, wchar_type type);
 size_t mbstowcs(wchar_type *destination, const char *source, size_t count);
 int DeleteFileW(const wchar_type *path);
 int MoveFileW(const wchar_type *existing, const wchar_type *replacement);
+int TerminateProcess(void *process, unsigned code);
 
 #define PATH_CHARACTERS 260
+#define CURRENT_PROCESS ((void *)0x42)
 
 wchar_type *wmemchr(const wchar_type *memory, wchar_type value, size_t count) {
     for (; count; count--, memory++) {
@@ -509,6 +511,20 @@ char *strerror(int number) {
     default:
         return "Unknown error";
     }
+}
+
+__attribute__((noreturn)) void _Exit(int status) {
+    TerminateProcess(CURRENT_PROCESS, status);
+    for (;;) {
+    }
+}
+
+__attribute__((noreturn)) void _exit(int status) {
+    _Exit(status);
+}
+
+__attribute__((noreturn)) void abort(void) {
+    _Exit(3);
 }
 
 int isalnum(int character) {

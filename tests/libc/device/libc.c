@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <inttypes.h>
 #include <math.h>
 #include <setjmp.h>
 #include <stdio.h>
@@ -65,6 +66,8 @@ static void formatting(void) {
     check_text("sprintf floats", text, "3.141593|2.001|1.234568e+004|1.23E-004|100000|1e+006|0.0001|3");
     sprintf(text, "%I64d|%I64x|%S", -1234567890123ll, 0x123456789Aull, L"wide");
     check_text("sprintf I64 and %S", text, "-1234567890123|123456789a|wide");
+    sprintf(text, "%" PRId64 "|%" PRIX64 "|%" PRIu32, (int64_t)-1234567890123ll, (uint64_t)0x123456789Aull, (uint32_t)4000000000u);
+    check_text("sprintf inttypes", text, "-1234567890123|123456789A|4000000000");
     check("_snprintf truncates", _snprintf(text, 4, "%d", 123456) == -1 && !strncmp(text, "1234", 4), NULL);
     check("snprintf C99", snprintf(text, 4, "%d", 123456) == 6 && !strcmp(text, "123"), NULL);
     WCHAR wide[64];

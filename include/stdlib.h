@@ -450,6 +450,9 @@ unsigned long long strtoull(const char *string, char **end, int base);
 long long atoll(const char *string);
 float strtof(const char *string, char **end);
 long double strtold(const char *string, char **end);
+__attribute__((noreturn)) void abort(void);
+__attribute__((noreturn)) void _exit(int status);
+__attribute__((noreturn)) void _Exit(int status);
 
 #ifdef __cplusplus
 }
