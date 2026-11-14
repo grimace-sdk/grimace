@@ -9,7 +9,7 @@ void clearerr(FILE *stream);
 char *strerror(int number);
 int fflush(FILE *stream);
 FILE *_wfreopen(const unsigned short *path, const unsigned short *mode, FILE *stream);
-extern int setvbuf(FILE *stream, char *buffer, int mode, size_t size) __attribute__((weak));
+int setvbuf(FILE *stream, char *buffer, int mode, size_t size);
 int *_errno(void);
 
 void perror(const char *prefix) {
@@ -51,9 +51,7 @@ static int reopen(FILE *stream, const unsigned short *path) {
     if (!_wfreopen(path, append, stream)) {
         return 0;
     }
-    if (setvbuf) {
-        setvbuf(stream, NULL, UNBUFFERED, 0);
-    }
+    setvbuf(stream, NULL, UNBUFFERED, 0);
     return 1;
 }
 
@@ -67,4 +65,8 @@ int grimace_redirect_stdio(const unsigned short *path) {
     }
     redirected = 1;
     return reopen(error, path) ? 0 : 1;
+}
+
+void setbuf(FILE *stream, char *buffer) {
+    setvbuf(stream, buffer, buffer ? 0x0000 : UNBUFFERED, 512);
 }

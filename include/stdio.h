@@ -22,6 +22,10 @@ typedef unsigned short wctype_t;
 #endif
 
 #define EOF (-1)
+#define BUFSIZ 512
+#define _IOFBF 0x0000
+#define _IOLBF 0x0040
+#define _IONBF 0x0004
 #define WEOF ((wint_t)0xFFFF)
 #define SEEK_SET 0
 #define SEEK_CUR 1
@@ -687,6 +691,8 @@ int fwscanf(FILE *stream, const wchar_t *format, ...);
 void perror(const char *prefix);
 void rewind(FILE *stream);
 int grimace_redirect_stdio(const wchar_t *path);
+int setvbuf(FILE *stream, char *buffer, int mode, size_t size);
+void setbuf(FILE *stream, char *buffer);
 
 #define getc fgetc
 #define putc fputc

@@ -21,6 +21,19 @@ struct _complex {
 #define FP_SUBNORMAL 3
 #define FP_NORMAL 4
 
+#define fpclassify(value) __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, value)
+#define isnan(value) __builtin_isnan(value)
+#define isinf(value) __builtin_isinf_sign(value)
+#define isfinite(value) __builtin_isfinite(value)
+#define isnormal(value) __builtin_isnormal(value)
+#define signbit(value) __builtin_signbit(value)
+#define isgreater(left, right) __builtin_isgreater(left, right)
+#define isgreaterequal(left, right) __builtin_isgreaterequal(left, right)
+#define isless(left, right) __builtin_isless(left, right)
+#define islessequal(left, right) __builtin_islessequal(left, right)
+#define islessgreater(left, right) __builtin_islessgreater(left, right)
+#define isunordered(left, right) __builtin_isunordered(left, right)
+
 /**
  * Returns the arccosine of value in radians, from 0 to pi.
  *

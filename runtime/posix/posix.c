@@ -185,7 +185,106 @@ int close(int descriptor) {
     if (entry->borrowed) {
         return 0;
     }
+    for (int other = FIRST_FILE; other < DESCRIPTORS; other++) {
+        if (descriptors[other].handle == handle && !descriptors[other].borrowed) {
+            return 0;
+        }
+    }
     return CloseHandle(handle) ? 0 : __grimace_posix_fail_with_last_error();
+}
+
+static int free_descriptor(void) {
+    for (int descriptor = FIRST_FILE; descriptor < DESCRIPTORS; descriptor++) {
+        if (!descriptors[descriptor].handle) {
+            return descriptor;
+        }
+    }
+    return __grimace_posix_fail(EMFILE);
+}
+
+int dup(int descriptor) {
+    descriptor_entry *entry = file_entry(descriptor);
+    if (!entry) {
+        return __grimace_posix_fail(EBADF);
+    }
+    int copy = free_descriptor();
+    if (copy >= 0) {
+        descriptors[copy] = *entry;
+    }
+    return copy;
+}
+
+FILE *fdopen(int descriptor, const char *mode) {
+    if (descriptor >= 0 && descriptor < FIRST_FILE) {
+        return _getstdfilex(descriptor);
+    }
+    descriptor_entry *entry = file_entry(descriptor);
+    if (!entry) {
+        __grimace_posix_fail(EBADF);
+        return NULL;
+    }
+    WCHAR wide_mode[8];
+    size_t length = 0;
+    while (mode[length] && length < 7) {
+        wide_mode[length] = (unsigned char)mode[length];
+        length++;
+    }
+    wide_mode[length] = 0;
+    FILE *stream = _wfdopen(entry->handle, wide_mode);
+    if (!stream) {
+        __grimace_posix_fail(EINVAL);
+        return NULL;
+    }
+    for (int other = FIRST_FILE; other < DESCRIPTORS; other++) {
+        if (descriptors[other].handle == entry->handle) {
+            descriptors[other].borrowed = 1;
+        }
+    }
+    return stream;
+}
+
+int fseeko(FILE *stream, long offset, int origin) {
+    return fseek(stream, offset, origin);
+}
+
+long ftello(FILE *stream) {
+    return ftell(stream);
+}
+
+int truncate(const char *path, off_t length) {
+    int descriptor = open(path, O_WRONLY);
+    if (descriptor < 0) {
+        return -1;
+    }
+    int result = ftruncate(descriptor, length);
+    int saved = errno;
+    close(descriptor);
+    errno = saved;
+    return result;
+}
+
+pid_t getpid(void) {
+    return (pid_t)GetCurrentProcessId();
+}
+
+pid_t getppid(void) {
+    return 0;
+}
+
+uid_t getuid(void) {
+    return 0;
+}
+
+uid_t geteuid(void) {
+    return 0;
+}
+
+gid_t getgid(void) {
+    return 0;
+}
+
+gid_t getegid(void) {
+    return 0;
 }
 
 int fsync(int descriptor) {

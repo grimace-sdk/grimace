@@ -456,6 +456,7 @@ __attribute__((noreturn)) void _Exit(int status);
 __attribute__((noreturn)) void exit(int status);
 int atexit(void (*handler)(void));
 char *getenv(const char *name);
+void *bsearch(const void *key, const void *base, size_t count, size_t size, int (*compare)(const void *, const void *));
 int system(const char *command);
 #ifdef GRIMACE_POSIX
 int setenv(const char *name, const char *value, int overwrite);

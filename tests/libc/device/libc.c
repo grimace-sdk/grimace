@@ -18,6 +18,10 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/wait.h>
+#include <sys/param.h>
+#include <utime.h>
+#include <pwd.h>
+#include <limits.h>
 #include <time.h>
 #include <unistd.h>
 #include <wctype.h>
@@ -299,6 +303,7 @@ static void on_signal(int number) {
 
 static void library(void) {
     char text[64];
+    struct stat status;
     time_t epoch = 0;
     check("time", time(NULL) > 0, NULL);
     strftime(text, sizeof text, "%Y-%m-%d %H:%M:%S %a", gmtime(&epoch));
@@ -332,6 +337,32 @@ static void library(void) {
     check("signal and raise", signal(SIGINT, on_signal) == SIG_DFL && raise(SIGINT) == 0 && signalled == SIGINT && signal(SIGTERM, SIG_IGN) == SIG_DFL && raise(SIGTERM) == 0, NULL);
     check("fenv", fegetround() == FE_TONEAREST && fetestexcept(FE_ALL_EXCEPT) == 0, NULL);
     check("wctype", iswalpha(L'a') && towupper(L'a') == L'A', NULL);
+    static const int sorted[] = {2, 3, 5, 7, 11, 13};
+    int wanted = 7;
+    int missing = 4;
+    check("bsearch", bsearch(&wanted, sorted, 6, sizeof(int), compare_ints) == &sorted[3] && !bsearch(&missing, sorted, 6, sizeof(int), compare_ints), NULL);
+    volatile double zero = 0.0;
+    check("math classification", isnan(zero / zero) && isinf(1.0 / zero) && isfinite(1.0) && fpclassify(0.0) == FP_ZERO && signbit(-1.0) && !signbit(1.0), NULL);
+    struct timespec monotonic;
+    struct timespec realtime;
+    check("clock_gettime", clock_gettime(CLOCK_MONOTONIC, &monotonic) == 0 && clock_gettime(CLOCK_REALTIME, &realtime) == 0 && realtime.tv_sec > 0, NULL);
+    check("ids, PATH_MAX and MIN", getpid() != 0 && getuid() == 0 && getpwuid(0) == NULL && PATH_MAX == MAXPATHLEN && MIN(3, 4) == 3, NULL);
+    int file = open("/posix-dup.bin", O_RDWR | O_CREAT | O_TRUNC, 0644);
+    int duplicate = dup(file);
+    check("dup shares the position", duplicate >= 3 && duplicate != file && write(file, "abcdef", 6) == 6 && lseek(duplicate, 0, SEEK_CUR) == 6, NULL);
+    close(file);
+    check("dup outlives the original", lseek(duplicate, 0, SEEK_SET) == 0 && read(duplicate, text, 3) == 3 && !memcmp(text, "abc", 3), NULL);
+    FILE *stream = fdopen(duplicate, "r+b");
+    char letters[4] = "";
+    check("fdopen", stream && fread(letters, 1, 3, stream) == 3 && !memcmp(letters, "def", 3) && ftello(stream) == 6 && fseeko(stream, 1, SEEK_SET) == 0, NULL);
+    if (stream) {
+        fclose(stream);
+    }
+    check("truncate", truncate("/posix-dup.bin", 2) == 0 && stat("/posix-dup.bin", &status) == 0 && status.st_size == 2, NULL);
+    struct utimbuf times = {1000000000, 1000000000};
+    check("utime", utime("/posix-dup.bin", &times) == 0 && stat("/posix-dup.bin", &status) == 0 && status.st_mtime == 1000000000, NULL);
+    unlink("/posix-dup.bin");
+    check("setvbuf", setvbuf(stdout, NULL, _IOFBF, BUFSIZ) == 0, NULL);
     check("system and wait", system(NULL) == 0 && system("dir") == -1 && wait(NULL) == -1 && errno == ECHILD, NULL);
 }
 

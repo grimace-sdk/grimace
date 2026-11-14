@@ -11,6 +11,9 @@ int remove(const char *path) __asm__("__grimace_posix_remove");
 int rename(const char *existing, const char *replacement) __asm__("__grimace_posix_rename");
 #undef fileno
 int fileno(FILE *stream);
+FILE *fdopen(int descriptor, const char *mode);
+int fseeko(FILE *stream, long offset, int origin);
+long ftello(FILE *stream);
 
 #ifdef __cplusplus
 }
