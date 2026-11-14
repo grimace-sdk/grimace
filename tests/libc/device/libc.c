@@ -263,6 +263,9 @@ static void folders(void) {
     if (file) {
         fputs("relative", file);
         check("fileno", fileno(file) >= 3 && fileno(stdout) == 1, NULL);
+        fflush(file);
+        struct stat opened;
+        check("fstat on fileno", fstat(fileno(file), &opened) == 0 && opened.st_size == 8 && S_ISREG(opened.st_mode), NULL);
         fclose(file);
     }
     struct stat status;

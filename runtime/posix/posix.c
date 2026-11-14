@@ -11,14 +11,19 @@
 
 typedef struct {
     HANDLE handle;
+    FILE *stream;
     int flags;
     int borrowed;
 } descriptor_entry;
 
 static descriptor_entry descriptors[DESCRIPTORS];
 
+static int in_use(int descriptor) {
+    return descriptors[descriptor].handle || descriptors[descriptor].stream;
+}
+
 static descriptor_entry *file_entry(int descriptor) {
-    if (descriptor < FIRST_FILE || descriptor >= DESCRIPTORS || !descriptors[descriptor].handle) {
+    if (descriptor < FIRST_FILE || descriptor >= DESCRIPTORS || !in_use(descriptor)) {
         return NULL;
     }
     return &descriptors[descriptor];
@@ -52,7 +57,7 @@ int open(const char *path, int flags, ...) {
         return -1;
     }
     int descriptor = FIRST_FILE;
-    while (descriptor < DESCRIPTORS && descriptors[descriptor].handle) {
+    while (descriptor < DESCRIPTORS && in_use(descriptor)) {
         descriptor++;
     }
     if (descriptor == DESCRIPTORS) {
@@ -93,6 +98,7 @@ int open(const char *path, int flags, ...) {
         return __grimace_posix_fail_with_last_error();
     }
     descriptors[descriptor].handle = handle;
+    descriptors[descriptor].stream = NULL;
     descriptors[descriptor].flags = flags;
     descriptors[descriptor].borrowed = 0;
     return descriptor;
@@ -109,6 +115,10 @@ ssize_t read(int descriptor, void *buffer, size_t count) {
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry || (entry->flags & O_ACCMODE) == O_WRONLY) {
         return __grimace_posix_fail(EBADF);
+    }
+    if (entry->stream) {
+        size_t transferred = fread(buffer, 1, count, entry->stream);
+        return transferred || !ferror(entry->stream) ? (ssize_t)transferred : __grimace_posix_fail(EIO);
     }
     DWORD transferred;
     if (!ReadFile(entry->handle, buffer, count, &transferred, NULL)) {
@@ -146,6 +156,11 @@ ssize_t write(int descriptor, const void *buffer, size_t count) {
     if (!entry || (entry->flags & O_ACCMODE) == O_RDONLY) {
         return __grimace_posix_fail(EBADF);
     }
+    if (entry->stream) {
+        size_t written = fwrite(buffer, 1, count, entry->stream);
+        fflush(entry->stream);
+        return written == count ? (ssize_t)written : __grimace_posix_fail(EIO);
+    }
     if (entry->flags & O_APPEND) {
         SetFilePointer(entry->handle, 0, NULL, FILE_END);
     }
@@ -163,6 +178,12 @@ off_t lseek(int descriptor, off_t offset, int whence) {
     }
     if (whence != SEEK_SET && whence != SEEK_CUR && whence != SEEK_END) {
         return __grimace_posix_fail(EINVAL);
+    }
+    if (entry->stream) {
+        if (fseek(entry->stream, offset, whence)) {
+            return __grimace_posix_fail(EINVAL);
+        }
+        return (off_t)ftell(entry->stream);
     }
     SetLastError(NO_ERROR);
     DWORD position = SetFilePointer(entry->handle, offset, NULL, whence);
@@ -182,7 +203,8 @@ int close(int descriptor) {
     }
     HANDLE handle = entry->handle;
     entry->handle = NULL;
-    if (entry->borrowed) {
+    entry->stream = NULL;
+    if (entry->borrowed || !handle) {
         return 0;
     }
     for (int other = FIRST_FILE; other < DESCRIPTORS; other++) {
@@ -195,7 +217,7 @@ int close(int descriptor) {
 
 static int free_descriptor(void) {
     for (int descriptor = FIRST_FILE; descriptor < DESCRIPTORS; descriptor++) {
-        if (!descriptors[descriptor].handle) {
+        if (!in_use(descriptor)) {
             return descriptor;
         }
     }
@@ -222,6 +244,9 @@ FILE *fdopen(int descriptor, const char *mode) {
     if (!entry) {
         __grimace_posix_fail(EBADF);
         return NULL;
+    }
+    if (entry->stream) {
+        return entry->stream;
     }
     WCHAR wide_mode[8];
     size_t length = 0;
@@ -295,6 +320,9 @@ int fsync(int descriptor) {
     if (!entry) {
         return __grimace_posix_fail(EBADF);
     }
+    if (entry->stream) {
+        return fflush(entry->stream) ? __grimace_posix_fail(EIO) : 0;
+    }
     return FlushFileBuffers(entry->handle) ? 0 : __grimace_posix_fail_with_last_error();
 }
 
@@ -302,6 +330,9 @@ int ftruncate(int descriptor, off_t length) {
     descriptor_entry *entry = file_entry(descriptor);
     if (!entry || (entry->flags & O_ACCMODE) == O_RDONLY) {
         return __grimace_posix_fail(EBADF);
+    }
+    if (entry->stream) {
+        return __grimace_posix_fail(EINVAL);
     }
     if (length < 0) {
         return __grimace_posix_fail(EINVAL);
@@ -392,6 +423,19 @@ int fstat(int descriptor, struct stat *status) {
     FILETIME created;
     FILETIME accessed;
     FILETIME written;
+    if (entry->stream) {
+        long position = ftell(entry->stream);
+        long size = position >= 0 && !fseek(entry->stream, 0, SEEK_END) ? ftell(entry->stream) : -1;
+        if (position >= 0) {
+            fseek(entry->stream, position, SEEK_SET);
+        }
+        if (size < 0) {
+            return __grimace_posix_fail(EIO);
+        }
+        FILETIME none = {0, 0};
+        describe(status, FILE_ATTRIBUTE_NORMAL, (DWORD)size, &none, &none, &none);
+        return 0;
+    }
     DWORD size = GetFileSize(entry->handle, NULL);
     if (size == 0xFFFFFFFF || !GetFileTime(entry->handle, &created, &accessed, &written)) {
         return __grimace_posix_fail_with_last_error();
@@ -409,24 +453,18 @@ int fileno(FILE *stream) {
             return standard;
         }
     }
-    HANDLE handle = _fileno(stream);
-    if (!handle || handle == INVALID_HANDLE_VALUE) {
-        return __grimace_posix_fail(EBADF);
-    }
-    int free_descriptor = -1;
     for (int descriptor = FIRST_FILE; descriptor < DESCRIPTORS; descriptor++) {
-        if (descriptors[descriptor].handle == handle) {
+        if (descriptors[descriptor].stream == stream) {
             return descriptor;
         }
-        if (!descriptors[descriptor].handle && free_descriptor < 0) {
-            free_descriptor = descriptor;
-        }
     }
-    if (free_descriptor < 0) {
-        return __grimace_posix_fail(EMFILE);
+    int descriptor = free_descriptor();
+    if (descriptor < 0) {
+        return -1;
     }
-    descriptors[free_descriptor].handle = handle;
-    descriptors[free_descriptor].flags = O_RDWR;
-    descriptors[free_descriptor].borrowed = 1;
-    return free_descriptor;
+    descriptors[descriptor].handle = NULL;
+    descriptors[descriptor].stream = stream;
+    descriptors[descriptor].flags = O_RDWR;
+    descriptors[descriptor].borrowed = 1;
+    return descriptor;
 }
