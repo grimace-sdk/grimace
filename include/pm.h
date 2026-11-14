@@ -47,6 +47,21 @@ typedef enum _CEDEVICE_POWER_STATE {
     PwrDeviceMaximum
 } CEDEVICE_POWER_STATE, *PCEDEVICE_POWER_STATE;
 
+#define IOCTL_POWER_CAPABILITIES 0x00321000
+#define IOCTL_POWER_GET 0x00321004
+#define IOCTL_POWER_SET 0x00321008
+
+#define DX_MASK(dx) (0x01 << (dx))
+
+typedef struct _POWER_CAPABILITIES {
+    UCHAR DeviceDx;
+    UCHAR WakeFromDx;
+    UCHAR InrushDx;
+    DWORD Power[5];
+    DWORD Latency[5];
+    DWORD Flags;
+} POWER_CAPABILITIES, *PPOWER_CAPABILITIES;
+
 #define POWER_NAME 0x00000001
 #define POWER_FORCE 0x00001000
 

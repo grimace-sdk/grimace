@@ -5,3 +5,4 @@ include(Grimace)
 
 grimace_add_executable(program program.c)
 target_link_libraries(program PRIVATE grimace::aygshell)
+grimace_add_executable(camera camera.c)
