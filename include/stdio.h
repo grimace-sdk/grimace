@@ -684,6 +684,9 @@ int wscanf(const wchar_t *format, ...);
  */
 int fwscanf(FILE *stream, const wchar_t *format, ...);
 
+void perror(const char *prefix);
+void rewind(FILE *stream);
+
 #define getc fgetc
 #define putc fputc
 #define fileno _fileno
@@ -692,6 +695,10 @@ int fwscanf(FILE *stream, const wchar_t *format, ...);
 
 #ifdef __cplusplus
 }
+#endif
+
+#ifdef GRIMACE_POSIX
+#include <grimace/posix-stdio.h>
 #endif
 
 #endif

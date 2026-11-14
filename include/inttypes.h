@@ -3,6 +3,18 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+intmax_t strtoimax(const char *string, char **end, int base);
+uintmax_t strtoumax(const char *string, char **end, int base);
+intmax_t imaxabs(intmax_t value);
+
+#ifdef __cplusplus
+}
+#endif
+
 #define PRId8 "d"
 #define PRId16 "d"
 #define PRId32 "d"

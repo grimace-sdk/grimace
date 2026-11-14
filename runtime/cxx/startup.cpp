@@ -28,9 +28,16 @@ static void run_destructors() {
     }
 }
 
+extern "C" void __grimace_run_atexit();
+
+extern "C" void __grimace_cxx_finalize() {
+    run_destructors();
+}
+
 extern "C" int WINAPI __grimace_exe_start(HINSTANCE instance, HINSTANCE previous, LPWSTR command_line, int show) {
     run_constructors();
     int result = WinMain(instance, previous, command_line, show);
+    __grimace_run_atexit();
     run_destructors();
     return result;
 }

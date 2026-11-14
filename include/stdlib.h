@@ -453,6 +453,17 @@ long double strtold(const char *string, char **end);
 __attribute__((noreturn)) void abort(void);
 __attribute__((noreturn)) void _exit(int status);
 __attribute__((noreturn)) void _Exit(int status);
+__attribute__((noreturn)) void exit(int status);
+int atexit(void (*handler)(void));
+char *getenv(const char *name);
+#ifdef GRIMACE_POSIX
+int setenv(const char *name, const char *value, int overwrite);
+int unsetenv(const char *name);
+int putenv(char *assignment);
+#endif
+
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE 1
 
 #ifdef __cplusplus
 }

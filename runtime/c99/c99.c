@@ -513,6 +513,45 @@ char *strerror(int number) {
     }
 }
 
+char *strdup(const char *string) {
+    size_t length = 0;
+    while (string[length]) {
+        length++;
+    }
+    char *copy = malloc(length + 1);
+    for (size_t index = 0; copy && index <= length; index++) {
+        copy[index] = string[index];
+    }
+    return copy;
+}
+
+char *strndup(const char *string, size_t limit) {
+    size_t length = 0;
+    while (length < limit && string[length]) {
+        length++;
+    }
+    char *copy = malloc(length + 1);
+    if (copy) {
+        for (size_t index = 0; index < length; index++) {
+            copy[index] = string[index];
+        }
+        copy[length] = 0;
+    }
+    return copy;
+}
+
+long long strtoimax(const char *text, char **end, int base) {
+    return strtoll(text, end, base);
+}
+
+unsigned long long strtoumax(const char *text, char **end, int base) {
+    return strtoull(text, end, base);
+}
+
+long long imaxabs(long long value) {
+    return value < 0 ? -value : value;
+}
+
 __attribute__((noreturn)) void _Exit(int status) {
     TerminateProcess(CURRENT_PROCESS, status);
     for (;;) {
