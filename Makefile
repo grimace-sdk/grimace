@@ -10,7 +10,7 @@ selection = -DGRIMACE_PLATFORM=$(PLATFORM) -DGRIMACE_DEVICE=$(DEVICE)
 variant = $(if $(PLATFORM),-$(PLATFORM))$(if $(DEVICE),-$(DEVICE))
 llvm_clang = $(if $(GRIMACE_$(1)_LLVM),--clang $(GRIMACE_$(1)_LLVM)/bin/clang,--clang $(CLANG))
 
-.PHONY: check examples packages check-ce6 check-wm check-lazy check-libc check-libc-host headers docstrings exports check-headers check-cxx-headers check-abi check-stdlib clean
+.PHONY: check examples packages check-ce6 check-wm check-tables check-lazy check-libc check-libc-host headers docstrings exports check-headers check-cxx-headers check-abi check-stdlib clean
 
 define target
 .PHONY: examples-$(1) packages-$(1) check-lazy-$(1) check-libc-$(1)
@@ -41,7 +41,7 @@ $(eval $(call target,arm-ce3,arm,3,ARM))
 $(eval $(call target,arm-ce52,arm,5.2,ARM))
 $(eval $(call target,arm-ce6,arm,6,ARM))
 
-check: check-abi check-cxx-headers check-stdlib check-lazy check-libc check-ce6 check-wm examples
+check: check-abi check-cxx-headers check-stdlib check-lazy check-libc check-ce6 check-wm examples check-tables
 
 examples: $(addprefix examples-,$(TARGETS))
 
@@ -63,6 +63,9 @@ check-libc-host:
 	mkdir -p build
 	cc -O2 -o build/libc-host tests/libc/host.c runtime/libc/big.c runtime/libc/decimal.c runtime/libc/parse.c runtime/libc/format.c runtime/libc/scan.c -lm
 	build/libc-host
+
+check-tables:
+	python3 tests/check-tables.py build --nm $(dir $(CLANG))llvm-nm
 
 check-wm:
 	cmake -S tests/wm -B build/wm/arm-ce52-junosb -DCMAKE_TOOLCHAIN_FILE=$(TOOLCHAIN) -DGRIMACE_ARCH=arm -DGRIMACE_CE_VERSION=5.2 -DGRIMACE_DEVICE=junosb $(call llvm,ARM)

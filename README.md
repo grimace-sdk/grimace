@@ -192,6 +192,7 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 | `check-lazy`, `check-lazy-<target>` | build `tests/lazy` |
 | `check-libc`, `check-libc-<target>`, `check-libc-host` | build `tests/libc/device`, and run `tests/libc/host.c` here |
 | `check-ce6` | build `tests/ce6` for ARM CE 6.0 and each Brain, and check with `tests/check-imports.py` that every import is in the device's lists |
+| `check-tables` | check that every linked program's and DLL's constructor and destructor tables are word-aligned |
 | `check-wm` | build `tests/wm` for the Juno SB and check its imports |
 | `check` | `check-abi`, `check-cxx-headers`, `check-stdlib`, `check-lazy`, `check-libc`, `check-ce6` and `examples` |
 | `headers` | regenerate `include/` from a CeGCC checkout's w32api (`GRIMACE_W32API`) and the SDKs (`GRIMACE_REFERENCE`) |
