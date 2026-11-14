@@ -1,6 +1,6 @@
 typedef void (*handler_type)(int);
 
-#define SIGNALS 23
+#define SIGNALS 32
 #define DEFAULT_HANDLER ((handler_type)0)
 #define IGNORE_HANDLER ((handler_type)1)
 #define ERROR_HANDLER ((handler_type)-1)
@@ -11,7 +11,7 @@ int *_errno(void);
 static handler_type handlers[SIGNALS];
 
 static int valid(int number) {
-    return number == 2 || number == 4 || number == 8 || number == 11 || number == 15 || number == 22;
+    return number > 0 && number < SIGNALS;
 }
 
 handler_type signal(int number, handler_type handler) {

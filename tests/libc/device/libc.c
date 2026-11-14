@@ -345,6 +345,12 @@ static void library(void) {
     static_assert(sizeof(int) == 4, "int is 32-bit");
     check("setlocale and localeconv", !strcmp(setlocale(LC_ALL, ""), "C") && setlocale(LC_ALL, "de_DE") == NULL && !strcmp(localeconv()->decimal_point, "."), NULL);
     check("signal and raise", signal(SIGINT, on_signal) == SIG_DFL && raise(SIGINT) == 0 && signalled == SIGINT && signal(SIGTERM, SIG_IGN) == SIG_DFL && raise(SIGTERM) == 0, NULL);
+    struct sigaction action = {0};
+    struct sigaction previous;
+    sigset_t set;
+    action.sa_handler = on_signal;
+    check("sigaction", sigemptyset(&set) == 0 && sigaddset(&set, SIGPIPE) == 0 && sigismember(&set, SIGPIPE) == 1 && sigaction(SIGPIPE, &action, NULL) == 0 &&
+                           sigaction(SIGPIPE, NULL, &previous) == 0 && previous.sa_handler == on_signal && raise(SIGPIPE) == 0 && signalled == SIGPIPE, NULL);
     check("fenv", fegetround() == FE_TONEAREST && fetestexcept(FE_ALL_EXCEPT) == 0, NULL);
     check("wctype", iswalpha(L'a') && towupper(L'a') == L'A', NULL);
     static const int sorted[] = {2, 3, 5, 7, 11, 13};
