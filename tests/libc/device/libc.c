@@ -205,6 +205,30 @@ static void jumps(void) {
     check("setjmp and longjmp", value == 7 && counter == 2, NULL);
 }
 
+#pragma clang diagnostic ignored "-Watomic-alignment"
+
+static void atomics(void) {
+    static volatile unsigned char bytes[4] = {1, 2, 3, 4};
+    static volatile unsigned short halves[2] = {0x1111, 0x2222};
+    static volatile unsigned int word = 10;
+    static volatile unsigned long long wide = 0x100000000ull;
+    unsigned char expected_byte = 3;
+    unsigned int expected_word = 99;
+    unsigned long long expected_wide = 0x100000000ull;
+#ifndef __mips__
+    check("atomic 1-byte", __atomic_exchange_n(&bytes[2], 30, __ATOMIC_SEQ_CST) == 3 && __atomic_fetch_add(&bytes[1], 5, __ATOMIC_SEQ_CST) == 2 &&
+                               !__atomic_compare_exchange_n(&bytes[2], &expected_byte, 40, 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST) && expected_byte == 30 &&
+                               __atomic_load_n(&bytes[0], __ATOMIC_SEQ_CST) == 1 && bytes[1] == 7 && bytes[3] == 4, NULL);
+    check("atomic 2-byte", __atomic_fetch_or(&halves[1], 0x4000, __ATOMIC_SEQ_CST) == 0x2222 && halves[1] == 0x6222 && halves[0] == 0x1111, NULL);
+    check("atomic 4-byte", __atomic_fetch_sub(&word, 3, __ATOMIC_SEQ_CST) == 10 && __atomic_exchange_n(&word, 99, __ATOMIC_SEQ_CST) == 7 &&
+                               __atomic_compare_exchange_n(&word, &expected_word, 5, 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST) && word == 5, NULL);
+#endif
+    __sync_synchronize();
+    check("atomic 8-byte", __atomic_fetch_add(&wide, 1, __ATOMIC_SEQ_CST) == 0x100000000ull &&
+                               !__atomic_compare_exchange_n(&wide, &expected_wide, 0, 0, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST) && expected_wide == 0x100000001ull &&
+                               __atomic_load_n(&wide, __ATOMIC_SEQ_CST) == 0x100000001ull, NULL);
+}
+
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE previous, LPWSTR command_line, int show) {
     results = CreateFileW(command_line[0] ? command_line : L"\\libc.txt", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
     formatting();
@@ -214,6 +238,7 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE previous, LPWSTR command_line, 
     maths();
     files();
     jumps();
+    atomics();
     WCHAR text[64];
     swprintf(text, L"libc: %d passed, %d failed\r\n", passed, failed);
     line(text);
