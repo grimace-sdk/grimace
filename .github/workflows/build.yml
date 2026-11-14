@@ -19,7 +19,7 @@ jobs:
       run:
         shell: bash
     env:
-      GRIMACE_LLVM_RELEASE: v4
+      GRIMACE_LLVM_RELEASE: v5
     steps:
       - uses: actions/checkout@v7
 
