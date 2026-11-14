@@ -694,6 +694,11 @@ int grimace_redirect_stdio(const wchar_t *path);
 int setvbuf(FILE *stream, char *buffer, int mode, size_t size);
 void setbuf(FILE *stream, char *buffer);
 
+int getc(FILE *stream);
+int putc(int character, FILE *stream);
+wint_t getwc(FILE *stream);
+wint_t putwc(wint_t character, FILE *stream);
+
 #define getc fgetc
 #define putc fputc
 #define fileno _fileno
@@ -702,6 +707,20 @@ void setbuf(FILE *stream, char *buffer);
 
 #ifdef __cplusplus
 }
+#endif
+
+#ifdef GRIMACE_IOSTREAMS
+#ifdef __cplusplus
+extern "C" {
+#endif
+int fseeko(FILE *stream, long offset, int origin) __asm__("fseek");
+long ftello(FILE *stream) __asm__("ftell");
+FILE *fdopen(int descriptor, const char *mode);
+int _fseeki64(FILE *stream, long long offset, int origin);
+long long _ftelli64(FILE *stream);
+#ifdef __cplusplus
+}
+#endif
 #endif
 
 #ifdef GRIMACE_POSIX

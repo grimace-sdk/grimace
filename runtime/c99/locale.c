@@ -19,14 +19,20 @@ struct lconv {
     char n_sep_by_space;
     char p_sign_posn;
     char n_sign_posn;
+    char int_p_cs_precedes;
+    char int_n_cs_precedes;
+    char int_p_sep_by_space;
+    char int_n_sep_by_space;
+    char int_p_sign_posn;
+    char int_n_sign_posn;
 };
 
 static char c_locale[] = "C";
 static char point[] = ".";
 static char empty[] = "";
 
-static struct lconv conventions = {point, empty, empty, empty, empty, empty, empty, empty, empty, empty,
-                                   127,   127,   127,   127,   127,   127,   127,   127};
+static struct lconv conventions = {point, empty, empty, empty, empty, empty, empty, empty, empty, empty, 127, 127,
+                                   127,   127,   127,   127,   127,   127,   127,   127,   127,   127,   127, 127};
 
 char *setlocale(int category, const char *locale) {
     if (category < 0 || category > 5) {

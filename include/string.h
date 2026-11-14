@@ -370,6 +370,8 @@ char *_strset(char *string, int character);
 char *_strnset(char *string, int character, size_t count);
 char *strerror(int number);
 size_t strnlen(const char *string, size_t limit);
+int strcoll(const char *first, const char *second);
+size_t strxfrm(char *destination, const char *source, size_t count);
 char *strdup(const char *string);
 char *strndup(const char *string, size_t limit);
 

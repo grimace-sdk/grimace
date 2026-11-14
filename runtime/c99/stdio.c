@@ -4,6 +4,10 @@ typedef struct grimace_file FILE;
 
 FILE *_getstdfilex(int index);
 int fputs(const char *string, FILE *stream);
+int fgetc(FILE *stream);
+int fputc(int character, FILE *stream);
+unsigned short fgetwc(FILE *stream);
+unsigned short fputwc(unsigned short character, FILE *stream);
 int fseek(FILE *stream, long offset, int origin);
 void clearerr(FILE *stream);
 char *strerror(int number);
@@ -69,4 +73,34 @@ int grimace_redirect_stdio(const unsigned short *path) {
 
 void setbuf(FILE *stream, char *buffer) {
     setvbuf(stream, buffer, buffer ? 0x0000 : UNBUFFERED, 512);
+}
+
+int getc(FILE *stream) {
+    return fgetc(stream);
+}
+
+int putc(int character, FILE *stream) {
+    return fputc(character, stream);
+}
+
+unsigned short getwc(FILE *stream) {
+    return fgetwc(stream);
+}
+
+unsigned short putwc(unsigned short character, FILE *stream) {
+    return fputwc(character, stream);
+}
+
+long ftell(FILE *stream);
+
+int _fseeki64(FILE *stream, long long offset, int origin) {
+    if (offset > 0x7FFFFFFFLL || offset < -0x7FFFFFFFLL - 1) {
+        *_errno() = 22;
+        return -1;
+    }
+    return fseek(stream, (long)offset, origin);
+}
+
+long long _ftelli64(FILE *stream) {
+    return ftell(stream);
 }

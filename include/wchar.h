@@ -487,6 +487,17 @@ int iswspace(wint_t character);
 int iswupper(wint_t character);
 int iswxdigit(wint_t character);
 int iswblank(wint_t character);
+int wcscoll(const wchar_t *first, const wchar_t *second);
+wint_t fgetwc(FILE *stream);
+wint_t fputwc(wint_t character, FILE *stream);
+wint_t ungetwc(wint_t character, FILE *stream);
+wint_t getwc(FILE *stream);
+wint_t putwc(wint_t character, FILE *stream);
+wchar_t *fgetws(wchar_t *buffer, int size, FILE *stream);
+int fputws(const wchar_t *string, FILE *stream);
+wint_t getwchar(void);
+wint_t putwchar(wint_t character);
+size_t wcsxfrm(wchar_t *destination, const wchar_t *source, size_t count);
 
 #define iswalpha(character) iswctype(character, _ALPHA)
 #define iswupper(character) iswctype(character, _UPPER)

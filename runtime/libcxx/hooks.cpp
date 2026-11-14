@@ -24,6 +24,18 @@ inline namespace __1 {
 
 const nothrow_t nothrow{};
 
+[[noreturn]] void __throw_bad_alloc() {
+    __libcpp_verbose_abort("bad_alloc was thrown in -fno-exceptions mode");
+}
+
+int uncaught_exceptions() noexcept {
+    return 0;
+}
+
+bool uncaught_exception() noexcept {
+    return false;
+}
+
 exception::~exception() noexcept {}
 
 const char *exception::what() const noexcept {

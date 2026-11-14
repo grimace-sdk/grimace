@@ -12,8 +12,10 @@ int rename(const char *existing, const char *replacement) __asm__("__grimace_pos
 #undef fileno
 int fileno(FILE *stream);
 FILE *fdopen(int descriptor, const char *mode);
+#ifndef GRIMACE_IOSTREAMS
 int fseeko(FILE *stream, long offset, int origin);
 long ftello(FILE *stream);
+#endif
 
 #ifdef __cplusplus
 }
