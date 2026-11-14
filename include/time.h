@@ -42,7 +42,11 @@ struct timespec {
     long tv_nsec;
 };
 
+#define TIME_UTC 1
+#define TIME_MONOTONIC 2
+
 time_t time(time_t *result);
+int timespec_get(struct timespec *time, int base);
 clock_t clock(void);
 struct tm *gmtime(const time_t *time);
 struct tm *localtime(const time_t *time);
@@ -52,6 +56,11 @@ char *ctime(const time_t *time);
 size_t strftime(char *buffer, size_t size, const char *format, const struct tm *time);
 
 #ifdef GRIMACE_POSIX
+typedef int clockid_t;
+#define CLOCK_REALTIME 0
+#define CLOCK_MONOTONIC 1
+int clock_gettime(clockid_t clock, struct timespec *time);
+int clock_getres(clockid_t clock, struct timespec *resolution);
 struct tm *gmtime_r(const time_t *time, struct tm *result);
 struct tm *localtime_r(const time_t *time, struct tm *result);
 int nanosleep(const struct timespec *duration, struct timespec *remaining);

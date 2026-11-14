@@ -108,6 +108,58 @@ time_t time(time_t *result) {
     return seconds;
 }
 
+static unsigned long long clock_microseconds(void) {
+    system_time now;
+    file_time converted;
+    GetSystemTime(&now);
+    if (!SystemTimeToFileTime(&now, &converted)) {
+        return 0;
+    }
+    unsigned long long ticks = ((unsigned long long)converted.high << 32) | converted.low;
+    return (ticks - UNIX_EPOCH_IN_FILETIME) / 10;
+}
+
+static unsigned long long monotonic_milliseconds(void) {
+    static unsigned long last_tick;
+    static unsigned long long wraps;
+    unsigned long tick = GetTickCount();
+    if (tick < last_tick) {
+        wraps += 1ULL << 32;
+    }
+    last_tick = tick;
+    return wraps + tick;
+}
+
+static unsigned long long anchor_microseconds;
+static unsigned long long anchor_milliseconds;
+
+static unsigned long long utc_microseconds(void) {
+    unsigned long long clock_now = clock_microseconds();
+    unsigned long long milliseconds = monotonic_milliseconds();
+    unsigned long long now = anchor_microseconds + (milliseconds - anchor_milliseconds) * 1000;
+    long long drift = (long long)(now - clock_now);
+    if (!anchor_microseconds || drift > 2000000 || drift < -2000000) {
+        anchor_microseconds = clock_now;
+        anchor_milliseconds = milliseconds;
+        now = clock_now;
+    }
+    return now;
+}
+
+int timespec_get(struct timespec *time, int base) {
+    unsigned long long microseconds;
+    if (base == TIME_UTC) {
+        microseconds = utc_microseconds();
+    } else if (base == TIME_MONOTONIC) {
+        microseconds = monotonic_milliseconds() * 1000;
+    } else {
+        return 0;
+    }
+    time->tv_sec = (time_t)(microseconds / 1000000);
+    time->tv_nsec = (long)(microseconds % 1000000 * 1000);
+    return base;
+}
+
 clock_t clock(void) {
     return (clock_t)GetTickCount();
 }

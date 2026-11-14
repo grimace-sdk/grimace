@@ -5,6 +5,7 @@
 #include <bitset>
 #include <cctype>
 #include <charconv>
+#include <chrono>
 #include <cstring>
 #include <deque>
 #include <expected>
@@ -23,6 +24,7 @@
 #include <stack>
 #include <stdexcept>
 #include <string>
+#include <system_error>
 #include <tuple>
 #include <unordered_set>
 #include <variant>
@@ -59,13 +61,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
     std::expected<int, int> outcome = 3;
     std::runtime_error failure("failure");
     int spaces = std::isspace(' ') ? 1 : 0;
+    auto started = std::chrono::steady_clock::now();
+    auto since_epoch = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch());
+    std::error_code code = std::make_error_code(std::errc::invalid_argument);
+    int clocks = (std::chrono::steady_clock::now() >= started) + (since_epoch.count() > 0) + static_cast<int>(code.message().size() > 0);
     std::string formatted = std::format("{} and {}", 1, 2);
     std::string floating = std::format("{:.2f}", 3.14159);
     std::wstring text = std::to_wstring(twice(std::any_cast<int>(held)) + static_cast<int>(flags.count()) + heap.top() + pile.top() +
                                         static_cast<int>(seen.size()) + std::get<0>(pair) + dice(generator) + even_sum + doubly.front() +
                                         watcher.expired() + *outcome + static_cast<int>(converted.ptr - digits) +
                                         static_cast<int>(formatted.size() + floating.size()) +
-                                        static_cast<int>(std::strlen(failure.what())) + spaces);
+                                        static_cast<int>(std::strlen(failure.what())) + spaces + clocks);
     MessageBoxW(nullptr, text.c_str(), L"stdlib", MB_OK);
     return 0;
 }

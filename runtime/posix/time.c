@@ -4,38 +4,37 @@
 #include <time.h>
 #include <unistd.h>
 
-#define UNIX_EPOCH_IN_FILETIME 116444736000000000ULL
-
-static unsigned long long clock_microseconds(void) {
-    SYSTEMTIME now;
-    FILETIME converted;
-    GetSystemTime(&now);
-    if (!SystemTimeToFileTime(&now, &converted)) {
-        return 0;
-    }
-    unsigned long long ticks = ((unsigned long long)converted.dwHighDateTime << 32) | converted.dwLowDateTime;
-    return (ticks - UNIX_EPOCH_IN_FILETIME) / 10;
-}
-
-static unsigned long long anchor_microseconds;
-static DWORD anchor_tick;
-
 int gettimeofday(struct timeval *time, void *zone) {
-    unsigned long long clock_now = clock_microseconds();
-    DWORD tick = GetTickCount();
-    unsigned long long now = anchor_microseconds + (unsigned long long)(DWORD)(tick - anchor_tick) * 1000;
-    long long drift = (long long)(now - clock_now);
-    if (!anchor_microseconds || drift > 2000000 || drift < -2000000) {
-        anchor_microseconds = clock_now;
-        anchor_tick = tick;
-        now = clock_now;
-    }
-    time->tv_sec = (time_t)(now / 1000000);
-    time->tv_usec = (long)(now % 1000000);
+    struct timespec now;
+    timespec_get(&now, TIME_UTC);
+    time->tv_sec = now.tv_sec;
+    time->tv_usec = now.tv_nsec / 1000;
     if (zone) {
         struct timezone *offset = zone;
         offset->tz_minuteswest = 0;
         offset->tz_dsttime = 0;
+    }
+    return 0;
+}
+
+int clock_gettime(clockid_t clock, struct timespec *time) {
+    if (clock == CLOCK_REALTIME) {
+        timespec_get(time, TIME_UTC);
+    } else if (clock == CLOCK_MONOTONIC) {
+        timespec_get(time, TIME_MONOTONIC);
+    } else {
+        return __grimace_posix_fail(EINVAL);
+    }
+    return 0;
+}
+
+int clock_getres(clockid_t clock, struct timespec *resolution) {
+    if (clock != CLOCK_REALTIME && clock != CLOCK_MONOTONIC) {
+        return __grimace_posix_fail(EINVAL);
+    }
+    if (resolution) {
+        resolution->tv_sec = 0;
+        resolution->tv_nsec = 1000000;
     }
     return 0;
 }
