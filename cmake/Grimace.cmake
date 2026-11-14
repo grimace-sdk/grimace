@@ -44,6 +44,7 @@ if(GRIMACE_LIBCXX)
                                "$<$<COMPILE_LANGUAGE:CXX>:${GRIMACE_LLVM_ROOT}/include/c++/v1>")
 endif()
 target_include_directories(grimace_headers SYSTEM INTERFACE "${GRIMACE_TOOLCHAIN_ROOT}/include" "${GRIMACE_TOOLCHAIN_ROOT}/include/w32api")
+target_compile_options(grimace_headers INTERFACE -femulated-tls)
 add_library(grimace::headers ALIAS grimace_headers)
 
 file(GLOB_RECURSE GRIMACE_LIBC_FILES "${GRIMACE_TOOLCHAIN_ROOT}/runtime/libc/*")

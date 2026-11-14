@@ -152,6 +152,7 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 `.cpp` files are compiled as C++20 with `-fno-exceptions -fno-rtti -fno-threadsafe-statics`. `project(myapp C)` is enough: `Grimace` enables C++ itself.
 
 - `target_link_libraries(myapp PRIVATE grimace::rtti)` compiles a target with `-frtti`, for `dynamic_cast` and `typeid`. `runtime/cxx/rtti.cpp` has `__dynamic_cast` and the type information classes' tables, and libc++ and the C++ runtime are built with RTTI, so their classes have type information. Programs without RTTI don't link any of it.
+- `thread_local` and `_Thread_local` use emulated TLS (`-femulated-tls`, `runtime/c99/emutls.c`) over one CE TLS slot, on ARM, MIPS and x86. A thread's variables aren't freed when it exits. clang's SuperH target doesn't support thread-local storage.
 
 - A target linked as C++ gets `grimace::cxx_runtime`: global constructors and destructors, `operator new` and `delete` on `LocalAlloc`, `__cxa_atexit` and `__cxa_pure_virtual`. Its entry point runs the constructors, calls `WinMain` or `DllMain`, then the destructors.
 - The headers' functions have C linkage in C++. Functions a DLL exports need `extern "C"`.

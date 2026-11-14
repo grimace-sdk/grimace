@@ -295,6 +295,16 @@ static void folders(void) {
 static void at_exit(void) {
 }
 
+#if __has_feature(c_thread_local)
+static _Thread_local int thread_value = 5;
+
+static DWORD WINAPI other_thread(LPVOID argument) {
+    int seen = thread_value;
+    thread_value = 9;
+    return seen;
+}
+#endif
+
 static volatile sig_atomic_t signalled;
 
 static void on_signal(int number) {
@@ -363,6 +373,17 @@ static void library(void) {
     check("utime", utime("/posix-dup.bin", &times) == 0 && stat("/posix-dup.bin", &status) == 0 && status.st_mtime == 1000000000, NULL);
     unlink("/posix-dup.bin");
     check("setvbuf", setvbuf(stdout, NULL, _IOFBF, BUFSIZ) == 0, NULL);
+#if __has_feature(c_thread_local)
+    thread_value = 6;
+    HANDLE thread = CreateThread(NULL, 0, other_thread, NULL, 0, NULL);
+    DWORD seen = 0;
+    if (thread) {
+        WaitForSingleObject(thread, INFINITE);
+        GetExitCodeThread(thread, &seen);
+        CloseHandle(thread);
+    }
+    check("_Thread_local", thread && seen == 5 && thread_value == 6, NULL);
+#endif
     check("system and wait", system(NULL) == 0 && system("dir") == -1 && wait(NULL) == -1 && errno == ECHILD, NULL);
 }
 
