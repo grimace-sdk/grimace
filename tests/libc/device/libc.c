@@ -1,10 +1,14 @@
 #include <windows.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <inttypes.h>
 #include <math.h>
 #include <setjmp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 static HANDLE results = INVALID_HANDLE_VALUE;
 static WCHAR summary[1024];
@@ -205,6 +209,33 @@ static void jumps(void) {
     check("setjmp and longjmp", value == 7 && counter == 2, NULL);
 }
 
+static void posix(void) {
+    char text[16] = "";
+    struct stat status;
+    int file = open("/posix-test.bin", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    check("open for writing", file >= 3, NULL);
+    check("write", write(file, "0123456789", 10) == 10, NULL);
+    check("close", close(file) == 0 && close(file) == -1 && errno == EBADF, NULL);
+    check("open O_EXCL", open("/posix-test.bin", O_WRONLY | O_CREAT | O_EXCL) == -1 && errno == EEXIST, NULL);
+    file = open("/posix-test.bin", O_RDWR);
+    check("lseek", lseek(file, 0, SEEK_END) == 10 && lseek(file, 2, SEEK_SET) == 2 && lseek(file, 1, SEEK_CUR) == 3, NULL);
+    check("read", read(file, text, 4) == 4 && !memcmp(text, "3456", 4), NULL);
+    check("ftruncate and fstat", ftruncate(file, 5) == 0 && fstat(file, &status) == 0 && status.st_size == 5 && S_ISREG(status.st_mode), NULL);
+    check("read at the end", lseek(file, 0, SEEK_END) == 5 && read(file, text, 4) == 0, NULL);
+    close(file);
+    file = open("/posix-test.bin", O_WRONLY | O_APPEND);
+    check("O_APPEND", write(file, "ab", 2) == 2 && lseek(file, 0, SEEK_CUR) == 7, NULL);
+    close(file);
+    check("stat", stat("/posix-test.bin", &status) == 0 && status.st_size == 7 && S_ISREG(status.st_mode) && status.st_mtime > 0, NULL);
+    check("access", access("/posix-test.bin", R_OK | W_OK) == 0, NULL);
+    check("unlink", unlink("/posix-test.bin") == 0 && access("/posix-test.bin", F_OK) == -1 && errno == ENOENT, NULL);
+    check("open missing", open("/posix-test.bin", O_RDONLY) == -1 && errno == ENOENT, NULL);
+    check("mkdir and stat", mkdir("/posix-test", 0755) == 0 && stat("/posix-test/", &status) == 0 && S_ISDIR(status.st_mode), NULL);
+    check("rmdir", rmdir("/posix-test") == 0 && stat("/posix-test", &status) == -1, NULL);
+    check("stat root", stat("/", &status) == 0 && S_ISDIR(status.st_mode), NULL);
+    check("standard descriptors", write(STDOUT_FILENO, "libc: write to stdout\n", 22) == 22 && read(STDIN_FILENO, text, 1) == 0 && !isatty(1), NULL);
+}
+
 #pragma clang diagnostic ignored "-Watomic-alignment"
 
 static void atomics(void) {
@@ -239,6 +270,7 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE previous, LPWSTR command_line, 
     files();
     jumps();
     atomics();
+    posix();
     WCHAR text[64];
     swprintf(text, L"libc: %d passed, %d failed\r\n", passed, failed);
     line(text);

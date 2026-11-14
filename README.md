@@ -131,6 +131,13 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 - `runtime/c99`: the C99 functions libc++ needs that Microsoft's C library lacks, over whichever one the target has: `snprintf`, `strtoll`, `float` and `long double` maths, `errno`, `wmemcpy`, `abort` and `_Exit` (`TerminateProcess`) and others. `inttypes.h` uses `I64` for 64-bit types, which every target's `printf` and `scanf` read.
 - `runtime/c99/atomic.c`: the `__atomic_*_1`, `_2`, `_4` and `_8` and `__sync_synchronize` calls clang makes for atomics on ARM and SH3, and the `_8` ones on MIPS and x86, over `InterlockedExchange` and `InterlockedTestExchange`. The `_8` ones take a lock. CE is uniprocessor, so `__sync_synchronize` is only a compiler barrier. On MIPS, clang inlines 1, 2 and 4-byte atomics with `ll` and `sc`, which MIPS I processors lack. `swprintf` keeps Microsoft's form; define `GRIMACE_C99_SWPRINTF` for C99's.
 
+`grimace::posix` is a POSIX file layer for ported code, linked with `target_link_libraries(myapp PRIVATE grimace::posix)`. It adds `unistd.h`, `fcntl.h`, `sys/types.h` and `sys/stat.h`, with `open`, `creat`, `read`, `write`, `lseek`, `close`, `fsync`, `ftruncate`, `isatty`, `unlink`, `access`, `stat`, `fstat`, `mkdir` and `rmdir` over CE's file functions:
+
+- Descriptors 3 to 63 are files, always binary. Descriptors 1 and 2 write to the debug output as Latin-1, and 0 is always at its end. None is a terminal.
+- Paths go through `mbstowcs`, and `/` becomes `\`. CE has no current folder, so paths start at `\`.
+- `off_t` is 32-bit. `st_mode` has no execute bits, and write permission unless the file is read-only. Times are UTC.
+- The descriptor table isn't locked: open files from one thread at a time.
+
 `runtime/libc` behaves as CE 3.0's coredll does where they differ from C99, so a program prints and reads the same on every version: `printf` writes three exponent digits (`1e+006`), `1.#INF` and `1.#QNAN`, and rounds halfway decimals away from zero, from the exact binary value. `strtod` and `scanf` round correctly. Files open in text mode unless the mode has `b`, with `\r\n` on disk for `\n`. `stdout` and `stderr` go to the debug output a line at a time, and `stdin` is always at its end. Narrow file names and strings in wide functions are Latin-1.
 
 `tests/libc/host.c` (`make check-libc-host`) checks the formatting, `strtod` and `scanf` engines against this computer's C library. `tests/libc/device` (`make check-libc`) checks the C library on a device: it passes on the Velo's CE 1.0 and 2.0 ROMs, an HP 620LX (SH3 CE 2.0) and the Jornada 720, whose ROM's C library it also checks.

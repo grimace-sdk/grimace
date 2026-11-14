@@ -65,6 +65,12 @@ target_include_directories(grimace_runtime PRIVATE "${GRIMACE_TOOLCHAIN_ROOT}/in
 target_compile_options(grimace_runtime PRIVATE -fno-builtin -w)
 add_library(grimace::runtime ALIAS grimace_runtime)
 
+file(GLOB GRIMACE_POSIX_SOURCES "${GRIMACE_TOOLCHAIN_ROOT}/runtime/posix/*.c")
+add_library(grimace_posix STATIC EXCLUDE_FROM_ALL ${GRIMACE_POSIX_SOURCES})
+target_include_directories(grimace_posix SYSTEM PUBLIC "${GRIMACE_TOOLCHAIN_ROOT}/include/grimace/posix")
+target_link_libraries(grimace_posix PRIVATE grimace_headers)
+add_library(grimace::posix ALIAS grimace_posix)
+
 file(GLOB GRIMACE_CXX_RUNTIME_SOURCES "${GRIMACE_TOOLCHAIN_ROOT}/runtime/cxx/*.cpp")
 add_library(grimace_cxx_runtime STATIC EXCLUDE_FROM_ALL ${GRIMACE_CXX_RUNTIME_SOURCES})
 target_link_libraries(grimace_cxx_runtime PRIVATE grimace_headers)
