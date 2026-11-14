@@ -176,6 +176,7 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 - The ARM target follows Microsoft's CE ARM calling standard as eVC3 compiles it; `make check-abi` checks it.
 - ARM CE 5.2 and 6.0 target ARMV4I: code is built for ARMv4T and returns with `bx`, as do the import stubs, so Thumb code in the ROM can call it and be called.
 - `ceddk.h`, `msgqueue.h` and `pm.h` declare what CE 6.0 drivers use, checked against Platform Builder 6.0. `pkfuncs.h` declares `KernelIoControl`, `InterruptInitialize`, `InterruptDone` and `InterruptDisable`, from Microsoft's public reference, without the OAL's IOCTL and `SYSINTR_` values, which no public source gives. `tests/ce6` builds a program, a control panel applet a stream driver DLL and a display driver DLL.
+- `aygshell.h` declares Windows Mobile's shell calls (`SHFullScreen`, `SHInitDialog`, `SHHandleWMActivate`, `SHHandleWMSettingChange`, `SHSipPreference`, `SHCreateMenuBar` and others) and `pm.h` the power manager's (`SetPowerRequirement`, `ReleasePowerRequirement`, `SetSystemPowerState`, `PowerPolicyNotify`), from Microsoft's public reference. `tests/wm` builds a program using them for the Juno SB.
 - `winddi.h` declares the display driver interface: `DrvEnableDriver`, `DRVENABLEDATA`, the `ENGCALLBACKS` table drivers call GDI through (CE exports no `Eng*` functions), and the structures and constants. It's written only from Microsoft's public Windows CE 5.0 reference and mingw-w64's public domain `winddi.h`, not from Platform Builder or any GPE or BSP source. Where the reference contradicts itself, the doc comments say which reading the header takes.
 
 ## Make
@@ -191,6 +192,7 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 | `check-lazy`, `check-lazy-<target>` | build `tests/lazy` |
 | `check-libc`, `check-libc-<target>`, `check-libc-host` | build `tests/libc/device`, and run `tests/libc/host.c` here |
 | `check-ce6` | build `tests/ce6` for ARM CE 6.0 and each Brain, and check with `tests/check-imports.py` that every import is in the device's lists |
+| `check-wm` | build `tests/wm` for the Juno SB and check its imports |
 | `check` | `check-abi`, `check-cxx-headers`, `check-stdlib`, `check-lazy`, `check-libc`, `check-ce6` and `examples` |
 | `headers` | regenerate `include/` from a CeGCC checkout's w32api (`GRIMACE_W32API`) and the SDKs (`GRIMACE_REFERENCE`) |
 | `docstrings` | rewrite the docstrings from `docs/api` |

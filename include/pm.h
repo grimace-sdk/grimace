@@ -37,6 +37,35 @@ typedef struct _POWER_BROADCAST {
 HANDLE WINAPI RequestPowerNotifications(HANDLE hMsgQ, DWORD Flags);
 DWORD WINAPI StopPowerNotifications(HANDLE h);
 
+typedef enum _CEDEVICE_POWER_STATE {
+    PwrDeviceUnspecified = -1,
+    D0 = 0,
+    D1,
+    D2,
+    D3,
+    D4,
+    PwrDeviceMaximum
+} CEDEVICE_POWER_STATE, *PCEDEVICE_POWER_STATE;
+
+#define POWER_NAME 0x00000001
+#define POWER_FORCE 0x00001000
+
+#define PPN_REEVALUATESTATE 0x00000001
+#define PPN_POWERCHANGE 0x00000002
+#define PPN_UNATTENDEDMODE 0x00000003
+#define PPN_SUSPENDKEYPRESSED 0x00000004
+#define PPN_POWERBUTTONPRESSED 0x00000004
+#define PPN_SUSPENDKEYRELEASED 0x00000005
+#define PPN_APPBUTTONPRESSED 0x00000006
+#define PPN_OEMBASE 0x00010000
+
+HANDLE WINAPI SetPowerRequirement(PVOID pvDevice, CEDEVICE_POWER_STATE DeviceState, ULONG DeviceFlags, PVOID pvSystemState, ULONG StateFlags);
+DWORD WINAPI ReleasePowerRequirement(HANDLE hPowerReq);
+DWORD WINAPI DevicePowerNotify(PVOID pvDevice, CEDEVICE_POWER_STATE DeviceState, DWORD Flags);
+DWORD WINAPI GetSystemPowerState(LPWSTR pBuffer, DWORD dwBufChars, PDWORD pdwFlags);
+DWORD WINAPI SetSystemPowerState(LPCWSTR pwsSystemState, DWORD StateFlags, DWORD Options);
+BOOL WINAPI PowerPolicyNotify(DWORD dwMessage, DWORD dwData);
+
 #ifdef __cplusplus
 }
 #endif

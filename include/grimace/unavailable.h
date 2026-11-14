@@ -3,6 +3,16 @@
 #endif
 
 #if GRIMACE_WCE == 300 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && !defined(GRIMACE_PLATFORM)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
@@ -27,7 +37,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -1554,6 +1570,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 300 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && defined(GRIMACE_PLATFORM_HPC2000)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
@@ -1578,7 +1604,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -5987,6 +6019,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && !defined(GRIMACE_PLATFORM)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -7508,6 +7550,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && !defined(GRIMACE_DEVICE) && defined(GRIMACE_PLATFORM_BRAIN)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -9029,6 +9081,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 100 && GRIMACE_MIPS && !defined(GRIMACE_DEVICE)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
@@ -9057,7 +9119,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 1.0 or later on MIPS")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -10638,6 +10706,16 @@ extern __typeof__(VerQueryValueW) VerQueryValueW __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 200 && GRIMACE_MIPS && !defined(GRIMACE_DEVICE)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
@@ -10670,7 +10748,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on MIPS")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -12272,6 +12356,16 @@ extern __typeof__(VerQueryValueW) VerQueryValueW __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 100 && GRIMACE_SH3 && !defined(GRIMACE_DEVICE)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
@@ -12300,7 +12394,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 1.0 or later on SH3")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -13866,6 +13966,16 @@ extern __typeof__(VerQueryValueW) VerQueryValueW __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 101 && GRIMACE_SH3 && !defined(GRIMACE_DEVICE)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
@@ -13898,7 +14008,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 1.01 or later on SH3")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -15464,6 +15580,16 @@ extern __typeof__(VerQueryValueW) VerQueryValueW __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 200 && GRIMACE_SH3 && !defined(GRIMACE_DEVICE)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
@@ -15496,7 +15622,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on SH3")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -17082,6 +17214,16 @@ extern __typeof__(VerQueryValueW) VerQueryValueW __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 200 && GRIMACE_X86 && !defined(GRIMACE_DEVICE)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
@@ -17110,7 +17252,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -18746,6 +18894,16 @@ extern __typeof__(VerQueryValueW) VerQueryValueW __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && defined(GRIMACE_DEVICE_PWA7300)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
@@ -18778,6 +18936,17 @@ extern __typeof__(acmFormatChoose) acmFormatChoose __attribute__((unavailable("n
 #ifdef GRIMACE_SDK_RAS_H
 extern __typeof__(RasDevConfigDialogEditW) RasDevConfigDialogEditW __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
 extern __typeof__(RasGetDispPhoneNumW) RasGetDispPhoneNumW __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+#endif
+#ifdef GRIMACE_SDK_SIPAPI_H
+extern __typeof__(SipEnumIM) SipEnumIM __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipGetCurrentIM) SipGetCurrentIM __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipGetInfo) SipGetInfo __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipRegisterNotification) SipRegisterNotification __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipSetCurrentIM) SipSetCurrentIM __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipSetDefaultRect) SipSetDefaultRect __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipSetInfo) SipSetInfo __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipShowIM) SipShowIM __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
+extern __typeof__(SipStatus) SipStatus __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
 #endif
 #ifdef GRIMACE_SDK_WINDOWS_H
 extern __typeof__(SHRemoveFontResource) SHRemoveFontResource __attribute__((unavailable("not in Windows CE 6.0 on pwa7300")));
@@ -20280,6 +20449,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && defined(GRIMACE_DEVICE_PWG5300)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
@@ -20312,6 +20491,17 @@ extern __typeof__(acmFormatChoose) acmFormatChoose __attribute__((unavailable("n
 #ifdef GRIMACE_SDK_RAS_H
 extern __typeof__(RasDevConfigDialogEditW) RasDevConfigDialogEditW __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
 extern __typeof__(RasGetDispPhoneNumW) RasGetDispPhoneNumW __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+#endif
+#ifdef GRIMACE_SDK_SIPAPI_H
+extern __typeof__(SipEnumIM) SipEnumIM __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipGetCurrentIM) SipGetCurrentIM __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipGetInfo) SipGetInfo __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipRegisterNotification) SipRegisterNotification __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipSetCurrentIM) SipSetCurrentIM __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipSetDefaultRect) SipSetDefaultRect __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipSetInfo) SipSetInfo __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipShowIM) SipShowIM __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
+extern __typeof__(SipStatus) SipStatus __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
 #endif
 #ifdef GRIMACE_SDK_WINDOWS_H
 extern __typeof__(SHRemoveFontResource) SHRemoveFontResource __attribute__((unavailable("not in Windows CE 6.0 on pwg5300")));
@@ -21814,6 +22004,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && defined(GRIMACE_DEVICE_PWSH2)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
@@ -23335,6 +23535,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && defined(GRIMACE_DEVICE_PWSB1)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsb1")));
@@ -24856,6 +25066,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 600 && GRIMACE_ARM && defined(GRIMACE_DEVICE_PWSH4)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsh4")));
@@ -26377,6 +26597,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 300 && GRIMACE_ARM && defined(GRIMACE_DEVICE_JORNADA720)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
@@ -26401,7 +26631,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 3.0 on jornada720")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -27928,6 +28164,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 200 && GRIMACE_X86 && defined(GRIMACE_DEVICE_JOYRIDE)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
@@ -27956,7 +28202,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 on joyride")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -31033,6 +31285,16 @@ extern __typeof__(VerQueryValueA) VerQueryValueA __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 100 && GRIMACE_MIPS && defined(GRIMACE_DEVICE_VELO1)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
@@ -31096,7 +31358,13 @@ extern __typeof__(KernelIoControl) KernelIoControl __attribute__((unavailable("n
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 1.0 on velo1")));
 #endif
 #ifdef GRIMACE_TCHAR_H
@@ -32854,6 +33122,16 @@ extern __typeof__(VerQueryValueW) VerQueryValueW __attribute__((unavailable("not
 #endif
 
 #if GRIMACE_WCE == 200 && GRIMACE_MIPS && defined(GRIMACE_DEVICE_VELO1)
+#ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+#endif
 #ifdef GRIMACE_CEDDK_H
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
@@ -32886,7 +33164,13 @@ extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unav
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
 #endif
 #ifdef GRIMACE_PM_H
+extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
+extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 on velo1")));
 #endif
 #ifdef GRIMACE_TCHAR_H

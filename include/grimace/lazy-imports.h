@@ -35,6 +35,24 @@ extern struct grimace_lazy_import __grimace_lazy_import_Module32Next;
 extern struct grimace_lazy_import __grimace_lazy_import_Process32First;
 #define __grimace_lazy_Process32Next 1
 extern struct grimace_lazy_import __grimace_lazy_import_Process32Next;
+#define __grimace_lazy_SipEnumIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipEnumIM;
+#define __grimace_lazy_SipGetCurrentIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipGetCurrentIM;
+#define __grimace_lazy_SipGetInfo 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipGetInfo;
+#define __grimace_lazy_SipRegisterNotification 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipRegisterNotification;
+#define __grimace_lazy_SipSetCurrentIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipSetCurrentIM;
+#define __grimace_lazy_SipSetDefaultRect 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipSetDefaultRect;
+#define __grimace_lazy_SipSetInfo 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipSetInfo;
+#define __grimace_lazy_SipShowIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipShowIM;
+#define __grimace_lazy_SipStatus 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipStatus;
 #define __grimace_lazy_Thread32First 1
 extern struct grimace_lazy_import __grimace_lazy_import_Thread32First;
 #define __grimace_lazy_Thread32Next 1
@@ -64,6 +82,24 @@ extern struct grimace_lazy_import __grimace_lazy_import_Module32Next;
 extern struct grimace_lazy_import __grimace_lazy_import_Process32First;
 #define __grimace_lazy_Process32Next 1
 extern struct grimace_lazy_import __grimace_lazy_import_Process32Next;
+#define __grimace_lazy_SipEnumIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipEnumIM;
+#define __grimace_lazy_SipGetCurrentIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipGetCurrentIM;
+#define __grimace_lazy_SipGetInfo 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipGetInfo;
+#define __grimace_lazy_SipRegisterNotification 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipRegisterNotification;
+#define __grimace_lazy_SipSetCurrentIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipSetCurrentIM;
+#define __grimace_lazy_SipSetDefaultRect 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipSetDefaultRect;
+#define __grimace_lazy_SipSetInfo 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipSetInfo;
+#define __grimace_lazy_SipShowIM 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipShowIM;
+#define __grimace_lazy_SipStatus 1
+extern struct grimace_lazy_import __grimace_lazy_import_SipStatus;
 #define __grimace_lazy_Thread32First 1
 extern struct grimace_lazy_import __grimace_lazy_import_Thread32First;
 #define __grimace_lazy_Thread32Next 1

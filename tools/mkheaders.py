@@ -15,8 +15,8 @@ UNWRAPPED = {"pshpack1.h", "pshpack2.h", "pshpack4.h", "pshpack8.h", "poppack.h"
 WINDOWS_EXTRAS = ["stdint.h", "mmsystem.h", "shellapi.h", "wchar.h", "stdlib.h", "string.h", "stdio.h", "math.h", "ctype.h", "setjmp.h", "time.h", "windbase.h"]
 WINDOWS_VERSION_EXTRAS = [("GRIMACE_WCE == 101", "windowsx.h"), ("GRIMACE_CE >= 2 || GRIMACE_WCE == 101", "tchar.h")]
 OWN_HEADERS = ["wchar.h", "stdlib.h", "string.h", "stdio.h", "math.h", "ctype.h", "setjmp.h", "time.h", "windbase.h", "tchar.h", "ceddk.h", "msgqueue.h",
-               "pm.h", "winddi.h", "pkfuncs.h"]
-DRIVER_HEADERS = ["ceddk.h", "msgqueue.h", "pm.h", "pkfuncs.h"]
+               "pm.h", "winddi.h", "pkfuncs.h", "aygshell.h"]
+DRIVER_HEADERS = ["ceddk.h", "msgqueue.h", "pm.h", "pkfuncs.h", "aygshell.h"]
 MACRO_HEADERS = {"windowsx.h"}
 MIPS_TARGET = ["--target=mipsel-unknown-none-elf", "-march=mips1", "-msoft-float"]
 ARCHITECTURES = {"mips": {"target": MIPS_TARGET, "defines": []},
@@ -83,8 +83,8 @@ def declarations(clang, version, arch):
 
 
 def header_paths():
-    paths = sorted(path for path in glob.glob(os.path.join(ROOT, "include", "w32api", "*.h")) if os.path.basename(path) not in MACRO_HEADERS)
-    paths += [os.path.join(ROOT, "include", name) for name in OWN_HEADERS]
+    paths = [os.path.join(ROOT, "include", name) for name in OWN_HEADERS]
+    paths += sorted(path for path in glob.glob(os.path.join(ROOT, "include", "w32api", "*.h")) if os.path.basename(path) not in MACRO_HEADERS)
     paths += sorted(glob.glob(os.path.join(ROOT, "include", "grimace", "extras*.h")))
     return paths
 
