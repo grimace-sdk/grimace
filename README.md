@@ -22,11 +22,12 @@ A CMake toolchain for Windows CE programs and DLLs. It uses clang and lld, then 
 | Architecture | LLVM |
 | --- | --- |
 | MIPS, x86 | any with those backends: Homebrew's (`brew install llvm lld cmake`) or Ubuntu's (`apt install clang lld llvm cmake`). Apple's clang has neither |
-| SH3, ARM | [llvm-builds](https://github.com/grimace-sdk/llvm-builds/releases) v5 or later, for the `sh3el-unknown-none-wince` and `armv4-unknown-none-wince` targets, which no LLVM release has. It has ARM, MIPS, SuperH and the C++ standard library |
+| SH3, ARM | [llvm-builds](https://github.com/grimace-sdk/llvm-builds/releases) v6 or later, for the `sh3el-unknown-none-wince` and `armv4-unknown-none-wince` targets, which no LLVM release has. It has ARM, MIPS, SuperH and the C++ standard library |
 
 - The toolchain uses, in order: `GRIMACE_LLVM_ROOT` (a CMake setting or environment variable), `llvm` in this folder (a link to the unpacked release), Homebrew's LLVM, then the `clang` on `PATH`.
 - The macOS binaries aren't notarized: if a browser downloaded the tarball, run `xattr -dr com.apple.quarantine` on the unpacked folder.
 - Other LLVMs, and llvm-builds before v5, inline 1, 2 and 4-byte atomics on MIPS with `ll` and `sc`, which MIPS I processors lack.
+- From v6, ARM CE uses `.init_array` for constructors, and on ARM and SH3 CE, globals of two bytes or more, string literals included, are 4-byte aligned, as Microsoft's compilers align them. CE reads some names as words, such as `CreateAPISet`'s, which fault if misaligned. MIPS isn't covered, since its triple isn't CE's.
 
 ## Usage
 
