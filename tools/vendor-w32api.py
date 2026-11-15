@@ -141,6 +141,47 @@ class Vendor:
         self.notes.append((header, note))
 
 
+DBGAPI_MACROS = """/*
+ * Macros that should behave differently depending on production or debug build.
+ *
+ * This implementation only provides for production build behaviour, for now.
+ */
+#define	DEBUGREGISTER(x)	/* ?? */
+#define	RETAILREGISTERZONES(x)	/* ?? */
+#define	DEBUGCHK(x)		/* ?? */
+#define	RETAILMSG(x,y)		/* ?? */
+#define	ASSERT(x)		/* ?? */
+"""
+
+CE_DBGAPI_MACROS = """void NKDbgPrintfW(LPCWSTR lpszFmt, ...);
+
+#define RETAILMSG(cond,printf_exp) ((void)((cond)?(NKDbgPrintfW printf_exp),1:0))
+#define ERRORMSG(cond,printf_exp) ((void)((cond)?(NKDbgPrintfW(L"ERROR: %hs line %d: ",__FILE__,__LINE__),NKDbgPrintfW printf_exp),1:0))
+#define RETAILREGISTERZONES(x) ((void)0)
+#define DEBUGREGISTER(x) ((void)0)
+
+#if _WIN32_WCE < 0x0300 || defined(GRIMACE_NO_SDK)
+typedef struct _DBGPARAM {
+	WCHAR lpszName[32];
+	WCHAR rglpszZones[16][32];
+	ULONG ulZoneMask;
+} DBGPARAM, *LPDBGPARAM;
+#endif
+
+#ifdef DEBUG
+extern struct _DBGPARAM dpCurSettings;
+#define DEBUGZONE(n) (dpCurSettings.ulZoneMask&(0x00000001<<(n)))
+#define DEBUGMSG(cond,printf_exp) ((void)((cond)?(NKDbgPrintfW printf_exp),1:0))
+#define DEBUGCHK(exp) ((void)((exp)?1:(NKDbgPrintfW(L"DEBUGCHK failed in %hs at line %d\\r\\n",__FILE__,__LINE__),0)))
+#else
+#define DEBUGZONE(n) 0
+#define DEBUGMSG(cond,printf_exp) ((void)0)
+#define DEBUGCHK(exp) ((void)0)
+#endif
+#define ASSERT(exp) DEBUGCHK(exp)
+"""
+
+
 def patch(vendor):
     vendor.ce("ras.h", "RAS_MaxEntryName is 20 on CE", "#define RAS_MaxEntryName      256", "#define RAS_MaxEntryName      20")
     vendor.ce("ras.h", "RAS_MaxDeviceName is 32 on CE", "#define RAS_MaxDeviceName     128", "#define RAS_MaxDeviceName     32")
@@ -281,6 +322,8 @@ def patch(vendor):
     vendor.ce3("imm.h", "IMFS_GRAYED is MF_GRAYED on CE 3.0", "#define IMFS_GRAYED MFS_GRAYED", "#define IMFS_GRAYED MF_GRAYED")
     vendor.edit("winuser.h", "IsDlgButtonChecked returns the button's state", "\tSendDlgItemMessageW(h, i, BM_GETCHECK, (WPARAM)(0), 0);",
                 "\treturn SendDlgItemMessageW(h, i, BM_GETCHECK, (WPARAM)(0), 0);")
+    vendor.edit("dbgapi.h", "RETAILMSG and ERRORMSG print through NKDbgPrintfW, and DEBUGMSG, DEBUGCHK and DEBUGZONE do under DEBUG",
+                DBGAPI_MACROS, CE_DBGAPI_MACROS)
 
 
 def write_notes(vendor, source):

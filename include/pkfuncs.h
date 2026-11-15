@@ -109,6 +109,17 @@ BOOL FreePhysMem(LPVOID lpvAddress);
  */
 DWORD GetCallerVMProcessId(VOID);
 
+#define SH_GDI 16
+#define SH_WMGR 17
+#define SH_WNET 18
+#define SH_COMM 19
+#define SH_FILESYS_APIS 20
+#define SH_SHELL 21
+#define SH_DEVMGR_APIS 22
+#define SH_TAPI 23
+
+DWORD WaitForAPIReady(DWORD dwAPISlot, DWORD dwTimeout);
+
 #ifdef __cplusplus
 }
 #endif

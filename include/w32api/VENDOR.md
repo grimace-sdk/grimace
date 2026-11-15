@@ -106,3 +106,4 @@ Windows CE has few ANSI functions, and the declarations of those a target lacks 
 - `winuser.h`: SW_RESTORE is 13 on CE 3.0
 - `imm.h`: IMFS_GRAYED is MF_GRAYED on CE 3.0
 - `winuser.h`: IsDlgButtonChecked returns the button's state
+- `dbgapi.h`: RETAILMSG and ERRORMSG print through NKDbgPrintfW, and DEBUGMSG, DEBUGCHK and DEBUGZONE do under DEBUG

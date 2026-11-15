@@ -11,6 +11,7 @@ extern __typeof__(ReadMsgQueueEx) ReadMsgQueueEx __attribute__((unavailable("not
 #ifdef GRIMACE_PKFUNCS_H
 extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unavailable("not in Windows CE 5.2 on devemu_wm653_wvga")));
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 5.2 on devemu_wm653_wvga")));
+extern __typeof__(WaitForAPIReady) WaitForAPIReady __attribute__((unavailable("not in Windows CE 5.2 on devemu_wm653_wvga")));
 #endif
 #ifdef GRIMACE_TCHAR_H
 extern __typeof__(_wcsicoll) _wcsicoll __attribute__((unavailable("not in Windows CE 5.2 on devemu_wm653_wvga")));

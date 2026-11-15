@@ -11,16 +11,44 @@ extern "C" {
 
 #if _WIN32_WCE >= 0x0200
 
-/*
- * Macros that should behave differently depending on production or debug build.
+/**
+ * Writes a formatted message to the kernel's debug output.
  *
- * This implementation only provides for production build behaviour, for now.
+ * DEBUGMSG, RETAILMSG and the other dbgapi.h macros call it. Where the
+ * output goes depends on the device: usually a debug serial port or a
+ * kernel debugger.
+ *
+ * @param lpszFmt Wide-character printf-style format string, followed by
+ *        its arguments.
+ *
+ * @note Windows CE 2.0 and later.
  */
-#define	DEBUGREGISTER(x)	/* ?? */
-#define	RETAILREGISTERZONES(x)	/* ?? */
-#define	DEBUGCHK(x)		/* ?? */
-#define	RETAILMSG(x,y)		/* ?? */
-#define	ASSERT(x)		/* ?? */
+void NKDbgPrintfW(LPCWSTR lpszFmt, ...);
+
+#define RETAILMSG(cond,printf_exp) ((void)((cond)?(NKDbgPrintfW printf_exp),1:0))
+#define ERRORMSG(cond,printf_exp) ((void)((cond)?(NKDbgPrintfW(L"ERROR: %hs line %d: ",__FILE__,__LINE__),NKDbgPrintfW printf_exp),1:0))
+#define RETAILREGISTERZONES(x) ((void)0)
+#define DEBUGREGISTER(x) ((void)0)
+
+#if _WIN32_WCE < 0x0300 || defined(GRIMACE_NO_SDK)
+typedef struct _DBGPARAM {
+	WCHAR lpszName[32];
+	WCHAR rglpszZones[16][32];
+	ULONG ulZoneMask;
+} DBGPARAM, *LPDBGPARAM;
+#endif
+
+#ifdef DEBUG
+extern struct _DBGPARAM dpCurSettings;
+#define DEBUGZONE(n) (dpCurSettings.ulZoneMask&(0x00000001<<(n)))
+#define DEBUGMSG(cond,printf_exp) ((void)((cond)?(NKDbgPrintfW printf_exp),1:0))
+#define DEBUGCHK(exp) ((void)((exp)?1:(NKDbgPrintfW(L"DEBUGCHK failed in %hs at line %d\r\n",__FILE__,__LINE__),0)))
+#else
+#define DEBUGZONE(n) 0
+#define DEBUGMSG(cond,printf_exp) ((void)0)
+#define DEBUGCHK(exp) ((void)0)
+#endif
+#define ASSERT(exp) DEBUGCHK(exp)
 
 #endif	/* _WIN32_WCE */
 

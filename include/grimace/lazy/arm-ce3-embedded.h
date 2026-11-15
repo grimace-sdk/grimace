@@ -618,6 +618,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_WSACleanup;
 extern struct grimace_lazy_import __grimace_lazy_import_WSAIoctl;
 #define __grimace_lazy_WSAStartup 1
 extern struct grimace_lazy_import __grimace_lazy_import_WSAStartup;
+#define __grimace_lazy_WaitForAPIReady 1
+extern struct grimace_lazy_import __grimace_lazy_import_WaitForAPIReady;
 #define __grimace_lazy_WinHelpA 1
 extern struct grimace_lazy_import __grimace_lazy_import_WinHelpA;
 #define __grimace_lazy_WinHelpW 1

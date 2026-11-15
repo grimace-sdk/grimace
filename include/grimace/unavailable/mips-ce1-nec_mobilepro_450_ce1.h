@@ -69,6 +69,7 @@ extern __typeof__(InterruptDone) InterruptDone __attribute__((unavailable("not i
 extern __typeof__(InterruptInitialize) InterruptInitialize __attribute__((unavailable("not in Windows CE 1.0 on nec_mobilepro_450_ce1")));
 extern __typeof__(KernelIoControl) KernelIoControl __attribute__((unavailable("not in Windows CE 1.0 on nec_mobilepro_450_ce1")));
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 1.0 on nec_mobilepro_450_ce1")));
+extern __typeof__(WaitForAPIReady) WaitForAPIReady __attribute__((unavailable("not in Windows CE 1.0 on nec_mobilepro_450_ce1")));
 #endif
 #ifdef GRIMACE_PM_H
 extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 1.0 on nec_mobilepro_450_ce1")));

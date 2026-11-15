@@ -30,6 +30,10 @@ DWORD TST_Init(LPCTSTR context, LPCVOID bus_context) {
     options.bReadAccess = TRUE;
     address.QuadPart = 0x80000000;
     state.registers = MmMapIoSpace(address, 0x1000, FALSE);
+    RETAILMSG(1, (L"TST_Init %s\r\n", context));
+    ERRORMSG(!state.registers, (L"no registers\r\n"));
+    DEBUGMSG(1, (L"debug builds only\r\n"));
+    WaitForAPIReady(SH_WMGR, 0);
     state.queue = CreateMsgQueue(NULL, &options);
     state.notifications = RequestPowerNotifications(state.queue, PBT_TRANSITION | PBT_RESUME);
     CeSetThreadPriority(GetCurrentThread(), 100);

@@ -21,6 +21,7 @@ extern __typeof__(AllocPhysMem) AllocPhysMem __attribute__((unavailable("not in 
 extern __typeof__(FreePhysMem) FreePhysMem __attribute__((unavailable("not in Windows CE 3.0 or later on SH3")));
 extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unavailable("not in Windows CE 3.0 or later on SH3")));
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 3.0 or later on SH3")));
+extern __typeof__(WaitForAPIReady) WaitForAPIReady __attribute__((unavailable("not in Windows CE 3.0 or later on SH3")));
 #endif
 #ifdef GRIMACE_PM_H
 extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 3.0 or later on SH3")));
