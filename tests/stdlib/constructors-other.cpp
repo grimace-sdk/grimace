@@ -3,7 +3,8 @@ volatile int order_length;
 
 void record(char step) {
     if (order_length < 15) {
-        order[order_length++] = step;
+        order[order_length] = step;
+        order_length = order_length + 1;
     }
 }
 
