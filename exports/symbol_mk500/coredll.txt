@@ -1,0 +1,6 @@
++BatteryDrvrGetLevels
++BatteryDrvrSupportsChangeNotification
++BatteryGetLifeTimeInfo
++BatteryNotifyOfTimeChange
++GetSystemPowerStatusEx
++GetSystemPowerStatusEx2

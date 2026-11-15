@@ -1,0 +1,6 @@
+BSQCONTROLS_Version
+BsqListView_DeleteAll
+BsqListView_GetIndexFromCurrentPosition
+BsqListView_GetSelection
+BsqListView_UpdateItem
+BsqTreeView_AddItem

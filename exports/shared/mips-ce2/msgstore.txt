@@ -1,0 +1,13 @@
++MailCheckFolder
++MailDeleteAttachment
++MailGetAttachment
++MailGetFolderCounts
++MailGetHeadRecordOid
++MailGetSort
++MailLocalAttachmentLen
++MailOpenNotify
++MailPutAttachment
++MailRequestAttachment
++MailSetAttachmentOptions
++MailSetMessageId
++MailSetSort

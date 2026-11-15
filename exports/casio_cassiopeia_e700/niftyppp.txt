@@ -1,0 +1,17 @@
+AccessPointConnect
+CheckRASEntry
+CreateRASEntry
+CreateRASEntryEx
+EnumLocationData
+EnumModemName
+FirstConnect
+GetDialLocationData
+GetErrorPoint
+ModemDialog
+ModemInfoFree
+OpenDialPropertyDialog
+PHSSetting
+SecondConnect
+SetCurrentLocation
+SetDialSetMode_NiftyPPP
+SetTestMode

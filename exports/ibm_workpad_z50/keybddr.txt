@@ -1,0 +1,6 @@
++GetBatteryVoltage
++KeybdDriverInitializeEx
++ReadBQ
++SetKbdTestFlag
++WriteBQ
+-KeybdDriverInitialize

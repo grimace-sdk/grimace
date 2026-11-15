@@ -1,0 +1,8 @@
+CeSetupAddInstallationFile
+CeSetupCloseSession
+CeSetupCreateSession
+CeSetupFinishSession
+CeSetupIsSessionCreated
+CeSetupNotifyStorageCardChange
+CeSetupOpenSession
+CeSetupRemoveInstallationFile

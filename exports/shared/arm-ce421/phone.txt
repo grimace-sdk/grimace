@@ -1,0 +1,6 @@
+PhoneAddSpeedDial
+PhoneCloseCallLog
+PhoneGetCallLogEntry
+PhoneMakeCall
+PhoneOpenCallLog
+PhoneSeekCallLog

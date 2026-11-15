@@ -1,0 +1,14 @@
+DispBkltEnable
+DispGetBkltBrightness
+DispGetBkltState
+DispSetBkltBrightness
+KbdGetKeymapID
+KbdGetModel
+KbdGetMultitapDelay
+KbdLoadKeymap
+KbdSetMultitapDelay
+UnitGetBootType
+UnitGetDeviceID
+UnitGetFirmwareVersion
+UnitGetModel
+UnitGetSerialNumber

@@ -1,0 +1,5 @@
+FIGetFirstId
+FIGetNextId
+FIIdFile
+FIIdFileEx
+FIIdHandle

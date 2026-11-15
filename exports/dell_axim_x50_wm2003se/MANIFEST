@@ -1,0 +1,7 @@
+arch: arm
+version: 4.21
+platform: pocketpc
+device: dell_axim_x50_wm2003se
+source: Dell Axim X50 WM2003SE, Windows Mobile 2003 Second Edition ROM AximX50_A05EN.IMG in cerf-bundles/dell_axim_x50_wm2003se, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce421
+without: atcmdint binfs btagsvc bthatci ccoredrv ccoreutl celltsp coresecproviders cspvoice dmatrans emulserv fakeril kbdmouse pcl phone prnerr prnport pwrbtn2410 ril s3c2410disp ser2410 serdma serdmaasplugin simsec simtkit smflash sms sms_providers supsvcs tpcutil vcefsd wavclick

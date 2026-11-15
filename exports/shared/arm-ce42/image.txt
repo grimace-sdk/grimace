@@ -1,0 +1,6 @@
++?Bi@Image@@QAAHXZ
++?Bright@Image@@QAAHH@Z
++?Contrast@Image@@QAAHH@Z
++?Gray@Image@@QAAHXZ
++?ScaleEx@Image@@QAAHPAXHAAUtagRECT@@1@Z
+-??4Image@@QAAAAV0@ABV0@@Z

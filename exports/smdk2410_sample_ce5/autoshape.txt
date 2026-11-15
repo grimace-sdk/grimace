@@ -1,0 +1,9 @@
+CanProcessAutoShape
+CanProcessWordart
+CompareSlope
+PolygonAutoShape
+ProcessArcLine
+ProcessArcSpline
+ProcessAutoShape
+ProcessWordart
+TextRectAutoShape

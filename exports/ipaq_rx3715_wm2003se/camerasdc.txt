@@ -1,0 +1,15 @@
+DllEntry
+SDC_Close
+SDC_Deinit
+SDC_IOControl
+SDC_Init
+SDC_Open
+SDC_PowerDown
+SDC_PowerUp
+SDC_Read
+SDC_Seek
+SDC_Write
+SDCommand
+SetSD4BitMode
+SetSDClockRate
+SetSDPower

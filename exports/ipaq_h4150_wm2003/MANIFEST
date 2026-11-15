@@ -1,0 +1,7 @@
+arch: arm
+version: 4.2
+platform: pocketpc
+device: ipaq_h4150_wm2003
+source: iPAQ H4150 WM2003, Windows Mobile 2003 ROM hb25i11003u.nbf in cerf-bundles/ipaq_h4150_wm2003, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce42
+without: acmdwrap atlce400 autoras autoshape chartapi conshid console dcdgif dcdjpeg dcdmz dcdpng dpnhupnp drawing dxmasf dxmrtp ecdjpeg ftpd hidparse icm iepeers image imap4 imgutil kbdhid labledit lpcd lpcrt mailutil mfcce400 mfdll mouhid mp3dmod mqoa msdxm msfilter mshtml msmqd msmqrt msrle32 mssoap1 mssoapr mstscax msxml3 ndispwr ne2000 olece400 pcl pcx500 pdfreader picstream pimprint pimres png pngfilt pppoe prnerr prnport prnprxy quartz rtcclient rtfrdr scard shcore shdocvw sho smtp tnefex tnefu tnefutil uicom uimgr usbd usbdisk6 usbhid usbmsc vbscript w97reader w97util wbtprncpl wbtprnwiz winscard wisc10 wmadmod wmsdmod wmvdmod xlsutil zlib

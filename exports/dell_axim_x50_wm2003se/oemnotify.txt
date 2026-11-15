@@ -1,0 +1,12 @@
+BatteryCriticalLowNotify
+BatteryDoorOpenNotification
+BatteryOverTempNotification
+CreateBattery0Notify
+OemCaution_1
+OemCaution_2
+OemCaution_3
+OemNotifyInitialize
+OemNotifyPowerHandler
+RemoveBattery0Notify
+RemoveBatteryCriticalLowNotify
+RemoveBatteryLowNotify

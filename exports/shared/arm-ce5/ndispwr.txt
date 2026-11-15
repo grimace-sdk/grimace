@@ -1,0 +1,11 @@
+DriverEntry
+NPW_Close
+NPW_Deinit
+NPW_IOControl
+NPW_Init
+NPW_Open
+NPW_PowerDown
+NPW_PowerUp
+NPW_Read
+NPW_Seek
+NPW_Write

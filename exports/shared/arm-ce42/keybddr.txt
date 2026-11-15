@@ -1,0 +1,7 @@
+KeybdDriverGetInfo
+KeybdDriverInitStates
+KeybdDriverInitialize
+KeybdDriverMapVirtualKey
+KeybdDriverPowerHandler
+KeybdDriverSetMode
+KeybdDriverVKeyToUnicode

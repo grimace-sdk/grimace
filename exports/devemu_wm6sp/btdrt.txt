@@ -1,0 +1,12 @@
+-BthAcceptSynchronousConnections
+-BthCreateSynchronousConnection
+-BthGetBasebandConnectionsEx
+-BthIsProfileAllowed
+-BthReadInquiryScanActivity
+-BthReadInquiryScanType
+-BthReadPageScanActivity
+-BthReadPageScanType
+-BthWriteInquiryScanActivity
+-BthWriteInquiryScanType
+-BthWritePageScanActivity
+-BthWritePageScanType

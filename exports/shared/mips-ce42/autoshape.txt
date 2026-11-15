@@ -1,0 +1,7 @@
+CanProcessAutoShape
+CompareSlope
+PolygonAutoShape
+ProcessArcLine
+ProcessArcSpline
+ProcessAutoShape
+TextRectAutoShape

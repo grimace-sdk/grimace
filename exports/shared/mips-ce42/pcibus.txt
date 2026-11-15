@@ -1,0 +1,7 @@
+Deinit
+Init
+PCIRsrc_Add
+PCIRsrc_DelList
+PCIRsrc_GetNext
+PCIRsrc_New
+PCIRsrc_Place

@@ -1,0 +1,4 @@
+arch: mips
+version: 2.01
+base: mips-ce2
+without: asform cespell commdlg ctlpanel finance mfcce20 office oleaut32 olece20 pcl pimprint prnport pvbrt pxlfile riched20 schannel scrrun sramdisk swmdmdrv vbscript webview

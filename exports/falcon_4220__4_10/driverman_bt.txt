@@ -1,0 +1,10 @@
+DDM_Close
+DDM_Deinit
+DDM_IOControl
+DDM_Init
+DDM_Open
+DDM_PowerDown
+DDM_PowerUp
+DDM_Read
+DDM_Seek
+DDM_Write

@@ -1,0 +1,10 @@
+DCD_Close
+DCD_Deinit
+DCD_IOControl
+DCD_Init
+DCD_Open
+DCD_PowerDown
+DCD_PowerUp
+DCD_Read
+DCD_Seek
+DCD_Write

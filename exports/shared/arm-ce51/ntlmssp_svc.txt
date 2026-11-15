@@ -1,0 +1,8 @@
+SSP_Close
+SSP_Deinit
+SSP_IOControl
+SSP_Init
+SSP_Open
+SSP_Read
+SSP_Seek
+SSP_Write

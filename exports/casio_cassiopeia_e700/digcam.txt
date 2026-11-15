@@ -1,0 +1,10 @@
+DCM_Close
+DCM_Deinit
+DCM_IOControl
+DCM_Init
+DCM_Open
+DCM_PowerDown
+DCM_PowerUp
+DCM_Read
+DCM_Seek
+DCM_Write

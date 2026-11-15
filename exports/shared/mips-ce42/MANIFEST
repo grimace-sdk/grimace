@@ -1,0 +1,4 @@
+arch: mips
+version: 4.2
+base: mips-ce3
+without: addrdll adoce30 adocedb30 adoceoledb30 adosync arp asform atlce300 browser caed caldll cdm cedrmutil cefrtl ceft clacker conndll dayview ddi doclist eeprom fatfs find gxdma htmlview inkobj inkx inreplce ircomm irdastk irsir irsqrt keybddr ldap mfcce300 mnthview msdadc msdaer msnewmnu msxml note_prj offnwmnu olece300 pegobj pimapi pimdlg poweron predict pvbform2 pvbhost2 pxl2xls pxl_res pxlfile recblob remocon richink rsabase shutil socket spimmc taskdll touch usb vbarcall vcomctl voicebar voicectl voicedll voicepwr wavedev webview xls2pxl

@@ -1,0 +1,4 @@
+arch: mips
+version: 6
+base: mips-ce42
+without: addrstor atlce400 autoshape binfs calstore chartapi citydb dcdgif dcdjpeg dcdmz dcdpng ddi_perm3 dpnhupnp drawing dxmasf dxmrtp ecdjpeg fatfsd image imap4 imgdecmp jpeg labledit mailutil mfcce400 mfdll mp3dmod mqoa mscoree1_0 msgstore mssoap1 mssoapr ne2000isr netcfagl1_0 obexapi olece400 pcx500 pdfreader perm3_cfg picstream pimprint pimres pimstore pimutil png pp97util pp97viewer relfsd rpcltccm rpcltscm rtcclient rtfrdr sapi sdmmc sho smtp soapprxy spcommon ti1250isr tnefex tnefu tnefutil udfs uicom uimgr vmini w97reader w97util wisc10 wmsdmod xlsutil

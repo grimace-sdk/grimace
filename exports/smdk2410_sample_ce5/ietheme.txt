@@ -1,0 +1,10 @@
++CloseThemeData
++DrawThemeBackground
++GetThemeBackgroundExtent
++GetThemeColor
++GetThemeFont
++HitTestThemeBackground
++IsAppThemed
++IsThemeActive
++OpenThemeDataEx
+-InitHTMLControl

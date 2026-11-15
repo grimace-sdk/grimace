@@ -1,0 +1,11 @@
++CommandBands_AddAdornments
++CommandBands_AddBands
++CommandBands_Create
++CommandBands_GetCommandBar
++CommandBands_GetRestoreInformation
++CommandBands_Show
++CommandBar_DrawMenuBar
++CommandBar_InsertMenubarEx
++CreateToolbar
++CreateToolbarEx
++InitCommonControlsEx

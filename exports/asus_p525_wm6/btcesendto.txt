@@ -1,0 +1,15 @@
+??0CBtFileSender@@QAA@ABV0@@Z
+??0CBtFileSender@@QAA@PAUHWND__@@@Z
+??1CBtFileSender@@UAA@XZ
+??4CBtFileSender@@QAAAAV0@ABV0@@Z
+??_7CBtFileSender@@6B@
+?AddFile@CBtFileSender@@QAAHPB_WH0W4eFILETYPE@1@W4ePROFILE@1@@Z
+?Cancel@CBtFileSender@@QAAXXZ
+?GetFileType@CBtFileSender@@SA?AW4eFILETYPE@1@PB_W@Z
+?GetFileTypeRef@CBtFileSender@@CAPAUtTYPEREF@1@W4eFILETYPE@1@@Z
+?GetSentDevice@CBtFileSender@@QAAHAAUtBT_BASIC_DEV_INFO@@@Z
+?InitSender@CBtFileSender@@AAAHXZ
+?IsBluetoothReady@CBtFileSender@@SAHXZ
+?ProfileAsString@CBtFileSender@@SAPB_WW4ePROFILE@1@@Z
+?Send@CBtFileSender@@QAAHPAUtBT_BASIC_DEV_INFO@@W4eFUNCTION@1@PB_WH@Z
+?SetApp@CBtFileSender@@QAAXPAVCWinApp@@@Z

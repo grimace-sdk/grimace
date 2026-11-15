@@ -1,0 +1,2 @@
+-RDR_PowerDown
+-RDR_PowerUp

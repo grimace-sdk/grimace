@@ -1,0 +1,7 @@
+PushRouter_Close
+PushRouter_GetMessage
+PushRouter_Open
+PushRouter_RegisterClient
+PushRouter_SendResponse
+PushRouter_SubmitPush
+PushRouter_UnRegisterClient

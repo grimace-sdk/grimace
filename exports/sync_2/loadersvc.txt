@@ -1,0 +1,5 @@
+LDR_Close
+LDR_Deinit
+LDR_IOControl
+LDR_Init
+LDR_Open

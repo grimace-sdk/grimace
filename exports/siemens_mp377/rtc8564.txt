@@ -1,0 +1,10 @@
+RTC_Close
+RTC_Deinit
+RTC_IOControl
+RTC_Init
+RTC_Open
+RTC_PowerDown
+RTC_PowerUp
+RTC_Read
+RTC_Seek
+RTC_Write

@@ -1,0 +1,6 @@
+arch: mips
+version: 2
+platform: hpc
+device: sharp_mobilon_hc4100_hpc2
+source: Sharp Mobilon HC-4100, Handheld PC ROM nk.bin in cerf-bundles/sharp_mobilon_hc4100_hpc2, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce2

@@ -1,0 +1,11 @@
+CRD_Close
+CRD_Deinit
+CRD_IOControl
+CRD_Init
+CRD_Open
+CRD_PowerDown
+CRD_PowerUp
+CRD_Read
+CRD_Seek
+CRD_Write
+DllMain

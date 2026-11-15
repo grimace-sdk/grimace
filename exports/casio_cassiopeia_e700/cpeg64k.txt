@@ -1,0 +1,17 @@
+CapturePreview
+Close
+Draw
+DrawDC
+GetBMP
+GetPosition
+GetWave
+Open
+Play
+Property
+Query
+QueryAudio
+QueryVideo
+ReleasePreview
+SetPosition
+Stop
+Wait

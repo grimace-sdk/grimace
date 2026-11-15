@@ -1,0 +1,7 @@
+MCCancelA
+MCDialProg
+MCDialStatus
+MCDialUp
+MCDialUpA
+MCHangUp
+MCHangUpA

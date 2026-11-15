@@ -1,0 +1,16 @@
++CloseGestureInfoHandle
++DisableGestures
++EnableGestures
++Gesture
++GetAnimateMessageInfo
++GetGestureExtraArguments
++GetGestureInfo
++GetLayeredWindowAttributes
++GetWindowAutoGesture
++QueryGestures
++RegisterDefaultGestureHandler
++RegisterGesture
++SetLayeredWindowAttributes
++SetWindowAutoGesture
++UpdateLayeredWindow
++UpdateLayeredWindowIndirect

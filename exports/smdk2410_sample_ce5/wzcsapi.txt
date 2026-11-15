@@ -1,0 +1,11 @@
+WZCDeleteIntfObj
+WZCElReadCompletionRoutineWifi
+WZCEnumEapExtensions
+WZCEnumInterfaces
+WZCPassword2Key
+WZCQueryContext
+WZCQueryInterface
+WZCRefreshInterface
+WZCSetContext
+WZCSetInterface
+WzcPortIndication

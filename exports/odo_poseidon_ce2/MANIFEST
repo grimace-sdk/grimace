@@ -1,0 +1,6 @@
+arch: arm
+version: 2.11
+platform: embedded
+device: odo_poseidon_ce2
+source: Odo Poseidon CE2, Windows CE ROM NK.bin in cerf-bundles/odo_poseidon_ce2, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce211

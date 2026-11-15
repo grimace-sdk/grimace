@@ -1,0 +1,13 @@
+DUM_Close
+DUM_Deinit
+DUM_IOControl
+DUM_Init
+DUM_Open
+DUM_PowerDown
+DUM_PowerUp
+DUM_Read
+DUM_Seek
+DUM_Write
+USBDeviceAttach
+USBInstallDriver
+USBUnInstallDriver

@@ -1,0 +1,5 @@
++?ConvertToTimeZone@@YA?AW4tagErrorCodes@@PAU_CEPROPVAL@@PAU_TIME_ZONE_INFORMATION@@@Z
++ExternalNotifyCalstore
++GetGlobjIdFromAppointment
+-GetYearData
+-StartTasksEnum

@@ -1,0 +1,6 @@
+CheckOnboardFlash
+DetectCleanUp
+DetectMountDir
+GetDeviceStatus
+WaitForFSInit
+WaitForSystemCard

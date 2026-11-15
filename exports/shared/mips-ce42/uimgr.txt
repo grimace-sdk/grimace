@@ -1,0 +1,6 @@
+?SUICreateUserInterface@@YAPAXPAUtagUSERINTERFACE@@@Z
+?SUIDestroyUserInterface@@YAHPAX@Z
+?SUIDisplayUserInterface@@YAHPAX@Z
+?SUIInitCustomControlsEx@@YAHPAUtagINITCUSTOMCONTROLSEX@@@Z
+?SUILoadScreenTemplate@@YAPAXPAXPBGP6AHPAUHWND__@@IIJ@Z@Z
+?SUIShowScreen@@YAHPAXH@Z

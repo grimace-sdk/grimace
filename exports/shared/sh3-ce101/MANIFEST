@@ -1,0 +1,4 @@
+arch: sh3
+version: 1.01
+base: sh3-ce1
+without: atadisk audio calstore ctlpanel cxport dayview fatfs hhriched ircomm irdastk keybddr monthcal office parser pegobj pimui ppp rra_stm serial smtp sramdisk tcpstk termctrl touch unimodem

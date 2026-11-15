@@ -1,0 +1,4 @@
+DllMain
+DllQuerySIMEntries
+DllSIMEntriesDeinit
+DllSIMEntriesInit

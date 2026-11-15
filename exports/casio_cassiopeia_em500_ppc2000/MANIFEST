@@ -1,0 +1,6 @@
+arch: mips
+version: 3
+platform: pocketpc
+device: casio_cassiopeia_em500_ppc2000
+source: Casio Cassiopeia EM-500, Pocket PC 2000 ROM em500.bin in cerf-bundles/casio_cassiopeia_em500_ppc2000, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce3

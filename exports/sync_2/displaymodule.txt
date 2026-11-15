@@ -1,0 +1,5 @@
+DMX_Close
+DMX_Deinit
+DMX_IOControl
+DMX_Init
+DMX_Open

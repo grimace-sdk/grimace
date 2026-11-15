@@ -1,0 +1,15 @@
+CMMFree
+CMMOnWM_COMMAND
+ContactMergeMenu
+CoolAddressCard
+CreateAppointmentCard
+CurrentCardDeleted
+GetAddrPropertyTextEx
+GetPropMultiplex
+GetTextMultiplex
+GetTextMultiplexIter
+IDLG_FreeParsers
+IDLG_InitParsers
+KillCachedAddressCard
+MailCreateCard
+TransportViewEx

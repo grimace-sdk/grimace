@@ -1,0 +1,6 @@
+GfxFindWindow
+GfxFindWindowEx
+GfxGetPOSCurrentFolder
+GfxGetVersion
+GfxPostMessageToPOS
+GfxSendMessageToPOS

@@ -1,0 +1,2 @@
+-NPW_PowerDown
+-NPW_PowerUp

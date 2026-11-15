@@ -1,0 +1,6 @@
+arch: sh3
+version: 2
+platform: hpc
+device: casio_cassiopeia_pa2400u_ce2
+source: Casio Cassiopeia PA2400U CE2, Windows CE 2.0 ROM nk.bin in cerf-bundles/casio_cassiopeia_pa2400u_ce2, read with CEM Porter's tools/compat-tables.mjs
+base: sh3-ce2

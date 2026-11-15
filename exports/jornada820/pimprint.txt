@@ -1,0 +1,6 @@
+PimDisplayChoosePrinter
+PimFormFeed
+PimFreePrintResources
+PimLineOut
+PimPrintInk
+PimSetPrintColor

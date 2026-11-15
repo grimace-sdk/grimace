@@ -1,0 +1,5 @@
+TnefBuildInfo
+TnefDecodeFile
+TnefDecodeLine
+TnefEncodeFile
+TnefGetInfo

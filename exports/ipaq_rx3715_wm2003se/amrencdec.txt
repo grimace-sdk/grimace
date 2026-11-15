@@ -1,0 +1,10 @@
+AMRDecCtrl
+AMRDecExit
+AMRDecInit
+AMRDecRun
+AMRDecStatus
+AMREncCtrl
+AMREncExit
+AMREncInit
+AMREncRun
+AMREncStatus

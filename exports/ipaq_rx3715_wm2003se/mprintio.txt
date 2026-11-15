@@ -1,0 +1,10 @@
+mPrintCloseTargetConnection
+mPrintGetDeviceIdFromTarget
+mPrintGetStatusInfoFromTarget
+mPrintOpenTargetConnection
+mPrintReadFromTarget
+mPrintReportEndDoc
+mPrintReportEndPage
+mPrintReportStartDoc
+mPrintReportStartPage
+mPrintWriteToTarget

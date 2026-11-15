@@ -1,0 +1,4 @@
++CLSIDFromProgID
++CreateBindCtx
++GetClassFile
++ReleaseStgMedium

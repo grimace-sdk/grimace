@@ -1,0 +1,11 @@
+HwxConfig
+HwxCreate
+HwxDestroy
+HwxEndInput
+HwxGetResults
+HwxInput
+HwxProcess
+HwxResultsAvailable
+HwxSetAlphabet
+HwxSetContext
+HwxSetGuide

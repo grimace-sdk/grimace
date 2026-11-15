@@ -1,0 +1,6 @@
+arch: arm
+version: 6
+platform: embedded
+device: devemu_ce6_qvga
+source: Device Emulator CE6 QVGA, Windows Embedded CE 6 ROM Windows CE 6 (QVGA).bin in cerf-bundles/devemu_ce6_qvga, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce6

@@ -1,0 +1,5 @@
++DirectDrawEnumerateEx
+-DirectDrawEnumerateA
+-DirectDrawEnumerateExA
+-DirectDrawEnumerateExW
+-DirectDrawEnumerateW

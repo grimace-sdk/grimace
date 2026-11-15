@@ -1,0 +1,9 @@
++ChangeStringToHalfWidth
++GetDefaultANSICodePage
++GetTemplateInfo
++NewFileFromTemplate
++OpenDocumentA
++OpenThisDocumentA
++SaveDocumentA
++SaveDocumentAsA
+-NewFromTemplateW

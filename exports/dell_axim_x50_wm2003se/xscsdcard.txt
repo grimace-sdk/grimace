@@ -1,0 +1,11 @@
+XSCSDCardDllEntry
+XSC_Close
+XSC_Deinit
+XSC_IOControl
+XSC_Init
+XSC_Open
+XSC_PowerDown
+XSC_PowerUp
+XSC_Read
+XSC_Seek
+XSC_Write

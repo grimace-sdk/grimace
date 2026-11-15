@@ -1,0 +1,13 @@
+IADSetSamplingRate
+IADStartStreamingAudio
+IADStopStreamingAudio
+IHDCloseDevice
+IHDGetAttachedDevice
+IHDGetAttachedDeviceByName
+IHDGetDeviceCaps
+IHDGetReportDescriptors
+IHDOpenDevice
+IHDReceiveReport
+IHDSendReport
+IHDSetChargeCurrent
+IHDSetQueueSize

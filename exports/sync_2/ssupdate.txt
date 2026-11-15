@@ -1,0 +1,8 @@
+SUP_Close
+SUP_Deinit
+SUP_IOControl
+SUP_Init
+SUP_Open
+SUP_Read
+SUP_Seek
+SUP_Write

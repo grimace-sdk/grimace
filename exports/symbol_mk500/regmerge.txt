@@ -1,0 +1,10 @@
+REG_Close
+REG_Deinit
+REG_IOControl
+REG_Init
+REG_Open
+REG_PowerDown
+REG_PowerUp
+REG_Read
+REG_Seek
+REG_Write

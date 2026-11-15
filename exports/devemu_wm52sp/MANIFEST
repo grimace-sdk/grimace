@@ -1,0 +1,7 @@
+arch: arm
+version: 5.1
+platform: smartphone
+device: devemu_wm52sp
+source: Device Emulator - Windows Mobile 5, Windows Mobile 5.2 Smartphone, Windows Mobile 5.2 Smartphone ROM Windows Mobile 5.2 Smartphone.bin in cerf-bundles/devemu_wm52sp, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce51
+without: atlce300 cefobj cespell citydb commdlg compime doclist find gdiplus infantry inkobj inkx mfcce300 msgstore msim msnewmnu netbios office olece300 pimdlg pwwiff pxl2xls pxlfile rdpapi rdpdr redir richink softkb termctrl transcribersip trarecoenu tsctrc vbarcall voicebar voicedll xls2pxl

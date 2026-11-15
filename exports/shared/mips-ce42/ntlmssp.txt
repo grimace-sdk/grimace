@@ -1,0 +1,12 @@
++NTLMAddGroup
++NTLMAddUserToGroup
++NTLMDeleteUser
++NTLMEnumGroups
++NTLMEnumUser
++NTLMGetGroupList
++NTLMGetUserInfo
++NTLMGetUserList
++NTLMRemoveGroup
++NTLMRemoveUserFromGroup
++NTLMSavePassword
++NTLMSetUserInfo

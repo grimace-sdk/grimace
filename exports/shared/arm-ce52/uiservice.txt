@@ -1,0 +1,10 @@
+UIS_Close
+UIS_Deinit
+UIS_IOControl
+UIS_Init
+UIS_Open
+UIS_PowerDown
+UIS_PowerUp
+UIS_Read
+UIS_Seek
+UIS_Write

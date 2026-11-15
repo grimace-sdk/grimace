@@ -1,0 +1,10 @@
++CardModifyConfiguration
++CardPowerOff
++CardPowerOn
++Deinit
++Init
++PCIBus_Config
++PowerDown
++PowerUp
+-CardSystemInit
+-CardSystemPower

@@ -1,0 +1,4 @@
+IPSecDeviceIOCtl
+IPSecSetTcpipStatus
+IPSecShutdown
+IPSecStartup

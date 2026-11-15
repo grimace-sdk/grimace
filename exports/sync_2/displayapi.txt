@@ -1,0 +1,17 @@
+DisplayClearDriverAndLayouts
+DisplayClearInfoArea
+DisplayClearStatusArea
+DisplayEnsureNonIdle
+DisplayGetCurrentDisplay
+DisplayGetInfoLayoutsByType
+DisplayGetStatusLayoutsByType
+DisplayIcon
+DisplayIsInfoLayoutSupported
+DisplayIsSharedStatusAndInfoArea
+DisplayIsStatusLayoutSupported
+DisplayWriteInfoMessage
+DisplayWriteInfoMessageEx
+DisplayWriteInfoMessageWithTag
+DisplayWriteStatusMessage
+DisplayWriteTime
+IsDisplayBlocked

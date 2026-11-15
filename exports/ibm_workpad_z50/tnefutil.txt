@@ -1,0 +1,6 @@
++ModifiedUTF7ToUnicode
++TnefConvertToUnicode
++TnefDecodeBuffer
++TnefEncodeBuffer
++UnicodeToModifiedUTF7
+-TnefDecodeLine

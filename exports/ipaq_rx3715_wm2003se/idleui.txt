@@ -1,0 +1,3 @@
+?IdleUIGetLastInputTime@@YAKXZ
+?IdleUIInit@@YAHXZ
+?IdleUITerm@@YAXXZ

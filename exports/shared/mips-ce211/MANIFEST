@@ -1,0 +1,4 @@
+arch: mips
+version: 2.11
+base: mips-ce201
+without: advbklt arthwr arttouch cicjot jotcorel jotcoreu launch pendata sib smartspkce t9im voicecontact

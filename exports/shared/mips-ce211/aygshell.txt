@@ -1,0 +1,17 @@
++FreeRegisteredAppInfo
++GetRegisteredAppInfo
++PathRemoveBlanks
++SHAppNotifyDone
++SHHandleActivate
++SHHandleSipChange
++SHInputDialog
++SHMessageBox
++SHSipPreference
++SetRegisteredAppInfo
++Shell_Alloc
++Shell_AllocString
++Shell_CatStrAlloc
++Shell_Free
++Shell_HeapCreate
++Shell_LoadStringAlloc
++Shell_RegAllocString

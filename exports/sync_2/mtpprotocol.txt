@@ -1,0 +1,9 @@
+CreateMtpInitiator
+DllMain
+MtpAllocString
+MtpAllocStringLen
+MtpFreeString
+MtpStringLen
+MtpVariantClear
+MtpVariantCopy
+MtpVariantInit

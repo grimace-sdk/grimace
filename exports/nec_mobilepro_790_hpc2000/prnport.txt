@@ -1,0 +1,7 @@
+GetPrinterInfo
+PrinterClose
+PrinterGetDevID
+PrinterGetStat
+PrinterOpen
+PrinterReceive
+PrinterSend

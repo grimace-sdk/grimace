@@ -1,0 +1,14 @@
+HwxALCPriority
+HwxALCValid
+HwxConfig
+HwxCreate
+HwxDestroy
+HwxEndInput
+HwxGetResults
+HwxInput
+HwxProcess
+HwxResultsAvailable
+HwxSetAbort
+HwxSetContext
+HwxSetGuide
+HwxSetPartial

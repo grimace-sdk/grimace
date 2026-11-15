@@ -1,0 +1,10 @@
++CommandBar_AlignAdornments
+-DPA_Create
+-DPA_InsertPtr
+-DPA_Sort
+-DSA_Clone
+-DSA_DestroyCallback
+-DSA_EnumCallback
+-DSA_Search
+-DoReaderMode
+-ListView_SetItemSpacing

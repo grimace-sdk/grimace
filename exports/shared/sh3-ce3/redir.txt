@@ -1,0 +1,10 @@
++RDR_Close
++RDR_Deinit
++RDR_IOControl
++RDR_Init
++RDR_Open
++RDR_PowerDown
++RDR_PowerUp
++RDR_Read
++RDR_Seek
++RDR_Write

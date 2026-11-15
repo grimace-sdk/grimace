@@ -1,0 +1,7 @@
+-_strcmpi
+-_stricmp
+-iscntrl
+-isdigit
+-isspace
+-isxdigit
+-strrchr

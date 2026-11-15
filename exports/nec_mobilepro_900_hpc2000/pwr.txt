@@ -1,0 +1,10 @@
+PWR_Close
+PWR_Deinit
+PWR_IOControl
+PWR_Init
+PWR_Open
+PWR_PowerDown
+PWR_PowerUp
+PWR_Read
+PWR_Seek
+PWR_Write

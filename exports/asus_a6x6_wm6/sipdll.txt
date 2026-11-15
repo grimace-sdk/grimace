@@ -1,0 +1,6 @@
+SipInit
+SipSetParent
+SipSetRect
+SipShowIMWindow
+SipShowWindow
+SipUnInit

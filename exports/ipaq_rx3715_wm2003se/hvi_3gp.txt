@@ -1,0 +1,7 @@
+hpVideoEncodeBGR16
+hpVideoGetBytesPerSec
+hpVideoGetConfig
+hpVideoGetInfo
+hpVideoSetConfig
+hpVideoStart
+hpVideoStop

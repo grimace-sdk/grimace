@@ -1,0 +1,8 @@
+HyphenatorCheck
+HyphenatorCloseLex
+HyphenatorGetOptions
+HyphenatorInit
+HyphenatorOpenLex
+HyphenatorSetOptions
+HyphenatorTerminate
+HyphenatorVersion

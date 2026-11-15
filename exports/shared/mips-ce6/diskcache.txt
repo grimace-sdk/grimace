@@ -1,0 +1,9 @@
+CacheIoControl
+CachedRead
+CachedWrite
+CreateCache
+DeleteCache
+FlushCache
+InvalidateCache
+ResizeCache
+SyncCache

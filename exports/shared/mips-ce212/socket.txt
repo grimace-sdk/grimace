@@ -1,0 +1,7 @@
+ModemSockCloseDevice
+ModemSockForceSerialClose
+ModemSockForceSerialOpen
+ModemSockGetIntID
+ModemSockGetSocketStatus
+ModemSockOpenDevice
+ModemSockReset

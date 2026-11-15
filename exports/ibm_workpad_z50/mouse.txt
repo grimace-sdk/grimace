@@ -1,0 +1,14 @@
+DisableMouseInt
+EnableMouseInt
+MUS_Close
+MUS_Deinit
+MUS_Get
+MUS_IOControl
+MUS_Init
+MUS_Open
+MUS_PowerDown
+MUS_PowerUp
+MUS_Read
+MUS_Seek
+MUS_Send1
+MUS_Write

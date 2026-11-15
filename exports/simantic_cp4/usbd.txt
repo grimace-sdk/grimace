@@ -1,0 +1,13 @@
+GetClientRegistryPath
+GetUSBDVersion
+HcdAttach
+HcdDetach
+HcdDeviceAttached
+HcdDeviceDetached
+HcdDeviceSuspendeResumed
+HcdSelectConfiguration
+OpenClientRegistryKey
+RegisterClientDriverID
+RegisterClientSettings
+UnRegisterClientDriverID
+UnRegisterClientSettings

@@ -1,0 +1,10 @@
+HPU_Close
+HPU_Deinit
+HPU_IOControl
+HPU_Init
+HPU_Open
+HPU_PowerDown
+HPU_PowerUp
+HPU_Read
+HPU_Seek
+HPU_Write

@@ -1,0 +1,10 @@
++??0BitmapCache@@QAA@XZ
++??1BitmapCache@@QAA@XZ
++??4BitmapCache@@QAAAAV0@ABV0@@Z
++?CleanUp@BitmapCache@@QAAXXZ
++?GetBitmap@BitmapCache@@QAAPAUHBITMAP__@@K@Z
++?GetCacheBitmapFlag@UIElement@@QAA_NXZ
++?GetCurrentBitmap@BitmapCache@@QAAPAUHBITMAP__@@XZ
++?MakeKey@BitmapCache@@SAKII@Z
++?SetBitmap@BitmapCache@@QAAXKPAUHBITMAP__@@@Z
++?SetCacheBitmapFlag@UIElement@@QAAX_N@Z

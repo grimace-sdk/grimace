@@ -1,0 +1,13 @@
+HPM_Close
+HPM_Deinit
+HPM_IOControl
+HPM_Init
+HPM_Open
+HPM_PowerDown
+HPM_PowerUp
+HPM_Read
+HPM_Seek
+HPM_Write
+HPModemControl
+HPModemDeinitialize
+HPModemInitialize

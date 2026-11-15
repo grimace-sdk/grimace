@@ -1,0 +1,15 @@
++DoesTimeExist
++GetTransportName
++PimCreateBoldSystemFont
++PimDisplayMessageEx
++PimDrawToolTip
++PimEnsureFirstCheckedItemVisible
++PimGetAdjustedDOW
++PimPositionSip
++PimSetCursor
++PimSetDateRange
++PimToggleFilterState
++ReadLdapInfoFromRegistry
++ResolveAddressFromHwnd
++WriteLdapInfoToRegistry
+-PimDisplayMessage

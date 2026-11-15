@@ -1,0 +1,6 @@
+arch: sh3
+version: 2
+platform: hpc
+device: hp_320lx_ce2 hp_360lx_ce2
+source: HP 320LX CE2, Windows CE 2.0 ROM nk.bin in cerf-bundles/hp_320lx_ce2, read with CEM Porter's tools/compat-tables.mjs; also HP 360LX CE2
+base: sh3-ce2

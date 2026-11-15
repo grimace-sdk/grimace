@@ -1,0 +1,6 @@
+arch: arm
+version: 4.21
+platform: pocketpc
+device: devemu_wm2003se_vga
+source: Device Emulator - Windows Mobile 2003, Windows Mobile 2003 SE VGA, Windows Mobile 2003 SE VGA ROM PPC_2003_SE_VGA_WWE_ARMv4.bin in cerf-bundles/devemu_wm2003se_vga, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce421

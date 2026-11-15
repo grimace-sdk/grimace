@@ -1,0 +1,10 @@
+VNI_ActivityTimer
+VNI_CloseDiagnosticTP
+VNI_ExpirePhoneTimer
+VNI_OpenDiagnosticTP
+VNI_PhoneTimer
+VNI_RequestPowerState
+VNI_RequestReboot
+VNI_SendDisplayTP
+VNI_SetNetworkStatus
+VNI_SetOIDValue

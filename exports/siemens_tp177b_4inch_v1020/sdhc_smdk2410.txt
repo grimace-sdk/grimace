@@ -1,0 +1,8 @@
+SDH_Close
+SDH_Deinit
+SDH_IOControl
+SDH_Init
+SDH_Open
+SDH_PowerDown
+SDH_PowerUp
+SDH_PreDeinit

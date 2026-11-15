@@ -1,0 +1,4 @@
+BHICloseHCI
+BHIHCIChangeLocalNameIn
+BHIHandleHCICodes
+BHIOpenHCI

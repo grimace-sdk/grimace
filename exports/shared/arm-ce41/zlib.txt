@@ -1,0 +1,5 @@
+crc32
+inflate
+inflateEnd
+inflateInit_
+inflateReset

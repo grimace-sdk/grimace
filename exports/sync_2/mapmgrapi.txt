@@ -1,0 +1,9 @@
+MAPMgrDownloadSMS
+MAPMgrEnableSMS
+MAPMgrIsMAPEnabled
+MAPMgrIsMAPSupported
+MAPMgrIsSMSEnabled
+MAPMgrIsSMSSendDisabled
+MAPMgrSendRILSMS
+MAPMgrSendSMS
+MAPMgrSetMAPEnabled

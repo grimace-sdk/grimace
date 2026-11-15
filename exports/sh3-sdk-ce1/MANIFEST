@@ -3,3 +3,5 @@ version: 1
 platform: hpc
 device: 
 source: Windows CE 1.0 SDK SH3 import libraries (tools/mkexports.py)
+base: sh3-ce1
+without: atadisk audio calstore ctlpanel cxport dayview fatfs hhriched ircomm irdastk keybddr monthcal office parser pegobj pimui ppp rra_stm serial smtp sramdisk tcpstk termctrl touch unimodem

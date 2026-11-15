@@ -1,0 +1,12 @@
+ArtPointCallback
+GetVersionNumber
+TouchPanelCalibrateAPoint
+TouchPanelDisable
+TouchPanelDllEntry
+TouchPanelEnable
+TouchPanelGetDeviceCaps
+TouchPanelPowerHandler
+TouchPanelReadCalibrationAbort
+TouchPanelReadCalibrationPoint
+TouchPanelSetCalibration
+TouchPanelSetMode

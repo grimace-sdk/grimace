@@ -1,0 +1,11 @@
+IPM_Close
+IPM_Deinit
+IPM_DllEntry
+IPM_IOControl
+IPM_Init
+IPM_Open
+IPM_PowerDown
+IPM_PowerUp
+IPM_Read
+IPM_Seek
+IPM_Write

@@ -1,0 +1,4 @@
+DirectSoundCaptureCreate
+DirectSoundCaptureEnumerateW
+DirectSoundCreate
+DirectSoundEnumerateW

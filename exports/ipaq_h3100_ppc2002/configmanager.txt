@@ -1,0 +1,8 @@
+CfgUtilGetConfigDataTypeName
+CfgUtilGetElementName
+CfgUtilGetParmAttributeName
+CfgUtilParseConfigDataTypeName
+CfgUtilParseConfigSemanticTypeName
+DllCanUnloadNow
+DllGetClassObject
+DllMain

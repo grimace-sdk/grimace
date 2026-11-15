@@ -3,3 +3,5 @@ version: 2
 platform: hpc
 device: 
 source: Windows CE 2.0 SDK SH3 import libraries (tools/mkexports.py)
+base: sh3-ce2
+without: afd asform atadisk boxsel calstore cefobj cespell citydb ctlpanel cxport dayview ddi fatfs find imgdecmp ircomm irdastk keybddr labledit netui ntlmssp office parser pcl pegobj pimdlg pimprint pimres pimutil ppp prnport pxlfile riched20 richink rra_stm schannel secur32 serial smtp sramdisk tcpstk termctrl tnefutil touch unimodem waveapi wavedev webview

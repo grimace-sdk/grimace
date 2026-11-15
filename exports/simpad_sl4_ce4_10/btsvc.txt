@@ -1,0 +1,10 @@
+BTS_Close
+BTS_Deinit
+BTS_IOControl
+BTS_Init
+BTS_Open
+BTS_PowerDown
+BTS_PowerUp
+BTS_Read
+BTS_Seek
+BTS_Write

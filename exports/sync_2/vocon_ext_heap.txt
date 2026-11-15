@@ -1,0 +1,7 @@
+ph_CloseMallocHeap
+ph_CloseWin32PrivateHeap
+ph_CreateMallocHeap
+ph_CreateWin32PrivateHeap
+ph_DlHeapClose
+ph_DlHeapCreate
+ph_DlHeapFillStatistics

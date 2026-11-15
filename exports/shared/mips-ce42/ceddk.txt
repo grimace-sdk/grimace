@@ -1,0 +1,7 @@
++CalibrateStallCounter
++HalAllocateCommonBuffer
++HalFreeCommonBuffer
++HalTranslateSystemAddress
++StallExecution
++TransBusAddrToStatic
++TransBusAddrToVirtual

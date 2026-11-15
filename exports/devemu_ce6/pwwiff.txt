@@ -1,0 +1,8 @@
+DllCanUnloadNow
+DllGetClassObject
+DllMain
+ForeignToRtf32
+GetReadNames
+GetWriteNames
+InitConverter32
+RegisterApp

@@ -1,0 +1,16 @@
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer
+VCOMCloseAll
+VCOMGetDisableAppSwitch
+VCOMGetMaxDataSize
+VCOMGetStatus
+VCOMInitialize
+VCOMRecord
+VCOMSendRecordFileData
+VCOMSetCaller
+VCOMSetDisableAppSwitch
+VCOMSetMaxDataSize
+VCOMStop
+VCOMUninitialize

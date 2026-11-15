@@ -1,0 +1,13 @@
+AudioRecordSwitchGetStatus
+AudioRecordSwitchInitialize
+AudioRecordSwitchServiceThread
+REC_Close
+REC_Deinit
+REC_IOControl
+REC_Init
+REC_Open
+REC_PowerDown
+REC_PowerUp
+REC_Read
+REC_Seek
+REC_Write

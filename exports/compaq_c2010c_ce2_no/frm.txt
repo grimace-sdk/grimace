@@ -1,0 +1,15 @@
+FRM_Close
+FRM_Deinit
+FRM_IOControl
+FRM_Init
+FRM_Open
+FRM_Read
+FRM_Seek
+FRM_Write
+Read3912Register
+ReadCoreRegister
+Read_Memory
+Reboot
+Write3912Register
+WriteCoreRegister
+Write_Memory

@@ -1,0 +1,6 @@
+arch: sh3
+version: 2
+platform: hpc
+device: hitachi_hpw_200ec_ce2
+source: Hitachi Hpw 200EC CE2, Windows CE 2.0 ROM nk.bin in cerf-bundles/hitachi_hpw_200ec_ce2, read with CEM Porter's tools/compat-tables.mjs
+base: sh3-ce2

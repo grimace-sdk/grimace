@@ -1,0 +1,7 @@
+ResolverGetLocation
+ResolverInitialize
+ResolverIoctlCall
+ResolverIoctlClose
+ResolverIoctlOpen
+ResolverStop
+ResolverUnInitialize

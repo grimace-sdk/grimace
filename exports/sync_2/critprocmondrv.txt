@@ -1,0 +1,5 @@
+CPM_Close
+CPM_Deinit
+CPM_IOControl
+CPM_Init
+CPM_Open

@@ -1,0 +1,7 @@
+arch: mips
+version: 3
+platform: hpc2000
+device: nec_mobilepro_790_hpc2000
+source: NEC MobilePro 790, Handheld PC 2000 ROM nk.bin in cerf-bundles/nec_mobilepro_790_hpc2000, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce3
+without: addrdll adoce30 adocedb30 adoceoledb30 arp atlce300 aygshell browser caed caldll cdm cefrtl ceft clacker conndll doclist eeprom gxdma inkobj inreplce irsir irsqrt msdadc msdaer msnewmnu offnwmnu pimapi poweron predict recblob remocon shutil socket softkb spimmc taskdll usb vbarcall vcomctl voicebar voicectl

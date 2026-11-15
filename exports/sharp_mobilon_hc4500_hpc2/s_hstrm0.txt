@@ -1,0 +1,9 @@
+CloseActiveStream
+CloseStream
+Fgets
+FlushToFile
+OpenLocalFileStream
+SetupCommStream
+SetupStringStream
+hv_ahv_stream
+hv_fhv_stream

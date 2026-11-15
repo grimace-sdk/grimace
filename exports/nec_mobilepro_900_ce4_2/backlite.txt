@@ -1,0 +1,10 @@
+BAK_Close
+BAK_Deinit
+BAK_IOControl
+BAK_Init
+BAK_Open
+BAK_PowerDown
+BAK_PowerUp
+BAK_Read
+BAK_Seek
+BAK_Write

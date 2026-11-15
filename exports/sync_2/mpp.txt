@@ -1,0 +1,6 @@
+mpp_AddConfig
+mpp_Create
+mpp_Destroy
+mpp_GetParam
+mpp_Process
+mpp_SetParam

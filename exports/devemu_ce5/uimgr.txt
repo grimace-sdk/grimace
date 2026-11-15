@@ -1,0 +1,16 @@
+?AppendMenuEx@@YAHPAUHMENU__@@IIPBG@Z
+?CreatePopupMenuEx@@YAPAUHMENU__@@XZ
+?DestroyMenuEx@@YAHPAUHMENU__@@@Z
+?SUICreateUserInterface@@YAPAXPAUtagUSERINTERFACE@@@Z
+?SUIDestroyScreenTemplate@@YAHPAX@Z
+?SUIDestroyUserInterface@@YAHPAX@Z
+?SUIDisplayUserInterface@@YAHPAX@Z
+?SUIInitCustomControlsEx@@YAHPAUtagINITCUSTOMCONTROLSEX@@@Z
+?SUILoadImage@@YAPAUHBITMAP__@@PAXPBG1@Z
+?SUILoadScreenTemplate@@YAPAXPAXPBGP6AHPAUHWND__@@IIJ@Z@Z
+?SUISendDlgItemMessage@@YAJPAXHIIJ@Z
+?SUIShowScreen@@YAHPAXH@Z
+?SUI_DoMessageBox@@YAHPAUHWND__@@PAU_TAG_MESSAGEBOXINIT@@@Z
+?SUI_DoWaitDialog@@YAPAXPAUHWND__@@PAU_TAG_WAITBOXINIT@@@Z
+?SUI_EndWaitDialog@@YAXPAX@Z
+?TrackPopupMenuExEx@@YAHPAUHMENU__@@IHHHPAUHWND__@@PBUtagRECT@@@Z

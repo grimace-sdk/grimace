@@ -1,0 +1,7 @@
+CreateBiff5ToPxl20Changer
+CreatePxl20ToBiff5Changer
+Create_PXL10Write
+Create_PXL20Write
+Create_PXLRead
+DllCanUnloadNow
+DllGetClassObject

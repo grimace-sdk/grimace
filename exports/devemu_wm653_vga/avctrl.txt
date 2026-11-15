@@ -1,0 +1,8 @@
+RCD_Close
+RCD_Deinit
+RCD_IOControl
+RCD_Init
+RCD_Open
+RCD_Read
+RCD_Seek
+RCD_Write

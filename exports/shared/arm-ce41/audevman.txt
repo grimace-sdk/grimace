@@ -1,0 +1,8 @@
+DllMain
+audmGetInputDevice
+audmGetMixerDevice
+audmGetNumInputDevices
+audmGetNumMixerDevices
+audmGetNumOutputDevices
+audmGetOutputDevice
+audmInitialize

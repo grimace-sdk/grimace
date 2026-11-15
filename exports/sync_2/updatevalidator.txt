@@ -1,0 +1,17 @@
+CAB_Close
+CAB_Extract
+CAB_ExtractAll
+CAB_ExtractAndDeleteAll
+CAB_ExtractEx
+CAB_FindFirstFile
+CAB_FindNextFile
+CAB_Open
+CAB_VerifyFileSignature
+CloseValidator
+DisableSignatureChecks
+SetBaselineDirectory
+SetLoggingFlags
+SetPersistentRoot
+SetTempDirectory
+UpdateOrderFromFileList
+UpdateOrderFromPaths

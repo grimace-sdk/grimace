@@ -1,0 +1,4 @@
+SNR_DllEntry
+SnmpExtensionClose
+SnmpExtensionInit
+SnmpExtensionQuery

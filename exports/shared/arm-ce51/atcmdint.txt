@@ -1,0 +1,10 @@
+DeinitializeCommandInterpreter
+FreeInterpretStringResult
+FreeInterpretStringResultA
+FreeInterpretStringResultW
+InitializeCommandInterpreter
+InterpretString
+InterpretStringA
+InterpretStringW
+StartHandlingInputOutput
+StopHandlingInputOutput

@@ -1,0 +1,15 @@
+NDS_Close
+NDS_Deinit
+NDS_IOControl
+NDS_Init
+NDS_Open
+NDS_PowerDown
+NDS_PowerUp
+NDS_Read
+NDS_Seek
+NDS_Write
+USBDeviceAttach
+USBDeviceNotifications
+USBInstallDriver
+USBUnInstallDriver
+UsbDataExchange

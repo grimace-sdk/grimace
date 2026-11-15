@@ -1,0 +1,10 @@
+SMR_Close
+SMR_Deinit
+SMR_IOControl
+SMR_Init
+SMR_Open
+SMR_PowerDown
+SMR_PowerUp
+SMR_Read
+SMR_Seek
+SMR_Write

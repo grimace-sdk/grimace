@@ -1,0 +1,5 @@
+__compile_shader_source
+__free_il_streams
+__free_linker_data
+__free_shader_object
+__link_shaders

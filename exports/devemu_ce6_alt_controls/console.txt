@@ -1,0 +1,10 @@
+CON_Close
+CON_Deinit
+CON_IOControl
+CON_Init
+CON_Open
+CON_PowerDown
+CON_PowerUp
+CON_Read
+CON_Seek
+CON_Write

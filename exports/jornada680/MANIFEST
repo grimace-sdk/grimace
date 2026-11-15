@@ -1,0 +1,6 @@
+arch: sh3
+version: 2.11
+platform: hpcpro
+device: jornada680
+source: Jornada 680, Handheld PC Professional 3.0 ROM nk.bin in cerf-bundles/jornada680, read with CEM Porter's tools/compat-tables.mjs
+base: sh3-ce211

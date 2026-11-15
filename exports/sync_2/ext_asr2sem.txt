@@ -1,0 +1,4 @@
+a2s_Asr2SemAddNBestResult
+a2s_Asr2SemClose
+a2s_Asr2SemProcess
+a2s_CreateAsr2Sem

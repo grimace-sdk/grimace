@@ -1,0 +1,10 @@
+INS_Close
+INS_Deinit
+INS_IOControl
+INS_Init
+INS_Open
+INS_PowerDown
+INS_PowerUp
+INS_Read
+INS_Seek
+INS_Write

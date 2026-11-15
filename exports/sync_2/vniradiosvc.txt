@@ -1,0 +1,5 @@
+VNR_Close
+VNR_Deinit
+VNR_IOControl
+VNR_Init
+VNR_Open

@@ -1,0 +1,10 @@
+OSIF_AddObject
+OSIF_Close
+OSIF_CodeToString
+OSIF_FindObject
+OSIF_GetObjectById
+OSIF_GetObjectName
+OSIF_ModifyObject
+OSIF_Open
+OSIF_ReadObjects
+OSIF_WriteObject

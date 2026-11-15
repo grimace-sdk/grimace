@@ -1,0 +1,4 @@
++?classCColorDialog@CColorDialog@@2UCRuntimeClass@@B
++?classCPrintDialog@CPrintDialog@@2UCRuntimeClass@@B
++?messageMap@CColorDialog@@1UAFX_MSGMAP@@B
++?messageMap@CPrintDialog@@1UAFX_MSGMAP@@B

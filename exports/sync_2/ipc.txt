@@ -1,0 +1,11 @@
+Close
+Deinit
+DriverEntry
+IOControl
+Init
+Open
+PowerDown
+PowerUp
+Read
+Seek
+Write

@@ -1,0 +1,10 @@
+NOT_Close
+NOT_Deinit
+NOT_IOControl
+NOT_Init
+NOT_Open
+NOT_PowerDown
+NOT_PowerUp
+NOT_Read
+NOT_Seek
+NOT_Write

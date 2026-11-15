@@ -1,0 +1,6 @@
++ChangeStringToHalfWidth
++GetDefaultANSICodePage
++GetTemplateInfo
++NewFileFromTemplate
+-NewFromTemplateA
+-NewFromTemplateW

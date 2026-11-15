@@ -1,0 +1,11 @@
+DSS_Close
+DSS_Deinit
+DSS_IOControl
+DSS_Init
+DSS_Open
+DSS_PowerDown
+DSS_PowerUp
+DSS_Read
+DSS_Seek
+DSS_Write
+DSoundSDllEntry

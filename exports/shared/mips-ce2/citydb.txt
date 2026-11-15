@@ -1,0 +1,13 @@
+ClockGetCityData
+ClockGetDefaultHomeIndex
+ClockGetDefaultVisitingIndex
+ClockGetNumCities
+ClockGetNumTimezones
+ClockGetTimeZoneData
+PimCreateDialogParamClock
+PimDialogBoxParamClock
+PimDisplayMessageClock
+PimLoadAcceleratorsClock
+PimLoadBitmapClock
+PimLoadNonLocalStringClock
+PimLoadStringClock

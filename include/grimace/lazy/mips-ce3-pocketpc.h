@@ -1,0 +1,46 @@
+#define __grimace_lazy_AppendMenuA 1
+extern struct grimace_lazy_import __grimace_lazy_import_AppendMenuA;
+#define __grimace_lazy_CreateFontIndirectA 1
+extern struct grimace_lazy_import __grimace_lazy_import_CreateFontIndirectA;
+#define __grimace_lazy_CreateWindowExA 1
+extern struct grimace_lazy_import __grimace_lazy_import_CreateWindowExA;
+#define __grimace_lazy_DrawTextA 1
+extern struct grimace_lazy_import __grimace_lazy_import_DrawTextA;
+#define __grimace_lazy_EnumFontFamiliesA 1
+extern struct grimace_lazy_import __grimace_lazy_import_EnumFontFamiliesA;
+#define __grimace_lazy_GetClassInfoA 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetClassInfoA;
+#define __grimace_lazy_GetClassNameA 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetClassNameA;
+#define __grimace_lazy_GetDlgItemTextA 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetDlgItemTextA;
+#define __grimace_lazy_GetMenuItemInfoA 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetMenuItemInfoA;
+#define __grimace_lazy_GetObjectA 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetObjectA;
+#define __grimace_lazy_GetSystemDirectory 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetSystemDirectory;
+#define __grimace_lazy_GetTextExtentExPointA 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetTextExtentExPointA;
+#define __grimace_lazy_GetTextMetricsA 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetTextMetricsA;
+#define __grimace_lazy_GetWindowsDirectory 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetWindowsDirectory;
+#define __grimace_lazy_InsertMenuA 1
+extern struct grimace_lazy_import __grimace_lazy_import_InsertMenuA;
+#define __grimace_lazy_LoadBitmapA 1
+extern struct grimace_lazy_import __grimace_lazy_import_LoadBitmapA;
+#define __grimace_lazy_LoadIconA 1
+extern struct grimace_lazy_import __grimace_lazy_import_LoadIconA;
+#define __grimace_lazy_LoadImageA 1
+extern struct grimace_lazy_import __grimace_lazy_import_LoadImageA;
+#define __grimace_lazy_LoadMenuA 1
+extern struct grimace_lazy_import __grimace_lazy_import_LoadMenuA;
+#define __grimace_lazy_ModifyMenu 1
+extern struct grimace_lazy_import __grimace_lazy_import_ModifyMenu;
+#define __grimace_lazy_RegisterClassA 1
+extern struct grimace_lazy_import __grimace_lazy_import_RegisterClassA;
+#define __grimace_lazy_SetDlgItemTextA 1
+extern struct grimace_lazy_import __grimace_lazy_import_SetDlgItemTextA;
+#define __grimace_lazy_UnregisterClassA 1
+extern struct grimace_lazy_import __grimace_lazy_import_UnregisterClassA;

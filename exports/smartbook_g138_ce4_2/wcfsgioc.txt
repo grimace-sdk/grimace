@@ -1,0 +1,16 @@
+MacClose
+MacEventCreate
+MacEventDestroy
+MacEventWait
+MacFindFirstMatch
+MacFindFirstMatchEx
+MacFreeNames
+MacGetNames
+MacGetNamesEx
+MacIoctl
+MacMemoryAllocate
+MacMemoryFree
+MacMemorySize
+MacMessageCreateQueue
+MacMessageDestroyQueue
+MacOpen

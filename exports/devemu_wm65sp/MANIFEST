@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: smartphone
+device: devemu_wm65sp
+source: Device Emulator - Windows Mobile 6.5, Windows Mobile 6.5 Smartphone, Windows Mobile 6.5 Smartphone ROM Windows Mobile 6.5 Smartphone.bin in cerf-bundles/devemu_wm65sp, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52
+without: atlce300 cespell citydb commdlg compime distribution doclist find gdiplus inkctrls inkobj inkx mfcce300 msim netbios office olece300 pimdlg pwwiff pxl2xls pxlfile redir richink softkb touch vbarcall voicebar voicedll wisplite wlmtodayscreen xls2pxl

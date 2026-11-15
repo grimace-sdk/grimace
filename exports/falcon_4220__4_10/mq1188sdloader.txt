@@ -1,0 +1,11 @@
+MMC_Close
+MMC_Deinit
+MMC_DllEntry
+MMC_IOControl
+MMC_Init
+MMC_Open
+MMC_PowerDown
+MMC_PowerUp
+MMC_Read
+MMC_Seek
+MMC_Write

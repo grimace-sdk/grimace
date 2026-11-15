@@ -1,0 +1,6 @@
+DllMain
+PIC_Close
+PIC_Deinit
+PIC_IOControl
+PIC_Init
+PIC_Open

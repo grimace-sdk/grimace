@@ -1,0 +1,12 @@
+APK_Close
+APK_Deinit
+APK_IOControl
+APK_Init
+APK_Open
+APK_PowerDown
+APK_PowerUp
+APK_Read
+APK_Seek
+APK_Write
+KeyAPI_WinCapsDelete
+KeyAPI_WinCapsEntry

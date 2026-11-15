@@ -1,0 +1,7 @@
++EnumRecurAppointmentsEx
++GetMonthDataEx
++GetYearData
++ResetCache
++SendAttendeesUpdateEx
++StartTasksEnum
+-GetAppointmentCount

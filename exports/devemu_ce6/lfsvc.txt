@@ -1,0 +1,5 @@
+LOC_Close
+LOC_Deinit
+LOC_IOControl
+LOC_Init
+LOC_Open

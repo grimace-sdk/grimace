@@ -1,0 +1,10 @@
+OTG_Close
+OTG_Deinit
+OTG_IOControl
+OTG_Init
+OTG_Open
+OTG_PowerDown
+OTG_PowerUp
+OTG_Read
+OTG_Seek
+OTG_Write

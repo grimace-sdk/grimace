@@ -1,0 +1,9 @@
+DllUnload
+DriverEntry
+ExAllocatePool
+ExAllocatePoolWithTag
+ExFreePool
+ExQueueWorkItem
+RndisMIndicateReceive
+RndisMInitializeWrapper
+RndisMSendComplete

@@ -1,0 +1,13 @@
+RMCloseSession
+RMCreateDrmIdentity
+RMDeleteUseLicense
+RMInitSession
+RMIsMetroPackagedFile
+RMMcfCreatePackage
+RMMcfOpenPackage
+RMMcfOpenPackageWithEUL
+RMSetParentHwnd
+RMStgCreateDocfile
+RMStgOpenStorage
+RMStgOpenStorageWithEUL
+RMStgProtectStorage

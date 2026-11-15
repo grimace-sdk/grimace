@@ -1,0 +1,6 @@
+arch: arm
+version: 4.1
+platform: embedded
+device: simpad_sl4_ce4_10
+source: Siemens SIMpad SL4, Windows CE .NET, Windows CE .NET ROM S842-SI-INT-152-SL4.bin in cerf-bundles/simpad_sl4_ce4_10, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce41

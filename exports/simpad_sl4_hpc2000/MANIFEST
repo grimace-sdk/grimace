@@ -1,0 +1,7 @@
+arch: arm
+version: 3
+platform: hpc2000
+device: simpad_sl4_hpc2000
+source: Siemens SIMpad SL4, Handheld PC 2000, Handheld PC 2000 ROM S842-SI-INT-008-SL4.bin in cerf-bundles/simpad_sl4_hpc2000, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce3
+without: addrdll adoce30 adocedb30 adoceoledb30 arp atlce300 aygshell caldll cedrmutil cefrtl ceft clacker compime conndll cpqdsk doclist flashmgr inkobj inreplce irsqrt jpeglib msdadc msdaer msnewmnu offnwmnu pimapi pimstore ppcutil predict shutil taskdll usb vbarcall vcomctl voicebar voicectl

@@ -1,0 +1,8 @@
++CustomItemOptionsDlgProc
++InitializeCustomItem
++SHWZCGetNotificationState
++SHWZCGetPowerState
++SHWZCGetWiFiStatusString
++SHWZCIsPermanentNetwork
++SHWZCSetNotificationState
++SHWZCSetPowerState

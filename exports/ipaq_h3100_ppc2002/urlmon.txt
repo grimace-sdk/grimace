@@ -1,0 +1,14 @@
++RegisterMediaTypeClass
++RegisterMediaTypesW
++URLDownloadToCacheFileA
++URLDownloadToCacheFileW
++URLDownloadToFileA
++URLDownloadToFileW
++URLOpenBlockingStreamA
++URLOpenBlockingStreamW
++URLOpenPullStreamA
++URLOpenPullStreamW
++URLOpenStreamA
++URLOpenStreamW
+-CoInternetCreateSecurityManager
+-CoInternetCreateZoneManager

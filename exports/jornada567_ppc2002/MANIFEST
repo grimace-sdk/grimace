@@ -1,0 +1,7 @@
+arch: arm
+version: 3
+platform: pocketpc
+device: jornada567_ppc2002
+source: Jornada 567 PPC2002, Pocket PC 2002 ROM nk.bin in cerf-bundles/jornada567_ppc2002, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce3
+without: arp cefrtl ceft clacker conndll cpqdsk dayview flashmgr imap4 irsir jpeglib ldap mnthview offnwmnu ppcutil predict pxl_res smtp tnefex tnefu tnefutil usb voicepwr

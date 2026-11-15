@@ -1,0 +1,12 @@
++CreateAppointment2
++ExternalNotifyCalstore
++GetAppointmentReplicationID
++GetAppointmentUID
++GetCriticalChange
++GetDaysForLunarMonth
++GetGlobjIdFromAppointment
++GetLunarDate
++SetAppointmentReplicationID
+-EnumRecurAppointmentsEx
+-GetYearData
+-StartTasksEnum

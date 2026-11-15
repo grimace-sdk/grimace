@@ -1,0 +1,6 @@
+DRM_ND_Decrypt
+DRM_ND_DisposeOutputLevels
+DRM_ND_GetOutputLevels
+DRM_ND_RegisterStream
+DRM_ND_UnregisterStream
+DllMain

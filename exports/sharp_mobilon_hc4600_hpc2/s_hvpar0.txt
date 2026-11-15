@@ -1,0 +1,8 @@
+ExpandAmpersandP
+GetOverInTag
+GetToken
+InitHvLex
+InitLexVars
+ParseHtmlDoc
+SkipDeclaration
+html_3_comment_syntax_p

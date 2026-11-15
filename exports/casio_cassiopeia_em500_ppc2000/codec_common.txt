@@ -1,0 +1,17 @@
+??0DecodeState@@QAA@PAEGKHJHPAVCodec@@@Z
+??0DecodeState@@QAA@PAVAudIStream@@GHJHPAVCodec@@@Z
+??0DecodeState@@QAA@PAXGHJHPAVCodec@@@Z
+??1DecodeState@@UAA@XZ
+??_F__AnyPtrList@@QAAXXZ
+?CloseFile@DecodeState@@QAAXXZ
+?Handle@AudDynamicLoader@@QAAPAXXZ
+?InheritHandle@DecodeState@@QAAXPAVCodec@@@Z
+?IsOpen@DecodeState@@QAAHXZ
+?SetEOF@DecodeState@@QAAXXZ
+?SetSource@DecodeState@@QAAHPAEK@Z
+?SetSource@DecodeState@@QAAHPAX@Z
+?insert@CodecFactoryList@@QAAXJPAUCodecItem@@@Z
+?max_read_size@DecodeState@@QAAHXZ
+?remove@ArgsList@@QAAXJ@Z
+?remove@CodecFactoryList@@QAAXJ@Z
+?update_read_count@DecodeState@@QAAXH@Z

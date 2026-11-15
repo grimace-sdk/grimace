@@ -1,0 +1,8 @@
+VCS_Close
+VCS_Deinit
+VCS_IOControl
+VCS_Init
+VCS_Open
+VCS_Read
+VCS_Seek
+VCS_Write

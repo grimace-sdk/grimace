@@ -1,0 +1,11 @@
+DllMain
+WMD_Close
+WMD_Deinit
+WMD_IOControl
+WMD_Init
+WMD_Open
+WMD_PowerDown
+WMD_PowerUp
+WMD_Read
+WMD_Seek
+WMD_Write

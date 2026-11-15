@@ -1,0 +1,6 @@
+BatteryOverTempNotification
+CreateBattery0Notify
+JacketInitialize
+JacketPowerHandler
+RemoveBattery0Notify
+RemoveBatteryLowNotify

@@ -1,0 +1,6 @@
+BSQSTDLIB_Version
+BsqConvertToAscii
+BsqConvertToUnicode
+BsqLoadFileIntoBuffer
+BsqSaveBufferAsFile
+BsqSearchString

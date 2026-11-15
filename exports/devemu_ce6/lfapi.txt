@@ -1,0 +1,12 @@
+LocationClose
+LocationGetPluginInfoForReport
+LocationGetProvidersInfo
+LocationGetReport
+LocationGetResolversInfo
+LocationGetServiceState
+LocationOpen
+LocationPluginClose
+LocationPluginIOCTL
+LocationPluginOpen
+LocationRegisterForReport
+LocationUnRegisterForReport

@@ -1,0 +1,10 @@
++SimGetPhonebookCapabilities
++SimReadPhonebookEntries
++SimReadPhonebookTag
++SimWritePhonebookEntryEx
++SimWritePhonebookTag
++UseDTPTForProcess
++lineGetCurrentOperatorEx
++lineGetOperatorStatusEx
++lineRegisterEx
++lineSetPreferredOperatorEx

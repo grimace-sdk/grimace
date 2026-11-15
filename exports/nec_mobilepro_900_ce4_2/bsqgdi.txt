@@ -1,0 +1,7 @@
+BSQGDI_Version
+FindString
+GetFont
+GetFontEx
+ReplaceString
+_bsqCreateFont
+_bsqCreateFontEx

@@ -1,0 +1,5 @@
+-ActivateRunningSettings
+-GetRoamingSettings
+-IsSettingsRunning
+-LaunchAboutBox
+-LaunchSettingsRoaming

@@ -1,0 +1,6 @@
+arch: mips
+version: 2.01
+platform: palmsize
+device: philips_nino_300
+source: Philips Nino 300, Palm-size PC ROM nk.bin in cerf-bundles/philips_nino_300, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce201

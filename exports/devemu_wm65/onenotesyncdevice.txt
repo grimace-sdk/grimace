@@ -1,0 +1,6 @@
+FindObjects
+GetObjTypeInfo
+InitObjType
+ObjectNotify
+ReportStatus
+SyncData

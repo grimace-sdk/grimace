@@ -1,0 +1,10 @@
+BGS_Close
+BGS_Deinit
+BGS_IOControl
+BGS_Init
+BGS_Open
+BGS_PowerDown
+BGS_PowerUp
+BGS_Read
+BGS_Seek
+BGS_Write

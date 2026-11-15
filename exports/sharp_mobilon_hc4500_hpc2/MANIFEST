@@ -1,0 +1,7 @@
+arch: mips
+version: 2
+platform: hpc
+device: sharp_mobilon_hc4500_hpc2
+source: Sharp Mobilon HC4500 HPC2, Windows CE 2.0 ROM nk.bin in cerf-bundles/sharp_mobilon_hc4500_hpc2, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce2
+without: advbklt

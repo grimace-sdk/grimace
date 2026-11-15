@@ -1,0 +1,12 @@
+SyncpCheckForUpdatesNow
+SyncpConnectDOVPlugIn
+SyncpDisConnectDOVPlugIn
+SyncpQDeletePacket
+SyncpQExportoUSB
+SyncpQGetNoofPackets
+SyncpQGetServiceState
+SyncpQInsertPacket
+SyncpQListPackets
+SyncpQRetrievePacket
+SyncpRecieveLargeDOVPacket
+SyncpSendDOVPacket

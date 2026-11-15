@@ -1,0 +1,2 @@
+-RIL_ReadPhonebookEntriesEx
+-RIL_WritePhonebookEntryEx

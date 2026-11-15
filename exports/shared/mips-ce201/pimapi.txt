@@ -1,0 +1,8 @@
+HtmlStrcat
+HtmlStrcpy
+HtmlStrlen
+PimGetCalendarData
+PimGetTaskData
+VbGetCalendarData
+VbGetTaskData
+VbSecondsUntilNextAppt

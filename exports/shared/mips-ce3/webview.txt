@@ -1,0 +1,8 @@
+DllCanUnloadNow
+DllGetClassObject
+IsOnline
+LaunchWininetDlg
+PieLoadRegistrySettings
+ReadFromURLFile
+ReadFromURLFileEx
+WriteURLFile

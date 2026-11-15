@@ -1,0 +1,16 @@
+BuiltInKeypad_00000409
+IL_00000409
+KeybdDriverGetInfo
+KeybdDriverInitStates
+KeybdDriverInitializeEx
+KeybdDriverMapVirtualKey
+KeybdDriverPowerHandler
+KeybdDriverSetMode
+KeybdDriverVKeyToUnicode
+LayoutMgrActivateKeyboardLayout
+LayoutMgrGetKeyboardLayout
+LayoutMgrGetKeyboardLayoutList
+LayoutMgrGetKeyboardLayoutName
+LayoutMgrGetKeyboardType
+LayoutMgrLoadKeyboardLayout
+PS2_AT_00000409

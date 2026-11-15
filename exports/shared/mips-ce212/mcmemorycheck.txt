@@ -1,0 +1,4 @@
+MCMemoryCheck
+MCMemoryFreeSize
+MCMemorySize
+MCProgMemCheck

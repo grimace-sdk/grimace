@@ -1,0 +1,8 @@
+??0CCeDrmUtil@@QAA@XZ
+??4CCeDrmUtil@@QAAAAV0@ABV0@@Z
+?nCeDrmUtil@@3HA
+CeRapiGetDiskFreeSpaceEx
+CeRapiGetSerialNumber
+CeUtilGetSerialNumber
+DllMain
+fnCeDrmUtil

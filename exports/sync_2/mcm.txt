@@ -1,0 +1,5 @@
+MCM_Close
+MCM_Deinit
+MCM_IOControl
+MCM_Init
+MCM_Open

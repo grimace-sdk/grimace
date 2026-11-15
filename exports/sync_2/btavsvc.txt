@@ -1,0 +1,5 @@
+BTA_Close
+BTA_Deinit
+BTA_IOControl
+BTA_Init
+BTA_Open

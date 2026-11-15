@@ -1,0 +1,6 @@
+RDSClose
+RDSGetTemporaryStorageSize
+RDSNewData
+RDSOpen
+RDSReset
+RDSSetParsingOptions

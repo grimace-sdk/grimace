@@ -1,0 +1,5 @@
+MMG_Close
+MMG_Deinit
+MMG_IOControl
+MMG_Init
+MMG_Open

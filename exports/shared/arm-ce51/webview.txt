@@ -1,0 +1,11 @@
+DllCanUnloadNow
+DllGetClassObject
+IsNetcardInstalled
+IsOnline
+PieLoadCSSSettings
+PieLoadRegistrySettings
+ReadFromURLFile
+ReadFromURLFileEx
+ShutDown
+StartUp
+WriteURLFile

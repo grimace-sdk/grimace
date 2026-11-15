@@ -1,0 +1,11 @@
+CreateAppointmentCard
+CurrentCardDeleted
+EditAddressCard
+FreeEditData
+GetAddrPropertyText
+GetDefaultAreaCode
+InitEditData
+InitPimDlg
+MailCreateCard
+TransportViewEx
+UninitPimDlg

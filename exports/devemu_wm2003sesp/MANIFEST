@@ -1,0 +1,7 @@
+arch: arm
+version: 4.21
+platform: smartphone
+device: devemu_wm2003sesp
+source: Device Emulator - Windows Mobile 2003, Windows Mobile 2003 SE Smartphone, Windows Mobile 2003 SE Smartphone ROM SP_2003_SE_WWE_ARMv4.bin in cerf-bundles/devemu_wm2003sesp, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce421
+without: addrdll adoce30 adocedb30 adoceoledb30 adosync agiehandler atlce300 cefobj cespell citydb compime doclist eap eapchap eapol eaptls ethman imagelib infantry inkobj inkx inreplce jpeg malclmgr malcommon mfcce300 msgstore msim msimmsgr msimnetc msnewmnu ndisuio netbios office olece300 pimapi pimdlg pwwiff pxl2xls pxlfile redir richink softkb spnego termctrl transcribersip trarecoenu vbarcall voicebar voicedll wldap32 wzcsapi wzcsvc xls2pxl

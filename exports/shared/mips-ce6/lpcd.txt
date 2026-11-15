@@ -1,0 +1,4 @@
+-LPCDInitialize
+-LPCDUninitialize
+-LPC_PowerDown
+-LPC_PowerUp

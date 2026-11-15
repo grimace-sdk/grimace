@@ -1,0 +1,3 @@
+CreateInstance
+DllCanUnloadNow
+DllGetClassObject

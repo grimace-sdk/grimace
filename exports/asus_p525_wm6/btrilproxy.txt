@@ -1,0 +1,10 @@
+BTR_Close
+BTR_Deinit
+BTR_IOControl
+BTR_Init
+BTR_Open
+BTR_PowerDown
+BTR_PowerUp
+BTR_Read
+BTR_Seek
+BTR_Write

@@ -1,0 +1,14 @@
+CIDFindContact
+CloseCSPStateData
+DllCanUnloadNow
+DllGetClassObject
+EscapeCfgMgrCharacteristic
+ForwardMessageToAllChildren
+GetDbaseSource
+IsImmediateDialRequestRequired
+NewSMS
+OneStopFactory
+OpenCSPStateData
+PreprocessDialRequest
+StartContacts
+UnescapeCfgMgrCharacteristic

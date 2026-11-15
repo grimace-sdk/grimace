@@ -1,0 +1,11 @@
++InitializeCustomItem
++SHWZCGetNotificationState
++SHWZCGetPowerState
++SHWZCGetWiFiStatusString
++SHWZCGetWifiTimeoutPeriod
++SHWZCIsEAPExtensionValid
++SHWZCIsPermanentNetwork
++SHWZCSetNotificationState
++SHWZCSetPowerState
++SHWZCSetWifiTimeoutPeriod
++SHWZCValidateSecurityConfig

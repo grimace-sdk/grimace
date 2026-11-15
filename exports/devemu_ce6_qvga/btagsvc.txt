@@ -1,0 +1,12 @@
+BAG_Close
+BAG_Deinit
+BAG_IOControl
+BAG_Init
+BAG_Open
+BAG_PowerDown
+BAG_PowerUp
+BAG_Read
+BAG_Seek
+BAG_Write
+OnBthDeviceAdded
+OnBthDeviceRemoved

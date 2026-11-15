@@ -1,0 +1,13 @@
+audioin_Close
+audioin_GetFrame
+audioin_HasFrame
+audioin_Open
+audioin_ReturnFrame
+audioin_Start
+audioin_Stop
+audioout_Break
+audioout_Close
+audioout_Open
+audioout_PutSamples
+audioout_Start
+audioout_Stop

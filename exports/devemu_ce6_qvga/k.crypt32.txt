@@ -1,0 +1,5 @@
+-CryptPFXDllMain
+-PFXExportCertStoreEx
+-PFXImportCertStore
+-PFXIsPFXBlob
+-PFXVerifyPassword

@@ -1,0 +1,17 @@
++CaptureDumpFileOnDevice2
++CeReportFault
++ConvertThreadToFiber
++CreateCursor
++CreateFiber
++DeleteFiber
++DestroyCursor
++DisablePixelDoubling
++GetCurrentFiber
++GetFiberData
++LASSClose
++LASSGetResult
++LASSGetValue
++SecureWipeAllVolumes
++SetCriticalProcess
++SwitchToFiber
++VerifyUserAsync

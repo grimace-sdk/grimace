@@ -1,0 +1,7 @@
+BSQSHELL_Version
+BsqLaunchApp
+BsqQueryTempFileInfoDlg
+BsqSelectFileDlg
+BsqSelectFolderDlg
+BsqSelectFolderDlgEx
+BsqWalkFileFolder

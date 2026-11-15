@@ -1,0 +1,4 @@
++WSAAsyncGetAddrInfo
++WSAAsyncGetHostByName
++WSAAsyncSelect
++WSACancelAsyncRequest

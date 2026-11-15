@@ -1,0 +1,12 @@
+Close
+Deinit
+IOControl
+Init
+Open
+PowerDown
+PowerUp
+PreClose
+PreDeinit
+Read
+Seek
+Write

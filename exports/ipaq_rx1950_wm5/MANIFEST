@@ -1,0 +1,7 @@
+arch: arm
+version: 5.1
+platform: pocketpc
+device: ipaq_rx1950_wm5
+source: iPAQ RX1950 WM5, Windows Mobile 5 ROM CEOS.nbf in cerf-bundles/ipaq_rx1950_wm5, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce51
+without: amdnord atcmdint btagsvc bthatci ccoredrv ccoreutl celltsp com16550 cspvoice deviceemulator_lcd dmatrans emulserv fakeril isr16550 kbdmouse ne2000 pcc_serv pcc_smdk2410 pcmcia phone pwrbtn2410 ramfmd ril s3c2410x_wavedev serdma serdmaasplugin serial_smdk2410 siminit simsec simtkit sms sms_providers supsvcs vcefsd

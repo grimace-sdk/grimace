@@ -1,0 +1,5 @@
+AcquireNodeMonitorSessionMutex
+CalculateCacheStatusTestHook
+OmaDmInitiateSessionWithNodeMonitor
+OmaDmInitiateSessionWithNodeMonitorWithSessionId
+ReleaseNodeMonitorSessionMutex

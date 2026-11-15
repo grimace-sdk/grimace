@@ -3,3 +3,4 @@ version: 2
 platform: autopc
 device: joyride
 source: Clarion Joyride ROM, Auto PC 2.02 build 9386.328, large screen (tools/mkexports.py)
+base: x86-ce2

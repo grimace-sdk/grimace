@@ -1,0 +1,10 @@
+GLD_Close
+GLD_Deinit
+GLD_IOControl
+GLD_Init
+GLD_Open
+GLD_PowerDown
+GLD_PowerUp
+GLD_Read
+GLD_Seek
+GLD_Write

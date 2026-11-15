@@ -1,0 +1,2 @@
+VerifySyncSchedule
+c_wszProtectedActiveSyncKey

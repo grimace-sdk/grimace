@@ -1,0 +1,5 @@
+DHCPServerFreePacket
+DHCPServerProcessPacket
+DHCPServerSessionDelete
+DHCPServerSessionNew
+DllMain

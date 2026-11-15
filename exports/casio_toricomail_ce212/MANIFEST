@@ -1,0 +1,7 @@
+arch: mips
+version: 2.12
+platform: embedded
+device: casio_toricomail_ce212
+source: Casio Toricomail, Windows CE ROM nk.bin in cerf-bundles/casio_toricomail_ce212, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce212
+without: mfcce212_ca

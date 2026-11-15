@@ -1,0 +1,12 @@
+GIO_Close
+GIO_Deinit
+GIO_IOControl
+GIO_Init
+GIO_Open
+GIO_PowerDown
+GIO_PowerUp
+GIO_PreClose
+GIO_PreDeinit
+GIO_Read
+GIO_Seek
+GIO_Write

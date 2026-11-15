@@ -1,0 +1,14 @@
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer
+STK_Close
+STK_Deinit
+STK_IOControl
+STK_Init
+STK_Open
+STK_Read
+STK_Seek
+STK_Write
+ShowSimUI
+StartSimToolkit

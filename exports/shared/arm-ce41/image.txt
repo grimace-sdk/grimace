@@ -1,0 +1,14 @@
+??0Image@@QAA@XZ
+??1Image@@QAA@XZ
+??4Image@@QAAAAV0@ABV0@@Z
+?Channels@Image@@QAAHXZ
+?Decode@Image@@AAAHPAUHDC__@@HAAUtagRECT@@1@Z
+?Depth@Image@@QAAHXZ
+?Dither@Image@@QAAHH@Z
+?Flip@Image@@QAAHPAW4FLIP@1@@Z
+?Open@Image@@QAAHPAW4FType@1@PAG@Z
+?Open@Image@@QAAHPAW4FType@1@PAVStream@@@Z
+?Open@Image@@QAAHPAW4FType@1@PAXH@Z
+?Rotate@Image@@QAAHPAH@Z
+?Scale@Image@@QAAHPAUHDC__@@HAAUtagRECT@@1@Z
+?Size@Image@@QAAHPAUtagSIZE@@@Z

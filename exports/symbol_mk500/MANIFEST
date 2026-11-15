@@ -1,0 +1,7 @@
+arch: arm
+version: 5
+platform: embedded
+device: symbol_mk500
+source: Symbol MK500, Windows CE 5.0 ROM flash.bin in cerf-bundles/symbol_mk500, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce5
+without: dwxfer hd osaxst0 serial shellcelog

@@ -1,0 +1,4 @@
+GetObjTypeInfo
+InitObjType
+ObjectNotify
+ReportStatus

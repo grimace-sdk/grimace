@@ -1,0 +1,5 @@
+MTP_Close
+MTP_Deinit
+MTP_IOControl
+MTP_Init
+MTP_Open

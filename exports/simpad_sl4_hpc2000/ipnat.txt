@@ -1,0 +1,13 @@
+IPNat
+LanaUp
+NAT_Close
+NAT_Deinit
+NAT_IOControl
+NAT_Init
+NAT_Open
+NAT_PowerDown
+NAT_PowerUp
+NAT_Read
+NAT_Seek
+NAT_Write
+NatConfigure

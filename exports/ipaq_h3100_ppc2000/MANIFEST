@@ -1,0 +1,6 @@
+arch: arm
+version: 3
+platform: pocketpc
+device: ipaq_h3100_ppc2000
+source: iPAQ H3100 PPC2000, Pocket PC 2000 ROM NK_MLite165USA.nbf in cerf-bundles/ipaq_h3100_ppc2000, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce3

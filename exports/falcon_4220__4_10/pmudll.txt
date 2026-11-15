@@ -1,0 +1,13 @@
+AccessPMUReg
+AllocatePMU
+GetCPUId
+GetCurrentCoreClockFrequency
+GetNominalCoreClockFrequency
+GetNumberOfPossibleCoreClockFrequencies
+GetOEMConfigData
+GetPossibleCoreClockFrequencies
+ReleasePMUResources
+RemovePMUInterruptCallback
+SaveSetAndLockCoreClockFrequency
+SetPMUInterruptCallback
+UnlockAndRestoreCoreClockFrequency

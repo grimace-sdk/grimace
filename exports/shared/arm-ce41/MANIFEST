@@ -1,0 +1,4 @@
+arch: arm
+version: 4.1
+base: arm-ce3
+without: addrdll addrstor adoce30 adocedb30 adoceoledb30 adosync arp atlce300 aygshell caldll calstore ce_aud_file ce_faccess ce_flash_image ce_headers_dll ce_player_dll ce_prog_tree ce_streams_lib cedrmutil cefrtl ceft citydb clacker codec_common compime conndll cpqdsk d_aud1 dayview ddi doclist ebookfx ebriched fatfs find flashmgr imap4 inkobj inkx inreplce ircomm irdastk irsir irsqrt jpeglib keybddr ldap mfcce300 mnthview msdadc msdaer msnewmnu msxml note_prj offnwmnu olece300 pegobj pimapi pimdlg pimres pimstore pimutil ppcutil predict pvbform2 pvbhost2 pxl2xls pxl_res pxlfile richink rsabase shutil smtp taskdll tnefex tnefu tnefutil toolhelp touch usb vbarcall vbscript vcomctl voicebar voicectl voicedll voicepwr xls2pxl

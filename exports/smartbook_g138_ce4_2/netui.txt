@@ -1,0 +1,2 @@
+-CloseUsernamePasswordDialog
+-GetUsernamePasswordEx

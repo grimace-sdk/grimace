@@ -1,0 +1,5 @@
+?FwGetInstanceOs@@YAPAXKK@Z
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer

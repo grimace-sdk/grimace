@@ -1,0 +1,2 @@
++RIL_GetPositionInfo
++RIL_GetSMSNLTableList

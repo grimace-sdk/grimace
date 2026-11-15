@@ -1,0 +1,6 @@
+MMCBackup
+MMCCheckPassword
+MMCDeleteBackupData
+MMCFindBackupData
+MMCGetPassword
+MMCRestore

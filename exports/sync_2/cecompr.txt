@@ -1,0 +1,6 @@
+XPR_CompressClose
+XPR_CompressEncode
+XPR_CompressOpen
+XPR_DecompressClose
+XPR_DecompressDecode
+XPR_DecompressOpen

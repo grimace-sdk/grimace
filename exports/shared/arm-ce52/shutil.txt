@@ -1,0 +1,9 @@
++GetPerfMarkerHandle
++ShellBeginDuration
++ShellBeginDurationByIndex
++ShellEndDuration
++ShellEndDurationByIndex
++ShellLogData
++ShellLogDataConditional
++ShellPerfClose
++ShellPerfOpen

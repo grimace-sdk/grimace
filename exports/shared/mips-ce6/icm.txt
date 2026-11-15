@@ -1,0 +1,8 @@
+ICClose
+ICDecompress
+ICGetInfo
+ICImageDecompress
+ICInfo
+ICLocate
+ICOpen
+ICSendMessage

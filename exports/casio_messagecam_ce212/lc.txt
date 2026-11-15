@@ -1,0 +1,8 @@
+lc_8check
+lc_BcdToHex
+lc_Calc
+lc_GetCalMem
+lc_GetState
+lc_HexToBcd
+lc_PluralIn
+lc_SetCalMem

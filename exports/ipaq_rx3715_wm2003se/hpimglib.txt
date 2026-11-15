@@ -1,0 +1,14 @@
+Effect
+GetEffect16
+JpegReadComment
+JpegWriteComment
+LoadImageFromFile
+LoadImageFromFileEx
+RotateBitmap
+RotateJPEG
+SaveImg
+SaveImgClose
+SaveImgCreate
+SaveImgEx
+SaveImgWrite
+ScaleBitmap

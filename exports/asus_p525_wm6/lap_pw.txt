@@ -1,0 +1,11 @@
+DeinitLAP
+InitLAP
+LAPCancelVerifySequence
+LAPCreateEnrollmentConfigDialog
+LAPDisplayCodeword
+LAPDisplayPreWipe
+LAPLockoutUser
+VerifyUser
+VerifyUserStart
+VerifyUserStop
+VerifyUserToTop

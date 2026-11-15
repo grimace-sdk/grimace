@@ -1,0 +1,14 @@
+PmDevicePowerNotify
+PmGetDevicePower
+PmGetSystemPowerState
+PmInit
+PmNotify
+PmPowerHandler
+PmRegisterPowerRelationship
+PmReleasePowerRelationship
+PmReleasePowerRequirement
+PmRequestPowerNotifications
+PmSetDevicePower
+PmSetPowerRequirement
+PmSetSystemPowerState
+PmStopPowerNotifications

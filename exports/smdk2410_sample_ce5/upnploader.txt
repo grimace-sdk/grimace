@@ -1,0 +1,10 @@
+UPL_Close
+UPL_Deinit
+UPL_IOControl
+UPL_Init
+UPL_Open
+UPL_PowerDown
+UPL_PowerUp
+UPL_Read
+UPL_Seek
+UPL_Write

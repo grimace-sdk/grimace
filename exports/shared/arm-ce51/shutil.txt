@@ -1,0 +1,13 @@
+CCF_CreateInstance
+CCF_GCOSearch
+CCF_QueryInterface
+CUnk_QISearch
+DSASearchKeyStr
+SSASearchKeyPtr
+SearchMapInt
+StgMedium_GetBytes
+StgMedium_GetOID
+StgMedium_GetTSTR
+StgMedium_PutBytes
+StgMedium_PutOID
+StgMedium_PutTSTR

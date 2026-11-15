@@ -1,0 +1,2 @@
+g_OIDTable
+g_OIDTableSize

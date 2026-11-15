@@ -1,0 +1,4 @@
+-RIL_ChangeCallBarringPasswordEx
+-RIL_DataDormant
+-RIL_ReadPhonebookEntriesEx
+-RIL_WritePhonebookEntryEx

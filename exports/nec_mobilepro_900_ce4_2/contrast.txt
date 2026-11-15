@@ -1,0 +1,10 @@
+PWM_Close
+PWM_Deinit
+PWM_IOControl
+PWM_Init
+PWM_Open
+PWM_PowerDown
+PWM_PowerUp
+PWM_Read
+PWM_Seek
+PWM_Write

@@ -1,0 +1,2 @@
+MEnrollDeviceByScheduler
+MEnrollIsDeviceManaged

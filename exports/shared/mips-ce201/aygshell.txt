@@ -1,0 +1,10 @@
+DllMain
+SHCloseApps
+SHFileNotifyAdd
+SHFileNotifyFree
+SHFileNotifyRemove
+SHGetAppKeyAssoc
+SHImListPopup
+SHInitExtraControls
+SHSetAppKeyWndAssoc
+SHSipInfo

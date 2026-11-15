@@ -1,0 +1,12 @@
+MMQ_Close
+MMQ_Deinit
+MMQ_IOControl
+MMQ_Init
+MMQ_Open
+MMQ_PowerDown
+MMQ_PowerUp
+MMQ_Read
+MMQ_Seek
+MMQ_Write
+MSMQDInitialize
+MSMQDUnInitialize

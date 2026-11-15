@@ -1,0 +1,4 @@
+FATFS_Deinit
+FATFS_Init
+FSD_Deinit
+FSD_Init

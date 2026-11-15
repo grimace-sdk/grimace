@@ -1,0 +1,11 @@
+DBPosBeginTrans
+DBPosClose
+DBPosDelete
+DBPosDeleteAll
+DBPosEndTrans
+DBPosFirst
+DBPosNext
+DBPosOpen
+DBPosRead
+DBPosResetIterator
+DBPosWrite

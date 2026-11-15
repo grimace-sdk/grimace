@@ -1,0 +1,3 @@
+kgsl_get_ist_priority
+kgsl_get_z430_memory_amount
+kgsl_get_z430_memory_amount_ex

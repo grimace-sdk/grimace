@@ -1,0 +1,16 @@
+??0CPhotoEdit@@QAA@XZ
+??1CPhotoEdit@@UAA@XZ
+??_7CPhotoEdit@@6B@
+??_C@_1CG@JKGB@?$AAP?$AAh?$AAo?$AAt?$AAo?$AAE?$AAd?$AAi?$AAt?$AAW?$AAi?$AAn?$AAd?$AAC?$AAl?$AAa?$AAs?$AAs?$AA?$AA@
+?ChgArrowDisp@CPhotoEdit@@AAAXXZ
+?ClassName@CPhotoEdit@@SA?AV?$basic_string@G@std@@XZ
+?CommandReturn@CPhotoEdit@@AAAXPAG@Z
+?CommandSet@CPhotoEdit@@AAAXPAG@Z
+?CreWindow@CPhotoEdit@@QAAPAUHWND__@@PAUHINSTANCE__@@PAU2@HHHHPAUtagPOINT@@2@Z
+?CreateWind@CPhotoEdit@@QAAPAUHWND__@@XZ
+?MsgWindChg@CPhotoEdit@@AAAXXZ
+?RegisterClassW@CPhotoEdit@@CAGXZ
+?WinApClose@CPhotoEdit@@AAAXJ@Z
+?WindowProc@CPhotoEdit@@EAAJIIJ@Z
+Get_PhotoEdit_hWnd
+MCPhotoEditDlg

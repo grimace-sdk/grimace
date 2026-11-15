@@ -1,0 +1,17 @@
+DllMain
+GetMessageCountInformation
+MW_GetMessageInfo
+MW_GetSize
+MW_Read
+MW_RecognizeMessage
+MW_Send
+Raw_GetMessageInfo
+Raw_GetSize
+Raw_Read
+Raw_RecognizeMessage
+Raw_Send
+Text_GetMessageInfo
+Text_GetSize
+Text_Read
+Text_RecognizeMessage
+Text_Send

@@ -1,0 +1,7 @@
+SHC_Close
+SHC_Deinit
+SHC_IOControl
+SHC_Init
+SHC_Open
+SHC_PowerDown
+SHC_PowerUp

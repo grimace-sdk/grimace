@@ -1,0 +1,4 @@
++NewFromTemplateA
++NewFromTemplateW
+-GetTemplateInfo
+-NewFileFromTemplate

@@ -1,0 +1,15 @@
+DriverEntry
+SWI_Close
+SWI_Deinit
+SWI_IOControl
+SWI_Init
+SWI_Open
+SWI_PowerDown
+SWI_PowerUp
+SWI_Read
+SWI_Seek
+SWI_Write
+USBDeviceAttach
+USBInstallDriver
+strtol
+vsprintf

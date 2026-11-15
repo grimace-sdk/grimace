@@ -14,8 +14,12 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXPORTS = os.path.join(ROOT, "exports")
-WIN32_WCE = {"1": 100, "1.01": 101, "2": 200, "3": 300, "5.2": 502, "6": 600}
-VERSION_NAMES = {100: "1.0", 101: "1.01", 200: "2.0", 300: "3.0", 502: "5.2", 600: "6.0"}
+WIN32_WCE = {"1": 100, "1.01": 101, "2": 200, "2.01": 201, "2.11": 211, "2.12": 212, "3": 300, "4.1": 410, "4.2": 420, "4.21": 421, "5": 500,
+             "5.1": 501, "5.2": 502, "6": 600}
+VERSION_NAMES = {100: "1.0", 101: "1.01", 200: "2.0", 201: "2.01", 211: "2.11", 212: "2.12", 300: "3.0", 410: "4.1", 420: "4.2", 421: "4.21",
+                 500: "5.0", 501: "5.1", 502: "5.2", 600: "6.0"}
+TARGET_VERSIONS = {100, 101, 200, 300, 502, 600}
+SHARED = os.path.join(EXPORTS, "shared")
 
 
 class Manifest:
@@ -35,10 +39,7 @@ class Manifest:
 
     def dlls(self):
         if self._dlls is None:
-            self._dlls = {}
-            for path in sorted(glob.glob(os.path.join(self.folder, "*.txt"))):
-                dll = os.path.splitext(os.path.basename(path))[0]
-                self._dlls[dll] = {line.strip() for line in open(path) if line.strip()}
+            self._dlls = resolve(self.folder)
         return self._dlls
 
     def names(self):
@@ -60,6 +61,14 @@ class Target:
             text += " %s" % self.platform
         return text
 
+    def file_name(self):
+        name = "%s-ce%s" % (self.arch, [key for key, value in WIN32_WCE.items() if value == self.version][0].replace(".", ""))
+        if self.device:
+            return name + "-" + self.device
+        if self.platform:
+            return name + "-" + self.platform
+        return name
+
     def condition(self):
         terms = ["GRIMACE_WCE == %d" % self.version, "GRIMACE_%s" % self.arch.upper()]
         if self.device:
@@ -71,6 +80,31 @@ class Target:
             elif len(platforms(self.arch)) > 1:
                 terms.append("!defined(GRIMACE_PLATFORM)")
         return " && ".join(terms)
+
+
+@functools.cache
+def resolve_layer(folder):
+    fields = {}
+    for line in open(os.path.join(folder, "MANIFEST")):
+        key, _, value = line.partition(":")
+        fields[key.strip()] = value.strip()
+    dlls = {dll: set(names) for dll, names in resolve_layer(os.path.join(SHARED, fields["base"])).items()} if fields.get("base") else {}
+    for dll in fields.get("without", "").split():
+        dlls.pop(dll, None)
+    for path in sorted(glob.glob(os.path.join(folder, "*.txt"))):
+        dll = os.path.basename(path)[:-4]
+        lines = [line.strip() for line in open(path) if line.strip()]
+        if lines and all(line[0] in "+-" for line in lines):
+            names = dlls.setdefault(dll, set())
+            names |= {line[1:] for line in lines if line[0] == "+"}
+            names -= {line[1:] for line in lines if line[0] == "-"}
+        else:
+            dlls[dll] = set(lines)
+    return dlls
+
+
+def resolve(folder):
+    return {dll: set(names) for dll, names in resolve_layer(folder).items()}
 
 
 @functools.cache
@@ -116,6 +150,8 @@ def targets():
     """Every target the headers distinguish: each architecture and version with a list, plus each platform and device."""
     found = []
     for manifest in sorted(manifests(), key=lambda manifest: (manifest.arch, manifest.version)):
+        if manifest.version not in TARGET_VERSIONS:
+            continue
         generic = Target(manifest.arch, manifest.version)
         if not any(target.condition() == generic.condition() for target in found):
             found.append(generic)
@@ -123,6 +159,8 @@ def targets():
                 for platform in sorted({other.platform for other in manifests() if other.arch == manifest.arch and other.version == manifest.version}):
                     found.append(Target(manifest.arch, manifest.version, platform=platform))
     for manifest in manifests():
+        if manifest.version not in TARGET_VERSIONS:
+            continue
         for device in manifest.devices:
             found.append(Target(manifest.arch, manifest.version, device=device))
     return found
@@ -155,6 +193,7 @@ if __name__ == "__main__":
     parser.add_argument("--platform")
     parser.add_argument("--device")
     parser.add_argument("--output", help="write <dll>.txt (direct imports) and <dll>.lazy (lazy imports) here")
+    parser.add_argument("--lists", action="store_true", help="print the lists the target may meet")
     arguments = parser.parse_args()
     if not arguments.arch:
         for manifest in manifests():
@@ -162,6 +201,10 @@ if __name__ == "__main__":
                                                                    " ".join(manifest.devices) or "-", len(manifest.names()), manifest.source))
         sys.exit(0)
     target = Target(arguments.arch, WIN32_WCE[arguments.version], arguments.platform or None, arguments.device or None)
+    if arguments.lists:
+        for manifest in reachable(target):
+            print("%-34s CE %-5s %-11s %s" % (manifest.name, VERSION_NAMES[manifest.version], manifest.platform, " ".join(manifest.devices)))
+        sys.exit(0)
     try:
         found = imports(target)
     except LookupError as error:
@@ -170,4 +213,8 @@ if __name__ == "__main__":
         write_imports(target, arguments.output)
     direct = sum(len(names[0]) for names in found.values())
     lazy = sum(len(names[1]) for names in found.values())
-    print("%s: %d direct and %d lazy imports from %s" % (target.label(), direct, lazy, ", ".join(manifest.name for manifest in reachable(target))))
+    lists = [manifest.name for manifest in reachable(target)]
+    source = ", ".join(lists) if len(lists) <= 4 else "%d lists (python3 tools/manifests.py --lists --arch %s --version %s%s%s)" % (
+        len(lists), target.arch, [key for key, value in WIN32_WCE.items() if value == target.version][0],
+        " --platform " + target.platform if target.platform else "", " --device " + target.device if target.device else "")
+    print("%s: %d direct and %d lazy imports from %s" % (target.label(), direct, lazy, source))

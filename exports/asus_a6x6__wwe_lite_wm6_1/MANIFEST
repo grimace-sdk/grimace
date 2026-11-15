@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: pocketpc
+device: asus_a6x6__wwe_lite_wm6_1
+source: Asus A6X6 WWE Lite WM6 1, Windows Mobile 6.1 WWE Lite by Greymen ROM ASUS_A6X6_WM61.nb0 in cerf-bundles/asus_a6x6__wwe_lite_wm6_1, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52
+without: actsyncc alerter amdnord appinstaller atadisk avrcp_mpplugin backlight battdrvr btagsvc bthagphonebook bthamb bthcsr bthpbap bthsc bthuart caifmux ccoredrv ccoreutl cebits celltsp cspvoice d3dmref deviceemulator_lcd distribution dlregcsp dmatrans downloadservice downloadserviceprocess dwui dwxfer emulserv hd historyapi imgupdatecsp installservice ipsec ipsecsvc ipsecvpn ipsecvpncsp ipsecvpnvnic kbdmouse l2tp mencfilt mscoree2_0 ne2000 netcfagl2_0 nleddrvr nodemoncsp nodemoninitsess ntlmssp_svc nullcam osaxst0 pcc_smdk2410 phone ppp pwrbtn2410 ramfmd ril rilgsm rndisfn s3c2410x_wavedev scard serdma serdmaasplugin serial_smdk2410 shptutil siminit simsec simtkit sio950 sms sms_providers sqmce sqmconn sqmsvc supsvcs tdetclient uiservice uiserviceplugin uptime vcefsd vei wcestreambt wendyser winscard wlmcommonsettings wlmcontactsdatabase wlmcontactsextension wlmcontactsplugin wlmcontactsprovider wlmdeckcode wlmhscontainercode wlmhsmailcode wlmhsmecode wlmhsmessengercode wlmhssearchbarcode wlmhssplashcode wlmhssynccode wlmmailplugin wlmmailtransport wlmmessengerplugin wlmprofileplugin wlmservice wlmshared wlmspacesextension wlmspacesplugin wlmtodayscreen wlmuiframework

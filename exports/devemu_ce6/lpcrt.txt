@@ -1,0 +1,17 @@
+CeGenerateGUID
+CeGenerateLUID
+NtAcceptConnectPort
+NtClosePort
+NtCompleteConnectPort
+NtConnectPort
+NtCreatePort
+NtListenPort
+NtReadRequestData
+NtReplyPort
+NtReplyWaitReceivePort
+NtReplyWaitReceivePortEx
+NtReplyWaitReplyPort
+NtRequestPort
+NtRequestWaitReplyPort
+NtRequestWaitReplyPortEx
+NtWriteRequestData

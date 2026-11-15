@@ -1,0 +1,12 @@
+FSDMGR_CreateFileHandle
+FSDMGR_CreateSearchHandle
+FSDMGR_DeinitEx
+FSDMGR_DeregisterVolume
+FSDMGR_GetDiskInfo
+FSDMGR_GetVolumeName
+FSDMGR_InitEx
+FSDMGR_ReadDisk
+FSDMGR_ReadDiskEx
+FSDMGR_RegisterVolume
+FSDMGR_WriteDisk
+FSDMGR_WriteDiskEx

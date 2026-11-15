@@ -1,0 +1,11 @@
+AllocateSpinLock
+LEP_Close
+LEP_Deinit
+LEP_IOControl
+LEP_Init
+LEP_Open
+LEP_PowerDown
+LEP_PowerUp
+LEP_Read
+LEP_Seek
+LEP_Write

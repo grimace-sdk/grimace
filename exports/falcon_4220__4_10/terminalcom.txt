@@ -1,0 +1,8 @@
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer
+ListenerThreadProc
+_com_dispatch_method
+_com_issue_error
+_com_issue_errorex

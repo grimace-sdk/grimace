@@ -1,0 +1,9 @@
+BSR_TTSFileCtrl
+BSR_TTSFileSetWavFmt
+BSR_TTSInit
+BSR_TTSMgr_WaveOutNext
+BSR_TTSMgr_WaveOutStart
+BSR_TTSRelease
+BSR_TTSStop
+BSR_TTSWaveOut
+BSR_TTSWaveOutInner

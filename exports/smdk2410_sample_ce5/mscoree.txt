@@ -1,0 +1,11 @@
+NETCF_VerifyFileInstalled
+PALHost_Deregister
+PALHost_ErrorMessage
+PALHost_LaunchApp
+PALHost_Register
+_CorDllMain
+_CorExeMain
+_CorImageUnloading
+_CorValidateImage
+__CorDllMain@0
+__CorExeMain@0

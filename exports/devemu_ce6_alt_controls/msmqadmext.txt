@@ -1,0 +1,2 @@
+GetExtensionVersion
+HttpExtensionProc

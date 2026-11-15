@@ -1,0 +1,6 @@
+RAS_Connect
+RAS_Disconnect
+RAS_EnumConnections
+RAS_EnumEntries
+RAS_GetConnect
+RAS_SetMSG

@@ -1,0 +1,7 @@
+-GetOutlookSyncFolder
+-GetRootPath
+-GetSpecialFolder
+-PathContainsMyDocuments
+-PathToProjectName
+-Proj_CompactFlashPresent
+-Proj_CompactFlashReady

@@ -1,0 +1,9 @@
+Load
+PdClose
+PdInfo
+PdOpen
+PdPoll
+PdQueryInformation
+PdSetInformation
+PdUnload
+PdWrite

@@ -1,0 +1,10 @@
+SIO_Close
+SIO_Deinit
+SIO_IOControl
+SIO_Init
+SIO_Open
+SIO_PowerDown
+SIO_PowerUp
+SIO_Read
+SIO_Seek
+SIO_Write

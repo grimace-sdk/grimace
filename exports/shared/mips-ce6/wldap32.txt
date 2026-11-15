@@ -1,0 +1,14 @@
++ldap_create_vlv_controlA
++ldap_create_vlv_controlW
++ldap_dn2ufnA
++ldap_extended_operation_sA
++ldap_extended_operation_sW
++ldap_parse_vlv_controlA
++ldap_parse_vlv_controlW
++ldap_start_tls_sA
++ldap_start_tls_sW
++ldap_stop_tls_s
+-ldap_sasl_bindA
+-ldap_sasl_bindW
+-ldap_sasl_bind_sA
+-ldap_sasl_bind_sW

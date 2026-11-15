@@ -1,0 +1,11 @@
++??0CWtDocView@@QAA@PAG@Z
++?DisableExternalDisplay@CWtDocView@@QAAHXZ
++?DoDestroyDocumentClass@CWtDocView@@QAAHXZ
++?DoDestroyWindow@CWtDocView@@UAAHXZ
++?DoInitDocumentClass@CWtDocView@@QAAHPAUHINSTANCE__@@@Z
++?EnableExternalDisplay@CWtDocView@@QAAHHKKKKK@Z
++?MsgLButtonDown@CWtDocView@@UAAJPAUHWND__@@IIJ@Z
++?MsgLButtonUp@CWtDocView@@UAAJPAUHWND__@@IIJ@Z
++?MsgMouseMove@CWtDocView@@UAAJPAUHWND__@@IIJ@Z
++?PrintPage@CWtDocView@@QAA_NPAUHDC__@@H@Z
+-?DoInitDocumentWnd@CWtDocView@@QAAHPAUHINSTANCE__@@@Z

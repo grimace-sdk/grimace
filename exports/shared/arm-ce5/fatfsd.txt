@@ -1,0 +1,6 @@
++FSD_FormatVolume
++FSD_GetVolumeInfo
++FSD_LockFileEx
++FSD_ReadFileScatter
++FSD_UnlockFileEx
++FSD_WriteFileGather

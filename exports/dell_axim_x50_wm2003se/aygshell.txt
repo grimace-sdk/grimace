@@ -1,0 +1,2 @@
+-FileDrmVerifyRightsEx
+-SndSetSound

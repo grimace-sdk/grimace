@@ -1,0 +1,4 @@
++?AllocString@_CStringA@@AAAXPBD@Z
++?AllocString@_CStringW@@AAAXPBG@Z
+-?AllocString@_CStringA@@AAAXPAD@Z
+-?AllocString@_CStringW@@AAAXPAG@Z

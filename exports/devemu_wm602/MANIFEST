@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: pocketpc
+device: devemu_wm602
+source: Device Emulator - Windows Mobile 6.0, Windows Mobile 6.0.2, Windows Mobile 6.0.2 ROM Windows Mobile 6.0.2 Pocket PC.bin in cerf-bundles/devemu_wm602, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52
+without: alerter atcmdint autotimedll btagsvc bthagphonebook bthatci bthpbap ccoredrv ccoreutl celltsp cspvoice deviceencryptionpolicy dmsapi downloadservice downloadserviceprocess historyapi installservice ipsecvpn ipsecvpncsp ipsecvpnvnic machineenroller mcf mencfilt networkpolicycsp nodemoncsp nodemoninitsess phone ril sdputil siminit simsec sms softwaredisable supsvcs swmgmtservice taskscheduler tdetclient tskschcsp uiservice uiserviceplugin wlmcontactsdatabase wmdrm

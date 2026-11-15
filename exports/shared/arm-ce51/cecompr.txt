@@ -1,0 +1,6 @@
+LZX_DecompressClose
+LZX_DecompressDecode
+LZX_DecompressOpen
+XPR_DecompressClose
+XPR_DecompressDecode
+XPR_DecompressOpen

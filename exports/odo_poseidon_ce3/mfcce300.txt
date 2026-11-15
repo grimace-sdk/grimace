@@ -1,0 +1,11 @@
++?classCColorDialog@CColorDialog@@2UCRuntimeClass@@B
++?classCPrintDialog@CPrintDialog@@2UCRuntimeClass@@B
++?classCSemaphore@CSemaphore@@2UCRuntimeClass@@B
++?messageMap@CColorDialog@@1UAFX_MSGMAP@@B
++?messageMap@CPrintDialog@@1UAFX_MSGMAP@@B
+-?classCCeDocList@CCeDocList@@2UCRuntimeClass@@B
+-?classCCeDocListDocTemplate@CCeDocListDocTemplate@@2UCRuntimeClass@@B
+-?messageMap@CCeCommandBar@@1UAFX_MSGMAP@@B
+-?messageMap@CCeDocList@@1UAFX_MSGMAP@@B
+-?messageMap@CCeSaveModifiedDlg@@1UAFX_MSGMAP@@B
+-?messageMap@CComboBox@@1UAFX_MSGMAP@@B

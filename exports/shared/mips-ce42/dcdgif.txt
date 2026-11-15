@@ -1,0 +1,13 @@
+CreateGifBand
+EndGifImage
+FileTypeGif
+FreeGifBand
+GetGifBand
+GetGifBandHeight
+GetGifBitsPerPixel
+GetGifHeight
+GetGifWidth
+InitGifImage
+ProcessGifHeaders
+StartGifImage
+TermGifImage

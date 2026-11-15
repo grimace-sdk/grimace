@@ -1,0 +1,6 @@
+LoadImageFromFile
+LoadImageFromFileEx
+RotateJPEG
+SaveImgClose
+SaveImgCreate
+SaveImgWrite

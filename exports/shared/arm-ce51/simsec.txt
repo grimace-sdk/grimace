@@ -1,0 +1,5 @@
+SIMSecurityChangePin
+SIMSecurityEnablePin
+SIMSecurityRequestPin
+SIMSecurityUI
+SIMSecurityUnlockPhone

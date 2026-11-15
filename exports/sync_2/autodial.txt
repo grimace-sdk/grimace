@@ -1,0 +1,5 @@
+AutoDialCleanupModule
+AutoDialEndConnection
+AutoDialGetConnectionStatus
+AutoDialInitializeModule
+AutoDialStartConnection

@@ -1,0 +1,17 @@
++AddMRUData
++AddMRUStringA
++AddMRUStringW
++CreateMRUListA
++CreateMRUListW
++DPA_DestroyCallback
++DPA_Grow
++DPA_SetPtr
++DelMRUString
++EnumMRUListA
++EnumMRUListW
++FindMRUData
++FindMRUStringA
++FindMRUStringW
++FreeMRUList
++PopulateComboWithMRU
++PopulateMenuWithMRU

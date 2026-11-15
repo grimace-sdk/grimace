@@ -1,0 +1,13 @@
+CAM_Close
+CAM_Deinit
+CAM_IOControl
+CAM_Init
+CAM_Open
+CAM_PowerDown
+CAM_PowerUp
+PIN_Close
+PIN_Deinit
+PIN_IOControl
+PIN_Init
+PIN_Open
+_DllMainCRTStartup

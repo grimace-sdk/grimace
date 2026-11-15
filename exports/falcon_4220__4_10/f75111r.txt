@@ -1,0 +1,10 @@
+KPD_Close
+KPD_Deinit
+KPD_IOControl
+KPD_Init
+KPD_Open
+KPD_PowerDown
+KPD_PowerUp
+KPD_Read
+KPD_Seek
+KPD_Write

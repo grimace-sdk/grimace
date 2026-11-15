@@ -1,0 +1,17 @@
++AbortDoc
++AlphaBlend
++CloseEnhMetaFile
++ConvertThreadToFiber
++CreateEnhMetaFileW
++CreateFiber
++DeleteEnhMetaFile
++DeleteFiber
++EndDoc
++EndPage
++GetCurrentFiber
++GetFiberData
++PlayEnhMetaFile
++SetAbortProc
++StartDocW
++StartPage
++SwitchToFiber

@@ -1,0 +1,8 @@
+SNA_Close
+SNA_Deinit
+SNA_IOControl
+SNA_Init
+SNA_Open
+SNA_Read
+SNA_Seek
+SNA_Write

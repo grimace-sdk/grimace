@@ -1,0 +1,13 @@
+PrTnefConvertToUnicode
+PrTnefDecodeBuffer
+PrTnefDecodeFile
+PrTnefEncodeBuffer
+PrTnefEncodeFile
+TnefCharsetToCodePage
+TnefCodePageToCharset
+TnefConvertFromUnicode
+TnefConvertToUnicodeEx
+TnefDetectTextCodePage
+TnefFreeCodePageEnum
+TnefGetFirstCodePage
+TnefGetNextCodePage

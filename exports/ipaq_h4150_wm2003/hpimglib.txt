@@ -1,0 +1,10 @@
+JpegReadComment
+JpegWriteComment
+LoadImageFromFile
+LoadImageFromFileEx
+RotateBitmap
+RotateJPEG
+SaveImgClose
+SaveImgCreate
+SaveImgWrite
+ScaleBitmap

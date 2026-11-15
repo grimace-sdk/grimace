@@ -1,0 +1,10 @@
+NTP_Close
+NTP_Deinit
+NTP_IOControl
+NTP_Init
+NTP_Open
+NTP_PowerDown
+NTP_PowerUp
+NTP_Read
+NTP_Seek
+NTP_Write

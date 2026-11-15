@@ -1,0 +1,9 @@
+Bezier2PolyFX
+CreateRender
+DefaultMaterial
+DefaultView3D
+DestroyRender
+EndShape
+RenderShape
+StartShape
+StartShapeFX

@@ -1,0 +1,7 @@
+CreateDelayedIntObj
+GetPhysMem
+GetVMem
+IsDelayedInt
+ReadPortDataEx
+SetDelayedInt
+WritePortDataEx

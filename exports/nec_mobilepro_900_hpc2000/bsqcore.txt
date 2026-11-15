@@ -1,0 +1,7 @@
+BSQCORE_Version
+EvaluationStatus
+GetCEInformation
+LaunchURL
+ShowAboutBox
+ShowAboutBoxEx
+ShowAdvAboutBox

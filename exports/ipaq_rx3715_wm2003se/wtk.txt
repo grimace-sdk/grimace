@@ -1,0 +1,13 @@
+??0ModifyTargetDialog@@QAA@XZ
+??4ModifyTargetDialog@@QAAAAV0@ABV0@@Z
+?ShowDialog@ModifyTargetDialog@@QAA?AW4ZRESULT@@AAVTarget@@AAW42@W4REQFLAG@@@Z
+CreateTopLevelWindow
+DestroyTopLevelWindow
+SetPrintOptions
+ShowAddTarget
+ShowConfigureTargets
+ShowDummyDialog
+ShowErrorConfigAlreadyOpen
+ShowJobRetryCancel
+ShowModifyTarget
+ShowSelectTarget

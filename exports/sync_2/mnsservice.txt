@@ -1,0 +1,8 @@
+MNS_Close
+MNS_Deinit
+MNS_IOControl
+MNS_Init
+MNS_Open
+MNS_Read
+MNS_Seek
+MNS_Write

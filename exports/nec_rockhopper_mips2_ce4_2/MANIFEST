@@ -1,0 +1,6 @@
+arch: mips
+version: 4.2
+platform: embedded
+device: nec_rockhopper_mips2_ce4_2 nec_rockhopper_mips2_ce4_2_xp
+source: NEC Rockhopper MIPS2 CE4 2, Windows CE .NET (MIPS II) ROM NK.bin in cerf-bundles/nec_rockhopper_mips2_ce4_2, read with CEM Porter's tools/compat-tables.mjs; also NEC Rockhopper MIPS2 CE4 2 XP
+base: mips-ce42

@@ -1,0 +1,11 @@
++AllowConnectionFailover
+-CloseUsernamePasswordDialog
+-ConnectionDialog
+-DisconnectDialog
+-GetUsernamePasswordEx
+-PickCertificate
+-RasEapFreeMemory
+-RasEapGetIdentity
+-RasEapInvokeConfigUI
+-RasEapInvokeInteractiveUI
+-ShowCertificate

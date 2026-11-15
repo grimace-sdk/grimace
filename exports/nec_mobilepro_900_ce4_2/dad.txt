@@ -1,0 +1,10 @@
+DAD_Close
+DAD_Deinit
+DAD_IOControl
+DAD_Init
+DAD_Open
+DAD_PowerDown
+DAD_PowerUp
+DAD_Read
+DAD_Seek
+DAD_Write

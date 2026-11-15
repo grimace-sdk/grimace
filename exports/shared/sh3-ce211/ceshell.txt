@@ -1,0 +1,5 @@
++PathGetAssociation
++PathRemoveQuotes
++SHRemoveFontResource
++SHSetSystemEUDCFont
++_SHRemoveFontResource

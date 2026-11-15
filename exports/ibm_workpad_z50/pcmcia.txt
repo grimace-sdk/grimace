@@ -1,0 +1,6 @@
++OemPcm365Read
++OemPcm365Write
++OemPcmAllocWinPhysAddr
++OemPcmFreeWinPhysAddr
++PCM_PowerDown
++PCM_PowerUp

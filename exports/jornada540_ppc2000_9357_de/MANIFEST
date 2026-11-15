@@ -1,0 +1,7 @@
+arch: sh3
+version: 3
+platform: pocketpc
+device: jornada540_ppc2000_9357_de
+source: Jornada 540 PPC2000 9357 DE, Pocket PC 2000 ROM nk.bin in cerf-bundles/jornada540_ppc2000_9357_de, read with CEM Porter's tools/compat-tables.mjs
+base: sh3-ce3
+without: agiehandler avantgo malclmgr malcommon msim

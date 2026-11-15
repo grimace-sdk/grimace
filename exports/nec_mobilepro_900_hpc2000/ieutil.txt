@@ -1,0 +1,13 @@
+?CreateIEShortcutFile@@YAJPBG0@Z
+?CreateUrlWithFragment@@YAPBGPBG0PAG@Z
+?IsFileName@@YAHPBG@Z
+?IsSupportedFileType@@YAHPBG@Z
+?LaunchFileExplorer@@YAXPBG@Z
+?LaunchIEShortcutFile@@YAXPAG@Z
+?LoadBitmapFromFile@@YAPAUHBITMAP__@@PBG@Z
+?NormalizeUrl@@YAJPBGPAPAG@Z
+?ParseIEShortcutFile@@YAHPBGPAPAG@Z
+?ReplaceInvalidFilenameCharacters@@YAXPBGPAGH@Z
+?SendToAllIEInstances@@YA_NIIJ@Z
+?SetComboContents@@YAXPAUHWND__@@QAPAGHH@Z
+?TransformIllegalFileNameChars@@YAXPAG@Z

@@ -1,0 +1,4 @@
+-RMIsMetroPackagedFile
+-RMMcfCreatePackage
+-RMMcfOpenPackage
+-RMMcfOpenPackageWithEUL

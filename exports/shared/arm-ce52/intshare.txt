@@ -1,0 +1,5 @@
+DeregisterForInternetSharingNotifications
+DllMain
+InternetSharingDisable
+InternetSharingEnable
+RegisterForInternetSharingNotifications

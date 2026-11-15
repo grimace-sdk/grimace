@@ -1,0 +1,4 @@
+CeRapiGetDiskFreeSpaceEx
+CeRapiGetSerialNumber
+CeUtilGetSerialNumber
+DllMain

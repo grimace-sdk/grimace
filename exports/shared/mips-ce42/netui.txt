@@ -1,0 +1,13 @@
++AddNetUISystrayIcon
++ClosePropSheetDialogIfReady
++CreateScanDevice
++IsPropSheetDialogMessage
++LoadSecurityLib
++PickCertificate
++RasEapFreeMemory
++RasEapInvokeConfigUI
++RasEapInvokeInteractiveUI
++RemoveNetUISystrayIcon
++ShowCertificate
++UnloadSecurityLib
++UpdateConnectionStatus

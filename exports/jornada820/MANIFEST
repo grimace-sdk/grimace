@@ -1,0 +1,6 @@
+arch: arm
+version: 2.11
+platform: hpcpro
+device: jornada820
+source: HP Jornada 820, Handheld PC Professional 3.0 ROM jornada820_nk.bin in cerf-bundles/jornada820, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce211

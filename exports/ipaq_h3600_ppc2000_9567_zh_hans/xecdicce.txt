@@ -1,0 +1,14 @@
+dtCleanup
+dtDealFLWIcon
+dtEnableUserDict
+dtFastPos
+dtGetData
+dtGetProfDictState
+dtGetString
+dtInitDicFiles
+dtLookup
+dtOnOffset
+dtPathChanged
+dtSearch
+dtSetProfDictState
+dtUpdateUD

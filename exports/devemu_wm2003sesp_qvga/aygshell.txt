@@ -1,0 +1,17 @@
++SHGetDeviceStateInfo
++SHImeGetClearMessage
++SHImeOnKeyPress
++SHImeSetCustomInputIcons
++SHImeSetModeIcon
++Vibrate
++VibrateGetDeviceCaps
++VibrateStop
+-ADChgTaskList
+-ADChgTrustedSrcList
+-ADRegisterCallback
+-ADTaskInfo
+-AssociateNoteWithCall
+-PhoneGetCallProperties
+-PhoneGetCallPropertyBag
+-SHCreateNewItem
+-SHSetNavBarText

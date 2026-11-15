@@ -1,0 +1,11 @@
++EvaluateP3PPolicy
++InternetClearAllPerSiteCookieDecisions
++InternetEnumPerSiteCookieDecisionA
++InternetEnumPerSiteCookieDecisionW
++InternetGetPerSiteCookieDecisionA
++InternetGetPerSiteCookieDecisionW
++InternetSetPerSiteCookieDecisionA
++InternetSetPerSiteCookieDecisionW
++PrivacyGetZonePreferenceW
++PrivacySetZonePreferenceW
+-ParseX509EncodedCertificateForListBoxEntry

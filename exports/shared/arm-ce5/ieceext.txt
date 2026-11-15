@@ -1,0 +1,2 @@
++CoGetMarshalSizeMax
++IEUsesDCOM

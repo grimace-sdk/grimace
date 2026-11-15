@@ -1,0 +1,5 @@
++Deinit
++Init
+-HID_Read
+-HID_Seek
+-HID_Write

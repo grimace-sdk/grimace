@@ -1,0 +1,4 @@
++LASSClose
++LASSGetResult
++LASSGetValue
++VerifyUserAsync

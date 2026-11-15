@@ -1,0 +1,6 @@
+arch: mips
+version: 2
+platform: hpc
+device: compaq_c2010c_ce2_no
+source: Compaq C2010C CE2 NO, Windows CE 2.0 ROM nk.bin in cerf-bundles/compaq_c2010c_ce2_no, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce2

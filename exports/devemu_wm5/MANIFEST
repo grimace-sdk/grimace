@@ -1,0 +1,7 @@
+arch: arm
+version: 5.1
+platform: pocketpc
+device: devemu_wm5
+source: Device Emulator - Windows Mobile 5, Windows Mobile 5 ROM WM5_PPC_USA.BIN in cerf-bundles/devemu_wm5, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce51
+without: btagsvc bthatci ccoredrv ccoreutl celltsp cspvoice cspwwan phone ril siminit simsec sms sms_providers supsvcs

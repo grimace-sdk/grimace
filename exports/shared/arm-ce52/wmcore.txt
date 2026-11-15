@@ -1,0 +1,6 @@
++XMEBroadcastUXEvent
++XMECacheFile
++XMECacheStream
++XMECreateWindowOnStream
++XMEGetOnePropFromPlayer
++XMEVariantPropFreeData

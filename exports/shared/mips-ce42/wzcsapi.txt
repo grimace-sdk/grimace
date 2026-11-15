@@ -1,0 +1,9 @@
+WZCDeleteIntfObj
+WZCEnumEapExtensions
+WZCEnumInterfaces
+WZCPassword2Key
+WZCQueryContext
+WZCQueryInterface
+WZCRefreshInterface
+WZCSetContext
+WZCSetInterface

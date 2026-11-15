@@ -1,0 +1,5 @@
+OOH_Close
+OOH_Deinit
+OOH_IOControl
+OOH_Init
+OOH_Open

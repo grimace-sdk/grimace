@@ -1,0 +1,7 @@
+-PPC_AccessFSM
+-PPC_GET_VDD
+-PPC_NVM_Dump
+-PPC_NVM_Read_NVMVersion
+-PPC_SET_INTERRUPT_WAKEUP
+-PPC_SET_VDD
+-PPC_ShowDbgWindow

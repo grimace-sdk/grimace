@@ -1,0 +1,3 @@
++?IsValidRBFlashImage@BlockListTransForms@@SAHPBD@Z
++?MakePlaybackTree@BlockListTransForms@@SAPAVFlashHeader@@PBDW4FlashFileFormatTypes@@W4DeviceType@@0AAVAudErrorObj@@I@Z
+-?MakePlaybackTree@BlockListTransForms@@SAPAVFlashHeader@@PBDW4FlashFileFormatTypes@@W4DeviceType@@0AAVAudErrorObj@@@Z

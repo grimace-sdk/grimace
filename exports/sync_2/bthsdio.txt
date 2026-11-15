@@ -1,0 +1,13 @@
+BSD_Close
+BSD_Deinit
+BSD_IOControl
+BSD_Init
+BSD_Open
+HCI_CloseConnection
+HCI_OpenConnection
+HCI_ReadHciParameters
+HCI_ReadPacket
+HCI_SetCallback
+HCI_StartHardware
+HCI_StopHardware
+HCI_WritePacket

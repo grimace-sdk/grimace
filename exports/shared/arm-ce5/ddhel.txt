@@ -1,0 +1,8 @@
+AllocateSysMemForSurf
+HELInit
+InitializeJunctions
+g_rgjunc24
+g_rgjunc32
+g_rgjunc555
+g_rgjunc565
+g_rgjunc8

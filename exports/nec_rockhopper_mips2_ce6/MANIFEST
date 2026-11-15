@@ -1,0 +1,6 @@
+arch: mips
+version: 6
+platform: embedded
+device: nec_rockhopper_mips2_ce6 nec_rockhopper_mips2_ce6_xp
+source: NEC Rockhopper MIPS2 CE6, Windows Embedded CE 6 (MIPS II) ROM NK.bin in cerf-bundles/nec_rockhopper_mips2_ce6, read with CEM Porter's tools/compat-tables.mjs; also NEC Rockhopper MIPS2 CE6 XP
+base: mips-ce6

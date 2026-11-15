@@ -1,0 +1,11 @@
+DllEntry
+MUX_Close
+MUX_Deinit
+MUX_IOControl
+MUX_Init
+MUX_Open
+MUX_PowerDown
+MUX_PowerUp
+MUX_Read
+MUX_Seek
+MUX_Write

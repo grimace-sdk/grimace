@@ -1,0 +1,12 @@
+AdapterIPProperties
+ConnectionDialog
+DisconnectDialog
+GetDriverName
+GetIPAddress
+GetNetString
+GetResourcePassword
+GetUsernamePassword
+LineConfigEdit
+NetMsgBox
+RegisterIPClass
+UnregisterIPClass

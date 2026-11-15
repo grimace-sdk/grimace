@@ -1,0 +1,12 @@
+BthCloseHeadsetConnection
+BthCreateHeadsetConnection
+BthGetHeadsetMicVolume
+BthGetHeadsetSpkVolume
+BthInitializeAudioGateway
+BthRingHeadset
+BthSendHeadsetCommand
+BthSetHeadsetEvents
+BthSetHeadsetMicVolume
+BthSetHeadsetSpkVolume
+BthStopRingingHeadset
+BthUninitializeAudioGateway

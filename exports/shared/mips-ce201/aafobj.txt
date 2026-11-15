@@ -1,0 +1,5 @@
+GetObjTypeInfo
+InitObjType
+ObjectNotify
+ReadSubscriptionInfo
+ReportStatus

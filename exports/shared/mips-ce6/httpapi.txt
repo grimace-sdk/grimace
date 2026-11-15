@@ -1,0 +1,16 @@
+DllMain
+HttpAddUrl
+HttpCancelIo
+HttpCloseHandle
+HttpCreateHttpHandle
+HttpDeleteServiceConfiguration
+HttpGetOverlappedResult
+HttpInitialize
+HttpQueryServiceConfiguration
+HttpReceiveHttpRequest
+HttpReceiveRequestEntityBody
+HttpRemoveUrl
+HttpSendHttpResponse
+HttpSendResponseEntityBody
+HttpSetServiceConfiguration
+HttpTerminate

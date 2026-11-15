@@ -1,0 +1,7 @@
+arch: mips
+version: 2
+platform: hpc
+device: nec_mobilepro_700_ce2
+source: NEC MobilePro 700, Handheld PC ROM nk.bin in cerf-bundles/nec_mobilepro_700_ce2, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce2
+without: sib swmdmdrv

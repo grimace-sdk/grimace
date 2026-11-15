@@ -1,0 +1,5 @@
+-WAV_PowerDown
+-WAV_PowerUp
+-WAV_Read
+-WAV_Seek
+-WAV_Write

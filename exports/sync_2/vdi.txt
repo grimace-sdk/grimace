@@ -1,0 +1,5 @@
+VDI_Close
+VDI_Deinit
+VDI_IOControl
+VDI_Init
+VDI_Open

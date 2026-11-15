@@ -1,0 +1,6 @@
+DeinitLAP
+InitLAP
+LAPCreateEnrollmentConfigDialog
+VerifyUser
+VerifyUserStart
+VerifyUserStop

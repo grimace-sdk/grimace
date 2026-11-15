@@ -1,0 +1,5 @@
+OmaDmInitiateSessionByScheduler
+ProcessEnrollmentCompletion
+ProcessRebootRequests
+SDP_SignalDataAvailable
+StopRebootDeferralTimeoutHelper

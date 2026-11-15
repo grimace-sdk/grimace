@@ -1,0 +1,5 @@
++RIL_ChangeCallBarringPasswordEx
++RIL_DataDormant
++RIL_GetVTSerialPortHandle
++RIL_ReadPhonebookEntriesEx
++RIL_WritePhonebookEntryEx

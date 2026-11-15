@@ -1,0 +1,6 @@
+celog_helper_CheckForStartCELog
+celog_helper_GetCeLogRegStringEntry
+celog_helper_async_flush
+celog_helper_flush
+celog_helper_start
+celog_helper_status

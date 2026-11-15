@@ -1,0 +1,5 @@
+BHI_Close
+BHI_Deinit
+BHI_IOControl
+BHI_Init
+BHI_Open

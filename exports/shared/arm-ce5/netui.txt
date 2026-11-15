@@ -1,0 +1,6 @@
++CreateScanDevice
++GetNewPassword
++GetNewPasswordEx
++ShowCertificateEx
+-ClosePropSheetDialog
+-RasEapGetIdentity

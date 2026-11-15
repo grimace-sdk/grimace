@@ -1,0 +1,10 @@
+SMA_Close
+SMA_Deinit
+SMA_IOControl
+SMA_Init
+SMA_Open
+SMA_Read
+SMA_Seek
+SMA_Write
+USBDeviceAttach
+USBInstallDriver

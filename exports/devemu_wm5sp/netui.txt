@@ -1,0 +1,3 @@
++AllowConnectionFailover
+-ConnectionDialog
+-DisconnectDialog

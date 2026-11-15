@@ -1,0 +1,7 @@
+arch: mips
+version: 2.12
+platform: embedded
+device: casio_pocketpostpet_ce212
+source: Casio Pocket PostPet, Windows CE ROM nk.bin in cerf-bundles/casio_pocketpostpet_ce212, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce212
+without: animememctrl apphotocom cimgchg cmailinf cmceditwind comctrl comedit comparts comseldlg dialupmsg digcamdll exceptionmessage htmlfunc imgedit imgview letterpapermemctrl materialentry materialphototool mc_tdate mc_ttime mcaddressctrl mcaddressmem mcaplif mcapplicationmutex mcautopilotctrl mcbookmem mccalendarmem mccameracom mcdialup mcdll mcinst mcmaillist mcmailmemctrl mcmailsetup mcmemomemctrl mcmemorycheck mcminiaddress mcnetwork mcplaysound mcregword mcsavemem mcsip mctopmenu mctopmenucpl mcvoicealbummem mmlforbase mmlformcmail photomemctrl picturecharamemctrl sendreceive ser_cdma softkb wtalkcepset zlib

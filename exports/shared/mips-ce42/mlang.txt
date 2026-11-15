@@ -1,0 +1,7 @@
++GetGlobalFontLinkObject
++GetMlang2Obj
++MimeRegEnsureRfc1766Table
++MimeRegEnumCodePageInfo
++MimeRegGetCodePageInfoWithIndex
++Mlang2FreeGlobalObjects
++_DetectInputCodepage

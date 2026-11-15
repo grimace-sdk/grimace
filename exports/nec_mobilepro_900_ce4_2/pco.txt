@@ -1,0 +1,10 @@
+PCO_Close
+PCO_Deinit
+PCO_IOControl
+PCO_Init
+PCO_Open
+PCO_PowerDown
+PCO_PowerUp
+PCO_Read
+PCO_Seek
+PCO_Write

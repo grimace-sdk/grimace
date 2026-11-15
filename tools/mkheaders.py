@@ -4,6 +4,7 @@ import glob
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 
@@ -113,9 +114,11 @@ def exported(target):
 
 def lazy_imports(target):
     names = set()
+    direct_names = set()
     for direct, lazy in manifests.imports(target).values():
         names |= lazy
-    return names - runtime.provided()
+        direct_names |= direct
+    return names - direct_names - runtime.provided()
 
 
 def unavailable_reason(target):
@@ -139,9 +142,11 @@ if __name__ == "__main__":
     arguments = parser.parse_args()
     write_wrappers()
     find_header = declaring_headers()
-    lines = ["#if !defined(GRIMACE_CE)", "#error \"include windows.h first\"", "#endif", ""]
-    alias_lines = lines + ["#ifdef __cplusplus", "extern \"C\" {", "#endif", ""]
-    lazy_lines = ["#ifdef __cplusplus", "extern \"C\" {", "#endif", ""]
+    generated = os.path.join(ROOT, "include", "grimace")
+    for kind in ("unavailable", "aliases", "lazy"):
+        shutil.rmtree(os.path.join(generated, kind), ignore_errors=True)
+        os.makedirs(os.path.join(generated, kind))
+    dispatch = {kind: [] for kind in ("unavailable", "aliases", "lazy")}
     report = []
     declared_by = {}
     for target in manifests.targets():
@@ -149,11 +154,10 @@ if __name__ == "__main__":
         if key not in declared_by:
             declared_by[key] = declarations(arguments.clang, target.version, target.arch)
         declared = declared_by[key]
-        condition = "#if %s" % target.condition()
         exports = exported(target)
         aliases = sorted(function[:-1] for function in declared
                          if function.endswith("W") and function not in exports and function[:-1] in exports and function[:-1] not in declared)
-        alias_lines.append(condition)
+        alias_lines = []
         aliases_by_guard = {}
         for function in aliases:
             aliases_by_guard.setdefault(guard(find_header(function + "W")), []).append(function)
@@ -163,36 +167,37 @@ if __name__ == "__main__":
                 alias_lines += ["#undef %s" % function, "extern __typeof__(%sW) %s;" % (function, function), "#undef %sW" % function,
                                 "#define %sW %s" % (function, function)]
             alias_lines.append("#endif")
-        alias_lines += ["#endif", ""]
         missing = sorted(set(declared) - exports - ENTRY_POINTS - {function + "W" for function in aliases})
         by_guard = {}
         for function in missing:
             by_guard.setdefault(guard(find_header(function)), []).append(function)
-        lines.append(condition)
+        lines = []
         for header_guard in sorted(by_guard):
             lines.append("#ifdef %s" % header_guard)
             for function in by_guard[header_guard]:
                 lines.append('extern __typeof__(%s) %s __attribute__((unavailable("%s")));' % (function, function, unavailable_reason(target)))
             lines.append("#endif")
-        lines.append("#endif")
-        lines.append("")
         lazy = sorted(function for function in lazy_imports(target) - ENTRY_POINTS if function in declared or function in aliases)
-        lazy_lines.append(condition)
+        lazy_lines = []
         for function in lazy:
             lazy_lines += ["#define __grimace_lazy_%s 1" % function, "extern struct grimace_lazy_import __grimace_lazy_import_%s;" % function]
-        lazy_lines += ["#endif", ""]
+        name = target.file_name()
+        for kind, body in (("unavailable", lines), ("aliases", alias_lines), ("lazy", lazy_lines)):
+            with open(os.path.join(generated, kind, name + ".h"), "w") as output:
+                output.write("\n".join(body) + "\n")
+            dispatch[kind] += ["#if %s" % target.condition(), "#include <grimace/%s/%s.h>" % (kind, name), "#endif"]
         undeclared = sorted(exports - set(declared))
         report.append("%s: %d declared, %d exported, %d lazy, %d declared but not exported, %d exported but not declared" %
                       (target.label(), len(declared), len(exports), len(lazy), len(missing), len(undeclared)))
         report.extend("  %s" % function for function in undeclared)
-    with open(os.path.join(ROOT, "include", "grimace", "unavailable.h"), "w") as output:
-        output.write("\n".join(lines))
-    alias_lines += ["#ifdef __cplusplus", "}", "#endif", ""]
-    with open(os.path.join(ROOT, "include", "grimace", "aliases.h"), "w") as output:
-        output.write("\n".join(alias_lines))
-    lazy_lines += ["#ifdef __cplusplus", "}", "#endif", ""]
-    with open(os.path.join(ROOT, "include", "grimace", "lazy-imports.h"), "w") as output:
-        output.write("\n".join(lazy_lines))
+    first = ["#if !defined(GRIMACE_CE)", "#error \"include windows.h first\"", "#endif", ""]
+    extern_c = (["#ifdef __cplusplus", "extern \"C\" {", "#endif", ""], ["", "#ifdef __cplusplus", "}", "#endif", ""])
+    with open(os.path.join(generated, "unavailable.h"), "w") as output:
+        output.write("\n".join(first + dispatch["unavailable"]) + "\n")
+    with open(os.path.join(generated, "aliases.h"), "w") as output:
+        output.write("\n".join(first + extern_c[0] + dispatch["aliases"] + extern_c[1]))
+    with open(os.path.join(generated, "lazy-imports.h"), "w") as output:
+        output.write("\n".join(extern_c[0] + dispatch["lazy"] + extern_c[1]))
     if arguments.report:
         with open(arguments.report, "w") as output:
             output.write("\n".join(report) + "\n")

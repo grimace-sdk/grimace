@@ -1,0 +1,9 @@
+FirewallCreateRule
+FirewallDeleteRule
+FirewallEnable
+FirewallEnableRule
+FirewallGetRules
+FirewallRefresh
+FirewallSetInterface
+IsFirewallEnabled
+IsInterfaceFirewalled

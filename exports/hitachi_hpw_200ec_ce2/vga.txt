@@ -1,0 +1,4 @@
+DrvEnableDriver
+DrvFreeDspMode
+DrvGetDspMode
+DrvSetDspMode

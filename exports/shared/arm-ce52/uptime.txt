@@ -1,0 +1,9 @@
+DllEntry
+UPT_Close
+UPT_Deinit
+UPT_IOControl
+UPT_Init
+UPT_Open
+UPT_Read
+UPT_Seek
+UPT_Write

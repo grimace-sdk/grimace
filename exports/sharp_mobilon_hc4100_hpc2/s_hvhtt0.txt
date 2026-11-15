@@ -1,0 +1,7 @@
+HttpRecv
+HttpSend
+HttpUabt
+InitHttpVars
+comm_desc_for_http_stream
+hv_ahv_http
+hv_fhv_http

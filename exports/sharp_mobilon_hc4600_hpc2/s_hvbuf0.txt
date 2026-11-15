@@ -1,0 +1,6 @@
+HvAlloc
+InitHvBuffer
+PutTbuf
+hv_ahv_buffer
+hv_bufp1
+hv_fhv_buffer

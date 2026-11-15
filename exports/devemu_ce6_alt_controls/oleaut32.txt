@@ -1,0 +1,15 @@
++BSTR_UserFree
++BSTR_UserMarshal
++BSTR_UserSize
++BSTR_UserUnmarshal
++LPSAFEARRAY_Marshal
++LPSAFEARRAY_Size
++LPSAFEARRAY_Unmarshal
++LPSAFEARRAY_UserFree
++LPSAFEARRAY_UserMarshal
++LPSAFEARRAY_UserSize
++LPSAFEARRAY_UserUnmarshal
++VARIANT_UserFree
++VARIANT_UserMarshal
++VARIANT_UserSize
++VARIANT_UserUnmarshal

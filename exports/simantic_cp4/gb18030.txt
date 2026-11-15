@@ -1,0 +1,3 @@
+BytesToUnicode
+NlsDllCodePageTranslation
+UnicodeToBytes

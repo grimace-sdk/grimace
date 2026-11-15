@@ -1,0 +1,10 @@
+POW_Close
+POW_Deinit
+POW_IOControl
+POW_Init
+POW_Open
+POW_PowerDown
+POW_PowerUp
+POW_Read
+POW_Seek
+POW_Write

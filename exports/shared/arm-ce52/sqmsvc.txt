@@ -1,0 +1,8 @@
+SQM_Close
+SQM_Deinit
+SQM_IOControl
+SQM_Init
+SQM_Open
+SQM_Read
+SQM_Seek
+SQM_Write

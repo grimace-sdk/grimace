@@ -1,0 +1,8 @@
+BTM_Close
+BTM_Deinit
+BTM_IOControl
+BTM_Init
+BTM_Open
+BTM_Read
+BTM_Seek
+BTM_Write

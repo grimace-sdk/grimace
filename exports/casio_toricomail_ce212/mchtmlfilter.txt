@@ -1,0 +1,3 @@
+?McAttachmentListFilter@@YAHPBG@Z
+?McHtmlRecvFilter@@YAHPBG@Z
+?McHtmlSendFilter@@YAHPBG@Z

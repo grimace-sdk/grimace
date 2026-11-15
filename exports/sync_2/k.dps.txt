@@ -1,0 +1,7 @@
+DPS_GetLocation
+DPS_ReadInfo
+DPS_WriteInfo
+OEM_DPS_EraseInfo
+OEM_DPS_QueryInfo
+OEM_DPS_ReadInfo
+OEM_DPS_WriteInfo

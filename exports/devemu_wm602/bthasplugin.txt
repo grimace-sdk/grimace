@@ -1,0 +1,5 @@
+-DeviceBthGetMode
+-DeviceBthSetMode
+-DeviceHasBthStack
+-DeviceHasMSBthStack
+-GetMacAddress

@@ -1,0 +1,14 @@
+??0Win32BCSP@@QAA@ABV0@@Z
+??4Win32BCSP@@QAAAAV0@ABV0@@Z
+??_7Win32BCSP@@6B@
+?getBCSPStack@Win32BCSP@@QAAPAU_BCSPStack@@XZ
+BTD_Close
+BTD_Deinit
+BTD_IOControl
+BTD_Init
+BTD_Open
+BTD_PowerDown
+BTD_PowerUp
+BTD_Read
+BTD_Seek
+BTD_Write

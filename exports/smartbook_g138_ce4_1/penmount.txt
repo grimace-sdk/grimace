@@ -1,0 +1,10 @@
+SRM_Close
+SRM_Deinit
+SRM_IOControl
+SRM_Init
+SRM_Open
+SRM_PowerDown
+SRM_PowerUp
+SRM_Read
+SRM_Seek
+SRM_Write

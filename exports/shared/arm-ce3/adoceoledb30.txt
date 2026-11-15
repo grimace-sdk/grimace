@@ -1,0 +1,7 @@
+DbClose
+DbOpen
+DllCanUnloadNow
+DllGetClassObject
+DllMain
+DllRegisterServer
+DllUnregisterServer

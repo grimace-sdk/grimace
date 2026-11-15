@@ -1,0 +1,6 @@
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer
+FI_CreatePlayer
+FI_GetVersion

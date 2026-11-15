@@ -1,0 +1,11 @@
+DllEntry
+IKE_Close
+IKE_Deinit
+IKE_IOControl
+IKE_Init
+IKE_Open
+IKE_PowerDown
+IKE_PowerUp
+IKE_Read
+IKE_Seek
+IKE_Write

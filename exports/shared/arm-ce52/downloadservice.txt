@@ -1,0 +1,10 @@
+DLS_Close
+DLS_Deinit
+DLS_IOControl
+DLS_Init
+DLS_Open
+DLS_PowerDown
+DLS_PowerUp
+DLS_Read
+DLS_Seek
+DLS_Write

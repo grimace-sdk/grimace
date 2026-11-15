@@ -2,4 +2,6 @@ arch: mips
 version: 2
 platform: hpc
 device: velo1
-source: Philips Velo 1 ROM, Windows CE 2.0 (velo-apps' ROM export tables)
+source: Philips Velo 1 CE2, Windows CE 2.0 ROM velo-ce2-card.bin in cerf-bundles/philips_velo_1_ce2, read with CEM Porter's tools/compat-tables.mjs; Philips Velo 1 ROM, Windows CE 2.0 (velo-apps' ROM export tables)
+base: mips-ce2
+without: calstore cefobj cespell dayview finance find inkx irdastk mfcce20 msgstore ntlmssp office olece20 pcl pegobj pimdlg pvbrt pxlfile riched20 richink schannel scrrun secur32 sib smtp termctrl vbscript

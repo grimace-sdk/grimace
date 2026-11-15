@@ -1,0 +1,5 @@
+VNC_Close
+VNC_Deinit
+VNC_IOControl
+VNC_Init
+VNC_Open

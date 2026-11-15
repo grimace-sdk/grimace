@@ -1,0 +1,15 @@
+HTP_Close
+HTP_Deinit
+HTP_IOControl
+HTP_Init
+HTP_Open
+HTP_PowerDown
+HTP_PowerUp
+HTP_Read
+HTP_Seek
+HTP_Write
+HttpInitialize
+HttpInitializeFromExe
+HttpdStart
+HttpdStop
+HttpdStopAndRestart

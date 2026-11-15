@@ -1,0 +1,13 @@
+acmDriverDetails
+acmFormatDetails
+acmFormatEnum
+acmFormatSuggest
+acmFormatTagDetails
+acmGetVersion
+acmInitialize
+acmStreamClose
+acmStreamConvert
+acmStreamOpen
+acmStreamPrepareHeader
+acmStreamSize
+acmStreamUnprepareHeader

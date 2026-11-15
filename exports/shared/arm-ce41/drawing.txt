@@ -1,0 +1,13 @@
+AllocatePresetColorArray
+AllocatePresetColors
+DeleteShapeProperty
+DeleteString
+DllMain
+Drawing_End
+FreeDrawingGroup
+ParseDrawingGroup
+ParseShape
+ParseShapeProperties
+deleteGeoTextInfo
+deletePresetColorArray
+deleteVerticesArray

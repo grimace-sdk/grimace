@@ -1,0 +1,10 @@
+DMS_Close
+DMS_Deinit
+DMS_IOControl
+DMS_Init
+DMS_Open
+DMS_PowerDown
+DMS_PowerUp
+DMS_Read
+DMS_Seek
+DMS_Write

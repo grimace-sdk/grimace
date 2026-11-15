@@ -1,0 +1,6 @@
++DispDrvrContrastControl
++DispDrvrDirtyRectDump
++DispDrvrInitialize
++DispDrvrMoveCursor
++DispDrvrPowerHandler
++DispDrvrSetDibBuffer

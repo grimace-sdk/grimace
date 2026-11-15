@@ -1,0 +1,14 @@
+SplAddUserDict
+SplCheck
+SplClrUserDict
+SplEnumUserDict
+SplInit
+SplLimitGet
+SplLimitSet
+SplOptionGet
+SplOptionSet
+SplQuit
+SplRemUserDict
+SplReplace
+SplSizeUserDict
+SplSuggest

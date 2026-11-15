@@ -1,0 +1,10 @@
+LOG_Close
+LOG_Deinit
+LOG_IOControl
+LOG_Init
+LOG_Open
+LOG_PowerDown
+LOG_PowerUp
+LOG_Read
+LOG_Seek
+LOG_Write

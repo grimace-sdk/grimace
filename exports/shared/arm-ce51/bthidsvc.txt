@@ -1,0 +1,10 @@
+BHL_Close
+BHL_Deinit
+BHL_IOControl
+BHL_Init
+BHL_Open
+BHL_Read
+BHL_Seek
+BHL_Write
+OnBthDeviceAdded
+OnBthDeviceRemoved

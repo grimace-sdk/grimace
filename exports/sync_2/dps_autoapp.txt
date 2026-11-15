@@ -1,0 +1,12 @@
+DPS_GetBTCrystalTrim
+DPS_GetCANBusType
+DPS_GetDeviceIDs
+DPS_GetMACAddr
+DPS_GetMRBVersion
+DPS_GetPSN
+DPS_GetRunMode
+DPS_GetVPD_EOL
+DPS_SetBTCrystalTrim
+DPS_SetCANBusType
+DPS_SetMRBVersion
+DPS_SetULDRPersistentFlag

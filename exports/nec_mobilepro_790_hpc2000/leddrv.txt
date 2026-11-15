@@ -1,0 +1,4 @@
+LedDriverGetDeviceInfo
+LedDriverInitialize
+LedDriverPowerDown
+LedDriverSetDevice

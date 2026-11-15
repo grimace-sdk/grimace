@@ -1,0 +1,7 @@
+DeleteFileIntent
+ImageMarked
+MoveToCard
+MoveToFolder
+PrintUI
+RenameFileIntent
+SendUI

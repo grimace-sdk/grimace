@@ -1,0 +1,7 @@
+arch: arm
+version: 4.2
+platform: embedded
+device: falcon_4220__4_10
+source: Falcon 4220 4 10, Windows CE .NET ROM nk_psc_we_00_4_10.bin in cerf-bundles/falcon_4220__4_10, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce42
+without: autoshape chartapi dcdgif dcdjpeg dcdmz dcdpng drawing ecdjpeg image imgutil jpeg keybddr mfdll pdfreader picstream png pngfilt rtfrdr sho uimgr w97reader w97util xlsutil

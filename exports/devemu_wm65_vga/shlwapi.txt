@@ -1,0 +1,2 @@
++IStream_Reset
++IStream_Size

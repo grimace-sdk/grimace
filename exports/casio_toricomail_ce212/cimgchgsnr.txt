@@ -1,0 +1,2 @@
+?ImgChgRecv@@YAHPBG@Z
+?ImgChgSend@@YAHPBG@Z

@@ -1,0 +1,3 @@
++TransportProps
++TryEnterCriticalSection
+-TransportPropsEx

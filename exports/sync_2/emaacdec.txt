@@ -1,0 +1,6 @@
+AACDEC_CreateDecoder
+AACDEC_DecodeFrame
+AACDEC_DeleteDecoder
+AACDEC_GetFrameInfo
+AACDEC_Parser
+AACDEC_ResetDecoder

@@ -1,0 +1,5 @@
+BSQSTDLIB_Version
+EvaluationStatus
+GetCEInformation
+ShowAboutBox
+ShowAboutBoxEx

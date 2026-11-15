@@ -1,0 +1,17 @@
+CLSIDFromProgID
+CLSIDFromString
+CoCreateInstance
+CoFreeUnusedLibraries
+CoFreeUnusedLibrariesEx
+CoGetClassObject
+CoInitializeEx
+CoSetState
+CoTaskMemAlloc
+CoTaskMemFree
+CoTaskMemRealloc
+CoTaskMemSize
+CoUninitialize
+ProgIDFromCLSID
+StringFromCLSID
+StringFromGUID2
+StringFromIID

@@ -1,0 +1,9 @@
++PimDetermineIMECompositionString
++PimDisableIME
++PimFlushIMECompositionString
++PimGetIMECompositionString
++PimGetIMEReadString
++PimIsIMEEmpty
++PimMapString
++PimSetCompositionString
++PimVerifyString

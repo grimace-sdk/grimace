@@ -1,0 +1,9 @@
+DllMain
+WWN_Close
+WWN_Deinit
+WWN_IOControl
+WWN_Init
+WWN_Open
+WWN_Read
+WWN_Seek
+WWN_Write

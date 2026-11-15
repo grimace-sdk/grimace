@@ -1,0 +1,2 @@
+OsaxsT1DLLEntry
+OsaxsT1Init

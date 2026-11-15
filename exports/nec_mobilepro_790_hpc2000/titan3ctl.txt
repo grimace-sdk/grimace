@@ -1,0 +1,11 @@
+HostGetApi
+TCI_Close
+TCI_Deinit
+TCI_IOControl
+TCI_Init
+TCI_Open
+TCI_PowerDown
+TCI_PowerUp
+TCI_Read
+TCI_Seek
+TCI_Write

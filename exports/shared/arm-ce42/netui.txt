@@ -1,0 +1,9 @@
++CloseUsernamePasswordDialog
++GetUsernamePasswordEx
++LoadSecurityLib
++RasEapFreeMemory
++RasEapInvokeConfigUI
++RasEapInvokeInteractiveUI
++UnloadSecurityLib
+-ClosePropSheetDialog
+-SetWZCSignalStrength

@@ -1,0 +1,7 @@
+HandleBlob
+InitSecurityInterfaceW
+KerbSspiLogonUser
+Load
+MatchTarget
+MatchUser
+UnLoad

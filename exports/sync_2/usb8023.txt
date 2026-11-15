@@ -1,0 +1,4 @@
+DriverEntry
+USBDeviceAttach
+USBInstallDriver
+USBUnInstallDriver

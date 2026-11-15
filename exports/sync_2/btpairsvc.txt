@@ -1,0 +1,8 @@
+BTP_Close
+BTP_Deinit
+BTP_IOControl
+BTP_Init
+BTP_Open
+BTP_Read
+BTP_Seek
+BTP_Write

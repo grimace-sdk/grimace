@@ -1,0 +1,10 @@
+BACKLIGHT_Close
+BACKLIGHT_GetIntensity
+BACKLIGHT_GetIntensityLevels
+BACKLIGHT_GetState
+BACKLIGHT_GetTimeout
+BACKLIGHT_GetVersion
+BACKLIGHT_Open
+BACKLIGHT_SetIntensity
+BACKLIGHT_SetState
+BACKLIGHT_SetTimeout

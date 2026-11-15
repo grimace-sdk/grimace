@@ -1,0 +1,9 @@
+DriverEntry
+WSS_Close
+WSS_Deinit
+WSS_IOControl
+WSS_Init
+WSS_Open
+WSS_Read
+WSS_Seek
+WSS_Write

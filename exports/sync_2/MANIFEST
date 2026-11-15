@@ -1,0 +1,7 @@
+arch: arm
+version: 6
+platform: embedded
+device: sync_2
+source: SYNC 2, Windows Embedded CE 6 ROM EA5T-14D544-BA.sec in cerf-bundles/sync_2, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce6
+without: backlight

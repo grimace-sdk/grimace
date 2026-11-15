@@ -1,0 +1,5 @@
+HFP_Close
+HFP_Deinit
+HFP_IOControl
+HFP_Init
+HFP_Open

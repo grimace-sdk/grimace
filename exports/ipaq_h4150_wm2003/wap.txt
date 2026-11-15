@@ -1,0 +1,6 @@
+WapClose
+WapGetNextPrimitiveSize
+WapOpen
+WapPing
+WapRead
+WapSend

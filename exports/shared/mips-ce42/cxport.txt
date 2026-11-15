@@ -1,0 +1,5 @@
++CTEAllocMem
++CTEFreeMem
++CTEIOControl
++CTEInitEvent
++CTEInitTimer

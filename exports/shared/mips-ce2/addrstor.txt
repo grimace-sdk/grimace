@@ -1,0 +1,10 @@
++ConstructStoreFileAs
++GetAddrstorInst
++GetDefaultFields
++GetFieldFromProperty
++GetMask
++GetMatchingEntryEx
++GetSortOrderFromProperty
++InitializeExtended
++PimCategListBlob
++PimCategParseBlob

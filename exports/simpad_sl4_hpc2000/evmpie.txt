@@ -1,0 +1,5 @@
+DLI_libraryVersion
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer

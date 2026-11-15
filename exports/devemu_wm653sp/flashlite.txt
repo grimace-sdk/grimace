@@ -1,0 +1,8 @@
+FI_CheckSWFDataBufferValidity
+FI_CreatePlayer
+FI_GetDisplayFormat
+FI_GetMetaData
+FI_GetSharedObjectGUID
+FI_GetSwfInfo
+FI_GetVersion
+FI_SetMaxVideoFramesToProcess

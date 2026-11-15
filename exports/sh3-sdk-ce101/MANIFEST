@@ -3,3 +3,4 @@ version: 1.01
 platform: hpc
 device: 
 source: Windows CE 1.01 SDK SH3 import libraries (tools/mkexports.py)
+base: sh3-ce101

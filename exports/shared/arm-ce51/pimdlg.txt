@@ -1,0 +1,8 @@
+CMMFree
+CMMOnWM_COMMAND
+CoolAddressCard
+CreateAppointmentCard
+CurrentCardDeleted
+IDLG_FreeParsers
+IDLG_InitParsers
+SetPerfHandles

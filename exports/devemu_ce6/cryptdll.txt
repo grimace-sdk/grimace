@@ -1,0 +1,11 @@
+CDBuildIntegrityVect
+CDBuildVect
+CDFindCommonCSystem
+CDFindCommonCSystemWithKey
+CDGenerateRandomBits
+CDLocateCSystem
+CDLocateCheckSum
+CDLocateRng
+CDRegisterCSystem
+CDRegisterCheckSum
+CDRegisterRng

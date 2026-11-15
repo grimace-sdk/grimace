@@ -1,0 +1,3 @@
++??0SimApiLoader@@IAA@XZ
++??1SimApiLoader@@UAA@XZ
++?CreateEx@XWnd@@QAAHKPBG0KPAUtagPOINT@@PAUtagSIZE@@PAUHWND__@@I@Z

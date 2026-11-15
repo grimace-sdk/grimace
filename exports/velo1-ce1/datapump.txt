@@ -1,0 +1,9 @@
+SoftModemCommandHandler
+SoftModemGetMemorySize
+SoftModemInit
+SoftModemLineHandler
+SoftModemRead
+SoftModemReadFlush
+SoftModemSetMemoryPtr
+SoftModemWrite
+SoftModemWriteFlush

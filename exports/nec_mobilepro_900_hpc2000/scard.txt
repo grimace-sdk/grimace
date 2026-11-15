@@ -1,0 +1,10 @@
+SCA_Close
+SCA_Deinit
+SCA_IOControl
+SCA_Init
+SCA_Open
+SCA_PowerDown
+SCA_PowerUp
+SCA_Read
+SCA_Seek
+SCA_Write

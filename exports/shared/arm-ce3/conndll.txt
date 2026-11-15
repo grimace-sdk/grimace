@@ -1,0 +1,5 @@
+ActiveConnectionDetect
+AdvancedSettingsModify
+ConnectionDelete
+ModemConnectionCreateEdit
+TrailingSpacesStrip

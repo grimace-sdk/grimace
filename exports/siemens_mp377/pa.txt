@@ -1,0 +1,13 @@
+CollectSettings
+PAD_Close
+PAD_Deinit
+PAD_IOControl
+PAD_Init
+PAD_Open
+PAD_PowerDown
+PAD_PowerUp
+PAD_Read
+PAD_Seek
+PAD_Write
+RestoreSettings
+SaveSettings

@@ -1,0 +1,12 @@
+GetExtensionVersion
+HttpExtensionProc
+UPP_Close
+UPP_Deinit
+UPP_IOControl
+UPP_Init
+UPP_Open
+UPP_PowerDown
+UPP_PowerUp
+UPP_Read
+UPP_Seek
+UPP_Write

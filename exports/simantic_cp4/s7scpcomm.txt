@@ -1,0 +1,15 @@
+accept_s
+await_disconnect
+cleanup_open_channels
+cleanup_unused_channels
+close_connection
+connect_s
+event_handle
+get_errno
+get_loc_addr
+get_rem_addr
+open_connection
+post_event
+read_data
+register_handle
+write_data

@@ -1,0 +1,6 @@
+arch: arm
+version: 5.2
+platform: pocketpc
+device: devemu_wm614
+source: Device Emulator - Windows Mobile 6.1, Windows Mobile 6.1.4, Windows Mobile 6.1.4 ROM Windows Mobile 6.1.4 Pocket PC.bin in cerf-bundles/devemu_wm614, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52

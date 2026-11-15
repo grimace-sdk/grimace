@@ -1,0 +1,9 @@
+DetectASOnVCOMPort
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer
+GetASServiceString
+OnBthDeviceAdded
+OnBthDeviceRemoved
+OneStopFactory

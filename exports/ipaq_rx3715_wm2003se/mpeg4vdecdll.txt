@@ -1,0 +1,8 @@
+MPEG4VDec_Close
+MPEG4VDec_Control
+MPEG4VDec_Init
+MPEG4VDec_ReadConfigStream
+MPEG4VDec_Run
+MPEG4VDec_Status
+Play_ConvYUV420ToRGB565
+Play_ConvYUV420ToRGB888

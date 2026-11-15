@@ -1,0 +1,16 @@
+??0IteratorCallBack@@QAA@W4TravMode@@@Z
+??0MonoNode@@QAA@W4LogicalType@@H@Z
+??0PlayerContext@@QAA@PBVAudNode@@W4PlayerContextTypes@@@Z
+??0QuaTernaryNode@@QAA@W4LogicalType@@H@Z
+??0TerminalNode@@QAA@W4LogicalType@@HPBD@Z
+??1IteratorCallBack@@UAA@XZ
+??1PlayerContext@@UAA@XZ
+??_FIteratorCallBack@@QAAXXZ
+??_F__AnyPtrList@@QAAXXZ
+?GetVersion@PlayerContext@@UBAGXZ
+?Handle@AudDynamicLoader@@QAAPAXXZ
+?SetVersion@PlayerContext@@UBAXG@Z
+?Trav@PlayerContext@@UBAXPAVIteratorCallBack@@@Z
+?insert@AudNodePtrList@@QAAXJPAVAudNode@@@Z
+?remove@ArgsList@@QAAXJ@Z
+?remove@AudNodePtrList@@QAAXJ@Z

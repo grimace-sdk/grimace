@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: pocketpc
+device: devemu_wm65_vga
+source: Device Emulator - Windows Mobile 6.5, Windows Mobile 6.5 VGA, Windows Mobile 6.5 VGA ROM Windows Mobile 6.5 Pocket PC (VGA).bin in cerf-bundles/devemu_wm65_vga, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52
+without: distribution

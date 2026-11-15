@@ -1,0 +1,11 @@
+DllEntry
+HSD_Close
+HSD_Deinit
+HSD_IOControl
+HSD_Init
+HSD_Open
+HSD_PowerDown
+HSD_PowerUp
+HSD_Read
+HSD_Seek
+HSD_Write

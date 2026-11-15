@@ -1,0 +1,7 @@
+CeTaskSchedulerCloseHandle
+CeTaskSchedulerCreateSchedule
+CeTaskSchedulerDeleteSchedule
+CeTaskSchedulerFirstSchedule
+CeTaskSchedulerFreeSchedule
+CeTaskSchedulerGetSchedule
+CeTaskSchedulerNextSchedule

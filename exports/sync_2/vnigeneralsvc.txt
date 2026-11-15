@@ -1,0 +1,5 @@
+VNG_Close
+VNG_Deinit
+VNG_IOControl
+VNG_Init
+VNG_Open

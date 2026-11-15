@@ -1,0 +1,9 @@
+AVDTP_CloseDeviceContext
+AVDTP_EstablishDeviceContext
+AVDTP_GetUniqueSEID
+AVDTP_SetReceiverReadyState
+AVD_Close
+AVD_Deinit
+AVD_IOControl
+AVD_Init
+AVD_Open

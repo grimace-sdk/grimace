@@ -1,0 +1,4 @@
++InitSecurityInterfaceA
++NTLMDeleteUser
++NTLMEnumUser
++NTLMSetUserInfo

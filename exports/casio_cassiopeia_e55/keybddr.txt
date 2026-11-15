@@ -1,0 +1,2 @@
++KeyAPI_WinCapsDelete
++KeyAPI_WinCapsEntry

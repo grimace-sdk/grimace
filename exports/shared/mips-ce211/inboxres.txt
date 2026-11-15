@@ -1,0 +1,7 @@
+GetResourceInstance
+MailCreateDialogParam
+MailDialogBoxParam
+MailLoadAccelerators
+MailLoadBitmap
+MailLoadImage
+MailLoadStringBuf

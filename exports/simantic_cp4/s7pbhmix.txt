@@ -1,0 +1,11 @@
+?_PrivateAPI@@3UStep7RtxSystemAPI@@A
+S7T_Close
+S7T_Deinit
+S7T_IOControl
+S7T_Init
+S7T_Open
+S7T_PowerDown
+S7T_PowerUp
+S7T_Read
+S7T_Seek
+S7T_Write

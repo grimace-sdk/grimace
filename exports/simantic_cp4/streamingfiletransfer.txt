@@ -1,0 +1,8 @@
+SFTExit
+SFTInit
+SFTReceiveFilesBegin
+SFTReceiveFilesEnd
+SFTReceiveFilesWriteData
+SFTSendFileBeginMulti
+SFTSendFileEnd
+SFTSendFileReadData

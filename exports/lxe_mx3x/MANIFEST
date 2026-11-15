@@ -1,0 +1,7 @@
+arch: arm
+version: 4.2
+platform: embedded
+device: lxe_mx3x
+source: LXE MX3X, Windows CE .NET ROM NK.BIN in cerf-bundles/lxe_mx3x, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce42
+without: dpnhupnp dxmrtp obexinbx obexsrvr pppoe rtcclient sa_usb_ser scard winscard wmvdmod

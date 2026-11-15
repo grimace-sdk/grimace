@@ -1,0 +1,10 @@
+SMI_Close
+SMI_Deinit
+SMI_IOControl
+SMI_Init
+SMI_Open
+SMI_PowerDown
+SMI_PowerUp
+SMI_Read
+SMI_Seek
+SMI_Write

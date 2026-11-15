@@ -1,0 +1,7 @@
+arch: arm
+version: 4.2
+platform: embedded
+device: smartbook_g138_ce4_2
+source: SmartBook G138 CE4 2, Windows CE .NET ROM smartbook2.15ce4.2_6_14_english.fim in cerf-bundles/smartbook_g138_ce4_2, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce42
+without: ddi dssdh imgdecmp ipsec ipsecsvc ipv6hlp ircomm irdastk irsir keybddr l2tp mscoree mscoree1_0 msfilter msim netcfagl1_0 softkb tcpip6 toolhelp touch trarecoenu usbd usbdisk6 usbhid usbmsc

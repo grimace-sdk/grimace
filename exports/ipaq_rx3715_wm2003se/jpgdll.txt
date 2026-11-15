@@ -1,0 +1,6 @@
+CloseFile
+GetFileImageInfo
+GetImageFileData
+GetJPGFileData
+GetJPGFileHeader
+SaveJpgFile

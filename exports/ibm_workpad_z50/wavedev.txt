@@ -1,0 +1,4 @@
++AudGetVolume
++AudSetMute
++AudSetVolume
++SetAmpPower

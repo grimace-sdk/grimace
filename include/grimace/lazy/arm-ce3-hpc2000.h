@@ -1,0 +1,4 @@
+#define __grimace_lazy_CreateCursor 1
+extern struct grimace_lazy_import __grimace_lazy_import_CreateCursor;
+#define __grimace_lazy_DestroyCursor 1
+extern struct grimace_lazy_import __grimace_lazy_import_DestroyCursor;

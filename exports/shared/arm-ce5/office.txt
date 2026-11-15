@@ -1,0 +1,15 @@
++NewFromTemplateW
+-ChangeStringToHalfWidth
+-DllCanUnloadNow
+-DllGetClassObject
+-GetDefaultANSICodePage
+-GetTemplateInfo
+-NewFileFromTemplate
+-OpenDocumentA
+-OpenDocumentEx
+-OpenThisDocumentA
+-OpenThisDocumentEx
+-SaveDocumentA
+-SaveDocumentAsA
+-SaveDocumentAsEx
+-SaveDocumentEx

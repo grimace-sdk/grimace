@@ -1,0 +1,10 @@
+BTD_Close
+BTD_Deinit
+BTD_IOControl
+BTD_Init
+BTD_Open
+BTD_PowerDown
+BTD_PowerUp
+BTD_Read
+BTD_Seek
+BTD_Write

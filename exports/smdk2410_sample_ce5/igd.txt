@@ -1,0 +1,10 @@
+IGD_Close
+IGD_Deinit
+IGD_IOControl
+IGD_Init
+IGD_Open
+IGD_PowerDown
+IGD_PowerUp
+IGD_Read
+IGD_Seek
+IGD_Write

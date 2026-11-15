@@ -1,0 +1,7 @@
+-ActivateRunningMeProfile
+-ActivateRunningSettings
+-GetRoamingSettings
+-IsMeProfileRunning
+-IsSettingsRunning
+-LaunchAboutBox
+-LaunchSettingsRoaming

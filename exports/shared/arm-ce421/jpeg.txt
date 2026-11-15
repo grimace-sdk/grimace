@@ -1,0 +1,13 @@
++jpeg_CreateCompress
++jpeg_destroy_compress
++jpeg_finish_compress
++jpeg_set_defaults
++jpeg_set_quality
++jpeg_start_compress
++jpeg_stdio_dest
++jpeg_stdio_src
++jpeg_write_scanlines
+-jpeg_calc_output_dimensions
+-jpeg_consume_input
+-jpeg_finish_output
+-jpeg_start_output

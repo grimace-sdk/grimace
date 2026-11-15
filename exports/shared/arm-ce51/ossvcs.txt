@@ -1,0 +1,16 @@
+CopyToRingsDirectory
+CreateRingtoneFilterString
+FindEventSoundHandler
+GetCategoryInfo
+GetDefaultRing
+GetDefaultSound
+IsEventSoundEvent
+PlayEventSound
+PlayEventSoundScript
+PlaySoundScript
+PreviewEventSound
+SetAsRingtone
+StopAllEventSounds
+StopEventSounds
+ValidateSound
+WC_PlayClick

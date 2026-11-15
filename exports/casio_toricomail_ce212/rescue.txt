@@ -1,0 +1,10 @@
+RES_Close
+RES_Deinit
+RES_IOControl
+RES_Init
+RES_Open
+RES_PowerDown
+RES_PowerUp
+RES_Read
+RES_Seek
+RES_Write

@@ -1,0 +1,4 @@
+arch: mips
+version: 2
+base: mips-ce1
+without: audio hhriched monthcal pimui

@@ -1,0 +1,16 @@
+AddPendataPoints
+AddPendataStroke
+ClearPendata
+CopyPendataStrokes
+CreatePendata
+DelPendataStroke
+DestroyPendata
+DrawPendata
+DuplicatePendata
+GetPendataAttributes
+GetPendataFirstStroke
+GetPendataNextStroke
+GetPendataStroke
+GetStrokeAttributes
+MovePendata
+SetStrokeAttributes

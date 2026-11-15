@@ -1,0 +1,11 @@
+WAM_Close
+WAM_Deinit
+WAM_IOControl
+WAM_Init
+WAM_Open
+WAM_PowerDown
+WAM_PowerUp
+WAM_Read
+WAM_Seek
+WAM_Write
+WaveApiDllEntry

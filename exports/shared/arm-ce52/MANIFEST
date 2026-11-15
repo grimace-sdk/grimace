@@ -1,0 +1,4 @@
+arch: arm
+version: 5.2
+base: arm-ce51
+without: fakeril ieceext infantry mdsmailsvc mscoree1_0 msgstore msnmobileplus netcfagl1_0 outres pmsnhotmail pmsnshared rdpapi rdpdr servhost termctrl transcribersip trarecoenu tsctrc wmadecoder wmvdecoder

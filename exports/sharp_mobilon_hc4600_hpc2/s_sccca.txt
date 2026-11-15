@@ -1,0 +1,6 @@
+CACloseContent
+CAOpenContent
+CAReadFirst
+CAReadNext
+CASeek
+CATell

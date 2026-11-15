@@ -1,0 +1,7 @@
+arch: arm
+version: 4.21
+platform: pocketpc
+device: ipaq_rx3715_wm2003se
+source: iPAQ RX3715 WM2003SE, Windows Mobile 2003 SE ROM d2b10111uo.nbf in cerf-bundles/ipaq_rx3715_wm2003se, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce421
+without: atcmdint btagsvc bthatci ccoredrv ccoreutl celltsp coresecproviders cspvoice dmatrans dssdh emulserv fakeril ipsec ipsecsvc kbdmouse l2tp ne2000 pcl phone prnerr prnport pwrbtn2410 ril s3c2410disp serdma serdmaasplugin serial simsec simtkit smflash sms sms_providers supsvcs tpcutil vcefsd wavclick

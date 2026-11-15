@@ -1,0 +1,12 @@
+S7U_Close
+S7U_Deinit
+S7U_IOControl
+S7U_Init
+S7U_Open
+S7U_PowerDown
+S7U_PowerUp
+S7U_PreClose
+S7U_PreDeinit
+S7U_Read
+S7U_Seek
+S7U_Write

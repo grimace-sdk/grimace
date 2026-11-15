@@ -1,0 +1,14 @@
+CreateJpegBand
+EndJpegImage
+FileTypeJpeg
+FreeJpegBand
+GetJpegBand
+GetJpegBandHeight
+GetJpegBitsPerPixel
+GetJpegHeight
+GetJpegTime
+GetJpegWidth
+InitJpegImage
+ProcessJpegHeaders
+StartJpegImage
+TermJpegImage

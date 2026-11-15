@@ -1,0 +1,10 @@
+WAV_Close
+WAV_Deinit
+WAV_IOControl
+WAV_Init
+WAV_Open
+WAV_PowerDown
+WAV_PowerUp
+WAV_Read
+WAV_Seek
+WAV_Write

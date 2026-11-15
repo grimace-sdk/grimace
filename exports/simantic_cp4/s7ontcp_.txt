@@ -1,0 +1,10 @@
+SCP_close
+SCP_get_errno
+SCP_open
+SCP_openW
+SCP_receive
+SCP_send
+SCPwriteLogData
+SetSinecHWnd
+SetSinecHWndMsg
+SetSinecHWndMsgCb

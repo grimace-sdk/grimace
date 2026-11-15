@@ -1,0 +1,5 @@
++HalAllocateCommonBuffer
++HalFreeCommonBuffer
++HalTranslateSystemAddress
++TransBusAddrToStatic
++TransBusAddrToVirtual

@@ -1,0 +1,4 @@
+GPSCloseDevice
+GPSGetDeviceState
+GPSGetPosition
+GPSOpenDevice

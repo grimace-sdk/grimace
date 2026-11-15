@@ -1,0 +1,3 @@
+?ChartDelete@@YAXPAX@Z
+?ChartParse@@YAHPAUChartParseP@@@Z
+?ChartRender@@YAHPAUChartRenderP@@@Z

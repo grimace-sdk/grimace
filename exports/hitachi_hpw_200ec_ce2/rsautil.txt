@@ -1,0 +1,7 @@
+OEMComPortStatusNotify
+OEMGetCountryCode
+OEMGetModemPwrState
+OEMHPCPowerNotify
+OEMSetModemPwrState
+OEMSetModemSpeakerState
+OEMSetModemSpeakerVolume

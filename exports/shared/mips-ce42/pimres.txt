@@ -1,0 +1,9 @@
++PimLoadString
+-GetResourceInstance
+-PimCreateDialogParam
+-PimDialogBoxParam
+-PimLoadAccelerators
+-PimLoadIcon
+-PimLoadImage
+-PimLoadResource
+-PimLoadToolBarButtons

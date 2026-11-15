@@ -1,0 +1,13 @@
+BtaIf_StackDown
+BtaIf_StackUp
+ConnectHFP
+DisconnectDUNServer
+DisconnectHFP
+GetConnInfo
+InitializeHFP
+MicrophoneVolume
+SetCallback
+SetDUNServerCallback
+ShutdownHFPAndExit
+SpeakerGain
+VoiceToSpeakerMic

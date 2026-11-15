@@ -1,0 +1,5 @@
++CreateDecodingResources
++FreeDecodingResources
++InitializeDecodingResources
++PrTnefDecodeBuffer2
++UninitializeDecodingResources

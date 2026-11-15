@@ -1,0 +1,9 @@
+lk_ConvEnd
+lk_ConvLearn
+lk_ConvLearnCheck
+lk_ConvLearnInit
+lk_ConvRenbun
+lk_ConvStart
+lk_ConvTankan
+lk_ConvUserLearnDel
+lk_Reset

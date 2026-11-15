@@ -1,0 +1,4 @@
+CMConfigure
+CPlApplet
+DllMain
+WavelanConfigure

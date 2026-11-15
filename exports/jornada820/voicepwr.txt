@@ -1,0 +1,10 @@
+ZZZ_Close
+ZZZ_Deinit
+ZZZ_IOControl
+ZZZ_Init
+ZZZ_Open
+ZZZ_PowerDown
+ZZZ_PowerUp
+ZZZ_Read
+ZZZ_Seek
+ZZZ_Write

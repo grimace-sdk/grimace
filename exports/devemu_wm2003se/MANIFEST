@@ -1,0 +1,6 @@
+arch: arm
+version: 4.21
+platform: pocketpc
+device: devemu_wm2003se
+source: Device Emulator - Windows Mobile 2003, Windows Mobile 2003 SE, Windows Mobile 2003 SE ROM WM2003SE.bin in cerf-bundles/devemu_wm2003se, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce421

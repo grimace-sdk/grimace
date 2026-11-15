@@ -1,0 +1,3 @@
++TransportConvert
++TransportDuplicateHandle
++TransportErrorEx

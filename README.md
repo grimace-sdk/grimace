@@ -2,14 +2,16 @@
 
 A CMake toolchain for Windows CE programs and DLLs. It uses clang and lld, then `tools/mkpe.py` turns the linked ELF into a CE PE.
 
-| Target | `GRIMACE_ARCH` | `GRIMACE_CE_VERSION` | Export lists | `GRIMACE_DEVICE` |
-| --- | --- | --- | --- | --- |
-| MIPS CE 1.0 and 2.0 (Philips Velo 1) | `mips` | `1`, `2` | the Velo 1's ROMs (`exports/velo1-ce1`, `velo1-ce2`) | `velo1` |
-| SH3 CE 1.0, 1.01 and 2.0 | `sh3` | `1`, `1.01`, `2` | Microsoft's SH3 SDK import libraries (`exports/sh3-sdk-ce1`, `ce101`, `ce2`) | |
-| x86 CE 2.x (Clarion Joyride) | `x86` | `2` | a Joyride ROM (`exports/joyride-ce2`) | `joyride` |
-| ARM CE 3.0, Handheld PC 2000 (HP Jornada 720) | `arm` | `3` | the Jornada 720's ROM (`exports/jornada720-ce3`) | `jornada720` |
-| ARM CE 5.2, Windows Mobile 6.1 (Trimble Juno SB) | `arm` | `5.2` | the Juno SB's ROM (`exports/junosb-ce52`) | `junosb` |
-| ARM CE 6.0 (Sharp Brain) | `arm` | `6` | PW-SH2 and PW-A7300 ROMs (`exports/brain-sh2-ce6`, `brain-a7300-ce6`) | `pwsh2`, `pwsb1`, `pwsh4`, `pwa7300`, `pwg5300` |
+| Target | `GRIMACE_ARCH` | `GRIMACE_CE_VERSION` | `GRIMACE_PLATFORM` |
+| --- | --- | --- | --- |
+| MIPS CE 1.0 and 2.0: Philips Velo, NEC MobilePro, Sharp Mobilon and other Handheld PCs | `mips` | `1`, `2` | `hpc` |
+| SH3 CE 1.0, 1.01 and 2.0: HP 300LX to 620LX, Casio Cassiopeia and other Handheld PCs | `sh3` | `1`, `1.01`, `2` | `hpc` |
+| x86 CE 2.x: Clarion Joyride | `x86` | `2` | `autopc` |
+| ARM CE 3.0: Handheld PC 2000 (HP Jornada 720), Pocket PC 2000 and 2002 (iPAQ) and later | `arm` | `3` | `hpc2000`, `pocketpc`, `embedded` |
+| ARM CE 5.2: Windows Mobile 6 to 6.5 (Trimble Juno SB) | `arm` | `5.2` | `pocketpc`, `smartphone` |
+| ARM CE 6.0: Sharp Brain, Windows Embedded CE 6 | `arm` | `6` | `brain`, `embedded` |
+
+`GRIMACE_DEVICE` pins a target to one device: `python3 tools/manifests.py` lists them, from `velo1`, `jornada720`, `junosb` and the Brains' `pwsh2`, `pwsb1`, `pwsh4`, `pwa7300` and `pwg5300` to the devices imported from CEM Porter, named as in cerf-bundles (`ipaq_h3600_ppc2002`, `hp_620lx_ce2`). grimace doesn't build for CE 2.01 to 2.12, 4.x, 5.0 or 5.1 yet, but their lists count towards an earlier version's targets on the same platform: Windows Mobile 2003 to 5.0 Pocket PCs towards ARM CE 3.0's.
 
 ## LLVM
 
@@ -43,7 +45,7 @@ This gives `build/myapp.exe` and `build/mylib.dll`, with the linked `.elf` besid
 - `grimace_add_executable(target [EXCLUDE_FROM_ALL] [OUTPUT file.exe] [ICON file.ico] [TEXT_ADDRESS address] [STACK_SIZE bytes] [RESOURCES files...] sources...)`: entry point `WinMain`. `TEXT_ADDRESS` links the code at another address than `0x11000`, a multiple of `0x1000`. The image base stays `0x10000`, so the image covers the space between. `STACK_SIZE` is the stack reserve, a multiple of `0x1000`, by default `GRIMACE_DEFAULT_STACK_SIZE` or else 64 KB, as Microsoft's linker gives. CE commits the stack a page at a time as it's used.
 - `grimace_add_library(target [EXCLUDE_FROM_ALL] [OUTPUT file.dll] [RESOURCES files...] EXPORTS name[=symbol]... | EXPORTS_FILE file sources...)`: entry point `DllMain`, or one that returns `TRUE` if the library has none. `EXPORTS_FILE` has one export per line.
 - `GRIMACE_ARCH`: `mips` (default), `sh3`, `x86` or `arm`. `GRIMACE_CE_VERSION`, the oldest version the program runs on, defaults to `3` for `arm` and `1` otherwise. `_WIN32_WCE` is `100`, `101`, `200`, `300`, `502` or `600`.
-- `GRIMACE_DEVICE` pins the target to one device's ROM, and `GRIMACE_PLATFORM` (`hpc`, `hpc2000`, `autopc`, `wm`, `brain`) to one platform's devices. See [Imports](#imports).
+- `GRIMACE_DEVICE` pins the target to one device's ROM, and `GRIMACE_PLATFORM` (`hpc`, `hpcpro`, `hpc2000`, `palmsize`, `pocketpc`, `smartphone`, `autopc`, `brain`, `embedded`) to one platform's devices. See [Imports](#imports).
 - `RESOURCES`: `.rc` files are compiled with `llvm-rc` and linked into `.rsrc` with the icon. Other files listed are dependencies. Set `GRIMACE_RC_INCLUDES` to a list of folders to search for headers too. CE has no `DialogBoxParamW`: use `FindResource`, `LoadResource` and `DialogBoxIndirectParamW`.
 - `llvm-rc` needs the comma after a control's text or name (`LTEXT "Text", -1, 5, 5, 50, 12`), and keeps the leading spaces of a line continued with `\`. Microsoft's rc does neither.
 - The PE has subsystem 9 (Windows CE GUI) with the CE version, as Microsoft's linkers write. CE 2.0 treats a program marked 1.0 as a CE 1.0 program, with another system font for client-area text.
@@ -52,7 +54,13 @@ This gives `build/myapp.exe` and `build/mylib.dll`, with the linked `.elf` besid
 
 ## Imports
 
-Each folder in `exports/` is a ROM's or SDK's export lists, one `<dll>.txt` per DLL, with a `MANIFEST` giving its architecture, CE version, platform, devices and source. Devices with identical lists share a folder. `python3 tools/manifests.py` lists them.
+Each folder in `exports/` is a ROM's or SDK's export lists, with a `MANIFEST` giving its architecture, CE version, platform, devices and source. Devices with identical lists share a folder. `python3 tools/manifests.py` lists them.
+
+The lists are stored as layers, so a device records only how it differs:
+
+- `exports/shared/<arch>-ce<version>` holds what most lists for that architecture and version export, as changes from the architecture's previous version (`arm-ce3` from `arm-ce212`), or in full for its first.
+- Each device's folder holds its changes from its version's layer. A `<dll>.txt` has `+name` and `-name` lines, or plain names for a DLL its layer lacks, and the `MANIFEST`'s `without` names the layer's DLLs it lacks.
+- `tools/manifests.py` rebuilds each list. `python3 tools/exports.py layer` recomputes the layers after a list changes, and `python3 tools/exports.py ceporter <ce-porter>/data/compat` imports the CE 1 to 6 devices from [CEM Porter](https://github.com/Gadgetoid/cem-porter)'s tables, which its `tools/compat-tables.mjs` reads from the ROMs in cerf-bundles.
 
 A target imports from the lists of its architecture at its CE version and later, since the program may run on any of those devices, but only those of the platforms with lists at its own version: ARM CE 3.0 programs don't import from the Brain's CE 6.0 lists.
 
@@ -205,7 +213,7 @@ Set `GRIMACE_MIPS_LLVM`, `GRIMACE_SH3_LLVM`, `GRIMACE_X86_LLVM` or `GRIMACE_ARM_
 
 - `tools/vendor-w32api.py`: copies and patches w32api.
 - `tools/mksdk.py`: writes `include/grimace/sdk` from the Handheld PC 2000 SDK, for the functions the Jornada 720 exports that w32api lacks.
-- `tools/mkheaders.py`: writes the wrappers, `grimace/aliases.h`, `grimace/unavailable.h` and `grimace/lazy-imports.h` from `exports/`, with a section for each architecture and version, platform and device.
+- `tools/mkheaders.py`: writes the wrappers, and from `exports/` a file per target (each architecture and version, platform and device) in `grimace/unavailable`, `grimace/aliases` and `grimace/lazy`, which `grimace/unavailable.h`, `aliases.h` and `lazy-imports.h` include for the target being built.
 - `tools/mkconstants.py` and `tools/mksdkconstants.py`: write `grimace/constants.h` and `grimace/types.h` (CE 1.0, 1.01 and 2.0) and `grimace/constants-sdk.h` (CE 3.0), with the SDK constants, macros and types the headers lack.
 - `tools/mkdocs.py`: writes the docstrings from `docs/api` above each declaration and names its parameters. Entries in `docs/api/sdk` fill in macros, messages and structures `docs/api` doesn't cover.
 

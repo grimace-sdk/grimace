@@ -1,0 +1,9 @@
++AllowConnectionFailover
++SHWZCGetNotificationState
++SHWZCGetPowerState
++SHWZCGetWiFiStatusString
++SHWZCIsPermanentNetwork
++SHWZCSetNotificationState
++SHWZCSetPowerState
+-ConnectionDialog
+-DisconnectDialog

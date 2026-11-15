@@ -1,0 +1,4 @@
++AllowConnectionFailover
+-ConnectionDialog
+-DisconnectDialog
+-InitializeCustomItem

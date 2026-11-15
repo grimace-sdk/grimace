@@ -1,0 +1,10 @@
+MCS_Close
+MCS_Deinit
+MCS_IOControl
+MCS_Init
+MCS_Open
+MCS_PowerDown
+MCS_PowerUp
+MCS_Read
+MCS_Seek
+MCS_Write

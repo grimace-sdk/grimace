@@ -1,0 +1,5 @@
+GetPrinterInfo
+PrinterClose
+PrinterOpen
+PrinterOpenText
+PrinterSend

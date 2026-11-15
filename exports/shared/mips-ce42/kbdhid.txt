@@ -1,0 +1,10 @@
+HIDDeviceAttach
+HIDDeviceNotifications
+KBD_Close
+KBD_Deinit
+KBD_IOControl
+KBD_Init
+KBD_Open
+KBD_Read
+KBD_Seek
+KBD_Write

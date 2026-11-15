@@ -1,0 +1,6 @@
++AVCT_CloseDeviceContext
++AVCT_EstablishDeviceContext
++AVDTP_CloseDeviceContext
++AVDTP_EstablishDeviceContext
++DriverEntry
++HCI_EstablishDeviceContextEx

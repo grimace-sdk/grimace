@@ -1,0 +1,8 @@
+-PimCreateDialogParam
+-PimLoadAccelerators
+-PimLoadBitmap
+-PimLoadIcon
+-PimLoadImage
+-PimLoadResource
+-PimLoadToolBarButtons
+-RCMLDialogProc

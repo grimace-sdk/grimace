@@ -1,0 +1,16 @@
++CertCreateCertificateChainEngine
++CertFreeCertificateChainEngine
++CryptMsgCalculateEncodedLength
++CryptMsgClose
++CryptMsgControl
++CryptMsgDllMain
++CryptMsgDuplicate
++CryptMsgGetParam
++CryptMsgOpenToDecode
++CryptMsgOpenToEncode
++CryptMsgUpdate
++CryptPFXDllMain
++PFXExportCertStoreEx
++PFXImportCertStore
++PFXIsPFXBlob
++PFXVerifyPassword

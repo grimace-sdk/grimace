@@ -1,0 +1,7 @@
+arch: arm
+version: 5
+platform: embedded
+device: devemu_ce5
+source: Device Emulator - Windows CE, Windows CE 5, Windows CE 5 ROM Windows CE 5.bin in cerf-bundles/devemu_ce5, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce5
+without: cetlkitl cetlstub diskcache fatfsd fatutil hidparse kbdhid mfcce400 mouhid msdxm mspart ohci2 olece400 pcl snmp snmp_hostmib snmp_mibii snmpapi tcpipc tlcesrv usbd usbdisk6 usbhid usbmsc usbprn wmvdmod

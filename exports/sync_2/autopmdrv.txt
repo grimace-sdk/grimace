@@ -1,0 +1,8 @@
+APD_Close
+APD_Deinit
+APD_IOControl
+APD_Init
+APD_Open
+APD_Read
+APD_Seek
+APD_Write

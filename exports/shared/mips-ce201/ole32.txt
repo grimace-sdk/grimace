@@ -1,0 +1,16 @@
+-CreateOleAdviseHolder
+-OleCreate
+-OleDraw
+-OleIsRunning
+-OleRun
+-OleSave
+-OleSetContainedObject
+-OleSetMenuDescriptor
+-ReadClassStg
+-ReadClassStm
+-StgCreateDocfile
+-StgCreateDocfileOnILockBytes
+-StgOpenStorage
+-StgOpenStorageOnILockBytes
+-WriteClassStg
+-WriteClassStm

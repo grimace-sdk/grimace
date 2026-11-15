@@ -1,0 +1,12 @@
+DFM_Close
+DFM_Deinit
+DFM_DllEntry
+DFM_IOControl
+DFM_Init
+DFM_Open
+DFM_PowerDown
+DFM_PowerHandler
+DFM_PowerUp
+DFM_Read
+DFM_Seek
+DFM_Write

@@ -1,0 +1,12 @@
+ALM_Close
+ALM_Deinit
+ALM_IOControl
+ALM_Init
+ALM_Open
+ALM_PowerDown
+ALM_PowerUp
+ALM_Read
+ALM_Seek
+ALM_Write
+AlarmResetSwitchInitialize
+AlarmResetSwitchServiceThread

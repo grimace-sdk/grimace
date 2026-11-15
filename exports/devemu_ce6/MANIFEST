@@ -1,0 +1,6 @@
+arch: arm
+version: 6
+platform: embedded
+device: devemu_ce6 devemu_ce6_xp
+source: Device Emulator CE6, Windows Embedded CE 6 ROM NK.bin in cerf-bundles/devemu_ce6, read with CEM Porter's tools/compat-tables.mjs; also Device Emulator CE6 XP
+base: arm-ce6

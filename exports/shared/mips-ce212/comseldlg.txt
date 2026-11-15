@@ -1,0 +1,9 @@
+??0CMCComSelectDialog@@QAA@XZ
+??1CMCComSelectDialog@@UAA@XZ
+??_7CMCComSelectDialog@@6B@
+?CloseDialogBox@CMCComSelectDialog@@QAAXXZ
+?CreateWind@CMCComSelectDialog@@AAAHPAUHWND__@@@Z
+?DestroyWind@CMCComSelectDialog@@AAAXXZ
+?DialogProc@CMCComSelectDialog@@EAAHIIJ@Z
+?SelectDialogBox@CMCComSelectDialog@@QAAHPAUHWND__@@PAUHINSTANCE__@@PBUMC_COMSELDLG_INFO@@@Z
+?SelectDialogBox@CMCComSelectDialog@@QAAHPAUHWND__@@PAUHINSTANCE__@@PBUMC_COMSELDLG_INFO_EX@@@Z

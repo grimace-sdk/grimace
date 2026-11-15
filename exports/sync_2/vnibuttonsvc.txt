@@ -1,0 +1,5 @@
+VNB_Close
+VNB_Deinit
+VNB_IOControl
+VNB_Init
+VNB_Open

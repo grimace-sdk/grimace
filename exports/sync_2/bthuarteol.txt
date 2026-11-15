@@ -1,0 +1,11 @@
+BEL_Close
+BEL_Deinit
+BEL_IOControl
+BEL_Init
+BEL_Open
+BEL_PowerDown
+BEL_PowerUp
+BEL_Read
+BEL_Seek
+BEL_Write
+DllMain

@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: smartphone
+device: devemu_wm602sp
+source: Device Emulator - Windows Mobile 6.0, Windows Mobile 6.0.2 Smartphone, Windows Mobile 6.0.2 Smartphone ROM Windows Mobile 6.0.2 Smartphone.bin in cerf-bundles/devemu_wm602sp, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52
+without: alerter atcmdint atlce300 atlce400 autotimedll bthatci bthpbap cespell citydb commdlg compime deviceencryptionpolicy dmsapi doclist downloadservice downloadserviceprocess find gdiplus historyapi inkctrls inkobj inkx installservice ipsecvpn ipsecvpncsp ipsecvpnvnic machineenroller mcf mencfilt mfcce300 msim netbios networkpolicycsp nodemoncsp nodemoninitsess office olece300 pimdlg pwwiff pxl2xls pxlfile redir richink sdputil softkb softwaredisable swmgmtservice taskscheduler tdetclient touch tskschcsp uiservice uiserviceplugin vbarcall voicebar voicedll wisplite wlmcontactsdatabase wlmtodayscreen wmdrm xls2pxl

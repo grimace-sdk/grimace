@@ -1,0 +1,6 @@
+DI_CreateSoundDecompressor
+DI_DecompressSound
+DI_DestroySoundDecompressor
+DI_GetSupportedFormats
+DI_SetupDecoderLibrary
+DI_SetupSoundDecompressor

@@ -1,0 +1,16 @@
+CgrAddWordToDict
+CgrCheckWordInDicts
+CgrCloseContext
+CgrCloseSession
+CgrCreateContext
+CgrFreeDict
+CgrGetAnswers
+CgrGetDictStatus
+CgrGetRecID
+CgrGetSetPicturesWeights
+CgrLoadDict
+CgrOpenSession
+CgrRecognize
+CgrRecognizeSymbol
+CgrSaveDict
+CgrSpellCheckWord

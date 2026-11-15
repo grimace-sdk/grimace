@@ -1,0 +1,3 @@
+DllMain
+GUI_Exit
+GUI_Init

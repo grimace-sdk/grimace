@@ -1,0 +1,7 @@
+DelBodyData
+DelCardData
+GetBodyNum
+GetCardNum
+MCAddressStartupCheck
+MoveBodyToCard
+MoveCardToBody

@@ -1,0 +1,9 @@
++Close8181Handle
++DrvBrightnessControl
++DrvContrastControl
++DrvDspSwitch
++DrvGetVersion
++DrvSet2DEnable
++Get8181Handle
++IT8181IOControl
++SetGhostFlag

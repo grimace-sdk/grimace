@@ -1,0 +1,4 @@
+ActiveSyncStart
+ActiveSyncStop
+DllCanUnloadNow
+DllGetClassObject

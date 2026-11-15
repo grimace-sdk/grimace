@@ -1,0 +1,7 @@
++GetTransportName
++PimCreateBoldSystemFont
++PimDrawToolTip
++PimEnsureFirstCheckedItemVisible
++PimGetAdjustedDOW
++PimPositionSip
++PimSetDatePickerRange

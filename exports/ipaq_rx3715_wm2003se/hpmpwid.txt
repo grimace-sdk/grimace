@@ -1,0 +1,8 @@
+HPWidcommCancelDiscoverPrinters
+HPWidcommCloseHandle
+HPWidcommComConnect
+HPWidcommComDisconnect
+HPWidcommDiscoverBPPDeviceID
+HPWidcommDiscoverPrinters
+HPWidcommDiscoverSPPServiceName
+HPWidcommOpenHandle

@@ -1,0 +1,10 @@
+MediaServiceBrowseClose
+MediaServiceBrowseGetItemCount
+MediaServiceBrowseGetItemDetails
+MediaServiceBrowseGetItems
+MediaServiceBrowseOpen
+MediaServiceBrowseSelect
+MediaServiceCloseClient
+MediaServiceGetConnectedSources
+MediaServiceGetSourceInfo
+MediaServiceInitializeClient

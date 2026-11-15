@@ -1,0 +1,5 @@
+DeinitFlush
+Flush
+FlushOnce
+InitFlush
+SetCeLogBufSize

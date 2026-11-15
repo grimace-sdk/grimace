@@ -1,0 +1,6 @@
+arch: sh3
+version: 2
+platform: hpc
+device: hp_620lx_ce2
+source: HP 620LX CE2, Windows CE 2.0 ROM nk.bin in cerf-bundles/hp_620lx_ce2, read with CEM Porter's tools/compat-tables.mjs
+base: sh3-ce2

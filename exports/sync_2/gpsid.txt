@@ -1,0 +1,14 @@
+COM_Close
+COM_Deinit
+COM_IOControl
+COM_Init
+COM_Open
+COM_Read
+COM_Write
+GPD_Close
+GPD_Deinit
+GPD_IOControl
+GPD_Init
+GPD_Open
+GPD_Read
+GPD_Write

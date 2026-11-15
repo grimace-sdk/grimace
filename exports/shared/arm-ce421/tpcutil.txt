@@ -1,0 +1,8 @@
+DllCanUnloadNow
+DllGetClassObject
+FindLink
+ForwardMessageToAllChildren
+GetDbaseSource
+IsImmediateDialRequestRequired
+OneStopFactory
+PreprocessDialRequest

@@ -1,0 +1,4 @@
+InitInkX
+InitRichInkDLL
+InkToString
+StringInFile

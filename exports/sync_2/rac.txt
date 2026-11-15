@@ -1,0 +1,16 @@
+RAC_ActivateFrontAudioSystem
+RAC_GetRoutingFlags
+RAC_IsRoutingValid
+RAC_PttControlRegisterClient
+RAC_PttControlReleaseClient
+RAC_PttControlReleaseMute
+RAC_RefreshPresets
+RAC_ReleaseClientID
+RAC_ReleasePrompt
+RAC_ReleaseRouting
+RAC_ReleaseRoutingAndDefaultAlloc
+RAC_RequestClientID
+RAC_RequestPrompt
+RAC_RequestPromptEx
+RAC_RequestRouting
+RAC_SourceSinkName

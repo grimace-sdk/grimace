@@ -1,0 +1,5 @@
+DPT_Close
+DPT_Deinit
+DPT_IOControl
+DPT_Init
+DPT_Open

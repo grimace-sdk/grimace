@@ -1,0 +1,10 @@
+DllEntry
+MC35_GetPowerOn
+MC35_PowerDown
+MC35_PowerOn
+Spk_Close
+Spk_GetLineOn
+Spk_GetOpOn
+Spk_Open
+Spk_SetLineOn
+Spk_SetOpOn

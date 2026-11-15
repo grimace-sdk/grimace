@@ -1,0 +1,7 @@
+GSL_Close
+GSL_Deinit
+GSL_IOControl
+GSL_Init
+GSL_Open
+GSL_PowerDown
+GSL_PowerUp

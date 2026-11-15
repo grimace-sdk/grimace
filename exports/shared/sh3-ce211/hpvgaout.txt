@@ -1,0 +1,11 @@
+DetectVGA
+VGA_Close
+VGA_Deinit
+VGA_IOControl
+VGA_Init
+VGA_Open
+VGA_PowerDown
+VGA_PowerUp
+VGA_Read
+VGA_Seek
+VGA_Write

@@ -1,0 +1,8 @@
+ETM_Close
+ETM_Deinit
+ETM_IOControl
+ETM_Init
+ETM_Open
+ETM_Read
+ETM_Seek
+ETM_Write

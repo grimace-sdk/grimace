@@ -1,0 +1,10 @@
++CorBindToRuntimeEx
++CorConfigFreeXmlResponse
++CorConfigProcessXml
++GetRequestedRuntimeVersion
++NETCF_CleanUp
++NETCF_ResolveGACFile
++PALHost_GetAssemblyCLRVersion
++PALHost_KillApp
++PALHost_LoadCLRVersion
++QueryTransportLoaderVersion

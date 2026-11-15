@@ -1,0 +1,4 @@
+arch: mips
+version: 3
+base: mips-ce212
+without: animememctrl apphotocom backupapi bltinfls cetlstub cimgchg cmailinf cmceditwind comctrl comedit comparts comseldlg dialupmsg digcamdll exceptionmessage htmlfunc imgedit imgview letterpapermemctrl materialentry materialphototool mc_tdate mc_ttime mcaddressctrl mcaddressmem mcaplif mcapplicationmutex mcautopilotctrl mcbookmem mccalendarmem mccameracom mcdialup mcdll mcinst mcmaillist mcmailmemctrl mcmailsetup mcmemomemctrl mcmemorycheck mcminiaddress mcnetwork mcplaysound mcregword mcsavemem mcsip mctopmenu mctopmenucpl mcvoicealbummem mfcce212_ca mmcff mmlforbase mmlformcmail photomemctrl picturecharamemctrl powsup redir sendreceive ser_cdma tlcesrv wtalkcepset zlib

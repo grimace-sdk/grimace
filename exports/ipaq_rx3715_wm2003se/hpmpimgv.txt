@@ -1,0 +1,6 @@
+CleanupTranslator
+CleanupViewerControl
+EnumDocFormats
+InitTranslator
+InitViewerControl
+TranslateDoc

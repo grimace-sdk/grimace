@@ -1,0 +1,7 @@
+arch: arm
+version: 3
+platform: hpc2000
+device: nec_mobilepro_900_hpc2000
+source: NEC MobilePro 900, Handheld PC 2000, Handheld PC 2000 ROM XIP.BIN in cerf-bundles/nec_mobilepro_900_hpc2000, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce3
+without: addrdll adoce30 adocedb30 adoceoledb30 arp atlce300 aygshell caldll ce_aud_file ce_faccess ce_flash_image ce_headers_dll ce_player_dll ce_prog_tree ce_streams_lib cefrtl ceft clacker codec_common compime conndll cpqdsk d_aud1 doclist ebookfx ebriched flashmgr inkobj inreplce irsir irsqrt jpeglib msdadc msdaer msls31 msnewmnu offnwmnu pimapi ppcutil predict shutil softkb taskdll usb vbarcall vcomctl voicebar voicectl

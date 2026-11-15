@@ -1,0 +1,9 @@
++BatteryDrvrGetLevels
++BatteryDrvrSupportsChangeNotification
++BatteryGetLifeTimeInfo
++BatteryNotifyOfTimeChange
++CeGetVolumeInfo
++GetSystemPowerStatusEx
++GetSystemPowerStatusEx2
+-CeGetVolumeInfoW
+-CeSafeCopyMemory

@@ -1,0 +1,3 @@
+MaterialPhotoTool_ChkComPartsChildWindow
+MaterialPhotoTool_EnumCallBack
+Set_MaterialandPhotoData

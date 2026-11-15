@@ -1,0 +1,6 @@
+arch: arm
+version: 4.1
+platform: embedded
+device: smartbook_g138_ce4_1
+source: SmartBook G138 CE4 1, Windows CE .NET ROM smartbook2.15_1_6_English.fim in cerf-bundles/smartbook_g138_ce4_1, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce41

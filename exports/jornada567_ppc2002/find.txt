@@ -1,0 +1,2 @@
++ClosePimFindHandle
++StopPimFind

@@ -1,0 +1,2 @@
+PimLoadBitmap
+PimLoadString

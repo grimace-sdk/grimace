@@ -1,0 +1,3 @@
++LZX_DecompressClose
++LZX_DecompressDecode
++LZX_DecompressOpen

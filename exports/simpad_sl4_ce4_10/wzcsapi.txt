@@ -1,0 +1,6 @@
+WZCDeleteIntfObj
+WZCEnumEapExtensions
+WZCEnumInterfaces
+WZCQueryInterface
+WZCRefreshInterface
+WZCSetInterface

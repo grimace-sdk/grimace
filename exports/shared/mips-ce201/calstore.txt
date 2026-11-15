@@ -1,0 +1,4 @@
++EnumRecurAppointmentsEx
++GetMonthDataEx
++ResetCache
+-GetAppointmentCount

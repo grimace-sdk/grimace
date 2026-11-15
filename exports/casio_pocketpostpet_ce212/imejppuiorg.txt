@@ -1,0 +1,3 @@
+DllMain
+IME100WndProc
+Ime100Configure

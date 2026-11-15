@@ -1,0 +1,10 @@
++AddNetUISystrayIcon
++ClosePropSheetDialog
++ClosePropSheetDialogIfReady
++CreateScanDevice
++IsPropSheetDialogMessage
++PickCertificate
++RemoveNetUISystrayIcon
++SetWZCSignalStrength
++ShowCertificate
++UpdateConnectionStatus

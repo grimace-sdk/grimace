@@ -1,0 +1,14 @@
+??0CBtProgressDlg@@QAA@PAUHWND__@@@Z
+??1CBtProgressDlg@@QAA@XZ
+??4CBtProgressDlg@@QAAAAV0@ABV0@@Z
+?BTChooser@@YAHPAUBTCHOOSERSTRUCT@@PAUtBT_BASIC_DEV_INFO@@@Z
+?BTChooser@@YAHPAUBTCHOOSERSTRUCT@@PAUtBT_BASIC_DEV_INFO@@PAH@Z
+?BTChooser@@YAHPAVCWnd@@PAUtBT_BASIC_DEV_INFO@@@Z
+?BTChooser@@YAHPAVCWnd@@PAUtBT_BASIC_DEV_INFO@@HPAH@Z
+?Done@CBtProgressDlg@@QAAXH@Z
+?ErrorMsg@CBtProgressDlg@@QAAXPBG00@Z
+?LogClear@CBtProgressDlg@@QAAXXZ
+?LogMsg@CBtProgressDlg@@QAAXPBGI@Z
+?SetProgress@CBtProgressDlg@@QAAXIII@Z
+?Show@CBtProgressDlg@@QAAXKPBG@Z
+?Update@CBtProgressDlg@@QAAXPBG0@Z

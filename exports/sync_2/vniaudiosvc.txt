@@ -1,0 +1,5 @@
+VNA_Close
+VNA_Deinit
+VNA_IOControl
+VNA_Init
+VNA_Open

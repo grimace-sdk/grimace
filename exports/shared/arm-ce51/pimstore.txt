@@ -1,0 +1,6 @@
+ChooseContact
+DllCanUnloadNow
+DllGetClassObject
+FindMatchingContact
+GetItemIndexFromOid
+GetOidFromRef

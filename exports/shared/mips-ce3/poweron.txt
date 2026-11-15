@@ -1,0 +1,10 @@
+PWO_Close
+PWO_Deinit
+PWO_IOControl
+PWO_Init
+PWO_Open
+PWO_PowerDown
+PWO_PowerUp
+PWO_Read
+PWO_Seek
+PWO_Write

@@ -1,0 +1,10 @@
+VBT_Close
+VBT_DeInit
+VBT_IOControl
+VBT_Init
+VBT_Open
+VBT_PowerDown
+VBT_PowerUp
+VBT_Read
+VBT_Seek
+VBT_Write

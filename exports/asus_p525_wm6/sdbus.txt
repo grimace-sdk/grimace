@@ -1,0 +1,8 @@
+SDC_Close
+SDC_Deinit
+SDC_IOControl
+SDC_Init
+SDC_Open
+SDC_PreDeinit
+SDGetClientFunctions
+SDHCDGetHCFunctions

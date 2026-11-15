@@ -1,0 +1,9 @@
+DllRegisterServer
+DllUnregisterServer
+LSPAB_GetDefaultBinding
+LSPAB_GetProcessBinding
+LSPAB_Initialize
+LSPAB_SetDefaultBinding
+LSPAB_SetProcessBinding
+LSPAB_Uninitialize
+WSPStartup

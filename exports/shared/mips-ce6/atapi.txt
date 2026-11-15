@@ -1,0 +1,16 @@
++CreatePCIHD
+-AliConfig
+-CreateAli
+-CreateGeneric
+-CreatePCMCIA
+-CreatePromise
+-DSK_Read
+-DSK_Seek
+-DSK_Write
+-IDE_PowerDown
+-IDE_PowerUp
+-IDE_Read
+-IDE_Seek
+-IDE_Write
+-PCMCIADetectATA
+-PromiseConfig

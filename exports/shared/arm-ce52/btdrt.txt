@@ -1,0 +1,14 @@
++BthAcceptSynchronousConnections
++BthActivatePAN
++BthCreateSynchronousConnection
++BthGetBasebandConnectionsEx
++BthIsProfileAllowed
++BthReadInquiryScanActivity
++BthReadInquiryScanType
++BthReadPageScanActivity
++BthReadPageScanType
++BthSetCODInquiryFilter
++BthWriteInquiryScanActivity
++BthWriteInquiryScanType
++BthWritePageScanActivity
++BthWritePageScanType

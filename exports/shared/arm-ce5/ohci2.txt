@@ -1,0 +1,10 @@
+HCD_Close
+HCD_Deinit
+HCD_IOControl
+HCD_Init
+HCD_Open
+HCD_PowerDown
+HCD_PowerUp
+HCD_Read
+HCD_Seek
+HCD_Write

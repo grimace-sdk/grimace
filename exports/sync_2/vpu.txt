@@ -1,0 +1,10 @@
+VPU_Close
+VPU_Deinit
+VPU_IOControl
+VPU_Init
+VPU_Open
+VPU_PowerDown
+VPU_PowerUp
+VPU_Read
+VPU_Seek
+VPU_Write

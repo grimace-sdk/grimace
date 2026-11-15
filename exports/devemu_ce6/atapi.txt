@@ -1,0 +1,14 @@
+CreatePCIHD
+DSK_Close
+DSK_Deinit
+DSK_IOControl
+DSK_Init
+DSK_Open
+DSK_PowerDown
+DSK_PowerUp
+GenericConfig
+IDE_Close
+IDE_Deinit
+IDE_IOControl
+IDE_Init
+IDE_Open

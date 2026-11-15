@@ -1,0 +1,6 @@
+SHInitDialog
+SHInitExtraControls
+SHInputDialog
+SHSipInfo
+SHSipPreference
+SubClassThisWindow

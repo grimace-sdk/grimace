@@ -1,0 +1,4 @@
+OEMGetNECAuthenticationKey
+OEMGetNECProductID
+OEMGetNECSystemData
+OEMGetNECSystemDataInformation

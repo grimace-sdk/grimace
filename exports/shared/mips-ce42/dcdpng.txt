@@ -1,0 +1,16 @@
+CreatePngBand
+CreatePngMask
+EndPngImage
+FileTypePng
+FreePngBand
+FreePngMask
+GetPngBand
+GetPngBandHeight
+GetPngBitsPerPixel
+GetPngHeight
+GetPngWidth
+InitPngImage
+MonoPngColors
+ProcessPngHeaders
+StartPngImage
+TermPngImage

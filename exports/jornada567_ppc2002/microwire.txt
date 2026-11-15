@@ -1,0 +1,10 @@
+MWI_Close
+MWI_Deinit
+MWI_IOControl
+MWI_Init
+MWI_Open
+MWI_PowerDown
+MWI_PowerUp
+MWI_Read
+MWI_Seek
+MWI_Write

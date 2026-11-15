@@ -1,0 +1,9 @@
+-CryptMsgCalculateEncodedLength
+-CryptMsgClose
+-CryptMsgControl
+-CryptMsgDllMain
+-CryptMsgDuplicate
+-CryptMsgGetParam
+-CryptMsgOpenToDecode
+-CryptMsgOpenToEncode
+-CryptMsgUpdate

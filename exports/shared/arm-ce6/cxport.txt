@@ -1,0 +1,5 @@
++g_pLogRxContigPacket
++g_pLogTxNdisWanPacket
+-CTEDeregisterLocalStat
+-CTERegisterLocalStat
+-g_CTEStatTable

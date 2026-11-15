@@ -1,0 +1,5 @@
+RAC_Close
+RAC_Deinit
+RAC_IOControl
+RAC_Init
+RAC_Open

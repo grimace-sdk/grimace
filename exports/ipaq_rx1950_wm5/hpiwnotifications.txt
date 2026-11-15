@@ -1,0 +1,7 @@
+??0ChpiwInterface@@QAA@K@Z
+??1ChpiwInterface@@QAA@XZ
+??4ChpiwInterface@@QAAAAV0@ABV0@@Z
+?DeInitialize@ChpiwInterface@@QAAJXZ
+?GetCustomInfo@ChpiwInterface@@QAAJKPAXK@Z
+?Initialize@ChpiwInterface@@QAAJPAUHWND__@@@Z
+?SetPowerState@ChpiwInterface@@QAAJK@Z

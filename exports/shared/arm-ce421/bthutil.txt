@@ -1,0 +1,7 @@
+BthDeviceChanged
+BthGetMode
+BthSetMode
+DllCanUnloadNow
+DllGetClassObject
+OnBthDeviceAdded
+OnBthDeviceRemoved

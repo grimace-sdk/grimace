@@ -1,0 +1,6 @@
+BatteryOverTempNotification
+CreateBattery0Notify
+OemNotifyInitialize
+OemNotifyPowerHandler
+RemoveBattery0Notify
+RemoveBatteryLowNotify

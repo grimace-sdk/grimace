@@ -1,0 +1,4 @@
+arch: arm
+version: 5.1
+base: arm-ce5
+without: atlce400 autoras cetlkitl cetlstub console cryptdll dcomssd ddcore ddhel iepeers ietheme kbdus kerberos lpcd lpcrt mfcce400 mouhid msacmce msdxm mshtml msls31 msmqd msmqrt mssoap1 mssoapr mstscax ndispwr ohci2 olece400 pcl prnerr prnport rpcltccm rpcltscm rpcrt4 shcore shdocvw snmp snmp_hostmib snmp_mibii snmpapi tcpipc timesvc tlcesrv usbd usbdisk6 usbhid usbmsc usbprn wisc10 wmadmod wmsdmod wmvdmod

@@ -1,0 +1,11 @@
+TEL_Close
+TEL_Deinit
+TEL_IOControl
+TEL_Init
+TEL_Open
+TEL_PowerDown
+TEL_PowerUp
+TEL_Read
+TEL_Seek
+TEL_Write
+TelnetDInitialize

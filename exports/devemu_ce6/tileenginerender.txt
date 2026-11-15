@@ -1,0 +1,3 @@
+CreateRenderer
+RenderPluginCleanup
+RenderPluginInitialize

@@ -1,0 +1,6 @@
++GetNameConfirmationEx
++GetYomiGivenName
++GetYomiSurname
++IgnoreJAddrFormat
++SetYomiGiven
++SetYomiSurname

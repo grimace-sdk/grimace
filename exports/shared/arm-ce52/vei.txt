@@ -1,0 +1,12 @@
+VEI_Close
+VEI_Deinit
+VEI_IOControl
+VEI_Init
+VEI_Open
+VEI_PowerDown
+VEI_PowerUp
+VEI_PreClose
+VEI_PreDeinit
+VEI_Read
+VEI_Seek
+VEI_Write

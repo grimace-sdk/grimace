@@ -1,0 +1,6 @@
++CcpControl_Create
++CcpControl_Destroy
++CcpControl_Move
++CcpControl_Show
++CommandBar_InsertComboBoxEx
++InitCcpControlClass

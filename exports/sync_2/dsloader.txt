@@ -1,0 +1,5 @@
+DSL_Close
+DSL_Deinit
+DSL_IOControl
+DSL_Init
+DSL_Open

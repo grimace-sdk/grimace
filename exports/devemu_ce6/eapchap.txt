@@ -1,0 +1,4 @@
+DllEntry
+RasEapFreeMemory
+RasEapGetInfo
+RasEapInvokeInteractiveUI

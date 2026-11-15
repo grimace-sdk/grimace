@@ -1,0 +1,8 @@
+OPP_Close
+OPP_Deinit
+OPP_IOControl
+OPP_Init
+OPP_Open
+OPP_Read
+OPP_Seek
+OPP_Write

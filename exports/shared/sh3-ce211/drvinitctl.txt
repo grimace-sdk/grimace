@@ -1,0 +1,10 @@
+DIC_Close
+DIC_Deinit
+DIC_IOControl
+DIC_Init
+DIC_Open
+DIC_PowerDown
+DIC_PowerUp
+DIC_Read
+DIC_Seek
+DIC_Write

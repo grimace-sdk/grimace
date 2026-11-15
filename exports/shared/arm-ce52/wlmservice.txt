@@ -1,0 +1,4 @@
+DllMain
+WLM_Deinit
+WLM_IOControl
+WLM_Init

@@ -1,0 +1,5 @@
+BthDeviceChanged
+BthGetMode
+BthSetMode
+DllCanUnloadNow
+DllGetClassObject

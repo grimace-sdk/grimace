@@ -1,0 +1,3 @@
+arch: sh3
+version: 2.11
+base: sh3-ce2

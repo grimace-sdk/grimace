@@ -1,0 +1,10 @@
+POS_Close
+POS_Deinit
+POS_IOControl
+POS_Init
+POS_Open
+POS_PowerDown
+POS_PowerUp
+POS_Read
+POS_Seek
+POS_Write

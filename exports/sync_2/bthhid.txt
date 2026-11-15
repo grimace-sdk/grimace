@@ -1,0 +1,12 @@
+BHI_Close
+BHI_Deinit
+BHI_IOControl
+BHI_Init
+BHI_Open
+BHI_PowerDown
+BHI_PowerUp
+BHI_Read
+BHI_Seek
+BHI_Write
+Deinit
+Init

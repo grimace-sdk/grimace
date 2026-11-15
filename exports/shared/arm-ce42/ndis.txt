@@ -1,0 +1,5 @@
++NdisAllocateFromNPagedLookasideList
++NdisDeleteNPagedLookasideList
++NdisFreeToNPagedLookasideList
++NdisGetBufferPhysicalArraySize
++NdisInitializeNPagedLookasideList

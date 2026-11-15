@@ -1,0 +1,7 @@
+arch: arm
+version: 4.2
+platform: embedded
+device: nec_mobilepro_900_ce4_2
+source: NEC MobilePro 900, Windows CE .NET, Windows CE .NET ROM XIP.BIN in cerf-bundles/nec_mobilepro_900_ce4_2, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce42
+without: battdrvr ftpd irsir msim msrle32 sa_usb_ser softkb toolhelp trarecoenu vbscript

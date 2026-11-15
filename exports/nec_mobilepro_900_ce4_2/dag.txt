@@ -1,0 +1,13 @@
+DAG_Close
+DAG_DebugMsgData
+DAG_DebugMsgHead
+DAG_DebugMsgProcess
+DAG_Deinit
+DAG_IOControl
+DAG_Init
+DAG_Open
+DAG_PowerDown
+DAG_PowerUp
+DAG_Read
+DAG_Seek
+DAG_Write

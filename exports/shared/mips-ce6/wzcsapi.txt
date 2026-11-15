@@ -1,0 +1,5 @@
++WZCDeleteIntfObjEx
++WZCQueryInterfaceEx
++WZCRefreshInterfaceEx
++WZCSetInterfaceEx
++WzcPortIndication

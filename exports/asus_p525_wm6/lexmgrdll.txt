@@ -1,0 +1,8 @@
+LexMgr_Create
+LexMgr_Destroy
+LexMgr_GetAvailableLanguage
+LexMgr_GetLanguage
+LexMgr_GetLexID
+LexMgr_GetPron
+LexMgr_GetPronString
+LexMgr_SetActiveLanguage

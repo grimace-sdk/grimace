@@ -1,0 +1,13 @@
+?CheckStrLength@@YAXAAV?$basic_string@G@std@@H@Z
+?GetStrInfo@@YAHAAV?$basic_string@G@std@@PAG@Z
+?GetStrInfoC1@@YAHAAV?$basic_string@G@std@@PAG@Z
+?McEditCom_CreateFontIndirect@@YAPAUHFONT__@@JPAGJEEE@Z
+?McEditCom_SIPinit@@YAXHVCArea@@@Z
+?McEditCom_SIPoff@@YAXAAH@Z
+MCBookMarkEditDialogUI
+MCClipboardDialogUI
+MCDnsIpEditDialogUI
+MCEditDialogUI
+MCEditDialogUIEx
+MCSearchDialogUI
+MCTwoItemEditDialogUI

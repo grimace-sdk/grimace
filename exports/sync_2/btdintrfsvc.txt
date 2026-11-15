@@ -1,0 +1,5 @@
+BTI_Close
+BTI_Deinit
+BTI_IOControl
+BTI_Init
+BTI_Open

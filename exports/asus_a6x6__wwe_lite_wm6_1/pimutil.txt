@@ -1,0 +1,2 @@
++??0SimApiLoader@@IAA@XZ
++??1SimApiLoader@@UAA@XZ

@@ -1,0 +1,17 @@
+DLLEntry
+FAKEIMEWndProc
+ImeConfigure
+ImeConversionList
+ImeDestroy
+ImeEnumRegisterWord
+ImeEscape
+ImeGetRegisterWordStyle
+ImeInquire
+ImeProcessKey
+ImeRegisterWord
+ImeSelect
+ImeSetActiveContext
+ImeSetCompositionString
+ImeToAsciiEx
+ImeUnregisterWord
+NotifyIME

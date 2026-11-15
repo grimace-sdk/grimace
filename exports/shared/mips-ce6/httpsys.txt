@@ -1,0 +1,8 @@
+GetExtensionVersion
+HSY_Close
+HSY_Deinit
+HSY_IOControl
+HSY_Init
+HSY_Open
+HttpExtensionProc
+TerminateExtension

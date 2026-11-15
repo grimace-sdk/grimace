@@ -1,0 +1,3 @@
+ChangeUSBDriver
+VerifySyncSchedule
+c_wszProtectedActiveSyncKey

@@ -1,0 +1,7 @@
+-?PPCHasKeyboardActive@@YA_NXZ
+-?PPCHideSIP@@YAJXZ
+-?PPCIsSIPShown@@YA_NXZ
+-?PPCLoadSIPInputMode@@YAJPBG@Z
+-?PPCSaveSIPInputMode@@YAJPBG@Z
+-?PPCShowSIP@@YAJ_N@Z
+-?PPCShowSIPButton@@YAX_N@Z

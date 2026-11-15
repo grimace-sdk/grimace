@@ -1,0 +1,10 @@
+SCR_Close
+SCR_Deinit
+SCR_IOControl
+SCR_Init
+SCR_Open
+SCR_PowerDown
+SCR_PowerUp
+SCR_Read
+SCR_Seek
+SCR_Write

@@ -1,0 +1,4 @@
+DnsModifyRecordsInSet_W
+DnsQuery_W
+DnsRecordListFree
+DnsReplaceRecordSetW

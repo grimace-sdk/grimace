@@ -1,0 +1,7 @@
++CertCreateCertificateChainEngine
++CertFreeCertificateChainEngine
++CryptPFXDllMain
++PFXExportCertStoreEx
++PFXImportCertStore
++PFXIsPFXBlob
++PFXVerifyPassword

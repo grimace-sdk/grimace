@@ -1,0 +1,6 @@
+DeInitEncryptionPolicy
+GetFileEncryptionPolicy
+GetVolumeEncryptionPolicy
+InitEncryptionPolicy
+MarkDirectoryDirty
+RefreshEncryptionPolicy

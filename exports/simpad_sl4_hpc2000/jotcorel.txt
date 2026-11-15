@@ -1,0 +1,7 @@
+ZorroClose
+ZorroFlush
+ZorroMode
+ZorroOpen
+ZorroRecExtendedChar
+ZorroStroke
+ZorroTrain

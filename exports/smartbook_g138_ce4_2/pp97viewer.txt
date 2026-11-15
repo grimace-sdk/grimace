@@ -1,0 +1,10 @@
+MPTViewFile
+MPTViewFileEx
+PPTClose
+PPTGetInfo
+PPTGetInfoSize
+PPTGetPage
+PPTOpen
+SetOutputImageFilePath
+ViewPPFile
+ViewPPFileEx

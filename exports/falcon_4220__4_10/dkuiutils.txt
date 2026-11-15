@@ -1,0 +1,16 @@
+AddFriendlyNameToCache
+DeleteDeviceRecord
+DestroyFriendlyNameCache
+FriendlyNameLookup
+GetCurrentLanguage
+GetFavoriteDevice
+GetServiceRfcomm
+PostBtDeviceManagerMessage
+PostBtDevicesFolderMessage
+ReadDeviceRecord
+ReadDeviceRecordFromCache
+SendBtDeviceManagerMessage
+SendBtDevicesFolderMessage
+SetFavoriteDevice
+TypeOfFavorite
+WriteDeviceRecord

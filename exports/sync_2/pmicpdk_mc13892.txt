@@ -1,0 +1,7 @@
+PMI_Close
+PMI_Deinit
+PMI_IOControl
+PMI_Init
+PMI_Open
+PMI_PowerDown
+PMI_PowerUp

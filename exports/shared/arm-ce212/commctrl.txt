@@ -1,0 +1,1 @@
++CommandBar_AlignAdornments

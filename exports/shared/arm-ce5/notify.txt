@@ -1,0 +1,10 @@
+NFY_Close
+NFY_Deinit
+NFY_IOControl
+NFY_Init
+NFY_Open
+NFY_PowerDown
+NFY_PowerUp
+NFY_Read
+NFY_Seek
+NFY_Write

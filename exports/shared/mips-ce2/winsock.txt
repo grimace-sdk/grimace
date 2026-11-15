@@ -1,0 +1,5 @@
++WSAIoctl
+-getprotobyname
+-getprotobynumber
+-getservbyname
+-getservbyport

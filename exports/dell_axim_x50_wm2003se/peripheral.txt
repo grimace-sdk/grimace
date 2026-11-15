@@ -1,0 +1,10 @@
+PER_Close
+PER_Deinit
+PER_IOControl
+PER_Init
+PER_Open
+PER_PowerDown
+PER_PowerUp
+PER_Read
+PER_Seek
+PER_Write

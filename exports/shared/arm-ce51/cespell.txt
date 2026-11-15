@@ -1,0 +1,17 @@
+RunSpellCheckRE
+SpellAddChangeUdr
+SpellAddUdr
+SpellCheck
+SpellClearUdr
+SpellCloseMdr
+SpellCloseUdr
+SpellDelUdr
+SpellGetListUdr
+SpellGetSizeUdr
+SpellInit
+SpellOpenMdr
+SpellOpenUdr
+SpellOptions
+SpellTerminate
+SpellVer
+SpellVerifyMdr

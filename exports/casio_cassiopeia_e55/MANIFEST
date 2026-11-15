@@ -1,0 +1,7 @@
+arch: mips
+version: 2.11
+platform: palmsize
+device: casio_cassiopeia_e55
+source: Casio Cassiopeia E55, Palm-size PC ROM nk.bin in cerf-bundles/casio_cassiopeia_e55, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce211
+without: adoce adocedb mfcce211 olece211 pvbform2 pvbhost2 vbscript

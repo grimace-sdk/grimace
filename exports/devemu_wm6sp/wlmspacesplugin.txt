@@ -1,0 +1,2 @@
+-IsD2CFaultEnabled
+-OnGetCapability

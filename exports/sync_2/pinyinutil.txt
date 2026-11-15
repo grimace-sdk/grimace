@@ -1,0 +1,6 @@
+CompareChar
+CompareString
+GetCharPinyin
+GetCharPinyins
+GetStringPinyin
+GetStringPinyinNoTone

@@ -1,0 +1,8 @@
+Convert420To422
+Convert422To420
+MPEG4EncGetMemSize
+MPEG4VEncClose
+MPEG4VEncControl
+MPEG4VEncInit
+MPEG4VEncRun
+MPEG4VEncStatus

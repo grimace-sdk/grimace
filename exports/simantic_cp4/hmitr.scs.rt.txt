@@ -1,0 +1,3 @@
+?hmitr_scs_rt_exit@@YAXXZ
+?hmitr_scs_rt_getRoot@@YAPAVIScsRoot@@XZ
+?hmitr_scs_rt_init@@YA_NXZ

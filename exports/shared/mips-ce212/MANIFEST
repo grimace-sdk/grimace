@@ -1,0 +1,4 @@
+arch: mips
+version: 2.12
+base: mips-ce211
+without: aafobj aatp addrstor adoce adocedb asform aygshell boxsel calstore cefobj ceshell citydb dayview find htmlview inboxres inkx ircomm irdastk irsir labledit mailutil mfcce211 mlang mnthview msgstore msim netui note_prj olece211 owner parser pegobj pimapi pimdlg pimres pimutil predict pvbform2 pvbhost2 richink rra_stm smtp stink termctrl tnefutil vbscript voicectl voicedll voicepwr webview

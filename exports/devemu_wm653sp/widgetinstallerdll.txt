@@ -1,0 +1,9 @@
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer
+GetInstalledWidgetsList
+GetWidgetDetails
+InstallWidgetsOnColdBoot
+LaunchWidget
+UninstallWidget

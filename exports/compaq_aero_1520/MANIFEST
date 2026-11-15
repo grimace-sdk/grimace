@@ -1,0 +1,6 @@
+arch: mips
+version: 2.11
+platform: palmsize
+device: compaq_aero_1520
+source: Compaq Aero 1520, Palm-size PC 1.2 ROM nk.bin in cerf-bundles/compaq_aero_1520, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce211

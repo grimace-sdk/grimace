@@ -1,0 +1,11 @@
+FABuildFilterList
+FAClose
+FACloseExport
+FADeInit
+FADoFilterListDialog
+FAGetHIOFile
+FAGetInfo
+FAInit
+FAOpen
+FAOpenExport
+FARunExport

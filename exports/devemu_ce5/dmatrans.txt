@@ -1,0 +1,10 @@
+DMA_Close
+DMA_Deinit
+DMA_IOControl
+DMA_Init
+DMA_Open
+DMA_PowerDown
+DMA_PowerUp
+DMA_Read
+DMA_Seek
+DMA_Write

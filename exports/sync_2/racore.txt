@@ -1,0 +1,5 @@
+RAD_Close
+RAD_Deinit
+RAD_IOControl
+RAD_Init
+RAD_Open

@@ -1,0 +1,4 @@
+arch: arm
+version: 4.2
+base: arm-ce41
+without: asform htmlview pp97util pp97viewer rtcimsp serial webview

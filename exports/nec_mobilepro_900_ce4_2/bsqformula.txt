@@ -1,0 +1,10 @@
+EvaluateFormula
+FORMULA_Version
+InitFormula
+IsExpression
+IsExpressionOpen
+ParseExpression
+SelectFunction
+ToExcelLocation
+UninitFormula
+UnparseFormula

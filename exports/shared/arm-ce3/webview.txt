@@ -1,0 +1,5 @@
++IsOnline
++LaunchWininetDlg
++ReadFromURLFileEx
+-DllRegisterServer
+-DllUnregisterServer

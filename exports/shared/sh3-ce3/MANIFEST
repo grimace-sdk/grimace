@@ -1,0 +1,4 @@
+arch: sh3
+version: 3
+base: sh3-ce211
+without: adoce adocedb boxsel bsqcontrols bsqcore bsqreg bsqresources bsqshell bsqstdlib cespell console ctlpanel drvinitctl hplib hpvgaout labledit mfcce211 mobilev modem olece211 parser pcl pcl3hppc pcvgaout pimprint prnerr prnport proxim pwiiff recblob riched20 sramdisk stink voiceist yearview

@@ -1,0 +1,6 @@
+arch: arm
+version: 3
+platform: pocketpc
+device: ipaq_h3600_ppc2000_9456_de
+source: iPAQ H3600 PPC2000 9456 DE, Pocket PC 2000 ROM NK_Macv134ger.nbf in cerf-bundles/ipaq_h3600_ppc2000_9456_de, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce3

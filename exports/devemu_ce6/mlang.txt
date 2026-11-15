@@ -1,0 +1,16 @@
+ConvertINetMultiByteToUnicode
+ConvertINetReset
+ConvertINetString
+ConvertINetUnicodeToMultiByte
+DllCanUnloadNow
+DllGetClassObject
+GetGlobalFontLinkObject
+GetMlang2Obj
+IsConvertINetStringAvailable
+LcidToRfc1766W
+MimeRegEnsureRfc1766Table
+MimeRegEnumCodePageInfo
+MimeRegGetCodePageInfoWithIndex
+Mlang2FreeGlobalObjects
+Rfc1766ToLcidW
+_DetectInputCodepage

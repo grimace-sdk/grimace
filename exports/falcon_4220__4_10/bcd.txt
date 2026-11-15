@@ -1,0 +1,10 @@
+BCD_Close
+BCD_Deinit
+BCD_IOControl
+BCD_Init
+BCD_Open
+BCD_PowerDown
+BCD_PowerUp
+BCD_Read
+BCD_Seek
+BCD_Write

@@ -1,0 +1,6 @@
++TransportConvertEx
++TransportFreeCodePageEnum
++TransportGetFirstCodePage
++TransportGetNextCodePage
++TransportPropsEx
+-TransportProps

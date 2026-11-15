@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: pocketpc
+device: devemu_wm653 devemu_wm653_wqvga
+source: Device Emulator - Windows Mobile 6.5.3, Windows Mobile 6.5.3 ROM WM653_PPC_USA_GSM_VR.BIN in cerf-bundles/devemu_wm653, read with CEM Porter's tools/compat-tables.mjs; also Device Emulator - Windows Mobile 6.5.3
+base: arm-ce52
+without: caifmux distribution mscoree2_0 netcfagl2_0 rilgsm vei

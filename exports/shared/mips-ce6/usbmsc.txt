@@ -1,0 +1,8 @@
+GetDWORD
+SetDWORD
+SetWORD
+USBDeviceAttach
+USBInstallDriver
+USBUnInstallDriver
+UsbsDataTransfer
+UsbsGetContextFromReg

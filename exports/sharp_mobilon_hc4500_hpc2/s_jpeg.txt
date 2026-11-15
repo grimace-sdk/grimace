@@ -1,0 +1,6 @@
+DecodeJpeg
+DecodeUPFJpeg
+DllMain
+EncodeJpeg
+EncodeUPFJpeg
+getJPEGWKSizeOP

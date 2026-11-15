@@ -1,0 +1,4 @@
+RasEapFreeMemory
+RasEapGetIdentity
+RasEapGetInfo
+RasEapInvokeInteractiveUI

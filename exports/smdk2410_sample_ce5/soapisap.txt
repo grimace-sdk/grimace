@@ -1,0 +1,6 @@
+DllCanUnloadNow
+DllRegisterServer
+DllUnregisterServer
+GetExtensionVersion
+HttpExtensionProc
+TerminateExtension

@@ -1,0 +1,10 @@
+PRT_Close
+PRT_Deinit
+PRT_IOControl
+PRT_Init
+PRT_Open
+PRT_PowerDown
+PRT_PowerUp
+PRT_Read
+PRT_Seek
+PRT_Write

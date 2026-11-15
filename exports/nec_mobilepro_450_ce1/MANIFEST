@@ -1,0 +1,6 @@
+arch: mips
+version: 1
+platform: hpc
+device: nec_mobilepro_450_ce1
+source: NEC MobilePro 450 CE1, Windows CE 1.0 ROM nk.bin in cerf-bundles/nec_mobilepro_450_ce1, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce1

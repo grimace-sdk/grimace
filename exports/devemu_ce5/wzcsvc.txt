@@ -1,0 +1,10 @@
+ZCF_Close
+ZCF_Deinit
+ZCF_IOControl
+ZCF_Init
+ZCF_Open
+ZCF_PowerDown
+ZCF_PowerUp
+ZCF_Read
+ZCF_Seek
+ZCF_Write

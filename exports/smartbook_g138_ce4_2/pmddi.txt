@@ -1,0 +1,11 @@
+DDI_Close
+DDI_Deinit
+DDI_IOControl
+DDI_Init
+DDI_Open
+DDI_PowerDown
+DDI_PowerUp
+DDI_Read
+DDI_Seek
+DDI_Write
+DllEntry

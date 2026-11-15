@@ -1,0 +1,17 @@
+DllEntry
+EolEnumExtensions
+EolSS8021xEnableGet
+EolSS8021xEnableSet
+EolSSConnectionDataGet
+EolSSConnectionDataSet
+EolSSEapTypeGet
+EolSSEapTypeSet
+EolSSInvokeConfigUI
+EolSessionCreate
+EolSessionDestroy
+EolSessionKeyMaterialSet
+EolSessionMediaConnect
+EolSessionMediaDisconnect
+EolSessionProcessRxPacket
+EolSessionUserLogoff
+EolSessionUserLogon

@@ -1,0 +1,6 @@
++WZCDeleteIntfObjEx
++WZCQueryInterfaceEx
++WZCQueryLatencySensitiveMode
++WZCRefreshInterfaceEx
++WZCSetInterfaceEx
++WZCSetLatencySensitiveMode

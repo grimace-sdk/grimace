@@ -1,0 +1,4 @@
+hpMediaGetImage
+hpMediaGetInfo
+hpMediaGetProp1
+hpMediaPlay1

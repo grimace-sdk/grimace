@@ -1,0 +1,4 @@
++InitSBEdit
++InitTTButton
++InitTTStatic
+-StrToIntW

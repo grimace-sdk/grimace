@@ -1,0 +1,8 @@
+LPC_Close
+LPC_Deinit
+LPC_IOControl
+LPC_Init
+LPC_Open
+LPC_Read
+LPC_Seek
+LPC_Write

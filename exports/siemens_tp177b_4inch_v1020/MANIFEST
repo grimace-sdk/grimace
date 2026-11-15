@@ -1,0 +1,7 @@
+arch: arm
+version: 5
+platform: embedded
+device: siemens_tp177b_4inch_v1020
+source: Siemens TP177B 4INCH V1020, Windows CE 5 ROM NK.bin in cerf-bundles/siemens_tp177b_4inch_v1020, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce5
+without: asyncmac atlce400 cefobj cryptdll dcomssd ddcore ddhel ddraw eap eapchap eaptls ethman iepeers ietheme imaging jscript kbdus kerberos lpcd lpcrt mlang mp3dmod msacmce msdmo msdxm mshtml msim msls31 msmqd msmqrt mssoap1 mssoapr mstscax msxml3 ndisuio nleddrvr obexapi obexsrvr office pwwiff quartz rpcltccm rpcltscm rpcrt4 rra_stm shellcelog termctrl unimodem urlmon wisc10 wldap32 wmadmod wmsdmod wmvdmod zlib

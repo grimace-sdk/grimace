@@ -1,0 +1,7 @@
+arch: arm
+version: 3
+platform: pocketpc
+device: ipaq_h3600_ppc2000_9558_ja
+source: iPAQ H3600 PPC2000 9558 JA, Pocket PC 2000 ROM NK_Mac18700JPN.nbf in cerf-bundles/ipaq_h3600_ppc2000_9558_ja, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce3
+without: ce_aud_file ce_faccess ce_flash_image ce_headers_dll ce_player_dll ce_prog_tree ce_streams_lib codec_common compime d_aud1 ebookfx ebriched msls31

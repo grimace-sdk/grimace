@@ -1,0 +1,4 @@
+arch: arm
+version: 3
+base: arm-ce212
+without: adoce adocedb atlce212 console dualio hwxusa labledit mailutil mfcce212 mscecomdlg mscecomm mscecommandbar mscefile mscegrid msceimage msceimagelist mscepicture mscetabstrip mscetreeview mscewinsock netbios olece212 pcl pimprint prnerr prnport proxim pvbdecl redir splusa sramdisk trueffs uicom xircce2

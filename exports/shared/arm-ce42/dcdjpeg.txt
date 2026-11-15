@@ -1,0 +1,4 @@
++GetExifSoundFile
++GetExifSoundFileLen
++GetExifThumb
++IsExifThumb

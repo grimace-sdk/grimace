@@ -1,0 +1,12 @@
+DriverEntry
+ILP_Close
+ILP_Deinit
+ILP_IOControl
+ILP_Init
+ILP_Open
+ILP_PowerDown
+ILP_PowerUp
+ILP_Read
+ILP_Seek
+ILP_Write
+Install_Driver

@@ -1,0 +1,9 @@
+CertInit
+CertModCloseHandle
+CertModOpenHandle
+CertVerify
+DllMain
+VerifyBuffer
+VerifyCab
+VerifyFile
+VerifyFile2

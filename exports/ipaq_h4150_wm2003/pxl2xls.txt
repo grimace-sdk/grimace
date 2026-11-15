@@ -1,0 +1,4 @@
+Create_XLS95Write
+Create_XLS97Write
+DllCanUnloadNow
+DllGetClassObject

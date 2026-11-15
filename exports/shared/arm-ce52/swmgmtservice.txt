@@ -1,0 +1,5 @@
+SWM_Close
+SWM_Deinit
+SWM_IOControl
+SWM_Init
+SWM_Open

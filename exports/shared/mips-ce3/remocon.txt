@@ -1,0 +1,10 @@
+RCN_Close
+RCN_Deinit
+RCN_IOControl
+RCN_Init
+RCN_Open
+RCN_PowerDown
+RCN_PowerUp
+RCN_Read
+RCN_Seek
+RCN_Write

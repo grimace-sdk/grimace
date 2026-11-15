@@ -1,0 +1,10 @@
+TVE_Close
+TVE_Deinit
+TVE_IOControl
+TVE_Init
+TVE_Open
+TVE_PowerDown
+TVE_PowerUp
+TVE_Read
+TVE_Seek
+TVE_Write

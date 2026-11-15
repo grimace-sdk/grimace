@@ -1,0 +1,14 @@
+SHMenuAddItem
+SHMenuIsItemExist
+SHMenuRemoveAllItems
+SHMenuRemoveItem
+SHMenuSetAttribute
+SHMenuSetAttributeParam
+SHMenuSetCurrentItem
+SHMenuSetItemVoiceCommand
+SHMenuShow
+SHMenuUpdateItem
+SHRegisterDisplayIdleNotification
+SHRegisterIdleKey
+SHUnregisterDisplayIdleNotification
+SHUnregisterIdleKey

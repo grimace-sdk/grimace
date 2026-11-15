@@ -1,0 +1,12 @@
++CalLogText
++CalLogTextAndTime
++ConvertMeetingStatusToFlags
++FindExceptionsFromGlobj
++GetHighestPriorityConflict
++GetNextRecurrenceInstanceFromRecData
++GetOriginalTimeFromException
++GetSnapDate
++HandleForward
++HandleProposeNewTime
++SendAttendeesExceptions
++SendReply

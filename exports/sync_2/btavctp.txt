@@ -1,0 +1,7 @@
+AVCT_CloseDeviceContext
+AVCT_EstablishDeviceContext
+AVC_Close
+AVC_Deinit
+AVC_IOControl
+AVC_Init
+AVC_Open

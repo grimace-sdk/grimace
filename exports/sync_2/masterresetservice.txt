@@ -1,0 +1,5 @@
+MRS_Close
+MRS_Deinit
+MRS_IOControl
+MRS_Init
+MRS_Open

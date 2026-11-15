@@ -1,0 +1,4 @@
+CEChoosePrinter
+CEPrinterClose
+CEPrinterOpen
+CEPrinterSend

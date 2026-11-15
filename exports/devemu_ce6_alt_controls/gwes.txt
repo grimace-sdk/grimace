@@ -1,0 +1,4 @@
+-FONTOBJ_pxoGetXform
+-SetUseSurrogateFonts
+-UseSurrogateFonts
+-XFORMOBJ_iGetXform

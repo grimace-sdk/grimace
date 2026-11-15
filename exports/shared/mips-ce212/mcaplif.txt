@@ -1,0 +1,11 @@
+McBookMarkSubsetUI
+McClrCamFileName
+McClrComPartsHwnd
+McClrRecFileName
+McGetCamFileName
+McGetComPartsHwnd
+McGetRecFileName
+McMailAddressSubsetUI
+McSetCamFileName
+McSetComPartsHwnd
+McSetRecFileName

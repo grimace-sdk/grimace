@@ -1,0 +1,6 @@
++ConstructStoreYomiFileAs
++GetAddrstorHandle
++GetIndexFromProperty
++StreamAddressCard
+-PimCategListBlob
+-PimCategParseBlob

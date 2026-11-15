@@ -1,0 +1,10 @@
+BAT_Close
+BAT_Deinit
+BAT_IOControl
+BAT_Init
+BAT_Open
+BAT_PowerDown
+BAT_PowerUp
+BAT_Read
+BAT_Seek
+BAT_Write

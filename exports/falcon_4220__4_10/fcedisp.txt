@@ -1,0 +1,3 @@
+DlgExit
+DlgFCE
+DlgMsg

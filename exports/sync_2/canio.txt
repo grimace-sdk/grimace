@@ -1,0 +1,13 @@
+CancelSignalIo
+CreateSignalQueue
+GetActiveLoad
+GetNetworkState
+GetOverlappedSignalResult
+OpenSignalLayer
+ReceiveQueuedSignals
+ReceiveSignals
+SendSignals
+SetActiveLoad
+SetSignalFilters
+SetSignalTimeouts
+SignalIoControl

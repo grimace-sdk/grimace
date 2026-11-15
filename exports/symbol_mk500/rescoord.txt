@@ -1,0 +1,10 @@
+RCM_Close
+RCM_Deinit
+RCM_IOControl
+RCM_Init
+RCM_Open
+RCM_PowerDown
+RCM_PowerUp
+RCM_Read
+RCM_Seek
+RCM_Write

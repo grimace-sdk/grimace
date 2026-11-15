@@ -1,0 +1,17 @@
+PD_ClosePartition
+PD_CloseStore
+PD_CreatePartition
+PD_DeletePartition
+PD_DeviceIoControl
+PD_FindPartitionClose
+PD_FindPartitionNext
+PD_FindPartitionStart
+PD_FormatPartition
+PD_FormatStore
+PD_GetPartitionInfo
+PD_GetStoreInfo
+PD_IsStoreFormatted
+PD_OpenPartition
+PD_OpenStore
+PD_RenamePartition
+PD_SetPartitionAttrs

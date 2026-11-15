@@ -1,0 +1,12 @@
+POF_Close
+POF_Deinit
+POF_IOControl
+POF_Init
+POF_Open
+POF_PowerDown
+POF_PowerUp
+POF_PreClose
+POF_PreDeinit
+POF_Read
+POF_Seek
+POF_Write

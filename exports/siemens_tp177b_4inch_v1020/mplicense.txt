@@ -1,0 +1,14 @@
+AddLicense
+CheckLicense
+CheckLicenseEx
+DeleteLicense
+DeleteListElements
+LicExport
+LicImport
+LicMan_abort
+LicMan_complete
+LicMan_prepare
+LicShowRestoreDlg
+ReadAllLicenses
+ReadDataFromFlashPS
+WriteData2FlashPS

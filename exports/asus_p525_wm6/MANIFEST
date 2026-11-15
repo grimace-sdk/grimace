@@ -1,0 +1,7 @@
+arch: arm
+version: 5.1
+platform: pocketpc
+device: asus_p525_wm6
+source: Asus P525 WM6, Windows Mobile 6 ROM galaxy.cap in cerf-bundles/asus_p525_wm6, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce51
+without: amdnord btd bthamb bthasplugin bthcsr bthidsvc bthsc bthuart bthuniv com16550 d3dmref deviceemulator_lcd dmatrans emulserv fakeril isr16550 kbdmouse ne2000 pcc_smdk2410 pwrbtn2410 ramfmd s3c2410x_wavedev serdma serdmaasplugin serial_smdk2410 sio950 vcefsd wcestreambt wendyser

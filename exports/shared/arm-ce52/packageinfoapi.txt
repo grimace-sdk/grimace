@@ -1,0 +1,2 @@
++Pkg_GetUpdateResults
++Pkg_SetUpdateResults

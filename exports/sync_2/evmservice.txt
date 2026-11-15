@@ -1,0 +1,5 @@
+EVM_Close
+EVM_Deinit
+EVM_IOControl
+EVM_Init
+EVM_Open

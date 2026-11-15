@@ -1,0 +1,4 @@
++NdisQueryPacket
++NdisSetLoggingState
+-NDS_PowerDown
+-NDS_PowerUp

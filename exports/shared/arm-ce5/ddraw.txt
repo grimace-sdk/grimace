@@ -1,0 +1,6 @@
+DirectDrawCreate
+DirectDrawCreateClipper
+DirectDrawEnumerateA
+DirectDrawEnumerateExA
+DirectDrawEnumerateExW
+DirectDrawEnumerateW

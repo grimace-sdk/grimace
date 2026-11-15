@@ -1,0 +1,9 @@
++CardModifyConfiguration
++CardPowerOff
++CardPowerOn
++Deinit
++Init
++PowerDown
++PowerUp
+-CardSystemInit
+-CardSystemPower

@@ -1,0 +1,4 @@
+-IsD2CFaultEnabled
+-OnGetCapability
+-OnGetTitle
+-OnStartSync

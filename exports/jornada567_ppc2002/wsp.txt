@@ -1,0 +1,10 @@
+WBXMLToTextXML
+WSPDecodeHeaders
+WSPFreeBuffer
+WSPGetData
+WSPGetMIMEType
+WSPOpenUrl
+WSPSetGateway
+WSPSetUserAgent
+WSPShutDown
+WSPStartUp

@@ -1,0 +1,16 @@
+ebfxIsSpeechEnabled
+ebfxIsSpeechOn
+fetchNumberOfSystemFontlists
+fetchSystemColourlist
+fetchSystemFontlist
+finalizeAppForEbookfx
+findBestFitFontList
+getEbakMetric
+getEbookFxObjectLoader
+getFrameSize
+getSystemFontListIndex
+initializeAppForEbookfx
+loadExecutableResourceData
+screenResolutionInit
+strcmpn
+strcpyn

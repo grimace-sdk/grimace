@@ -1,0 +1,4 @@
+DRMFree
+DRMInitialize
+DRMShutDown
+DllGetObject

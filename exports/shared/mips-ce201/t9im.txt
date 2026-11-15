@@ -1,0 +1,6 @@
+CreateClassFactory
+CreateT9Sip
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer

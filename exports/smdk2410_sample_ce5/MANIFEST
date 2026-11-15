@@ -1,0 +1,7 @@
+arch: arm
+version: 5
+platform: embedded
+device: smdk2410_sample_ce5
+source: Smdk 2410 Sample CE5, Windows CE ROM wince5.bin in cerf-bundles/smdk2410_sample_ce5, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce5
+without: cetlkitl cetlstub dwxfer hd mp3dmod nleddrvr osaxst0 pcl tcpipc tlcesrv

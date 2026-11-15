@@ -1,0 +1,12 @@
+DllCanUnloadNow
+DllGetClassObject
+IsNetcardInstalled
+IsOnline
+LaunchWininetDialog
+PieLoadCSSSettings
+PieLoadRegistrySettings
+ReadFromURLFile
+ReadFromURLFileEx
+ShutDown
+StartUp
+WriteURLFile

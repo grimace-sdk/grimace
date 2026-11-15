@@ -1,0 +1,9 @@
++TouchCreateEvent
++TouchGetFocusWnd
++TouchGetLastTouchFocusWnd
++TouchGetQueuePtr
++TouchGetValue
++TouchRegisterWindow
++TouchReset
++TouchSetValue
++TouchUnregisterWindow

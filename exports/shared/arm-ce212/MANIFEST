@@ -1,0 +1,3 @@
+arch: arm
+version: 2.12
+base: arm-ce211

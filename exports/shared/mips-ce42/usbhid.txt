@@ -1,0 +1,11 @@
+HID_Close
+HID_Deinit
+HID_IOControl
+HID_Init
+HID_Open
+HID_Read
+HID_Seek
+HID_Write
+USBDeviceAttach
+USBInstallDriver
+USBUnInstallDriver

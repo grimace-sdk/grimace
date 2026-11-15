@@ -1,0 +1,7 @@
+arch: mips
+version: 2.11
+platform: hpcpro
+device: ibm_workpad_z50
+source: IBM WorkPad Z50, Handheld PC Professional 3.0 ROM nk.bin in cerf-bundles/ibm_workpad_z50, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce211
+without: aafobj aatp aygshell inboxres irsir mailutil msim owner pimapi predict rsabase softkb toolhelp touch voicectl

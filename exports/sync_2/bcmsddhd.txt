@@ -1,0 +1,11 @@
+DriverEntry
+NDL_Close
+NDL_Deinit
+NDL_IOControl
+NDL_Init
+NDL_Open
+NDL_PowerDown
+NDL_PowerUp
+NDL_Read
+NDL_Seek
+NDL_Write

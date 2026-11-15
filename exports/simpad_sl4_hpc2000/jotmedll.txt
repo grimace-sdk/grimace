@@ -1,0 +1,6 @@
+JotMeDelete
+JotMeFind
+JotMeRead
+JotMeSeek
+JotMeWrite
+zo_rec_macro

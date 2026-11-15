@@ -1,0 +1,1 @@
+kgsl_get_z160_memory_amount

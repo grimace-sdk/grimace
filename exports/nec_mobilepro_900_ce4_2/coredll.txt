@@ -1,0 +1,9 @@
+-SipEnumIM
+-SipGetCurrentIM
+-SipGetInfo
+-SipRegisterNotification
+-SipSetCurrentIM
+-SipSetDefaultRect
+-SipSetInfo
+-SipShowIM
+-SipStatus

@@ -1,0 +1,7 @@
+arch: arm
+version: 6
+platform: embedded
+device: cerfos
+source: CerfOS - Minimal Demo OS, Windows Embedded CE 6 ROM NK.bin in cerf-bundles/cerfos, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce6
+without: afd audevman ceshell commdlg credprov crypt32 cxport dhcp dhcpsrv ieceext imaging iphlpapi k.crypt32 k.dhcpsrv k.iphlpapi k.msasn1 k.nspm k.schannel k.secur32 k.ssllsp k.winsock k.ws2 k.wspm msasn1 ndis ndisuio netbios notify nspm ntlmssp ntlmssp_svc ole32 oleaut32 ppp rsaenh schannel secur32 servicesenum shcore shdocvw shlwapi ssllsp tapi tcpstk timesvc uiproxy veim waveapi wininet winsock ws2 ws2instl ws2k ws2serv wspm zlib

@@ -1,0 +1,5 @@
+TMC_Close
+TMC_Deinit
+TMC_IOControl
+TMC_Init
+TMC_Open

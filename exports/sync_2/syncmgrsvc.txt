@@ -1,0 +1,5 @@
+SYM_Close
+SYM_Deinit
+SYM_IOControl
+SYM_Init
+SYM_Open

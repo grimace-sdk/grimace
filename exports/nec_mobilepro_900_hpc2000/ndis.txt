@@ -1,0 +1,15 @@
++NdisDeregisterAdapter
++NdisGetCurrentSystemTime
++NdisIMDeInitializeDeviceInstance
++NdisIMGetDeviceContext
++NdisIMInitializeDeviceInstance
++NdisIMInitializeDeviceInstanceEx
++NdisIMRegisterLayeredMiniport
++NdisMRebindProtocolsToAdapter
++NdisMWanIndicateReceive
++NdisMWanIndicateReceiveComplete
++NdisMWanSendComplete
++NdisRebindProtocolsToAdapter
++NdisRegisterAdapter
++TrFilterDprIndicateReceive
++TrFilterDprIndicateReceiveComplete

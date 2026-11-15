@@ -3,3 +3,5 @@ version: 6
 platform: brain
 device: pwsh2 pwsb1 pwsh4
 source: Sharp Brain PW-SH2 ROM, also PW-SB1 and PW-SH4 (identical lists), tools/cerom.py
+base: arm-ce6
+without: afd audevman backlight busenum credprov crypt32 cxport device devmgr dhcp dhcpsrv filesys fsdmgr gwes ieceext imaging iphlpapi k.ceddk k.coredll k.crypt32 k.dhcpsrv k.iphlpapi k.mmtimer k.msasn1 k.nspm k.schannel k.secur32 k.ssllsp k.toolhelp k.winsock k.ws2 k.wspm kbdmouse mmtimer msasn1 ndis ndisuio netbios notify nspm ntlmssp ntlmssp_svc oalioctl pm ppp regenum romfsd rsaenh schannel secur32 serial servicesenum shcore shdocvw shellcelog shlwapi ssllsp tapi tcpstk timesvc uiproxy veim waveapi wininet ws2instl ws2k ws2serv wspm zlib

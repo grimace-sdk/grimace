@@ -1,0 +1,8 @@
+SMS_Close
+SMS_Deinit
+SMS_IOControl
+SMS_Init
+SMS_Open
+SMS_Read
+SMS_Seek
+SMS_Write

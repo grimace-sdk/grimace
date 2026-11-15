@@ -1,0 +1,7 @@
+FntDrvDestroyFont
+FntDrvLoadFontFile
+FntDrvQueryFont
+FntDrvQueryFontData
+FntDrvQueryFontFile
+FntDrvQueryTrueTypeTable
+FntDrvUnloadFontFile

@@ -1,0 +1,8 @@
++adler32
++get_crc_table
++inflateInit2_
++inflateSetDictionary
++inflateSync
++inflateSyncPoint
++uncompress
++zlibVersion

@@ -1,0 +1,14 @@
+AWC_Close
+AWC_Deinit
+AWC_IOControl
+AWC_Init
+AWC_Open
+AWC_PowerDown
+AWC_PowerUp
+AWC_Read
+AWC_Seek
+AWC_Write
+DLLENTRY
+DetectAironet
+DriverEntry
+Install_Driver

@@ -1,0 +1,4 @@
+ClearMessagePageData
+CreateCHomeWrapperDataSource
+InitializeFromRegKey
+OnInputToPageData

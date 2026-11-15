@@ -1,0 +1,14 @@
+CameraCapture
+EditImage
+ImageBeam
+ImageOptionsDlg
+ImageSendTo
+RunSlideshow
+SetAsTodayDlg
+SetTodayWatermark
+ShCloseCameraUIWindow
+ShFindCameraUIWindow
+ShowProperties
+ViewImage
+WriteScaledImageToFile
+WriteScaledImageToStream

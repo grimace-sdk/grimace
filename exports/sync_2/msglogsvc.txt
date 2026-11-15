@@ -1,0 +1,5 @@
+MGL_Close
+MGL_Deinit
+MGL_IOControl
+MGL_Init
+MGL_Open

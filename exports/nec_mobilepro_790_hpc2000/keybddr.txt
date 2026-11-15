@@ -1,0 +1,4 @@
++KeybdDriverInitializeEx
+-KeyAPI_WinCapsDelete
+-KeyAPI_WinCapsEntry
+-KeybdDriverInitialize

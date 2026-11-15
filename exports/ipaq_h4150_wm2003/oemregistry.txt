@@ -1,0 +1,7 @@
+ReadGenericData
+ReadRegData
+RegDiffRegions
+RegImportRegionsOnNextBoot
+RegistryOperation
+WriteGenericData
+WriteRegData

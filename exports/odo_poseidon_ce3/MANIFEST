@@ -1,0 +1,7 @@
+arch: arm
+version: 3
+platform: embedded
+device: odo_poseidon_ce3
+source: Odo Poseidon CE3, Windows CE 3.0 ROM wince3.bin in cerf-bundles/odo_poseidon_ce3, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce3
+without: addrdll addrstor adoce30 adocedb30 adoceoledb30 adosync arp aygshell caldll calstore ce_aud_file ce_faccess ce_flash_image ce_headers_dll ce_player_dll ce_prog_tree ce_streams_lib cedrmutil cefobj cefrtl ceft citydb clacker codec_common compime conndll cpqdsk d_aud1 dayview doclist ebookfx ebriched find flashmgr inkobj inkx inreplce irsqrt jpeglib ldap mnthview msdadc msdaer msls31 msnewmnu msxml note_prj offnwmnu pegobj pimapi pimdlg pimres pimstore pimutil ppcutil predict pxl2xls pxl_res pxlfile richink rra_stm shutil taskdll urlmon usb vbarcall vcomctl voicebar voicectl voicedll voicepwr xls2pxl

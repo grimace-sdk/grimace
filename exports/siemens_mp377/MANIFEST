@@ -1,0 +1,7 @@
+arch: arm
+version: 5
+platform: embedded
+device: siemens_mp377
+source: Siemens MP377, Windows CE 5.0 ROM NK.bin in cerf-bundles/siemens_mp377, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce5
+without: atlce400 cefobj cryptdll dcomssd ddcore ddhel ddraw eap eapchap eaptls ethman imaging kbdus kerberos lpcd lpcrt msim msmqd msmqrt mssoap1 mssoapr mstscax msxml3 ndisuio obexapi obexsrvr office pwwiff rpcltccm rpcltscm rpcrt4 rra_stm termctrl wisc10 wldap32 wmsdmod

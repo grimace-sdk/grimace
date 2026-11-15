@@ -1,0 +1,13 @@
+LPT_Close
+LPT_Deinit
+LPT_IOControl
+LPT_Init
+LPT_Open
+LPT_PowerDown
+LPT_PowerUp
+LPT_Read
+LPT_Seek
+LPT_Write
+USBDeviceAttach
+USBInstallDriver
+USBUnInstallDriver

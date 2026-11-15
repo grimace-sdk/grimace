@@ -1,7 +1,5 @@
-DllCanUnloadNow
-DllGetClassObject
-DllRegisterServer
-DllUnregisterServer
-PieLoadRegistrySettings
-ReadFromURLFile
-WriteURLFile
++DllRegisterServer
++DllUnregisterServer
+-IsOnline
+-LaunchWininetDlg
+-ReadFromURLFileEx

@@ -1,0 +1,9 @@
+-CTEGenRandom
+-CxLogDeregister
+-CxLogInitialize
+-CxLogMsg
+-CxLogRegister
+-CxLogShutdown
+-CxRegReadValues
+-CxRegWriteValues
+-g_pLogEvent

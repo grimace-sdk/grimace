@@ -1,0 +1,3 @@
++FSDMGR_AdvertiseInterface
++FSDMGR_FormatVolume
++FSDMGR_ScanVolume

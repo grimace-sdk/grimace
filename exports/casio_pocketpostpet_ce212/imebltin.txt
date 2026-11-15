@@ -1,0 +1,10 @@
+IMD_Close
+IMD_Deinit
+IMD_IOControl
+IMD_Init
+IMD_Open
+IMD_PowerDown
+IMD_PowerUp
+IMD_Read
+IMD_Seek
+IMD_Write

@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: smartphone
+device: devemu_wm614sp
+source: Device Emulator - Windows Mobile 6.1, Windows Mobile 6.1.4 Smartphone, Windows Mobile 6.1.4 Smartphone ROM Windows Mobile 6.1.4 Smartphone.bin in cerf-bundles/devemu_wm614sp, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52
+without: atlce300 cespell citydb commdlg compime doclist find inkctrls inkobj inkx mfcce300 msim netbios olece300 pimdlg redir richink softkb touch vbarcall voicebar voicedll wisplite wlmtodayscreen

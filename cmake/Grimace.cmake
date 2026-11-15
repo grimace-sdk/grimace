@@ -118,7 +118,7 @@ endif()
 
 file(GLOB GRIMACE_EXPORT_LISTS "${GRIMACE_IMPORTS_DIR}/*.txt")
 foreach(exports IN LISTS GRIMACE_EXPORT_LISTS)
-    get_filename_component(dll "${exports}" NAME_WE)
+    get_filename_component(dll "${exports}" NAME_WLE)
     string(TOUPPER "${dll}" dll_upper)
     set(lazy "${GRIMACE_IMPORTS_DIR}/${dll}.lazy")
     set(stubs "${GRIMACE_IMPORTS_DIR}/${dll}.S")

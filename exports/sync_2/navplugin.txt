@@ -1,0 +1,3 @@
+InitPlugin
+TuxHandleMapUpdated
+TuxHandleNavStateUpdate

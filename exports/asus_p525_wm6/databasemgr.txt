@@ -1,0 +1,17 @@
+SIDB_AddTrainedObject
+SIDB_ChangeSelect
+SIDB_ChangeTrainedObjectOID
+SIDB_DeleteTrainedObject
+SIDB_ExcuteObject
+SIDB_FreeAllObject
+SIDB_FreeAllTrainedObject
+SIDB_GetAllObject
+SIDB_GetAllTrainedObject
+SIDB_GetDBFileTime
+SIDB_GetObject
+SIDB_GetPhoneNumber
+SIDB_GetTrainedObject
+SIDB_Init
+SIDB_IsDBReady
+SIDB_Release
+SIDB_SaveDBObjectFile

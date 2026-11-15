@@ -1,0 +1,7 @@
+AppendBookMark
+DelBodyData
+DelCardData
+GetBodyNum
+GetCardNum
+MoveBodyToCard
+MoveCardToBody

@@ -1,0 +1,3 @@
+BatteryDriverGetLevels
+BatteryDriverGetStatus
+BatteryDriverSupportsChangeNotification

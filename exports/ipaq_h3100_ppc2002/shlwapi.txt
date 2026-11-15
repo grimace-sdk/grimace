@@ -1,0 +1,4 @@
+-GetAcceptLanguagesW
+-RegisterDefaultAcceptHeaders
+-SHCreateShellPalette
+-SHGetInverseCMAP

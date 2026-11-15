@@ -1,0 +1,2 @@
+-NFY_PowerDown
+-NFY_PowerUp

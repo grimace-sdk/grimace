@@ -1,0 +1,11 @@
+CreateFileStream
+McfCreateArchiveOnFile
+McfCreateControlledPackageOnStream
+McfCreatePackage
+McfCreatePackageOnFile
+McfCreatePackageOnStream
+McfInitialize
+McfOpenControlledPackageOnStream
+McfOpenPackage
+McfOpenPackageOnStream
+McfUninitialize

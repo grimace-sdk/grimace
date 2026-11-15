@@ -1,0 +1,9 @@
+DllEntry
+GetSnmpStruct
+GetSysORInfo
+SNP_Close
+SNP_Deinit
+SNP_IOControl
+SNP_Init
+SNP_Open
+SetSnmpEnableAuthenTraps

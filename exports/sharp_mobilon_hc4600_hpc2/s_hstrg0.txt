@@ -1,0 +1,15 @@
+AddLocalFile
+AddLocalFiles
+CacheUrl
+GetCacheInfo
+HvStorageInfo
+InitHvStorage
+ResumeHvStorage
+SavePage
+SearchLocalFile
+SearchUrl
+StGetType
+SuspendHvStorage
+UnsavePage
+UrlPoolAlloc
+UrlPoolFree

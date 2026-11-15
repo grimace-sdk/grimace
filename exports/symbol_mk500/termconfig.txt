@@ -1,0 +1,10 @@
+TCM_Close
+TCM_Deinit
+TCM_IOControl
+TCM_Init
+TCM_Open
+TCM_PowerDown
+TCM_PowerUp
+TCM_Read
+TCM_Seek
+TCM_Write

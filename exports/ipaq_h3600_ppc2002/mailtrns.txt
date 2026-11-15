@@ -1,0 +1,12 @@
+??4CPlex@@QAAAAU0@ABU0@@Z
+??4XPtrList@@QAAAAV0@ABV0@@Z
+??_FXPtrList@@QAAXXZ
+?GetAt@XPtrList@@QBAPAXPAX@Z
+?GetCount@XPtrList@@QAAHXZ
+?GetHeadPosition@XPtrList@@QAAPAXXZ
+?GetNext@XPtrList@@QBAPAXAAPAX@Z
+?GetPrev@XPtrList@@QBAPAXAAPAX@Z
+?GetTailPosition@XPtrList@@QAAPAXXZ
+?data@CPlex@@QAAPAXXZ
+LibMain
+OneStopFactory

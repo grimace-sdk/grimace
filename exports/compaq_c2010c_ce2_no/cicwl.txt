@@ -1,0 +1,12 @@
+wl_az_word
+wl_check_word
+wl_check_word_common
+wl_complete_word
+wl_free_dict
+wl_get_cands
+wl_get_dict
+wl_load_dict
+wl_load_dict_common
+wl_modify_dict
+wl_unload_dict
+wl_unload_dict_common

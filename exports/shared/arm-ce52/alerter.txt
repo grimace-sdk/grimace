@@ -1,0 +1,8 @@
+PSH_Close
+PSH_Deinit
+PSH_IOControl
+PSH_Init
+PSH_Open
+PSH_Read
+PSH_Seek
+PSH_Write

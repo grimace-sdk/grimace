@@ -1,0 +1,8 @@
+CeProcessConfigXMLPriv
+CfgUtilGetConfigDataTypeName
+CfgUtilGetElementName
+CfgUtilGetParmAttributeName
+CfgUtilParseConfigDataTypeName
+CfgUtilParseConfigSemanticTypeName
+DllCanUnloadNow
+DllGetClassObject

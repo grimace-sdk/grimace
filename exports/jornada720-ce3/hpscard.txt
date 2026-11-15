@@ -1,0 +1,17 @@
+HPCloseSmartCard
+HPCreateSmartCardPWDFile
+HPForgetSmartCard
+HPGetMaxPWDRetries
+HPGetSmartCardOwnerName
+HPGetSmartCardPWD
+HPGetSmartCardSerialNumber
+HPIntroduceSmartCard
+HPIsPinValid
+HPIsSmartCardPWDFileExist
+HPOpenSmartCard
+HPSetSmartCardPWD
+HPSmartCardDeinitialize
+HPSmartCardInitialize
+HPTrackCancel
+HPTrackInsert
+HPTrackRemove

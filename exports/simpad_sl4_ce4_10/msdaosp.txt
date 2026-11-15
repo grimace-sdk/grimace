@@ -1,0 +1,12 @@
+?RegisterServer@@YAJQAUHINSTANCE__@@QAUHKEY__@@KQBUtagREGENTRIES@@@Z
+?UnRegisterServer@@YAJQAUHKEY__@@KQBUtagREGENTRIES@@@Z
+?W95CopyFile@@YAHPBG0H@Z
+?W95CreateFile@@YAPAXPBGKKPAU_SECURITY_ATTRIBUTES@@KKPAX@Z
+?W95DeleteFile@@YAHPBG@Z
+?W95FormatMessage@@YAKKPBXKKPAGKPAPAD@Z
+?W95GetModuleFileName@@YAKPAUHINSTANCE__@@PAGK@Z
+?W95LoadString@@YAHPAUHINSTANCE__@@IPAGH@Z
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer(a

@@ -1,0 +1,11 @@
+DllMain
+PDC_Close
+PDC_Deinit
+PDC_IOControl
+PDC_Init
+PDC_Open
+PDC_PowerDown
+PDC_PowerUp
+PDC_Read
+PDC_Seek
+PDC_Write

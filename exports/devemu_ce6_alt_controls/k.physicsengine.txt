@@ -1,0 +1,4 @@
+CreatePhysicsEngine
+DestroyPhysicsEngine
+QueryPhysicsEngine
+SetPhysicsEngineUserTime

@@ -1,0 +1,6 @@
+arch: sh3
+version: 3
+platform: pocketpc
+device: jornada548_ppc2000
+source: Jornada 548 PPC2000, Pocket PC 2000 ROM nk.bin in cerf-bundles/jornada548_ppc2000, read with CEM Porter's tools/compat-tables.mjs
+base: sh3-ce3

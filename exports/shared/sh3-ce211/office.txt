@@ -1,0 +1,7 @@
++CreateIStreamOnILockBytes
++DetermineIMECompositionString
++FlushIMECompositionString
++Office_InsertSymbol
++SetCharacterConversionCodePage
+-_tcstol
+-_tcstoul

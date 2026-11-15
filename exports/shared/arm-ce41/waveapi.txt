@@ -1,0 +1,11 @@
+-ACM_Close
+-ACM_Deinit
+-ACM_IOControl
+-ACM_Init
+-ACM_Open
+-ACM_PowerDown
+-ACM_PowerUp
+-ACM_Read
+-ACM_Seek
+-ACM_Write
+-WaveApiDllEntry

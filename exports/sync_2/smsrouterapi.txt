@@ -1,0 +1,10 @@
+SmsRouterAddRule
+SmsRouterClose
+SmsRouterGetMessage
+SmsRouterGetMessageEx
+SmsRouterGetMessageSize
+SmsRouterOpen
+SmsRouterRegister
+SmsRouterRemoveRule
+SmsRouterSendMessage
+SmsRouterUnregister

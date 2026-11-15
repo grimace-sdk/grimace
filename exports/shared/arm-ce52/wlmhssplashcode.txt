@@ -1,0 +1,6 @@
+OnClick
+OnFocus
+OnKeyDown
+OnLoaded
+OnLostFocus
+OnUnload

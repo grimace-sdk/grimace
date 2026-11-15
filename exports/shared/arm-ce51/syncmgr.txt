@@ -1,0 +1,10 @@
+DllAddRef
+DllCanUnloadNow
+DllGetClassObject
+DllRelease
+OneStopFactory
+SyncMgrDoSync
+SyncMgrIsDeviceCradled
+SyncMgrIsMenuValid
+SyncMgrReschedule
+SyncVerifyAndScheduleSync

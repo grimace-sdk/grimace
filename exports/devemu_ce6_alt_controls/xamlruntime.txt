@@ -1,0 +1,4 @@
+FreeXRValue
+GetXRApplicationInstance
+XamlRuntimeInitialize
+XamlRuntimeUninitialize

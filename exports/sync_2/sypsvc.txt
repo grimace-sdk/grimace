@@ -1,0 +1,5 @@
+SYP_Close
+SYP_Deinit
+SYP_IOControl
+SYP_Init
+SYP_Open

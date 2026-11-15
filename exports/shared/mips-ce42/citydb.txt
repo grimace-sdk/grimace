@@ -1,0 +1,17 @@
+-ClockFreeAllTimeZoneData
+-ClockGetCityData
+-ClockGetCityDataEx
+-ClockGetDefaultHomeIndex
+-ClockGetDefaultVisitingIndex
+-ClockGetNumCities
+-ClockGetNumTimezones
+-ClockGetTimeZoneDataByOffset
+-ClockLoadAllTimeZoneData
+-GetCityInstance
+-GetFormattedTimeZoneString
+-InitCityDb
+-PimCreateDialogParamClock
+-PimDialogBoxParamClock
+-PimLoadAcceleratorsClock
+-PimLoadBitmapClock
+-UninitCityDb

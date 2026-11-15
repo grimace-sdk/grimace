@@ -1,0 +1,5 @@
+CreateCodecInstance
+DllCanUnloadNow
+DllGetClassObject
+DllRegisterServer
+DllUnregisterServer

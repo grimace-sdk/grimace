@@ -1,0 +1,13 @@
+BSQSTDLIB_Version
+_bsqRegApp_GetAppFullPath
+_bsqRegApp_GetAppPathOnly
+_bsqRegApp_ReceiveDDE
+_bsqRegApp_SendDDE
+_bsqReg_createkey
+_bsqReg_deletekey
+_bsqReg_openkey
+_bsqReg_read_dword
+_bsqReg_read_string
+_bsqReg_write_dword
+_bsqReg_write_mstring
+_bsqReg_write_string

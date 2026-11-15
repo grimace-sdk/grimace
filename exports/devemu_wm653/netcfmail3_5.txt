@@ -1,0 +1,12 @@
+ActivateListener
+DeactivateListener
+DeleteMessageFromStore
+GetMessageData
+InitializeTransport
+IsDeleted
+RegisterListener
+ScheduleMessageSearch
+SendAsAttachment
+SendInBody
+UninitializeTransport
+UnregisterListener

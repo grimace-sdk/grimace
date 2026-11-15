@@ -1,0 +1,4 @@
+ModifiedUTF7ToUnicode
+TnefBuildInfo
+TnefGetInfo
+UnicodeToModifiedUTF7

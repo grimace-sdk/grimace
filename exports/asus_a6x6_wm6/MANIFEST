@@ -1,0 +1,7 @@
+arch: arm
+version: 5.2
+platform: pocketpc
+device: asus_a6x6_wm6
+source: Asus A6X6 WM6, Windows Mobile 6 ROM Update.img in cerf-bundles/asus_a6x6_wm6, read with CEM Porter's tools/compat-tables.mjs
+base: arm-ce52
+without: alerter amdnord atcmdint autotimedll backlight btagsvc bthagphonebook bthamb bthatci bthcsr bthpbap bthsc bthuart caifmux ccoredrv ccoreutl celltsp cspvoice d3dmref deviceemulator_lcd deviceencryptionpolicy dmatrans dmsapi downloadservice downloadserviceprocess emulserv historyapi installservice ipsecvpn ipsecvpncsp ipsecvpnvnic kbdmouse machineenroller mcf mencfilt ne2000 networkpolicycsp nodemoncsp nodemoninitsess nullcam pcc_smdk2410 phone pwrbtn2410 ramfmd ril rilgsm s3c2410x_wavedev sdputil serdma serdmaasplugin serial_smdk2410 siminit simsec sio950 sms softwaredisable supsvcs swmgmtservice taskscheduler tdetclient tskschcsp uiservice uiserviceplugin vcefsd vei wcestreambt wendyser wlmcontactsdatabase

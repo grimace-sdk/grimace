@@ -1,0 +1,5 @@
+DllEntry
+GetSnmpStruct
+GetSysORInfo
+SetSnmpEnableAuthenTraps
+SnmpInitialize

@@ -1,0 +1,12 @@
+ARS_Close
+ARS_Deinit
+ARS_IOControl
+ARS_Init
+ARS_Open
+ARS_PowerDown
+ARS_PowerUp
+ARS_Read
+ARS_Seek
+ARS_Write
+Autoras_Dial
+DriverEntry

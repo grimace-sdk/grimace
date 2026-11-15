@@ -1,0 +1,6 @@
++LayoutMgrActivateKeyboardLayout
++LayoutMgrGetKeyboardLayout
++LayoutMgrGetKeyboardLayoutList
++LayoutMgrGetKeyboardLayoutName
++LayoutMgrGetKeyboardType
++LayoutMgrLoadKeyboardLayout

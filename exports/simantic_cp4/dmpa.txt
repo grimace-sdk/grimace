@@ -1,0 +1,5 @@
+ExportRpoStream
+FreeRpoStream
+GetSettings
+ImportRpoStream
+SetSettings

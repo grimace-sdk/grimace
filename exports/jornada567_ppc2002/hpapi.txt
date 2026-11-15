@@ -1,0 +1,13 @@
+API_Close
+API_Deinit
+API_IOControl
+API_Init
+API_Open
+API_PowerDown
+API_PowerUp
+API_Read
+API_Seek
+API_Write
+HPAPIDeinitialize
+HPAPIIOControl
+HPAPIInitialize

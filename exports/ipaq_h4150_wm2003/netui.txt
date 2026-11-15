@@ -1,0 +1,7 @@
++ClosePropSheetDialog
++RasEapGetIdentity
+-CloseUsernamePasswordDialog
+-CreateScanDevice
+-GetUsernamePasswordEx
+-LoadSecurityLib
+-UnloadSecurityLib

@@ -1,0 +1,11 @@
+BatteryDiagDispatch
+Close
+Deinit
+IOControl
+Init
+Open
+PowerDown
+PowerUp
+Read
+Seek
+Write

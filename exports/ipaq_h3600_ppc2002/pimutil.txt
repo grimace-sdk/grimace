@@ -1,0 +1,14 @@
++ConvertObexFileToIObexObjWrapper
++OBEXInboxClient
++PimSendItems
++PimVerifyString
+-DbgBreakOnAllocNumber
+-PimFreeHeap
+-PimHeapSize
+-PimHeapValidate
+-PimLocalAlloc
+-PimLocalFree
+-PimLocalReAlloc
+-PimSetDebugFlags
+-ReadLdapInfoFromRegistry
+-WriteLdapInfoToRegistry

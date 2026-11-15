@@ -1,0 +1,9 @@
+HIDDeviceAttach
+HIDDeviceNotifications
+IHD_Close
+IHD_Deinit
+IHD_IOControl
+IHD_Init
+IHD_Open
+USBCheckConfiguration
+USBDeviceAttach

@@ -1,0 +1,7 @@
+PhraseTTSCtrl
+PhraseTTSInfo
+TTSFileClose_I
+TTSFileCtrl_I
+TTSFileGetLegalLen_I
+TTSFileGetWave_I
+TTSFileOpen_I

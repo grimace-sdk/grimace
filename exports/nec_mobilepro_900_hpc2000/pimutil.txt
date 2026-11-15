@@ -1,0 +1,8 @@
++PimCreateAttendeeList
++PimCreateCommandBands
++PimCustomizeColumns
++PimDestroyCommandBands
++PimEditMastCat
++PimEnsureFirstCheckedItemVisible
+-GetPimVersion
+-PimAttendeeListModal

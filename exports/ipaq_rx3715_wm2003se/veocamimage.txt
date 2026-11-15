@@ -1,0 +1,9 @@
+VeoMediaPlayBack
+bVeoGetMediaInfo
+bVeoGetMediaThumbnail
+bVeoGetModeInfo
+bVeoSetMode
+bVeoWriteAviData
+bVeoWriteAviStart
+bVeoWriteAviStop
+nVeoGetMode

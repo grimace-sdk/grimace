@@ -1,0 +1,5 @@
++DbgBreakPoint
++DbgPrint
++NdisMSetTimer
++NdisStallExecution
++RtlAssert

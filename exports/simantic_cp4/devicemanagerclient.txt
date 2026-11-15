@@ -1,0 +1,14 @@
+?BRCreateController@@YAPAVIBRController@@XZ
+?BRDestroyController@@YAXPAVIBRController@@@Z
+?DACreateController@@YAPAVIDAController@@XZ
+?DADestroyController@@YAXPAVIDAController@@@Z
+?FUCreateController@@YAPAVIFUController@@XZ
+?FUDestroyController@@YAXPAVIFUController@@@Z
+?HUCreateController@@YAPAVIHUController@@XZ
+?HUDestroyController@@YAXPAVIHUController@@@Z
+?ORTCreate@@YAPAVIOmsRemoteTool@@XZ
+?ORTDestroy@@YAXPAVIOmsRemoteTool@@@Z
+?OTCreate@@YAPAVIOmsTool@@XZ
+?OTDestroy@@YAXPAVIOmsTool@@@Z
+?RUCreateController@@YAPAVIRUController@@XZ
+?RUDestroyController@@YAXPAVIRUController@@@Z

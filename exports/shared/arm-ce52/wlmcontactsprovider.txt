@@ -1,0 +1,4 @@
+DisplayContactStatus
+DisplayDialog
+DllCanUnloadNow
+DllGetClassObject

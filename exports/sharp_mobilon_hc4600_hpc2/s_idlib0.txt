@@ -1,0 +1,3 @@
+GetMachineId
+GetNegInfId
+SetRandomMachineId

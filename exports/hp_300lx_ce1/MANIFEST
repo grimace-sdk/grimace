@@ -1,0 +1,6 @@
+arch: sh3
+version: 1
+platform: hpc
+device: hp_300lx_ce1
+source: HP 300LX CE1, Windows CE 1.0 ROM nk.bin in cerf-bundles/hp_300lx_ce1, read with CEM Porter's tools/compat-tables.mjs
+base: sh3-ce1

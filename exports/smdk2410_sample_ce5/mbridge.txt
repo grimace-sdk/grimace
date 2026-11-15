@@ -1,0 +1,11 @@
+BRG_Close
+BRG_Deinit
+BRG_IOControl
+BRG_Init
+BRG_Open
+BRG_PowerDown
+BRG_PowerUp
+BRG_Read
+BRG_Seek
+BRG_Write
+DriverEntry

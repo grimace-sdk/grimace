@@ -1,0 +1,8 @@
+IsEventSoundEvent
+PlayEventSound
+PlayEventSoundScript
+PlaySoundScript
+PreviewEventSound
+StopAllEventSounds
+StopEventSounds
+WC_PlayClick

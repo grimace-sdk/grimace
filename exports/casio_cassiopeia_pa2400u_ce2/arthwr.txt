@@ -1,0 +1,13 @@
+HwrAddPoint
+HwrAddPoints
+HwrAddStroke
+HwrClose
+HwrConfig
+HwrEOS
+HwrGetResults
+HwrInit
+HwrReset
+HwrSetContext
+HwrTimeout
+HwrTrainEnd
+HwrTrainStart

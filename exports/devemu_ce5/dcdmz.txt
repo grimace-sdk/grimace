@@ -1,0 +1,11 @@
+CreateOutputFile
+DecodeImage
+EndImage
+FileTypeEmz
+FileTypeWmz
+GetWmzHeight
+GetWmzWidth
+InitImage
+ProcessHeaders
+StartImage
+TermImage

@@ -1,0 +1,6 @@
+GetLockScreenHWND
+SendLockScreenHWNDMessage
+SetLockScreenSimplePinDefWndProc
+StartScreenLock
+StartSimplePin
+StopLockScreen

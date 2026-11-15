@@ -1,0 +1,9 @@
+GetResourceInstance
+PimCreateDialogParam
+PimDialogBoxParam
+PimLoadAccelerators
+PimLoadBitmap
+PimLoadIcon
+PimLoadImage
+PimLoadResource
+PimLoadToolBarButtons

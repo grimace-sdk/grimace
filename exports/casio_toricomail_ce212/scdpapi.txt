@@ -1,0 +1,10 @@
+?ComSelect@@YAHPAD0@Z
+SCDPCellularPhoneProfileAddress
+SCDPClose
+SCDPGetFile
+SCDPGetFileList
+SCDPGetPIMAddress
+SCDPOpen
+SCDPPutFile
+SCDPPutPIMAddress
+SCDPSetLockNo

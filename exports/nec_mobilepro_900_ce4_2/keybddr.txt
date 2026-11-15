@@ -1,0 +1,3 @@
++KeybdDriverInitializeEx
++KeyboardDiagDispatch
+-KeybdDriverInitialize

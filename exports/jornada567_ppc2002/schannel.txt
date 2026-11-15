@@ -1,0 +1,7 @@
++QueryCredentialsAttributesA
++QueryCredentialsAttributesW
++QuerySecurityContextToken
++SslEmptyCache
+-SslGenerateKeyPair
+-SslGenerateRandomBits
+-SslLoadCertificate

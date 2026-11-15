@@ -1,0 +1,10 @@
+V1S_Close
+V1S_Deinit
+V1S_IOControl
+V1S_Init
+V1S_Open
+V1S_PowerDown
+V1S_PowerUp
+V1S_Read
+V1S_Seek
+V1S_Write

@@ -1,0 +1,12 @@
+GetAuxTabInfo
+Initialize
+OemAdjustMainDlgSize
+OemDlg_InitDialog
+OemDlg_Paint
+OemHelpProc
+OemProcAdv
+OemProcDisplay
+OemProcLocalRes
+OemProcPerf
+OemProcRun
+SetTabDispArea

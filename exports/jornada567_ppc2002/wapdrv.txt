@@ -1,0 +1,10 @@
+WAP_Close
+WAP_Deinit
+WAP_IOControl
+WAP_Init
+WAP_Open
+WAP_PowerDown
+WAP_PowerUp
+WAP_Read
+WAP_Seek
+WAP_Write

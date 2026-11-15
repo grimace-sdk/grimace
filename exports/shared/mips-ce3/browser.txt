@@ -1,0 +1,9 @@
+CommitUrlCacheEntryW
+DeleteUrlCacheEntryW
+FindCloseUrlCache
+FindFirstUrlCacheEntryExW
+FindNextUrlCacheEntryExW
+GetUrlCacheEntryInfoExW
+InternetCrackUrlW
+RetrieveUrlCacheEntryFileW
+UnlockUrlCacheEntryFileW

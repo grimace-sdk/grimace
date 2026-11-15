@@ -1,0 +1,10 @@
+PBT_Close
+PBT_Deinit
+PBT_IOControl
+PBT_Init
+PBT_Open
+PBT_PowerDown
+PBT_PowerUp
+PBT_Read
+PBT_Seek
+PBT_Write

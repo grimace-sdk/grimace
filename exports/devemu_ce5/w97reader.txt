@@ -1,0 +1,2 @@
+?W97OpenFile@@YAKPAG0@Z
+?W97OpenFileEx@@YAKPAG0PAD@Z

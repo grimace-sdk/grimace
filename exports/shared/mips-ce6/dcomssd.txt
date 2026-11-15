@@ -1,0 +1,4 @@
++DCM_Deinit
++DCM_IOControl
++DCM_Init
+-DCOMSSDInitialize

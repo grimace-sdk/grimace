@@ -1,0 +1,11 @@
+DriverEntry
+MSI_Close
+MSI_Deinit
+MSI_IOControl
+MSI_Init
+MSI_Open
+MSI_PowerDown
+MSI_PowerUp
+MSI_Read
+MSI_Seek
+MSI_Write

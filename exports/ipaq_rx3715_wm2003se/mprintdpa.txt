@@ -1,0 +1,5 @@
+AdapterCanPrint
+AdapterClose
+AdapterCreatePrinterContext
+AdapterInit
+AdapterPrintDoc

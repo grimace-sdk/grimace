@@ -1,0 +1,10 @@
+CPY_Close
+CPY_Deinit
+CPY_IOControl
+CPY_Init
+CPY_Open
+CPY_PowerDown
+CPY_PowerUp
+CPY_Read
+CPY_Seek
+CPY_Write

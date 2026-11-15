@@ -1,0 +1,11 @@
+DriverEntry
+UIO_Close
+UIO_Deinit
+UIO_IOControl
+UIO_Init
+UIO_Open
+UIO_PowerDown
+UIO_PowerUp
+UIO_Read
+UIO_Seek
+UIO_Write

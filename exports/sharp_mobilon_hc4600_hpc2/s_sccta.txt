@@ -1,0 +1,4 @@
+TACloseText
+TAOpenText
+TAReadFirst
+TAReadNext

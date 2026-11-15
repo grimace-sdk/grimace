@@ -1,0 +1,8 @@
+DeleteAllObjects
+DllMain
+DllRegisterServer
+DllUnregisterServer
+GetObjTypeInfo
+InitObjType
+ObjectNotify
+ReportStatus

@@ -1,0 +1,5 @@
+SCX_Close
+SCX_Deinit
+SCX_IOControl
+SCX_Init
+SCX_Open

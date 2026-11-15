@@ -1,0 +1,7 @@
+GetRetentiveStorageSize
+ReadID
+ReadRetentiveStorage
+RegisterPowerFailHandler
+UnRegisterPowerFailHandler
+WriteID
+WriteRetentiveStorage

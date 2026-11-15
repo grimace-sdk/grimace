@@ -1,0 +1,10 @@
+HIC_Close
+HIC_Deinit
+HIC_IOControl
+HIC_Init
+HIC_Open
+HIC_PowerDown
+HIC_PowerUp
+HIC_Read
+HIC_Seek
+HIC_Write

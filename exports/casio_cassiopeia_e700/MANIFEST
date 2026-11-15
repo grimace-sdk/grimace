@@ -1,0 +1,6 @@
+arch: mips
+version: 3
+platform: pocketpc
+device: casio_cassiopeia_e700
+source: Casio Cassiopeia E-700, Pocket PC 2000 ROM e700.bin in cerf-bundles/casio_cassiopeia_e700, read with CEM Porter's tools/compat-tables.mjs
+base: mips-ce3

@@ -1,0 +1,8 @@
+HP_Function
+MODEM_SetSpeaker
+PCMCIA_SetSpeaker
+UcbRegisterClear
+UcbRegisterRead
+UcbRegisterSet
+UcbRegisterWrite
+WAVE_SetSpeaker
