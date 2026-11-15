@@ -110,7 +110,12 @@ BOOL FreePhysMem(LPVOID lpvAddress);
 DWORD GetCallerVMProcessId(VOID);
 
 #if GRIMACE_CE >= 6
+#define SH_GDI 80
 #define SH_WMGR 81
+#define SH_COMM 83
+#define SH_FILESYS_APIS 84
+#define SH_SHELL 85
+#define SH_DEVMGR_APIS 86
 #else
 #define SH_LAST_NOTIFY 16
 #define SH_GDI 16

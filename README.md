@@ -172,7 +172,7 @@ grimace's own device headers, from Microsoft's public reference unless noted:
 | Header | Declares |
 | --- | --- |
 | `ceddk.h`, `msgqueue.h`, `pm.h` | what CE 6.0 drivers use, checked against Platform Builder 6.0 |
-| `pkfuncs.h` | `KernelIoControl`, `InterruptInitialize`, `InterruptDone` and `InterruptDisable`, without the OAL's IOCTL and `SYSINTR_` values, which no public source gives |
+| `pkfuncs.h` | `KernelIoControl`, `InterruptInitialize`, `InterruptDone`, `InterruptDisable`, `WaitForAPIReady`, `CacheSync` and `CacheRangeFlush`, without the OAL's IOCTL and `SYSINTR_` values, which no public source gives. The `SH_` API set numbers are the Handheld PC 2000 SDK's before CE 6.0. On CE 6.0 they're 64 higher: a PW-A7300 has sets 80, 81, 83, 84, 85 and 86 registered, `SH_WMGR` (81) is confirmed by Platform Builder's build, and the others are named by that pattern. CE 6.0 has no `SH_INIT`, `SH_TAPI`, `SH_PATCHER`, `SH_IMM` or `SH_WNET` yet |
 | `pm.h` | also the power manager's `SetPowerRequirement`, `ReleasePowerRequirement`, `SetSystemPowerState`, `PowerPolicyNotify` and the power IOCTLs |
 | `aygshell.h` | Windows Mobile's shell: `SHFullScreen`, `SHInitDialog`, `SHHandleWMActivate`, `SHHandleWMSettingChange`, `SHSipPreference`, `SHCreateMenuBar` and others |
 | `cs.h`, `csmedia.h` | the camera driver interface for `CAM1:` and `PIN1:`: property sets, `IOCTL_CS_PROPERTY`, `IOCTL_STREAM_INSTANTIATE`, `IOCTL_CS_BUFFERS`, stream descriptors, message queue buffers and video formats. The public KS layouts under CE's names, with values and layouts confirmed against the Juno SB's camera driver |
