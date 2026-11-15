@@ -10,32 +10,12 @@ extern struct grimace_lazy_import __grimace_lazy_import_AllocPhysMem;
 extern struct grimace_lazy_import __grimace_lazy_import_AppendMenuA;
 #define __grimace_lazy_BackupEventLogW 1
 extern struct grimace_lazy_import __grimace_lazy_import_BackupEventLogW;
-#define __grimace_lazy_BatteryNotifyOfTimeChange 1
-extern struct grimace_lazy_import __grimace_lazy_import_BatteryNotifyOfTimeChange;
 #define __grimace_lazy_CacheRangeFlush 1
 extern struct grimace_lazy_import __grimace_lazy_import_CacheRangeFlush;
 #define __grimace_lazy_CallWindowProcA 1
 extern struct grimace_lazy_import __grimace_lazy_import_CallWindowProcA;
-#define __grimace_lazy_CeClearUserNotification 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeClearUserNotification;
-#define __grimace_lazy_CeGetUserNotification 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeGetUserNotification;
-#define __grimace_lazy_CeGetUserNotificationHandles 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeGetUserNotificationHandles;
-#define __grimace_lazy_CeGetUserNotificationPreferences 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeGetUserNotificationPreferences;
-#define __grimace_lazy_CeHandleAppNotifications 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeHandleAppNotifications;
 #define __grimace_lazy_CeResyncFilesys 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeResyncFilesys;
-#define __grimace_lazy_CeRunAppAtEvent 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeRunAppAtEvent;
-#define __grimace_lazy_CeRunAppAtTime 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeRunAppAtTime;
-#define __grimace_lazy_CeSetUserNotification 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeSetUserNotification;
-#define __grimace_lazy_CeSetUserNotificationEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_CeSetUserNotificationEx;
 #define __grimace_lazy_CharLowerA 1
 extern struct grimace_lazy_import __grimace_lazy_import_CharLowerA;
 #define __grimace_lazy_CharNextA 1
@@ -62,10 +42,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_CloseEnhMetaFile;
 extern struct grimace_lazy_import __grimace_lazy_import_CloseEventLog;
 #define __grimace_lazy_CloseMsgQueue 1
 extern struct grimace_lazy_import __grimace_lazy_import_CloseMsgQueue;
-#define __grimace_lazy_CloseToolhelp32Snapshot 1
-extern struct grimace_lazy_import __grimace_lazy_import_CloseToolhelp32Snapshot;
-#define __grimace_lazy_CommDlgExtendedError 1
-extern struct grimace_lazy_import __grimace_lazy_import_CommDlgExtendedError;
 #define __grimace_lazy_CommandBar_AlignAdornments 1
 extern struct grimace_lazy_import __grimace_lazy_import_CommandBar_AlignAdornments;
 #define __grimace_lazy_CompareStringA 1
@@ -102,8 +78,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_CreateMsgQueue;
 extern struct grimace_lazy_import __grimace_lazy_import_CreateMutexA;
 #define __grimace_lazy_CreatePolygonRgn 1
 extern struct grimace_lazy_import __grimace_lazy_import_CreatePolygonRgn;
-#define __grimace_lazy_CreateToolhelp32Snapshot 1
-extern struct grimace_lazy_import __grimace_lazy_import_CreateToolhelp32Snapshot;
 #define __grimace_lazy_CreateWindowExA 1
 extern struct grimace_lazy_import __grimace_lazy_import_CreateWindowExA;
 #define __grimace_lazy_DPA_Create 1
@@ -190,8 +164,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_FormatMessageA;
 extern struct grimace_lazy_import __grimace_lazy_import_FreePhysMem;
 #define __grimace_lazy_GetBitmapBits 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetBitmapBits;
-#define __grimace_lazy_GetCallerVMProcessId 1
-extern struct grimace_lazy_import __grimace_lazy_import_GetCallerVMProcessId;
 #define __grimace_lazy_GetCharacterPlacementW 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetCharacterPlacementW;
 #define __grimace_lazy_GetClassInfoA 1
@@ -220,8 +192,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_GetDlgItemTextA;
 extern struct grimace_lazy_import __grimace_lazy_import_GetEnvironmentVariableA;
 #define __grimace_lazy_GetFileAttributesA 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetFileAttributesA;
-#define __grimace_lazy_GetFileSecurityW 1
-extern struct grimace_lazy_import __grimace_lazy_import_GetFileSecurityW;
 #define __grimace_lazy_GetFileVersionInfoSizeW 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetFileVersionInfoSizeW;
 #define __grimace_lazy_GetFileVersionInfoW 1
@@ -266,8 +236,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_GetNumberFormatA;
 extern struct grimace_lazy_import __grimace_lazy_import_GetObjectA;
 #define __grimace_lazy_GetOutlineTextMetricsW 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetOutlineTextMetricsW;
-#define __grimace_lazy_GetOverlappedResult 1
-extern struct grimace_lazy_import __grimace_lazy_import_GetOverlappedResult;
 #define __grimace_lazy_GetPrivateProfileStringA 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetPrivateProfileStringA;
 #define __grimace_lazy_GetROP2 1
@@ -280,10 +248,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_GetSystemDirectory;
 extern struct grimace_lazy_import __grimace_lazy_import_GetSystemDirectoryA;
 #define __grimace_lazy_GetSystemPowerState 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetSystemPowerState;
-#define __grimace_lazy_GetSystemPowerStatusEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_GetSystemPowerStatusEx;
-#define __grimace_lazy_GetSystemPowerStatusEx2 1
-extern struct grimace_lazy_import __grimace_lazy_import_GetSystemPowerStatusEx2;
 #define __grimace_lazy_GetSystemTimeAsFileTime 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetSystemTimeAsFileTime;
 #define __grimace_lazy_GetTempFileNameA 1
@@ -328,14 +292,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_GlobalAddAtomW;
 extern struct grimace_lazy_import __grimace_lazy_import_GlobalDeleteAtom;
 #define __grimace_lazy_GlobalFindAtomW 1
 extern struct grimace_lazy_import __grimace_lazy_import_GlobalFindAtomW;
-#define __grimace_lazy_Heap32First 1
-extern struct grimace_lazy_import __grimace_lazy_import_Heap32First;
-#define __grimace_lazy_Heap32ListFirst 1
-extern struct grimace_lazy_import __grimace_lazy_import_Heap32ListFirst;
-#define __grimace_lazy_Heap32ListNext 1
-extern struct grimace_lazy_import __grimace_lazy_import_Heap32ListNext;
-#define __grimace_lazy_Heap32Next 1
-extern struct grimace_lazy_import __grimace_lazy_import_Heap32Next;
 #define __grimace_lazy_HeapCompact 1
 extern struct grimace_lazy_import __grimace_lazy_import_HeapCompact;
 #define __grimace_lazy_ImmEscapeA 1
@@ -390,10 +346,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_MessageBoxA;
 extern struct grimace_lazy_import __grimace_lazy_import_MessageBoxIndirectW;
 #define __grimace_lazy_ModifyMenuW 1
 extern struct grimace_lazy_import __grimace_lazy_import_ModifyMenuW;
-#define __grimace_lazy_Module32First 1
-extern struct grimace_lazy_import __grimace_lazy_import_Module32First;
-#define __grimace_lazy_Module32Next 1
-extern struct grimace_lazy_import __grimace_lazy_import_Module32Next;
 #define __grimace_lazy_MoveToEx 1
 extern struct grimace_lazy_import __grimace_lazy_import_MoveToEx;
 #define __grimace_lazy_MulDiv 1
@@ -412,8 +364,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_OpenMsgQueue;
 extern struct grimace_lazy_import __grimace_lazy_import_OpenMutexA;
 #define __grimace_lazy_OutputDebugStringA 1
 extern struct grimace_lazy_import __grimace_lazy_import_OutputDebugStringA;
-#define __grimace_lazy_PageSetupDlgW 1
-extern struct grimace_lazy_import __grimace_lazy_import_PageSetupDlgW;
 #define __grimace_lazy_PeekMessageA 1
 extern struct grimace_lazy_import __grimace_lazy_import_PeekMessageA;
 #define __grimace_lazy_PlayEnhMetaFile 1
@@ -422,56 +372,18 @@ extern struct grimace_lazy_import __grimace_lazy_import_PlayEnhMetaFile;
 extern struct grimace_lazy_import __grimace_lazy_import_PostMessageA;
 #define __grimace_lazy_PowerPolicyNotify 1
 extern struct grimace_lazy_import __grimace_lazy_import_PowerPolicyNotify;
-#define __grimace_lazy_Process32First 1
-extern struct grimace_lazy_import __grimace_lazy_import_Process32First;
-#define __grimace_lazy_Process32Next 1
-extern struct grimace_lazy_import __grimace_lazy_import_Process32Next;
-#define __grimace_lazy_RasDeleteEntry 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasDeleteEntry;
 #define __grimace_lazy_RasDevConfigDialogEditW 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasDevConfigDialogEditW;
-#define __grimace_lazy_RasDial 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasDial;
-#define __grimace_lazy_RasEnumConnections 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasEnumConnections;
-#define __grimace_lazy_RasEnumDevicesW 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasEnumDevicesW;
-#define __grimace_lazy_RasEnumEntries 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasEnumEntries;
-#define __grimace_lazy_RasGetConnectStatus 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasGetConnectStatus;
 #define __grimace_lazy_RasGetDispPhoneNumW 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasGetDispPhoneNumW;
-#define __grimace_lazy_RasGetEntryDevConfig 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasGetEntryDevConfig;
-#define __grimace_lazy_RasGetEntryDialParams 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasGetEntryDialParams;
-#define __grimace_lazy_RasGetEntryProperties 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasGetEntryProperties;
 #define __grimace_lazy_RasGetLinkStatistics 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasGetLinkStatistics;
 #define __grimace_lazy_RasGetProjectionInfoW 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasGetProjectionInfoW;
-#define __grimace_lazy_RasHangUp 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasHangUp;
-#define __grimace_lazy_RasHangup 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasHangup;
-#define __grimace_lazy_RasRenameEntry 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasRenameEntry;
-#define __grimace_lazy_RasSetEntryDevConfig 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasSetEntryDevConfig;
-#define __grimace_lazy_RasSetEntryDialParams 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasSetEntryDialParams;
-#define __grimace_lazy_RasSetEntryProperties 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasSetEntryProperties;
-#define __grimace_lazy_RasValidateEntryName 1
-extern struct grimace_lazy_import __grimace_lazy_import_RasValidateEntryName;
 #define __grimace_lazy_ReadFileScatter 1
 extern struct grimace_lazy_import __grimace_lazy_import_ReadFileScatter;
 #define __grimace_lazy_ReadMsgQueue 1
 extern struct grimace_lazy_import __grimace_lazy_import_ReadMsgQueue;
-#define __grimace_lazy_ReadMsgQueueEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_ReadMsgQueueEx;
 #define __grimace_lazy_RedrawWindow 1
 extern struct grimace_lazy_import __grimace_lazy_import_RedrawWindow;
 #define __grimace_lazy_RegCreateKeyA 1
@@ -532,8 +444,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_RequestPowerNotification
 extern struct grimace_lazy_import __grimace_lazy_import_SHCreateMenuBar;
 #define __grimace_lazy_SHDoneButton 1
 extern struct grimace_lazy_import __grimace_lazy_import_SHDoneButton;
-#define __grimace_lazy_SHFileOperationW 1
-extern struct grimace_lazy_import __grimace_lazy_import_SHFileOperationW;
 #define __grimace_lazy_SHFullScreen 1
 extern struct grimace_lazy_import __grimace_lazy_import_SHFullScreen;
 #define __grimace_lazy_SHHandleWMActivate 1
@@ -544,8 +454,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_SHHandleWMSettingChange;
 extern struct grimace_lazy_import __grimace_lazy_import_SHIdleTimerReset;
 #define __grimace_lazy_SHInitDialog 1
 extern struct grimace_lazy_import __grimace_lazy_import_SHInitDialog;
-#define __grimace_lazy_SHRemoveFontResource 1
-extern struct grimace_lazy_import __grimace_lazy_import_SHRemoveFontResource;
 #define __grimace_lazy_SHSipPreference 1
 extern struct grimace_lazy_import __grimace_lazy_import_SHSipPreference;
 #define __grimace_lazy_SendMessageA 1
@@ -568,8 +476,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_SetDlgItemTextA;
 extern struct grimace_lazy_import __grimace_lazy_import_SetErrorMode;
 #define __grimace_lazy_SetFileAttributesA 1
 extern struct grimace_lazy_import __grimace_lazy_import_SetFileAttributesA;
-#define __grimace_lazy_SetFileSecurityW 1
-extern struct grimace_lazy_import __grimace_lazy_import_SetFileSecurityW;
 #define __grimace_lazy_SetMenuItemInfoA 1
 extern struct grimace_lazy_import __grimace_lazy_import_SetMenuItemInfoA;
 #define __grimace_lazy_SetPowerRequirement 1
@@ -592,24 +498,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_SetWindowLongA;
 extern struct grimace_lazy_import __grimace_lazy_import_SetWindowOrgEx;
 #define __grimace_lazy_SetWindowTextA 1
 extern struct grimace_lazy_import __grimace_lazy_import_SetWindowTextA;
-#define __grimace_lazy_SipEnumIM 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipEnumIM;
-#define __grimace_lazy_SipGetCurrentIM 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipGetCurrentIM;
-#define __grimace_lazy_SipGetInfo 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipGetInfo;
-#define __grimace_lazy_SipRegisterNotification 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipRegisterNotification;
-#define __grimace_lazy_SipSetCurrentIM 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipSetCurrentIM;
-#define __grimace_lazy_SipSetDefaultRect 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipSetDefaultRect;
-#define __grimace_lazy_SipSetInfo 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipSetInfo;
-#define __grimace_lazy_SipShowIM 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipShowIM;
-#define __grimace_lazy_SipStatus 1
-extern struct grimace_lazy_import __grimace_lazy_import_SipStatus;
 #define __grimace_lazy_StartDocW 1
 extern struct grimace_lazy_import __grimace_lazy_import_StartDocW;
 #define __grimace_lazy_StartPage 1
@@ -622,12 +510,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_StretchDIBits;
 extern struct grimace_lazy_import __grimace_lazy_import_SwitchToFiber;
 #define __grimace_lazy_TextOutW 1
 extern struct grimace_lazy_import __grimace_lazy_import_TextOutW;
-#define __grimace_lazy_Thread32First 1
-extern struct grimace_lazy_import __grimace_lazy_import_Thread32First;
-#define __grimace_lazy_Thread32Next 1
-extern struct grimace_lazy_import __grimace_lazy_import_Thread32Next;
-#define __grimace_lazy_Toolhelp32ReadProcessMemory 1
-extern struct grimace_lazy_import __grimace_lazy_import_Toolhelp32ReadProcessMemory;
 #define __grimace_lazy_UnlockFileEx 1
 extern struct grimace_lazy_import __grimace_lazy_import_UnlockFileEx;
 #define __grimace_lazy_UnregisterClassA 1
@@ -636,52 +518,12 @@ extern struct grimace_lazy_import __grimace_lazy_import_UnregisterClassA;
 extern struct grimace_lazy_import __grimace_lazy_import_ValidateRgn;
 #define __grimace_lazy_VerQueryValueW 1
 extern struct grimace_lazy_import __grimace_lazy_import_VerQueryValueW;
-#define __grimace_lazy_VirtualAllocEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_VirtualAllocEx;
-#define __grimace_lazy_VirtualCopyEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_VirtualCopyEx;
-#define __grimace_lazy_VirtualFreeEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_VirtualFreeEx;
-#define __grimace_lazy_VirtualProtectEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_VirtualProtectEx;
-#define __grimace_lazy_VirtualQueryEx 1
-extern struct grimace_lazy_import __grimace_lazy_import_VirtualQueryEx;
-#define __grimace_lazy_WNetAddConnection3W 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetAddConnection3W;
-#define __grimace_lazy_WNetCancelConnection2W 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetCancelConnection2W;
-#define __grimace_lazy_WNetCloseEnum 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetCloseEnum;
-#define __grimace_lazy_WNetConnectionDialog1W 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetConnectionDialog1W;
-#define __grimace_lazy_WNetDisconnectDialog 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetDisconnectDialog;
-#define __grimace_lazy_WNetDisconnectDialog1W 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetDisconnectDialog1W;
-#define __grimace_lazy_WNetEnumResourceW 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetEnumResourceW;
-#define __grimace_lazy_WNetGetConnectionW 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetGetConnectionW;
-#define __grimace_lazy_WNetGetUniversalNameW 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetGetUniversalNameW;
-#define __grimace_lazy_WNetGetUserW 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetGetUserW;
-#define __grimace_lazy_WNetOpenEnumW 1
-extern struct grimace_lazy_import __grimace_lazy_import_WNetOpenEnumW;
 #define __grimace_lazy_WSAAsyncGetHostByName 1
 extern struct grimace_lazy_import __grimace_lazy_import_WSAAsyncGetHostByName;
 #define __grimace_lazy_WSAAsyncSelect 1
 extern struct grimace_lazy_import __grimace_lazy_import_WSAAsyncSelect;
 #define __grimace_lazy_WSACancelAsyncRequest 1
 extern struct grimace_lazy_import __grimace_lazy_import_WSACancelAsyncRequest;
-#define __grimace_lazy_WSACleanup 1
-extern struct grimace_lazy_import __grimace_lazy_import_WSACleanup;
-#define __grimace_lazy_WSAIoctl 1
-extern struct grimace_lazy_import __grimace_lazy_import_WSAIoctl;
-#define __grimace_lazy_WSAStartup 1
-extern struct grimace_lazy_import __grimace_lazy_import_WSAStartup;
-#define __grimace_lazy_WaitForAPIReady 1
-extern struct grimace_lazy_import __grimace_lazy_import_WaitForAPIReady;
 #define __grimace_lazy_WinHelpA 1
 extern struct grimace_lazy_import __grimace_lazy_import_WinHelpA;
 #define __grimace_lazy_WinHelpW 1
@@ -692,84 +534,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_WriteFileGather;
 extern struct grimace_lazy_import __grimace_lazy_import_WriteMsgQueue;
 #define __grimace_lazy_WritePrivateProfileStringA 1
 extern struct grimace_lazy_import __grimace_lazy_import_WritePrivateProfileStringA;
-#define __grimace_lazy___WSAFDIsSet 1
-extern struct grimace_lazy_import __grimace_lazy_import___WSAFDIsSet;
-#define __grimace_lazy_accept 1
-extern struct grimace_lazy_import __grimace_lazy_import_accept;
-#define __grimace_lazy_acmDriverAdd 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverAdd;
-#define __grimace_lazy_acmDriverClose 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverClose;
-#define __grimace_lazy_acmDriverDetails 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverDetails;
-#define __grimace_lazy_acmDriverEnum 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverEnum;
-#define __grimace_lazy_acmDriverID 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverID;
-#define __grimace_lazy_acmDriverMessage 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverMessage;
-#define __grimace_lazy_acmDriverOpen 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverOpen;
-#define __grimace_lazy_acmDriverPriority 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverPriority;
-#define __grimace_lazy_acmDriverRemove 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmDriverRemove;
-#define __grimace_lazy_acmFilterChoose 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFilterChoose;
-#define __grimace_lazy_acmFilterDetails 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFilterDetails;
-#define __grimace_lazy_acmFilterEnum 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFilterEnum;
-#define __grimace_lazy_acmFilterTagDetails 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFilterTagDetails;
-#define __grimace_lazy_acmFilterTagEnum 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFilterTagEnum;
-#define __grimace_lazy_acmFormatChoose 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFormatChoose;
-#define __grimace_lazy_acmFormatDetails 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFormatDetails;
-#define __grimace_lazy_acmFormatEnum 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFormatEnum;
-#define __grimace_lazy_acmFormatSuggest 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFormatSuggest;
-#define __grimace_lazy_acmFormatTagDetails 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFormatTagDetails;
-#define __grimace_lazy_acmFormatTagEnum 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmFormatTagEnum;
-#define __grimace_lazy_acmGetVersion 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmGetVersion;
-#define __grimace_lazy_acmMetrics 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmMetrics;
-#define __grimace_lazy_acmStreamClose 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamClose;
-#define __grimace_lazy_acmStreamConvert 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamConvert;
-#define __grimace_lazy_acmStreamMessage 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamMessage;
-#define __grimace_lazy_acmStreamOpen 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamOpen;
-#define __grimace_lazy_acmStreamPrepareHeader 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamPrepareHeader;
-#define __grimace_lazy_acmStreamReset 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamReset;
-#define __grimace_lazy_acmStreamSize 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamSize;
-#define __grimace_lazy_acmStreamUnprepareHeader 1
-extern struct grimace_lazy_import __grimace_lazy_import_acmStreamUnprepareHeader;
-#define __grimace_lazy_bind 1
-extern struct grimace_lazy_import __grimace_lazy_import_bind;
-#define __grimace_lazy_closesocket 1
-extern struct grimace_lazy_import __grimace_lazy_import_closesocket;
-#define __grimace_lazy_connect 1
-extern struct grimace_lazy_import __grimace_lazy_import_connect;
-#define __grimace_lazy_gethostbyaddr 1
-extern struct grimace_lazy_import __grimace_lazy_import_gethostbyaddr;
-#define __grimace_lazy_gethostbyname 1
-extern struct grimace_lazy_import __grimace_lazy_import_gethostbyname;
-#define __grimace_lazy_gethostname 1
-extern struct grimace_lazy_import __grimace_lazy_import_gethostname;
-#define __grimace_lazy_getpeername 1
-extern struct grimace_lazy_import __grimace_lazy_import_getpeername;
 #define __grimace_lazy_getprotobyname 1
 extern struct grimace_lazy_import __grimace_lazy_import_getprotobyname;
 #define __grimace_lazy_getprotobynumber 1
@@ -778,22 +542,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_getprotobynumber;
 extern struct grimace_lazy_import __grimace_lazy_import_getservbyname;
 #define __grimace_lazy_getservbyport 1
 extern struct grimace_lazy_import __grimace_lazy_import_getservbyport;
-#define __grimace_lazy_getsockname 1
-extern struct grimace_lazy_import __grimace_lazy_import_getsockname;
-#define __grimace_lazy_getsockopt 1
-extern struct grimace_lazy_import __grimace_lazy_import_getsockopt;
-#define __grimace_lazy_htonl 1
-extern struct grimace_lazy_import __grimace_lazy_import_htonl;
-#define __grimace_lazy_htons 1
-extern struct grimace_lazy_import __grimace_lazy_import_htons;
-#define __grimace_lazy_inet_addr 1
-extern struct grimace_lazy_import __grimace_lazy_import_inet_addr;
-#define __grimace_lazy_inet_ntoa 1
-extern struct grimace_lazy_import __grimace_lazy_import_inet_ntoa;
-#define __grimace_lazy_ioctlsocket 1
-extern struct grimace_lazy_import __grimace_lazy_import_ioctlsocket;
-#define __grimace_lazy_listen 1
-extern struct grimace_lazy_import __grimace_lazy_import_listen;
 #define __grimace_lazy_lstrcpynA 1
 extern struct grimace_lazy_import __grimace_lazy_import_lstrcpynA;
 #define __grimace_lazy_lstrlenA 1
@@ -810,28 +558,6 @@ extern struct grimace_lazy_import __grimace_lazy_import_mixerMessage;
 extern struct grimace_lazy_import __grimace_lazy_import_mixerOpen;
 #define __grimace_lazy_mixerSetControlDetails 1
 extern struct grimace_lazy_import __grimace_lazy_import_mixerSetControlDetails;
-#define __grimace_lazy_ntohl 1
-extern struct grimace_lazy_import __grimace_lazy_import_ntohl;
-#define __grimace_lazy_ntohs 1
-extern struct grimace_lazy_import __grimace_lazy_import_ntohs;
-#define __grimace_lazy_recv 1
-extern struct grimace_lazy_import __grimace_lazy_import_recv;
-#define __grimace_lazy_recvfrom 1
-extern struct grimace_lazy_import __grimace_lazy_import_recvfrom;
-#define __grimace_lazy_select 1
-extern struct grimace_lazy_import __grimace_lazy_import_select;
-#define __grimace_lazy_send 1
-extern struct grimace_lazy_import __grimace_lazy_import_send;
-#define __grimace_lazy_sendto 1
-extern struct grimace_lazy_import __grimace_lazy_import_sendto;
-#define __grimace_lazy_sethostname 1
-extern struct grimace_lazy_import __grimace_lazy_import_sethostname;
-#define __grimace_lazy_setsockopt 1
-extern struct grimace_lazy_import __grimace_lazy_import_setsockopt;
-#define __grimace_lazy_shutdown 1
-extern struct grimace_lazy_import __grimace_lazy_import_shutdown;
-#define __grimace_lazy_socket 1
-extern struct grimace_lazy_import __grimace_lazy_import_socket;
 #define __grimace_lazy_timeBeginPeriod 1
 extern struct grimace_lazy_import __grimace_lazy_import_timeBeginPeriod;
 #define __grimace_lazy_timeEndPeriod 1

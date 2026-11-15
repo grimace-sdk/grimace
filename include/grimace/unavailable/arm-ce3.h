@@ -2,6 +2,14 @@
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 #endif
+#ifdef GRIMACE_MSGQUEUE_H
+extern __typeof__(ReadMsgQueueEx) ReadMsgQueueEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+#endif
+#ifdef GRIMACE_PKFUNCS_H
+extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(WaitForAPIReady) WaitForAPIReady __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+#endif
 #ifdef GRIMACE_TCHAR_H
 extern __typeof__(_wcsicoll) _wcsicoll __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(fgetwchar) fgetwchar __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
@@ -386,6 +394,7 @@ extern __typeof__(GetEnvironmentStringsW) GetEnvironmentStringsW __attribute__((
 extern __typeof__(GetEnvironmentVariableW) GetEnvironmentVariableW __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetFileAttributesExA) GetFileAttributesExA __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetFileSecurityA) GetFileSecurityA __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(GetFileSecurityW) GetFileSecurityW __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetFileType) GetFileType __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetHandleInformation) GetHandleInformation __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetKernelObjectSecurity) GetKernelObjectSecurity __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
@@ -399,6 +408,7 @@ extern __typeof__(GetNamedPipeHandleStateW) GetNamedPipeHandleStateW __attribute
 extern __typeof__(GetNamedPipeInfo) GetNamedPipeInfo __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetNumberOfEventLogRecords) GetNumberOfEventLogRecords __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetOldestEventLogRecord) GetOldestEventLogRecord __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(GetOverlappedResult) GetOverlappedResult __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetPriorityClass) GetPriorityClass __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetPrivateObjectSecurity) GetPrivateObjectSecurity __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(GetPrivateProfileIntA) GetPrivateProfileIntA __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
@@ -558,6 +568,7 @@ extern __typeof__(SetFileApisToANSI) SetFileApisToANSI __attribute__((unavailabl
 extern __typeof__(SetFileApisToOEM) SetFileApisToOEM __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(SetFilePointerEx) SetFilePointerEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(SetFileSecurityA) SetFileSecurityA __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(SetFileSecurityW) SetFileSecurityW __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(SetHandleCount) SetHandleCount __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(SetHandleInformation) SetHandleInformation __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(SetKernelObjectSecurity) SetKernelObjectSecurity __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
@@ -599,7 +610,11 @@ extern __typeof__(UpdateResourceA) UpdateResourceA __attribute__((unavailable("n
 extern __typeof__(UpdateResourceW) UpdateResourceW __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(VerifyVersionInfoA) VerifyVersionInfoA __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(VerifyVersionInfoW) VerifyVersionInfoW __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(VirtualAllocEx) VirtualAllocEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(VirtualFreeEx) VirtualFreeEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(VirtualLock) VirtualLock __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(VirtualProtectEx) VirtualProtectEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
+extern __typeof__(VirtualQueryEx) VirtualQueryEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(VirtualUnlock) VirtualUnlock __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(WaitForMultipleObjectsEx) WaitForMultipleObjectsEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));
 extern __typeof__(WaitForSingleObjectEx) WaitForSingleObjectEx __attribute__((unavailable("not in Windows CE 3.0 or later on ARM")));

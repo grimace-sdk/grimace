@@ -20,6 +20,7 @@ VERSION_NAMES = {100: "1.0", 101: "1.01", 200: "2.0", 201: "2.01", 211: "2.11", 
                  500: "5.0", 501: "5.1", 502: "5.2", 600: "6.0"}
 TARGET_VERSIONS = {100, 101, 200, 300, 502, 600}
 SHARED = os.path.join(EXPORTS, "shared")
+EXCEPTIONAL_PLATFORM = "embedded"
 
 
 class Manifest:
@@ -118,7 +119,8 @@ def platforms(arch):
 
 def reachable(target):
     """The lists a program built for target may meet: those at its version or later, of the platforms with a list at its
-    version (or the one chosen), or the pinned device's at its version."""
+    version (or the one chosen), or the pinned device's at its version. Unless chosen, embedded devices only count where
+    no other platform has a list at the version."""
     found = [manifest for manifest in manifests() if manifest.arch == target.arch]
     if target.device:
         found = [manifest for manifest in found if target.device in manifest.devices and manifest.version == target.version]
@@ -127,6 +129,8 @@ def reachable(target):
         return found
     if target.platform:
         found = [manifest for manifest in found if manifest.platform == target.platform]
+    elif any(manifest.platform != EXCEPTIONAL_PLATFORM and manifest.version == target.version for manifest in found):
+        found = [manifest for manifest in found if manifest.platform != EXCEPTIONAL_PLATFORM]
     platforms_at_version = {manifest.platform for manifest in found if manifest.version == target.version}
     if not platforms_at_version:
         raise LookupError("no export list for %s" % target.label())

@@ -93,7 +93,7 @@ The lists are layers, so a device records only how it differs:
 - `tools/manifests.py` rebuilds each list. `python3 tools/exports.py layer` recomputes the layers after a list changes.
 - `python3 tools/exports.py ceporter <cem-porter>/data/compat` imports the CE 1 to 6 devices from [CEM Porter](https://github.com/Gadgetoid/cem-porter)'s tables, which its `tools/compat-tables.mjs` reads from the ROMs in cerf-bundles.
 
-A target imports from the lists of its architecture at its CE version and later, since the program may run on any of those devices, but only from the platforms with lists at its own version: ARM CE 3.0 programs don't import from the Brain's CE 6.0 lists.
+A target imports from the lists of its architecture at its CE version and later, since the program may run on any of those devices, but only from the platforms with lists at its own version: ARM CE 3.0 programs don't import from the Brain's CE 6.0 lists. Embedded devices (`embedded`: industrial panels, dev boards, the CE emulator images) are the exception: they only count when chosen with `GRIMACE_PLATFORM=embedded` or `GRIMACE_DEVICE`, or where no other platform has a list at the version.
 
 | A function | is |
 | --- | --- |

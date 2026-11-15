@@ -1,7 +1,12 @@
 #ifdef GRIMACE_AYGSHELL_H
+extern __typeof__(SHCreateMenuBar) SHCreateMenuBar __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHDoneButton) SHDoneButton __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHFullScreen) SHFullScreen __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SHHandleWMActivate) SHHandleWMActivate __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SHHandleWMSettingChange) SHHandleWMSettingChange __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHInitDialog) SHInitDialog __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 #endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -9,6 +14,32 @@ extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable(
 #endif
 #ifdef GRIMACE_EXTRAS_H
 extern __typeof__(MapUncompressedFileW) MapUncompressedFileW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+#endif
+#ifdef GRIMACE_EXTRAS_MSACM_H
+extern __typeof__(acmDriverID) acmDriverID __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverMessage) acmDriverMessage __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverPriority) acmDriverPriority __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFormatDetails) acmFormatDetails __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFormatTagDetails) acmFormatTagDetails __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmGetVersion) acmGetVersion __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamMessage) acmStreamMessage __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+#endif
+#ifdef GRIMACE_EXTRAS_RAS_H
+extern __typeof__(RasGetEntryDevConfig) RasGetEntryDevConfig __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasHangup) RasHangup __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasSetEntryDevConfig) RasSetEntryDevConfig __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+#endif
+#ifdef GRIMACE_SDK_MSACM_H
+extern __typeof__(acmFilterChoose) acmFilterChoose __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFilterDetails) acmFilterDetails __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFilterEnum) acmFilterEnum __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFilterTagDetails) acmFilterTagDetails __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFilterTagEnum) acmFilterTagEnum __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFormatChoose) acmFormatChoose __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+#endif
+#ifdef GRIMACE_SDK_RAS_H
+extern __typeof__(RasDevConfigDialogEditW) RasDevConfigDialogEditW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasGetDispPhoneNumW) RasGetDispPhoneNumW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 #endif
 #ifdef GRIMACE_SDK_WINDOWS_H
 extern __typeof__(SHRemoveFontResource) SHRemoveFontResource __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -198,7 +229,13 @@ extern __typeof__(mmioStringToFOURCCW) mmioStringToFOURCCW __attribute__((unavai
 extern __typeof__(mmioWrite) mmioWrite __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(mmsystemGetVersion) mmsystemGetVersion __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(sndPlaySoundA) sndPlaySoundA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(timeBeginPeriod) timeBeginPeriod __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(timeEndPeriod) timeEndPeriod __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(timeGetDevCaps) timeGetDevCaps __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(timeGetSystemTime) timeGetSystemTime __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(timeGetTime) timeGetTime __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(timeKillEvent) timeKillEvent __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(timeSetEvent) timeSetEvent __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(waveInGetDevCapsA) waveInGetDevCapsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(waveInGetErrorTextA) waveInGetErrorTextA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(waveOutGetDevCapsA) waveOutGetDevCapsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -206,9 +243,26 @@ extern __typeof__(waveOutGetErrorTextA) waveOutGetErrorTextA __attribute__((unav
 #endif
 #ifdef _MSACM_H
 extern __typeof__(acmDriverAddA) acmDriverAddA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverAddW) acmDriverAddW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverClose) acmDriverClose __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(acmDriverDetailsA) acmDriverDetailsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverDetailsW) acmDriverDetailsW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverEnum) acmDriverEnum __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverOpen) acmDriverOpen __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmDriverRemove) acmDriverRemove __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(acmFormatEnumA) acmFormatEnumA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFormatEnumW) acmFormatEnumW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFormatSuggest) acmFormatSuggest __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(acmFormatTagEnumA) acmFormatTagEnumA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmFormatTagEnumW) acmFormatTagEnumW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmMetrics) acmMetrics __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamClose) acmStreamClose __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamConvert) acmStreamConvert __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamOpen) acmStreamOpen __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamPrepareHeader) acmStreamPrepareHeader __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamReset) acmStreamReset __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamSize) acmStreamSize __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(acmStreamUnprepareHeader) acmStreamUnprepareHeader __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 #endif
 #ifdef _MSWSOCK_H
 extern __typeof__(AcceptEx) AcceptEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -224,25 +278,40 @@ extern __typeof__(PropertySheetA) PropertySheetA __attribute__((unavailable("not
 extern __typeof__(RasCreatePhonebookEntryA) RasCreatePhonebookEntryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasCreatePhonebookEntryW) RasCreatePhonebookEntryW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasDeleteEntryA) RasDeleteEntryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasDeleteEntryW) RasDeleteEntryW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasDialA) RasDialA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasDialW) RasDialW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasEditPhonebookEntryA) RasEditPhonebookEntryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasEditPhonebookEntryW) RasEditPhonebookEntryW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasEnumConnectionsA) RasEnumConnectionsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasEnumConnectionsW) RasEnumConnectionsW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasEnumDevicesA) RasEnumDevicesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasEnumDevicesW) RasEnumDevicesW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasEnumEntriesA) RasEnumEntriesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasEnumEntriesW) RasEnumEntriesW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetConnectStatusA) RasGetConnectStatusA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasGetConnectStatusW) RasGetConnectStatusW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetCountryInfoA) RasGetCountryInfoA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetCountryInfoW) RasGetCountryInfoW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetEntryDialParamsA) RasGetEntryDialParamsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasGetEntryDialParamsW) RasGetEntryDialParamsW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetEntryPropertiesA) RasGetEntryPropertiesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasGetEntryPropertiesW) RasGetEntryPropertiesW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetErrorStringA) RasGetErrorStringA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetErrorStringW) RasGetErrorStringW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasGetLinkStatistics) RasGetLinkStatistics __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasGetProjectionInfoA) RasGetProjectionInfoA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasGetProjectionInfoW) RasGetProjectionInfoW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasHangUpA) RasHangUpA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasHangUpW) RasHangUpW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasRenameEntryA) RasRenameEntryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasRenameEntryW) RasRenameEntryW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasSetEntryDialParamsA) RasSetEntryDialParamsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasSetEntryDialParamsW) RasSetEntryDialParamsW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasSetEntryPropertiesA) RasSetEntryPropertiesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasSetEntryPropertiesW) RasSetEntryPropertiesW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RasValidateEntryNameA) RasValidateEntryNameA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RasValidateEntryNameW) RasValidateEntryNameW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 #endif
 #ifdef _SHELLAPI_H
 extern __typeof__(CommandLineToArgvW) CommandLineToArgvW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -316,17 +385,22 @@ extern __typeof__(CommConfigDialogA) CommConfigDialogA __attribute__((unavailabl
 extern __typeof__(CommConfigDialogW) CommConfigDialogW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ConnectNamedPipe) ConnectNamedPipe __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ConvertFiberToThread) ConvertFiberToThread __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(ConvertThreadToFiber) ConvertThreadToFiber __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CopyFileA) CopyFileA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CopyFileExA) CopyFileExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CopySid) CopySid __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateDirectoryA) CreateDirectoryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateDirectoryExA) CreateDirectoryExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateDirectoryExW) CreateDirectoryExW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CreateEventA) CreateEventA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CreateFiber) CreateFiber __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateFiberEx) CreateFiberEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CreateFileA) CreateFileA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateFileMappingA) CreateFileMappingA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateIoCompletionPort) CreateIoCompletionPort __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateMailslotA) CreateMailslotA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateMailslotW) CreateMailslotW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CreateMutexA) CreateMutexA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateNamedPipeA) CreateNamedPipeA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateNamedPipeW) CreateNamedPipeW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreatePipe) CreatePipe __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -343,6 +417,8 @@ extern __typeof__(DefineDosDeviceA) DefineDosDeviceA __attribute__((unavailable(
 extern __typeof__(DefineDosDeviceW) DefineDosDeviceW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DeleteAce) DeleteAce __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DeleteAtom) DeleteAtom __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(DeleteFiber) DeleteFiber __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(DeleteFileA) DeleteFileA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DestroyPrivateObjectSecurity) DestroyPrivateObjectSecurity __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DisconnectNamedPipe) DisconnectNamedPipe __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DosDateTimeToFileTime) DosDateTimeToFileTime __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -376,8 +452,10 @@ extern __typeof__(FindFirstFileA) FindFirstFileA __attribute__((unavailable("not
 extern __typeof__(FindFirstFileExA) FindFirstFileExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FindFirstFreeAce) FindFirstFreeAce __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FindNextFileA) FindNextFileA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(FindResourceA) FindResourceA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FindResourceExA) FindResourceExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FindResourceExW) FindResourceExW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(FormatMessageA) FormatMessageA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FreeEnvironmentStringsA) FreeEnvironmentStringsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FreeEnvironmentStringsW) FreeEnvironmentStringsW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FreeResource) FreeResource __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -402,12 +480,14 @@ extern __typeof__(GetDefaultCommConfigA) GetDefaultCommConfigA __attribute__((un
 extern __typeof__(GetDefaultCommConfigW) GetDefaultCommConfigW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetDiskFreeSpaceA) GetDiskFreeSpaceA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetDiskFreeSpaceExA) GetDiskFreeSpaceExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetDiskFreeSpaceW) GetDiskFreeSpaceW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetDriveTypeA) GetDriveTypeA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetDriveTypeW) GetDriveTypeW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetEnvironmentStringsA) GetEnvironmentStringsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetEnvironmentStringsW) GetEnvironmentStringsW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetEnvironmentVariableA) GetEnvironmentVariableA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetEnvironmentVariableW) GetEnvironmentVariableW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetFileAttributesA) GetFileAttributesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetFileAttributesExA) GetFileAttributesExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetFileSecurityA) GetFileSecurityA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetFileType) GetFileType __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -421,11 +501,13 @@ extern __typeof__(GetLogicalDriveStringsW) GetLogicalDriveStringsW __attribute__
 extern __typeof__(GetLogicalDrives) GetLogicalDrives __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetMailslotInfo) GetMailslotInfo __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetModuleFileNameA) GetModuleFileNameA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetModuleHandleA) GetModuleHandleA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetNamedPipeHandleStateA) GetNamedPipeHandleStateA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetNamedPipeHandleStateW) GetNamedPipeHandleStateW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetNamedPipeInfo) GetNamedPipeInfo __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetNumberOfEventLogRecords) GetNumberOfEventLogRecords __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetOldestEventLogRecord) GetOldestEventLogRecord __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetOverlappedResult) GetOverlappedResult __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetPriorityClass) GetPriorityClass __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetPrivateObjectSecurity) GetPrivateObjectSecurity __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetPrivateProfileIntA) GetPrivateProfileIntA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -473,14 +555,18 @@ extern __typeof__(GetSystemTimeAdjustment) GetSystemTimeAdjustment __attribute__
 extern __typeof__(GetTapeParameters) GetTapeParameters __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetTapePosition) GetTapePosition __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetTapeStatus) GetTapeStatus __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetTempFileNameA) GetTempFileNameA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetTempPathA) GetTempPathA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetThreadPriorityBoost) GetThreadPriorityBoost __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetThreadSelectorEntry) GetThreadSelectorEntry __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetTokenInformation) GetTokenInformation __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetUserNameA) GetUserNameA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetUserNameW) GetUserNameW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetVersion) GetVersion __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetVersionExA) GetVersionExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetVolumeInformationA) GetVolumeInformationA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetVolumeInformationW) GetVolumeInformationW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetWindowsDirectoryA) GetWindowsDirectoryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetWindowsDirectoryW) GetWindowsDirectoryW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetWriteWatch) GetWriteWatch __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GlobalAddAtomA) GlobalAddAtomA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -513,6 +599,7 @@ extern __typeof__(IsTextUnicode) IsTextUnicode __attribute__((unavailable("not i
 extern __typeof__(IsValidAcl) IsValidAcl __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(IsValidSecurityDescriptor) IsValidSecurityDescriptor __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(IsValidSid) IsValidSid __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(LoadLibraryA) LoadLibraryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadLibraryExA) LoadLibraryExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadModule) LoadModule __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LocalCompact) LocalCompact __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -562,6 +649,7 @@ extern __typeof__(OpenSemaphoreW) OpenSemaphoreW __attribute__((unavailable("not
 extern __typeof__(OpenThreadToken) OpenThreadToken __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(OpenWaitableTimerA) OpenWaitableTimerA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(OpenWaitableTimerW) OpenWaitableTimerW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(OutputDebugStringA) OutputDebugStringA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(PeekNamedPipe) PeekNamedPipe __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(PostQueuedCompletionStatus) PostQueuedCompletionStatus __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(PrepareTape) PrepareTape __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -593,6 +681,7 @@ extern __typeof__(SetDefaultCommConfigA) SetDefaultCommConfigA __attribute__((un
 extern __typeof__(SetDefaultCommConfigW) SetDefaultCommConfigW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetEnvironmentVariableA) SetEnvironmentVariableA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetEnvironmentVariableW) SetEnvironmentVariableW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SetErrorMode) SetErrorMode __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetFileApisToANSI) SetFileApisToANSI __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetFileApisToOEM) SetFileApisToOEM __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetFileAttributesA) SetFileAttributesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -630,6 +719,7 @@ extern __typeof__(SetVolumeLabelW) SetVolumeLabelW __attribute__((unavailable("n
 extern __typeof__(SetWaitableTimer) SetWaitableTimer __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SignalObjectAndWait) SignalObjectAndWait __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SleepEx) SleepEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SwitchToFiber) SwitchToFiber __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SwitchToThread) SwitchToThread __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SystemTimeToTzSpecificLocalTime) SystemTimeToTzSpecificLocalTime __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(TransactNamedPipe) TransactNamedPipe __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -671,6 +761,7 @@ extern __typeof__(lstrcmpA) lstrcmpA __attribute__((unavailable("not in Windows 
 extern __typeof__(lstrcmpiA) lstrcmpiA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(lstrcpyA) lstrcpyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(lstrcpynA) lstrcpynA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(lstrlenA) lstrlenA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 #endif
 #ifdef _WINCON_H
 extern __typeof__(AllocConsole) AllocConsole __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -727,8 +818,10 @@ extern __typeof__(WriteConsoleOutputW) WriteConsoleOutputW __attribute__((unavai
 extern __typeof__(WriteConsoleW) WriteConsoleW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 #endif
 #ifdef _WINGDI_H
+extern __typeof__(AbortDoc) AbortDoc __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(AbortPath) AbortPath __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(AddFontResourceA) AddFontResourceA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(AlphaBlend) AlphaBlend __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(AngleArc) AngleArc __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(AnimatePalette) AnimatePalette __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(Arc) Arc __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -738,6 +831,7 @@ extern __typeof__(CancelDC) CancelDC __attribute__((unavailable("not in Windows 
 extern __typeof__(CheckColorsInGamut) CheckColorsInGamut __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ChoosePixelFormat) ChoosePixelFormat __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(Chord) Chord __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CloseEnhMetaFile) CloseEnhMetaFile __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CloseFigure) CloseFigure __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CloseMetaFile) CloseMetaFile __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CombineTransform) CombineTransform __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -756,6 +850,7 @@ extern __typeof__(CreateDiscardableBitmap) CreateDiscardableBitmap __attribute__
 extern __typeof__(CreateEllipticRgn) CreateEllipticRgn __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateEllipticRgnIndirect) CreateEllipticRgnIndirect __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateEnhMetaFileA) CreateEnhMetaFileA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CreateEnhMetaFileW) CreateEnhMetaFileW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateFontA) CreateFontA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateFontIndirectA) CreateFontIndirectA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateFontW) CreateFontW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -772,11 +867,14 @@ extern __typeof__(CreateScalableFontResourceA) CreateScalableFontResourceA __att
 extern __typeof__(CreateScalableFontResourceW) CreateScalableFontResourceW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DPtoLP) DPtoLP __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DeleteColorSpace) DeleteColorSpace __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(DeleteEnhMetaFile) DeleteEnhMetaFile __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DeleteMetaFile) DeleteMetaFile __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DescribePixelFormat) DescribePixelFormat __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DeviceCapabilitiesA) DeviceCapabilitiesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DeviceCapabilitiesW) DeviceCapabilitiesW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DrawEscape) DrawEscape __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(EndDoc) EndDoc __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(EndPage) EndPage __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EndPath) EndPath __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumEnhMetaFile) EnumEnhMetaFile __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumFontFamiliesA) EnumFontFamiliesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -790,6 +888,7 @@ extern __typeof__(Escape) Escape __attribute__((unavailable("not in Windows CE 6
 extern __typeof__(ExcludeUpdateRgn) ExcludeUpdateRgn __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ExtCreatePen) ExtCreatePen __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ExtFloodFill) ExtFloodFill __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(ExtSelectClipRgn) ExtSelectClipRgn __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ExtTextOutA) ExtTextOutA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FillPath) FillPath __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(FixBrushOrgEx) FixBrushOrgEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -814,6 +913,7 @@ extern __typeof__(GetCharacterPlacementW) GetCharacterPlacementW __attribute__((
 extern __typeof__(GetColorAdjustment) GetColorAdjustment __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetColorSpace) GetColorSpace __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetDCOrgEx) GetDCOrgEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetDIBits) GetDIBits __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetDeviceGammaRamp) GetDeviceGammaRamp __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetEnhMetaFileA) GetEnhMetaFileA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetEnhMetaFileBits) GetEnhMetaFileBits __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -863,6 +963,7 @@ extern __typeof__(OffsetWindowOrgEx) OffsetWindowOrgEx __attribute__((unavailabl
 extern __typeof__(PaintRgn) PaintRgn __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(PathToRegion) PathToRegion __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(Pie) Pie __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(PlayEnhMetaFile) PlayEnhMetaFile __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(PlayEnhMetaFileRecord) PlayEnhMetaFileRecord __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(PlayMetaFile) PlayMetaFile __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(PlayMetaFileRecord) PlayMetaFileRecord __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -883,6 +984,7 @@ extern __typeof__(ResizePalette) ResizePalette __attribute__((unavailable("not i
 extern __typeof__(ScaleViewportExtEx) ScaleViewportExtEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ScaleWindowExtEx) ScaleWindowExtEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SelectClipPath) SelectClipPath __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SetAbortProc) SetAbortProc __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetArcDirection) SetArcDirection __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetBitmapDimensionEx) SetBitmapDimensionEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetBoundsRect) SetBoundsRect __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -910,6 +1012,8 @@ extern __typeof__(SetWinMetaFileBits) SetWinMetaFileBits __attribute__((unavaila
 extern __typeof__(SetWindowExtEx) SetWindowExtEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetWorldTransform) SetWorldTransform __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(StartDocA) StartDocA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(StartDocW) StartDocW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(StartPage) StartPage __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(StrokeAndFillPath) StrokeAndFillPath __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(StrokePath) StrokePath __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SwapBuffers) SwapBuffers __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -946,16 +1050,24 @@ extern __typeof__(MultinetGetConnectionPerformanceW) MultinetGetConnectionPerfor
 extern __typeof__(WNetAddConnection2A) WNetAddConnection2A __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetAddConnection2W) WNetAddConnection2W __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetAddConnection3A) WNetAddConnection3A __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetAddConnection3W) WNetAddConnection3W __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetAddConnectionA) WNetAddConnectionA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetAddConnectionW) WNetAddConnectionW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetCancelConnection2A) WNetCancelConnection2A __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetCancelConnection2W) WNetCancelConnection2W __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetCancelConnectionA) WNetCancelConnectionA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetCancelConnectionW) WNetCancelConnectionW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetCloseEnum) WNetCloseEnum __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetConnectionDialog) WNetConnectionDialog __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetConnectionDialog1A) WNetConnectionDialog1A __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetConnectionDialog1W) WNetConnectionDialog1W __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetDisconnectDialog) WNetDisconnectDialog __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetDisconnectDialog1A) WNetDisconnectDialog1A __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetDisconnectDialog1W) WNetDisconnectDialog1W __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetEnumResourceA) WNetEnumResourceA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetEnumResourceW) WNetEnumResourceW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetGetConnectionA) WNetGetConnectionA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetGetConnectionW) WNetGetConnectionW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetGetLastErrorA) WNetGetLastErrorA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetGetLastErrorW) WNetGetLastErrorW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetGetNetworkInformationA) WNetGetNetworkInformationA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -967,14 +1079,18 @@ extern __typeof__(WNetGetResourceInformationW) WNetGetResourceInformationW __att
 extern __typeof__(WNetGetResourceParentA) WNetGetResourceParentA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetGetResourceParentW) WNetGetResourceParentW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetGetUniversalNameA) WNetGetUniversalNameA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetGetUniversalNameW) WNetGetUniversalNameW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetGetUserA) WNetGetUserA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetGetUserW) WNetGetUserW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetOpenEnumA) WNetOpenEnumA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(WNetOpenEnumW) WNetOpenEnumW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetSetConnectionA) WNetSetConnectionA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetSetConnectionW) WNetSetConnectionW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetUseConnectionA) WNetUseConnectionA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(WNetUseConnectionW) WNetUseConnectionW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 #endif
 #ifdef _WINNLS_H
+extern __typeof__(CompareStringA) CompareStringA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumCalendarInfoA) EnumCalendarInfoA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumDateFormatsA) EnumDateFormatsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumSystemCodePagesA) EnumSystemCodePagesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1014,16 +1130,26 @@ extern __typeof__(InitiateSystemShutdownW) InitiateSystemShutdownW __attribute__
 extern __typeof__(RegConnectRegistryA) RegConnectRegistryA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegConnectRegistryW) RegConnectRegistryW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegCreateKeyA) RegCreateKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegCreateKeyExA) RegCreateKeyExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegCreateKeyW) RegCreateKeyW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegDeleteKeyA) RegDeleteKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegDeleteValueA) RegDeleteValueA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegEnumKeyA) RegEnumKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegEnumKeyExA) RegEnumKeyExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegEnumKeyW) RegEnumKeyW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegEnumValueA) RegEnumValueA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegGetKeySecurity) RegGetKeySecurity __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegLoadKeyA) RegLoadKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegLoadKeyW) RegLoadKeyW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegNotifyChangeKeyValue) RegNotifyChangeKeyValue __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegOpenKeyA) RegOpenKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegOpenKeyExA) RegOpenKeyExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegOpenKeyW) RegOpenKeyW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegQueryInfoKeyA) RegQueryInfoKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegQueryMultipleValuesA) RegQueryMultipleValuesA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegQueryMultipleValuesW) RegQueryMultipleValuesW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegQueryValueA) RegQueryValueA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegQueryValueExA) RegQueryValueExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegQueryValueW) RegQueryValueW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegReplaceKeyA) RegReplaceKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegRestoreKeyA) RegRestoreKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1031,6 +1157,7 @@ extern __typeof__(RegRestoreKeyW) RegRestoreKeyW __attribute__((unavailable("not
 extern __typeof__(RegSaveKeyA) RegSaveKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegSetKeySecurity) RegSetKeySecurity __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegSetValueA) RegSetValueA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(RegSetValueExA) RegSetValueExA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegSetValueW) RegSetValueW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegUnLoadKeyA) RegUnLoadKeyA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(RegUnLoadKeyW) RegUnLoadKeyW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1118,6 +1245,7 @@ extern __typeof__(CharToOemA) CharToOemA __attribute__((unavailable("not in Wind
 extern __typeof__(CharToOemBuffA) CharToOemBuffA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CharToOemBuffW) CharToOemBuffW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CharToOemW) CharToOemW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CharUpperA) CharUpperA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CharUpperBuffA) CharUpperBuffA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(ChildWindowFromPointEx) ChildWindowFromPointEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CloseDesktop) CloseDesktop __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1128,6 +1256,7 @@ extern __typeof__(CopyAcceleratorTableW) CopyAcceleratorTableW __attribute__((un
 extern __typeof__(CopyIcon) CopyIcon __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CopyImage) CopyImage __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateAcceleratorTableA) CreateAcceleratorTableA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(CreateCursor) CreateCursor __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateDesktopA) CreateDesktopA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateDesktopW) CreateDesktopW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(CreateDialogIndirectParamA) CreateDialogIndirectParamA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1146,6 +1275,7 @@ extern __typeof__(DefMDIChildProcA) DefMDIChildProcA __attribute__((unavailable(
 extern __typeof__(DefMDIChildProcW) DefMDIChildProcW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DefWindowProcA) DefWindowProcA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DeregisterShellHookWindow) DeregisterShellHookWindow __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(DestroyCursor) DestroyCursor __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DialogBoxIndirectParamA) DialogBoxIndirectParamA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DispatchMessageA) DispatchMessageA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(DlgDirListA) DlgDirListA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1167,6 +1297,7 @@ extern __typeof__(DrawTextExA) DrawTextExA __attribute__((unavailable("not in Wi
 extern __typeof__(DrawTextExW) DrawTextExW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnableScrollBar) EnableScrollBar __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EndMenu) EndMenu __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(EnumChildWindows) EnumChildWindows __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumDesktopWindows) EnumDesktopWindows __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumDesktopsA) EnumDesktopsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(EnumDesktopsW) EnumDesktopsW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1205,6 +1336,7 @@ extern __typeof__(GetKeyNameTextA) GetKeyNameTextA __attribute__((unavailable("n
 extern __typeof__(GetKeyNameTextW) GetKeyNameTextW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetKeyboardLayoutNameA) GetKeyboardLayoutNameA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetKeyboardState) GetKeyboardState __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetLastActivePopup) GetLastActivePopup __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetLastInputInfo) GetLastInputInfo __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetListBoxInfo) GetListBoxInfo __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetMenuBarInfo) GetMenuBarInfo __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1236,6 +1368,7 @@ extern __typeof__(GetUserObjectInformationW) GetUserObjectInformationW __attribu
 extern __typeof__(GetUserObjectSecurity) GetUserObjectSecurity __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetWindowContextHelpId) GetWindowContextHelpId __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetWindowInfo) GetWindowInfo __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(GetWindowLongA) GetWindowLongA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetWindowModuleFileNameA) GetWindowModuleFileNameA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetWindowModuleFileNameW) GetWindowModuleFileNameW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(GetWindowPlacement) GetWindowPlacement __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1264,6 +1397,7 @@ extern __typeof__(IsWindowUnicode) IsWindowUnicode __attribute__((unavailable("n
 extern __typeof__(IsZoomed) IsZoomed __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadAcceleratorsA) LoadAcceleratorsA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadBitmapA) LoadBitmapA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(LoadCursorA) LoadCursorA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadCursorFromFileA) LoadCursorFromFileA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadCursorFromFileW) LoadCursorFromFileW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadIconA) LoadIconA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1272,6 +1406,7 @@ extern __typeof__(LoadKeyboardLayoutA) LoadKeyboardLayoutA __attribute__((unavai
 extern __typeof__(LoadMenuA) LoadMenuA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadMenuIndirectA) LoadMenuIndirectA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LoadMenuIndirectW) LoadMenuIndirectW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(LoadStringA) LoadStringA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LockWindowUpdate) LockWindowUpdate __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LookupIconIdFromDirectory) LookupIconIdFromDirectory __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(LookupIconIdFromDirectoryEx) LookupIconIdFromDirectoryEx __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
@@ -1341,6 +1476,7 @@ extern __typeof__(SetUserObjectInformationA) SetUserObjectInformationA __attribu
 extern __typeof__(SetUserObjectInformationW) SetUserObjectInformationW __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetUserObjectSecurity) SetUserObjectSecurity __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetWindowContextHelpId) SetWindowContextHelpId __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
+extern __typeof__(SetWindowLongA) SetWindowLongA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetWindowPlacement) SetWindowPlacement __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetWindowTextA) SetWindowTextA __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
 extern __typeof__(SetWindowWord) SetWindowWord __attribute__((unavailable("not in Windows CE 6.0 or later on ARM")));
