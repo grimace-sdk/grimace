@@ -34,6 +34,8 @@ DWORD TST_Init(LPCTSTR context, LPCVOID bus_context) {
     ERRORMSG(!state.registers, (L"no registers\r\n"));
     DEBUGMSG(1, (L"debug builds only\r\n"));
     WaitForAPIReady(SH_WMGR, 0);
+    CacheSync(CACHE_SYNC_WRITEBACK);
+    CacheRangeFlush(state.buffer, sizeof state.buffer, CACHE_SYNC_DISCARD);
     state.queue = CreateMsgQueue(NULL, &options);
     state.notifications = RequestPowerNotifications(state.queue, PBT_TRANSITION | PBT_RESUME);
     CeSetThreadPriority(GetCurrentThread(), 100);

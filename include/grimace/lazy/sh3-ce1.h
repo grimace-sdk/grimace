@@ -2,6 +2,8 @@
 extern struct grimace_lazy_import __grimace_lazy_import_AbortDoc;
 #define __grimace_lazy_BatteryNotifyOfTimeChange 1
 extern struct grimace_lazy_import __grimace_lazy_import_BatteryNotifyOfTimeChange;
+#define __grimace_lazy_CacheSync 1
+extern struct grimace_lazy_import __grimace_lazy_import_CacheSync;
 #define __grimace_lazy_CharLowerW 1
 extern struct grimace_lazy_import __grimace_lazy_import_CharLowerW;
 #define __grimace_lazy_CharNextW 1

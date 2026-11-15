@@ -18,6 +18,7 @@ extern __typeof__(WriteMsgQueue) WriteMsgQueue __attribute__((unavailable("not i
 #endif
 #ifdef GRIMACE_PKFUNCS_H
 extern __typeof__(AllocPhysMem) AllocPhysMem __attribute__((unavailable("not in Windows CE 3.0 on casio_cassiopeia_em500_ppc2000")));
+extern __typeof__(CacheRangeFlush) CacheRangeFlush __attribute__((unavailable("not in Windows CE 3.0 on casio_cassiopeia_em500_ppc2000")));
 extern __typeof__(FreePhysMem) FreePhysMem __attribute__((unavailable("not in Windows CE 3.0 on casio_cassiopeia_em500_ppc2000")));
 extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unavailable("not in Windows CE 3.0 on casio_cassiopeia_em500_ppc2000")));
 extern __typeof__(VirtualCopyEx) VirtualCopyEx __attribute__((unavailable("not in Windows CE 3.0 on casio_cassiopeia_em500_ppc2000")));

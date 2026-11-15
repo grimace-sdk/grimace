@@ -120,6 +120,19 @@ DWORD GetCallerVMProcessId(VOID);
 
 DWORD WaitForAPIReady(DWORD dwAPISlot, DWORD dwTimeout);
 
+#define CACHE_SYNC_DISCARD 0x001
+#define CACHE_SYNC_INSTRUCTIONS 0x002
+#define CACHE_SYNC_WRITEBACK 0x004
+#define CACHE_SYNC_FLUSH_I_TLB 0x008
+#define CACHE_SYNC_FLUSH_D_TLB 0x010
+#define CACHE_SYNC_FLUSH_TLB (CACHE_SYNC_FLUSH_I_TLB | CACHE_SYNC_FLUSH_D_TLB)
+#define CACHE_SYNC_L2_WRITEBACK 0x020
+#define CACHE_SYNC_L2_DISCARD 0x040
+#define CACHE_SYNC_ALL 0x07F
+
+void CacheSync(int iFlags);
+void CacheRangeFlush(LPVOID pAddr, DWORD dwLength, DWORD dwFlags);
+
 #ifdef __cplusplus
 }
 #endif

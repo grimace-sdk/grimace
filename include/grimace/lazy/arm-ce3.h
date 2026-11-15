@@ -12,6 +12,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_AppendMenuA;
 extern struct grimace_lazy_import __grimace_lazy_import_BackupEventLogW;
 #define __grimace_lazy_BatteryNotifyOfTimeChange 1
 extern struct grimace_lazy_import __grimace_lazy_import_BatteryNotifyOfTimeChange;
+#define __grimace_lazy_CacheRangeFlush 1
+extern struct grimace_lazy_import __grimace_lazy_import_CacheRangeFlush;
 #define __grimace_lazy_CallWindowProcA 1
 extern struct grimace_lazy_import __grimace_lazy_import_CallWindowProcA;
 #define __grimace_lazy_CeClearUserNotification 1

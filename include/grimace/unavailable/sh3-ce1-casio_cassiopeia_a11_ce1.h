@@ -62,6 +62,8 @@ extern __typeof__(WriteMsgQueue) WriteMsgQueue __attribute__((unavailable("not i
 #endif
 #ifdef GRIMACE_PKFUNCS_H
 extern __typeof__(AllocPhysMem) AllocPhysMem __attribute__((unavailable("not in Windows CE 1.0 on casio_cassiopeia_a11_ce1")));
+extern __typeof__(CacheRangeFlush) CacheRangeFlush __attribute__((unavailable("not in Windows CE 1.0 on casio_cassiopeia_a11_ce1")));
+extern __typeof__(CacheSync) CacheSync __attribute__((unavailable("not in Windows CE 1.0 on casio_cassiopeia_a11_ce1")));
 extern __typeof__(FreePhysMem) FreePhysMem __attribute__((unavailable("not in Windows CE 1.0 on casio_cassiopeia_a11_ce1")));
 extern __typeof__(GetCallerVMProcessId) GetCallerVMProcessId __attribute__((unavailable("not in Windows CE 1.0 on casio_cassiopeia_a11_ce1")));
 extern __typeof__(InterruptDisable) InterruptDisable __attribute__((unavailable("not in Windows CE 1.0 on casio_cassiopeia_a11_ce1")));
