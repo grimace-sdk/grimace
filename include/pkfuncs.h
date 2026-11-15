@@ -109,14 +109,22 @@ BOOL FreePhysMem(LPVOID lpvAddress);
  */
 DWORD GetCallerVMProcessId(VOID);
 
+#if GRIMACE_CE >= 6
+#define SH_WMGR 81
+#else
+#define SH_LAST_NOTIFY 16
 #define SH_GDI 16
 #define SH_WMGR 17
-#define SH_WNET 18
+#define SH_INIT 18
 #define SH_COMM 19
 #define SH_FILESYS_APIS 20
 #define SH_SHELL 21
 #define SH_DEVMGR_APIS 22
 #define SH_TAPI 23
+#define SH_PATCHER 24
+#define SH_IMM 25
+#define SH_WNET 26
+#endif
 
 DWORD WaitForAPIReady(DWORD dwAPISlot, DWORD dwTimeout);
 
