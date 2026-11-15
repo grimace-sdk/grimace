@@ -257,7 +257,7 @@ char *strstr(const char *string, const char *substring);
  * @param characters Null-terminated set of characters.
  * @return Pointer to the matching character, or NULL if none is found.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 char *strpbrk(const char *string, const char *characters);
 /**

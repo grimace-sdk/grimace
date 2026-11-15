@@ -694,6 +694,8 @@ typedef struct _ENGCALLBACKS {
  * @param pded Receives the driver's function pointers.
  * @param pEngCallbacks GDI's helper functions for the driver.
  * @return TRUE on success, FALSE on failure.
+ *
+ * @note Windows CE 2.0 and later.
  */
 BOOL APIENTRY DrvEnableDriver(ULONG iEngineVersion, ULONG cj, DRVENABLEDATA *pded, PENGCALLBACKS pEngCallbacks);
 /**

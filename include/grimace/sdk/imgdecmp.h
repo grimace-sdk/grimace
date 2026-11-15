@@ -21,7 +21,7 @@ typedef struct tagDecompressImageInfo DecompressImageInfo;
  * @param pParams Image input, output, sizing and callback settings.
  * @return HRESULT indicating success or failure.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 HRESULT DecompressImageIndirect(DecompressImageInfo *pParams);
 /**
@@ -37,7 +37,7 @@ COLORREF * Get332Palette(void);
  *
  * @return Pointer to COLORREF palette entries.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 COLORREF * GetHalftonePalette(void);
 /**

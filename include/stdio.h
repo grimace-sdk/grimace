@@ -53,7 +53,7 @@ FILE *_getstdfilex(int index);
  * @param mode Access mode.
  * @return The open stream, or NULL on error.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 FILE *fopen(const char *path, const char *mode);
 /**
@@ -95,7 +95,7 @@ FILE *_wfreopen(const wchar_t *path, const wchar_t *mode, FILE *stream);
  * @param stream Stream to close.
  * @return 0 on success, or EOF on error.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 int fclose(FILE *stream);
 /**
@@ -122,7 +122,7 @@ int _fcloseall(void);
  * @return Number of full items read; use feof or ferror to identify why
  *         fewer than count items were read.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 size_t fread(void *buffer, size_t size, size_t count, FILE *stream);
 /**
@@ -138,7 +138,7 @@ size_t fread(void *buffer, size_t size, size_t count, FILE *stream);
  * @return Number of full items written; the position is indeterminate if
  *         an error occurs.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 size_t fwrite(const void *buffer, size_t size, size_t count, FILE *stream);
 /**
@@ -213,7 +213,7 @@ int fputs(const char *string, FILE *stream);
  * @return 0 on success, nonzero on failure; the result is undefined on
  *         devices that cannot seek.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 int fseek(FILE *stream, long offset, int origin);
 /**

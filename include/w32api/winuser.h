@@ -8910,6 +8910,8 @@ WINUSERAPI BOOL WINAPI CreateCaret(HWND hWnd,HBITMAP hBitmap,int nWidth,int nHei
  *        device-dependent monochrome bitmap.
  * @return A handle to the cursor indicates success. NULL indicates
  *        failure. To get extended error information, call GetLastError.
+ *
+ * @note Windows CE 3.0 and later.
  */
 WINUSERAPI HCURSOR WINAPI CreateCursor(HINSTANCE hInst,int xHotSpot,int yHotSpot,int nWidth,int nHeight,PCVOID pvANDplane,PCVOID pvXORplane);
 #ifndef NOGDI
@@ -9130,6 +9132,8 @@ WINUSERAPI BOOL WINAPI DestroyCaret(void);
  *        must not be in use.
  * @return Nonzero indicates success. Zero indicates failure. To get
  *        extended error information, call GetLastError.
+ *
+ * @note Windows CE 3.0 and later.
  */
 WINUSERAPI BOOL WINAPI DestroyCursor(HCURSOR hCursor);
 /**

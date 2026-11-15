@@ -37,7 +37,7 @@ typedef struct _tnefinfo TNEFINFO;
  * @param lpmaa Attachment information.
  * @return TRUE on success, FALSE on failure.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 BOOL TnefBuildInfo(const TNEFINFO *pti, LPWSTR szSubject, MailNonIpmInfo *lpnii, MailAttArray *lpmaa);
 /**
@@ -98,7 +98,7 @@ BOOL TnefDecodeBuffer(INETENCODE EncodeType, LPSTR BufToDecode, BYTE *DecodedBuf
  * @param DecodedFileName Output file name.
  * @return TRUE on success, FALSE on failure.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 BOOL TnefDecodeFile(INETENCODE EncodeType, LPWSTR FileToDecode, LPWSTR DecodedFileName);
 /**
@@ -128,7 +128,7 @@ BOOL TnefEncodeBuffer(INETENCODE EncodeType, UINT cbIn, BYTE *BufToEncode, UINT 
  * @param EncodeType Encoding format.
  * @return Name of the encoded file, or NULL on failure.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 LPWSTR TnefEncodeFile(LPWSTR FileToEncode, INETENCODE EncodeType);
 /**
@@ -142,7 +142,7 @@ LPWSTR TnefEncodeFile(LPWSTR FileToEncode, INETENCODE EncodeType);
  * @param lplpmaa Optionally receives attachment information.
  * @return TRUE on success, FALSE on failure.
  *
- * @note Windows CE 3.0 and later.
+ * @note Windows CE 2.0 and later.
  */
 BOOL TnefGetInfo(const TNEFINFO *pti, MailNonIpmInfo **lplpnii, MailAttArray **lplpmaa);
 /**

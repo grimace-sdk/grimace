@@ -86,6 +86,14 @@ typedef struct tagSHMENUBARINFO {
 BOOL WINAPI SHCreateMenuBar(SHMENUBARINFO *pmbi);
 
 void WINAPI SHIdleTimerReset(void);
+/**
+ * Loads a .bmp file into a bitmap.
+ *
+ * Free with DeleteObject.
+ *
+ * @param szFileName Full path of the file.
+ * @return The bitmap, or NULL on failure.
+ */
 HBITMAP WINAPI SHLoadDIBitmap(LPCWSTR szFileName);
 
 #ifdef __cplusplus

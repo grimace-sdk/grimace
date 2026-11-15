@@ -137,8 +137,6 @@ static inline BOOL WINAPI TlsFree(DWORD x)
  * breakpoint exception.
  *
  * @return None.
- *
- * @note Windows CE 1.0 and 2.0 only.
  */
   extern void DebugBreak(void);
 #endif

@@ -488,14 +488,86 @@ int iswupper(wint_t character);
 int iswxdigit(wint_t character);
 int iswblank(wint_t character);
 int wcscoll(const wchar_t *first, const wchar_t *second);
+/**
+ * Reads one wide character from a stream and advances its position.
+ *
+ * Use feof or ferror to distinguish end of file from a read error.
+ *
+ * @param stream Stream to read.
+ * @return The character as wint_t, or WEOF on error or end of file.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 wint_t fgetwc(FILE *stream);
+/**
+ * Writes one wide character to a stream.
+ *
+ * @param character Wide character to write.
+ * @param stream Destination stream.
+ * @return The character written, or WEOF on error.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 wint_t fputwc(wint_t character, FILE *stream);
+/**
+ * Pushes one wide character back onto a stream and clears its end-of-file
+ * flag.
+ *
+ * The stream must be open for reading. A later read returns the pushed
+ * character first.
+ *
+ * @param character Wide character to push back.
+ * @param stream Stream to update.
+ * @return The character on success, or WEOF if pushback fails.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 wint_t ungetwc(wint_t character, FILE *stream);
 wint_t getwc(FILE *stream);
 wint_t putwc(wint_t character, FILE *stream);
+/**
+ * Reads at most size - 1 wide characters into buffer.
+ *
+ * Reading stops at a newline, end of file, or the size limit. A newline is
+ * retained, and the result is null-terminated.
+ *
+ * @param buffer Receives the wide-character string.
+ * @param size Buffer capacity in wide characters.
+ * @param stream Stream to read.
+ * @return buffer on success, or NULL on error or end of file.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 wchar_t *fgetws(wchar_t *buffer, int size, FILE *stream);
+/**
+ * Writes a wide-character string to a stream without its null terminator.
+ *
+ * The stream's text or binary mode determines how wide characters are
+ * written.
+ *
+ * @param string Null-terminated wide-character string.
+ * @param stream Destination stream.
+ * @return A nonnegative value on success, or WEOF on error.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 int fputws(const wchar_t *string, FILE *stream);
+/**
+ * Reads one wide character from stdin.
+ *
+ * @return The character as wint_t, or WEOF on error or end of file.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 wint_t getwchar(void);
+/**
+ * Writes one wide character to stdout.
+ *
+ * @param character Wide character to write.
+ * @return The character written, or WEOF on error.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 wint_t putwchar(wint_t character);
 size_t wcsxfrm(wchar_t *destination, const wchar_t *source, size_t count);
 
