@@ -7,6 +7,11 @@
 extern "C" {
 #endif
 
+/**
+ * Same as ULONG.
+ *
+ * See ULONG: Unsigned 32-bit integer (unsigned long).
+ */
 typedef ULONG SCARDHANDLE;
 /**
  * Begins a transaction on a connected smart card.
@@ -20,6 +25,11 @@ typedef ULONG SCARDHANDLE;
  * @note Windows CE 3.0 and later.
  */
 LONG SCardBeginTransaction(SCARDHANDLE hCard);
+/**
+ * Same as ULONG.
+ *
+ * See ULONG: Unsigned 32-bit integer (unsigned long).
+ */
 typedef ULONG SCARDCONTEXT;
 /**
  * Cancels outstanding resource-manager actions that wait for external input.
@@ -201,6 +211,11 @@ typedef SCARD_READERSTATEW *LPSCARD_READERSTATEW;
  * @note Windows CE 3.0 and later.
  */
 LONG SCardGetStatusChangeW(SCARDCONTEXT hContext, DWORD dwTimeout, LPSCARD_READERSTATEW rgReaderStates, DWORD cReaders);
+/**
+ * Pointer to a const BYTE.
+ *
+ * See BYTE: Unsigned 8-bit integer (unsigned char).
+ */
 typedef const BYTE *LPCBYTE;
 /**
  * Registers a card type and its provider, interfaces and optional ATR match.

@@ -60,10 +60,32 @@ typedef unsigned int DWORD32, *PDWORD32;
 typedef unsigned int UINT32, *PUINT32;
 
 #if defined(_WIN64)
-typedef __int64 INT_PTR, *PINT_PTR;
-typedef unsigned __int64 UINT_PTR, *PUINT_PTR;
-typedef __int64 LONG_PTR, *PLONG_PTR;
-typedef unsigned __int64 ULONG_PTR, *PULONG_PTR;
+/**
+ * Signed integer the size of a pointer: int, 32 bits here. Dialog procedures
+ * on desktop Windows return it; on these headers DLGPROC returns BOOL.
+ */
+typedef __int64 INT_PTR;
+typedef __int64 *PINT_PTR;
+/**
+ * Unsigned integer the size of a pointer: unsigned int, 32 bits here. WPARAM
+ * is a typedef of it.
+ */
+typedef unsigned __int64 UINT_PTR;
+typedef unsigned __int64 *PUINT_PTR;
+/**
+ * Signed integer the size of a pointer: long, 32 bits on every grimace target.
+ *
+ * The _PTR types exist so code also compiles for 64-bit Windows; here they are
+ * plain 32-bit integers. LPARAM and LRESULT are typedefs of it.
+ */
+typedef __int64 LONG_PTR;
+typedef __int64 *PLONG_PTR;
+/**
+ * Unsigned integer the size of a pointer: unsigned long, 32 bits here. SIZE_T
+ * and DWORD_PTR are typedefs of it.
+ */
+typedef unsigned __int64 ULONG_PTR;
+typedef unsigned __int64 *PULONG_PTR;
 typedef unsigned __int64 HANDLE_PTR;
 typedef unsigned int UHALF_PTR, *PUHALF_PTR;
 typedef int HALF_PTR, *PHALF_PTR;
@@ -107,9 +129,40 @@ typedef short HALF_PTR, *PHALF_PTR;
 typedef unsigned long HANDLE_PTR;
 #endif /* !_WIN64 */
 
-typedef ULONG_PTR SIZE_T, *PSIZE_T;
-typedef LONG_PTR SSIZE_T, *PSSIZE_T;
-typedef ULONG_PTR DWORD_PTR, *PDWORD_PTR;
+/**
+ * Unsigned byte count the size of a pointer: a typedef of ULONG_PTR (unsigned
+ * long), 32 bits here.
+ *
+ * Not the same type as the C library's size_t, which clang defines as unsigned
+ * int on these targets: the same size, but distinct for overloading and
+ * printf. Use %lu for SIZE_T and %u for size_t; the runtime's printf has no
+ * %zu.
+ */
+typedef ULONG_PTR SIZE_T;
+/**
+ * Pointer to a ULONG_PTR.
+ *
+ * See ULONG_PTR: Unsigned integer the size of a pointer: unsigned long, 32 bits here.
+ */
+typedef ULONG_PTR *PSIZE_T;
+/**
+ * Signed byte count the size of a pointer: a typedef of LONG_PTR (long), 32
+ * bits here.
+ */
+typedef LONG_PTR SSIZE_T;
+typedef LONG_PTR *PSSIZE_T;
+/**
+ * Unsigned integer the size of a pointer: a typedef of ULONG_PTR, so unsigned
+ * long and 32 bits here. Used for values that may hold either a DWORD or a
+ * pointer.
+ */
+typedef ULONG_PTR DWORD_PTR;
+/**
+ * Pointer to a ULONG_PTR.
+ *
+ * See ULONG_PTR: Unsigned integer the size of a pointer: unsigned long, 32 bits here.
+ */
+typedef ULONG_PTR *PDWORD_PTR;
 typedef __int64 LONG64, *PLONG64;
 typedef __int64 INT64,  *PINT64;
 typedef unsigned __int64 ULONG64, *PULONG64;

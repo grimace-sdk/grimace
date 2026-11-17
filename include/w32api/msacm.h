@@ -11,16 +11,58 @@
 extern "C" {
 #endif
 
-DECLARE_HANDLE(HACMDRIVERID);
+/**
+ * Identifier of an installed audio compression manager driver, as
+ * acmDriverEnum passes to its callback and acmDriverID reports for an open
+ * driver (CE 2.0 and later; 2.11 on ARM).
+ *
+ * It identifies the driver without opening it; acmDriverOpen turns it into
+ * an HACMDRIVER.
+ */
+typedef struct HACMDRIVERID__ { int i; } *HACMDRIVERID;
 typedef HACMDRIVERID *PHACMDRIVERID;
+/**
+ * Pointer to a HACMDRIVERID.
+ *
+ * See HACMDRIVERID: Identifier of an installed audio compression manager driver, as acmDriverEnum passes to its callback and acmDriverID reports for an open driver (CE 2.0 and later; 2.11 on ARM).
+ */
 typedef HACMDRIVERID *LPHACMDRIVERID;
-DECLARE_HANDLE(HACMDRIVER);
+/**
+ * Handle to an open audio compression manager driver, from acmDriverOpen
+ * (CE 2.0 and later; 2.11 on ARM).
+ *
+ * Pass it to acmStreamOpen to convert through that driver, or NULL to let
+ * the manager choose. Close with acmDriverClose.
+ */
+typedef struct HACMDRIVER__ { int i; } *HACMDRIVER;
 typedef HACMDRIVER *PHACMDRIVER;
+/**
+ * Pointer to a HACMDRIVER.
+ *
+ * See HACMDRIVER: Handle to an open audio compression manager driver, from acmDriverOpen (CE 2.0 and later; 2.11 on ARM).
+ */
 typedef HACMDRIVER *LPHACMDRIVER;
-DECLARE_HANDLE(HACMSTREAM);
+/**
+ * Handle to an audio conversion stream, from acmStreamOpen (CE 2.0 and
+ * later; 2.11 on ARM).
+ *
+ * Convert buffers with acmStreamConvert, after preparing their headers with
+ * acmStreamPrepareHeader, and close with acmStreamClose.
+ */
+typedef struct HACMSTREAM__ { int i; } *HACMSTREAM;
 typedef HACMSTREAM *PHACMSTREAM;
+/**
+ * Pointer to a HACMSTREAM.
+ *
+ * See HACMSTREAM: Handle to an audio conversion stream, from acmStreamOpen (CE 2.0 and later; 2.11 on ARM).
+ */
 typedef HACMSTREAM *LPHACMSTREAM;
-DECLARE_HANDLE(HACMOBJ);
+/**
+ * Any audio compression manager object: an HACMDRIVERID, HACMDRIVER or
+ * HACMSTREAM, for the functions that accept several. Cast the specific
+ * handle to it.
+ */
+typedef struct HACMOBJ__ { int i; } *HACMOBJ;
 typedef HACMOBJ *PHACMOBJ;
 typedef HACMOBJ *LPHACMOBJ;
 

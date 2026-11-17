@@ -6,6 +6,11 @@
 extern "C" {
 #endif
 
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG SECURITY_STATUS;
 struct _SecHandle;
 typedef struct _SecHandle *PSecHandle;
@@ -37,6 +42,11 @@ typedef PSECURITY_INTEGER PTimeStamp;
  * @note Windows CE 2.0 and later.
  */
 SECURITY_STATUS AcceptSecurityContext(PCredHandle phCredential, PCtxtHandle phContext, PSecBufferDesc pInput, unsigned long fContextReq, unsigned long TargetDataRep, PCtxtHandle phNewContext, PSecBufferDesc pOutput, unsigned long *pfContextAttr, PTimeStamp ptsExpiry);
+/**
+ * Same as WCHAR.
+ *
+ * See WCHAR: 16-bit wide character (unsigned short): one UTF-16 code unit.
+ */
 typedef WCHAR SEC_WCHAR;
 typedef void (*SEC_GET_KEY_FN)(void *, void *, unsigned long, void **, SECURITY_STATUS *);
 /**
@@ -239,6 +249,11 @@ SECURITY_STATUS RevertSecurityContext(PCtxtHandle phContext);
  */
 SECURITY_STATUS VerifySignature(PCtxtHandle phContext, PSecBufferDesc pMessage, unsigned long MessageSeqNo, unsigned long *pfQOP);
 typedef SECURITY_STATUS (*ACCEPT_SECURITY_CONTEXT_FN)(PCredHandle, PCtxtHandle, PSecBufferDesc, unsigned long, unsigned long, PCtxtHandle, PSecBufferDesc, unsigned long *, PTimeStamp);
+/**
+ * Same as CHAR.
+ *
+ * See CHAR: 8-bit character (char).
+ */
 typedef CHAR SEC_CHAR;
 typedef SECURITY_STATUS (*ACQUIRE_CREDENTIALS_HANDLE_FN_A)(SEC_CHAR *, SEC_CHAR *, unsigned long, void *, void *, SEC_GET_KEY_FN, void *, PCredHandle, PTimeStamp);
 typedef SECURITY_STATUS (*ACQUIRE_CREDENTIALS_HANDLE_FN_W)(SEC_WCHAR *, SEC_WCHAR *, unsigned long, void *, void *, SEC_GET_KEY_FN, void *, PCredHandle, PTimeStamp);

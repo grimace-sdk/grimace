@@ -21,6 +21,11 @@ typedef IOleClientSite *LPOLECLIENTSITE;
 struct IOleObject;
 typedef struct IOleObject IOleObject;
 typedef IOleObject *LPOLEOBJECT;
+/**
+ * Same as HGLOBAL.
+ *
+ * See HGLOBAL: Handle to a memory block from the global heap.
+ */
 typedef HGLOBAL HOLEMENU;
 struct IOleInPlaceFrame;
 typedef struct IOleInPlaceFrame IOleInPlaceFrame;
@@ -122,6 +127,11 @@ typedef struct IViewObjectVtbl IViewObjectVtbl;
 struct tagOBJECTDESCRIPTOR;
 typedef struct tagOBJECTDESCRIPTOR LINKSRCDESCRIPTOR;
 typedef LPRECT LPBORDERWIDTHS;
+/**
+ * Same as LPCRECT.
+ *
+ * See LPCRECT: Pointer to a read-only RECT, the rectangle given by its left, top, right and bottom edges.
+ */
 typedef LPCRECT LPCBORDERWIDTHS;
 typedef IEnumOLEVERB *LPENUMOLEVERB;
 typedef struct tagOBJECTDESCRIPTOR *LPLINKSRCDESCRIPTOR;

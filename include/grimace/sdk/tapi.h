@@ -412,6 +412,11 @@ LONG lineGetDevConfig(DWORD dwDeviceID, LPVARSTRING lpDeviceConfig, LPCWSTR lpsz
  * @return 0 on success, or a negative LINEERR_* code.
  */
 LONG lineGetID(HLINE hLine, DWORD dwAddressID, HCALL hCall, DWORD dwSelect, LPVARSTRING lpDeviceID, LPCWSTR lpszDeviceClass);
+/**
+ * Pointer to a HICON.
+ *
+ * See HICON: Handle to an icon, from LoadIconW, LoadImageW or CreateIconIndirect.
+ */
 typedef HICON *LPHICON;
 /**
  * Retrieves a provider-supplied icon for a line device.

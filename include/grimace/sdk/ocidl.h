@@ -278,11 +278,41 @@ enum tagOLEDCFLAGS {
 };
 
 typedef enum tagOLEDCFLAGS OLEDCFLAGS;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD OLE_COLOR;
+/**
+ * Same as UINT.
+ *
+ * See UINT: Unsigned 32-bit integer (unsigned int).
+ */
 typedef UINT OLE_HANDLE;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG OLE_XPOS_HIMETRIC;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG OLE_XSIZE_HIMETRIC;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG OLE_YPOS_HIMETRIC;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG OLE_YSIZE_HIMETRIC;
 typedef struct tagCONNECTDATA *PCONNECTDATA;
 typedef IConnectionPoint *PCONNECTIONPOINT;

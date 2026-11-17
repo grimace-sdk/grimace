@@ -475,7 +475,14 @@ typedef const PROPSHEETPAGEW *LPCPROPSHEETPAGEW;
 typedef UINT(CALLBACK *LPFNPSPCALLBACKA)(HWND,UINT,LPPROPSHEETPAGEA);
 typedef UINT(CALLBACK *LPFNPSPCALLBACKW)(HWND,UINT,LPPROPSHEETPAGEW);
 typedef int(CALLBACK *PFNPROPSHEETCALLBACK)(HWND,UINT,LPARAM);
-DECLARE_HANDLE(HPROPSHEETPAGE);
+/**
+ * Handle to a property sheet page, from CreatePropertySheetPageW.
+ *
+ * Put it in the phpage array of a PROPSHEETHEADERW for PropertySheetW, which
+ * owns it from then on. Destroy a page that never reached a sheet with
+ * DestroyPropertySheetPage. Windows CE has property sheets from 1.0.
+ */
+typedef struct HPROPSHEETPAGE__ { int i; } *HPROPSHEETPAGE;
 typedef struct _PROPSHEETHEADERA {
 	DWORD	dwSize;
 	DWORD	dwFlags;

@@ -84,6 +84,11 @@ BOOL CreateUrlCacheEntryA(LPCSTR lpszUrlName, DWORD dwExpectedFileSize, LPCSTR l
  * @note Windows CE 3.0 and later.
  */
 BOOL CreateUrlCacheEntryW(LPCWSTR lpszUrlName, DWORD dwExpectedFileSize, LPCWSTR lpszFileExtension, LPWSTR lpszFileName, DWORD dwReserved);
+/**
+ * Same as LONGLONG.
+ *
+ * See LONGLONG: Signed 64-bit integer (long long, Microsoft's __int64).
+ */
 typedef LONGLONG GROUPID;
 /**
  * Creates a cache group or generates a group identifier.
@@ -288,6 +293,11 @@ BOOL FindNextUrlCacheEntryExW(HANDLE hEnumHandle, LPINTERNET_CACHE_ENTRY_INFOW l
  * @note Windows CE 3.0 and later.
  */
 BOOL FindNextUrlCacheEntryW(HANDLE hEnumHandle, LPINTERNET_CACHE_ENTRY_INFOW lpNextCacheEntryInfo, LPDWORD lpdwNextCacheEntryInfoBufferSize);
+/**
+ * Same as LPVOID.
+ *
+ * See LPVOID: Pointer to anything (void *).
+ */
 typedef LPVOID HINTERNET;
 /**
  * Creates a directory on an FTP server.
@@ -966,6 +976,11 @@ BOOL InternetCombineUrlA(LPCSTR lpszBaseUrl, LPCSTR lpszRelativeUrl, LPSTR lpszB
  * @note Windows CE 2.0 and later.
  */
 BOOL InternetCombineUrlW(LPCWSTR lpszBaseUrl, LPCWSTR lpszRelativeUrl, LPWSTR lpszBuffer, LPDWORD lpdwBufferLength, DWORD dwFlags);
+/**
+ * Same as WORD.
+ *
+ * See WORD: Unsigned 16-bit integer (unsigned short).
+ */
 typedef WORD INTERNET_PORT;
 /**
  * Opens an FTP or HTTP session to a server.

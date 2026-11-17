@@ -1,0 +1,1025 @@
+## HWND
+Handle to a window, from CreateWindowExW, FindWindowW, GetDlgItem and the
+like.
+
+STRICT is on, so HWND is a distinct pointer type (struct HWND__ *) and can't
+be mixed with other handles without a cast. Destroy with DestroyWindow.
+
+## HDC
+Handle to a device context: the drawing target and state for GDI calls.
+
+A DC is not a GDI object: release one from GetDC or BeginPaint with
+ReleaseDC or EndPaint, and delete one from CreateCompatibleDC or CreateDCW
+with DeleteDC. Objects selected into it are freed separately with
+DeleteObject.
+
+## HINSTANCE
+Handle to a loaded module: a program's own, as passed to WinMain, or a DLL
+from LoadLibraryW.
+
+HMODULE is the same type. Pass it to resource functions (LoadIconW,
+FindResource, LoadStringW) and RegisterClassW. GetModuleHandleW needs
+Windows CE 2.0 or later.
+
+## HMODULE
+Handle to a loaded module, from LoadLibraryW or GetModuleHandleW.
+
+A typedef of HINSTANCE: the two are interchangeable. Look up exports with
+GetProcAddressW and release with FreeLibrary, not CloseHandle.
+
+## HBITMAP
+Handle to a bitmap, from CreateBitmap, CreateDIBSection, LoadImageW or
+LoadBitmapW.
+
+Select it into a memory DC to draw on it or BitBlt from it. A GDI object:
+free with DeleteObject once it's no longer selected into any DC.
+
+## HRGN
+Handle to a region, from CreateRectRgn, CreateRectRgnIndirect or CombineRgn.
+
+A GDI object: free with DeleteObject. CE 1.0 exports CreateRectRgnIndirect
+but not CreateRectRgn.
+
+## HMENU
+Handle to a menu, from CreateMenu, CreatePopupMenu or LoadMenuW.
+
+Free with DestroyMenu unless it's been attached to a window or command bar,
+which destroys it. Windows CE windows have no menu bar: show a menu on a
+command bar with CommandBar_InsertMenubar, or as a popup with
+TrackPopupMenuEx (there's no TrackPopupMenu).
+
+## HKEY
+Handle to an open registry key, from RegOpenKeyExW or RegCreateKeyExW, or
+one of the predefined roots (HKEY_LOCAL_MACHINE, HKEY_CURRENT_USER,
+HKEY_CLASSES_ROOT).
+
+Close opened keys with RegCloseKey, not CloseHandle.
+
+## HICON
+Handle to an icon, from LoadIconW, LoadImageW or CreateIconIndirect.
+
+Free icons you created or loaded with LoadImageW using DestroyIcon. Icons
+from LoadIconW are shared and need no freeing. HCURSOR is the same type.
+
+## HCURSOR
+Handle to a cursor, from LoadCursorW.
+
+A typedef of HICON. Most Windows CE devices have no mouse cursor and support
+only the wait cursor, IDC_WAIT, shown with SetCursor and hidden with
+SetCursor(NULL). Devices with a cursor load monochrome cursors only.
+DestroyCursor needs CE 3.0 or later; cursors from LoadCursorW are shared and
+aren't destroyed.
+
+## HBRUSH
+Handle to a brush, from CreateSolidBrush, CreatePatternBrush, GetStockObject
+or GetSysColorBrush.
+
+A GDI object: free brushes you created with DeleteObject. Stock and system
+colour brushes are shared; don't delete them. CreatePatternBrush needs CE
+2.0 or later.
+
+## HPALETTE
+Handle to a logical palette, from CreatePalette (CE 2.0 and later).
+
+Apply with SelectPalette and RealizePalette. A GDI object: free with
+DeleteObject. Windows CE palettes hold exactly the entries you supply; the
+system colours aren't added.
+
+## HDWP
+Handle to a deferred window position batch, from BeginDeferWindowPos.
+
+Pass it to each DeferWindowPos call, using the returned handle for the next,
+and finish with EndDeferWindowPos, which moves the windows and frees the
+handle. Needs CE 2.0 or later.
+
+## HRSRC
+Handle to a resource located by FindResource (CE exports it without the W;
+FindResourceW is the same function).
+
+Pass it to LoadResource and SizeofResource. It identifies the resource
+entry, not its data, and isn't freed.
+
+## HACCEL
+Handle to an accelerator table, from LoadAcceleratorsW or
+CreateAcceleratorTableW.
+
+Pass it to TranslateAcceleratorW in the message loop. Free tables from
+CreateAcceleratorTableW with DestroyAcceleratorTable; loaded ones are freed
+when the program exits.
+
+## HFONT
+Handle to a logical font, from CreateFontIndirectW.
+
+Select it into a DC to draw text with it. A GDI object: free with
+DeleteObject once no DC has it selected. Windows CE has no CreateFontW; fill
+in a LOGFONTW instead.
+
+## HPEN
+Handle to a pen, from CreatePenIndirect, CreatePen or GetStockObject.
+
+A GDI object: free pens you created with DeleteObject. CE 1.0 exports
+CreatePenIndirect but not CreatePen.
+
+## HGDIOBJ
+Handle to any GDI object: a bitmap, brush, font, pen, region or palette.
+
+It's a plain void *, so every GDI handle type converts to it without a cast;
+SelectObject, DeleteObject and GetObjectW take one. Cast the result of
+SelectObject back to the specific type.
+
+## HGLOBAL
+Handle to a memory block from the global heap.
+
+A typedef of HANDLE. Windows CE has no GlobalAlloc or GlobalFree: where a
+desktop API wants an HGLOBAL, such as SetClipboardData, pass a block from
+LocalAlloc. CE memory is always fixed, so the handle is the block's address.
+
+## HLOCAL
+Handle to a memory block from LocalAlloc.
+
+A typedef of HANDLE. Windows CE only supports fixed memory, so the handle is
+a pointer to the block and LocalLock is a no-op. Free with LocalFree.
+
+## HANDLE
+Opaque handle to a kernel object: a file, event, mutex, semaphore, process,
+thread, find context or similar.
+
+A void *, 32 bits on every grimace target. Most functions return NULL on
+failure; CreateFileW and FindFirstFileW return INVALID_HANDLE_VALUE, so
+check for the right one. Close with CloseHandle, except find handles
+(FindClose) and modules (FreeLibrary). Windows CE doesn't support handle
+inheritance or per-handle access rights, so security attributes are always
+NULL.
+
+## HRESULT
+Status code returned by COM, OLE and shell functions: a 32-bit LONG.
+
+Zero (S_OK) and other non-negative values are success; negative values are
+failures, with the facility and code in the low bits. Test with SUCCEEDED
+and FAILED, not against S_OK, since functions may return S_FALSE and other
+non-zero successes. COM arrives on CE with the 3.0 SDK headers.
+
+## SOCKET
+Winsock socket descriptor, from socket or accept.
+
+An unsigned int (u_int), not a HANDLE: compare against INVALID_SOCKET, not
+NULL or INVALID_HANDLE_VALUE, and close with closesocket. These headers have
+Winsock 1.1 (winsock.h); there's no winsock2.h.
+
+## BOOL
+Boolean result or flag: an int holding TRUE (1) or FALSE (0).
+
+A typedef of WINBOOL. Functions may return any non-zero value for true, so
+test with if (b) or b != FALSE, never b == TRUE. Not the same type as C's
+_Bool or C++'s bool.
+
+## WINBOOL
+The int behind BOOL, from CeGCC's w32api.
+
+BOOL is a typedef of it, except under Objective-C, where BOOL is a macro for
+WINBOOL. Use BOOL in ordinary code.
+
+## BYTE
+Unsigned 8-bit integer (unsigned char).
+
+## WORD
+Unsigned 16-bit integer (unsigned short). LOWORD, HIWORD and MAKEWORD split
+and build one.
+
+## DWORD
+Unsigned 32-bit integer (unsigned long). The Win32 API's general-purpose
+unsigned type: sizes, flags, times in milliseconds and error codes.
+
+long is 32 bits on every grimace target, so DWORD is the same size as UINT
+but a different type for overloading and printf (%lu).
+
+## LONG
+Signed 32-bit integer (long).
+
+long is 32 bits on MIPS, SH3, x86 and ARM, so LONG, int and the pointer
+types are all the same size. The base of LPARAM, LRESULT and HRESULT.
+
+## ULONG
+Unsigned 32-bit integer (unsigned long). The same size and sign as DWORD;
+used mostly by the NT-derived parts of the headers.
+
+## INT
+Signed 32-bit integer (int).
+
+## UINT
+Unsigned 32-bit integer (unsigned int). Message identifiers, control IDs and
+flags that aren't DWORD.
+
+## SHORT
+Signed 16-bit integer (short). The x and y of POINTS.
+
+## USHORT
+Unsigned 16-bit integer (unsigned short). The same size as WORD.
+
+## CHAR
+8-bit character (char). Narrow strings: LPSTR and friends are built on it.
+
+The Windows CE API takes only wide strings, so CHAR text only reaches the C
+runtime, or the API after MultiByteToWideChar (CE 2.0 and later).
+
+## UCHAR
+Unsigned 8-bit integer (unsigned char). The same as BYTE.
+
+## WINAPI
+Calling convention of every Windows API function, placed between the
+return type and the name: `int WINAPI WinMain(...)`.
+
+It expands to nothing on Windows CE. The system DLLs use the compiler's
+one calling convention on each processor, so there is no __stdcall to
+declare, and the headers define __stdcall and __cdecl as empty. Keep it
+in declarations for source compatibility with desktop Windows.
+
+## WINAPIV
+Calling convention of the variadic API functions (wsprintfW): __cdecl on
+desktop Windows, nothing on Windows CE, where every function uses the
+compiler's one convention.
+
+## CALLBACK
+Calling convention of functions the system calls back: window and dialog
+procedures, enumeration and timer callbacks. The same as WINAPI, and like
+it empty on Windows CE.
+
+## APIENTRY
+Another name for WINAPI, used by the older declarations and the OpenGL
+ones. Empty on Windows CE.
+
+## WCHAR
+16-bit wide character (unsigned short): one UTF-16 code unit. The
+character type of every string the Windows CE API takes or returns.
+
+grimace compiles with -fshort-wchar, so L"..." literals and wchar_t are
+16-bit in both C and C++, matching the ROM.
+
+## TCHAR
+The generic character type: WCHAR on Windows CE.
+
+The headers define UNICODE, and CE has only the wide API, so TCHAR is always
+WCHAR, TEXT() and _T() always make L"..." literals, and the _tcs functions
+in tchar.h map to the wcs ones. There's no narrow build to switch to.
+
+## FLOAT
+32-bit IEEE single precision float.
+
+The MIPS and ARM targets are built with soft float, so float arithmetic is
+done by compiler-rt. The runtime's printf prints floats with three exponent
+digits (1e+006), as Microsoft's does.
+
+## LONGLONG
+Signed 64-bit integer (long long, Microsoft's __int64).
+
+64-bit division comes from compiler-rt on targets without it. Print with
+%lld or Microsoft's I64 modifier (PRId64 in inttypes.h); the runtime's
+printf takes both.
+
+## ULONGLONG
+Unsigned 64-bit integer. A typedef of DWORDLONG (unsigned long long).
+
+## DWORDLONG
+Unsigned 64-bit integer (unsigned long long, Microsoft's unsigned __int64).
+ULONGLONG is a typedef of it. Print with %llu or PRIu64.
+
+## LONG_PTR
+Signed integer the size of a pointer: long, 32 bits on every grimace target.
+
+The _PTR types exist so code also compiles for 64-bit Windows; here they are
+plain 32-bit integers. LPARAM and LRESULT are typedefs of it.
+
+## ULONG_PTR
+Unsigned integer the size of a pointer: unsigned long, 32 bits here. SIZE_T
+and DWORD_PTR are typedefs of it.
+
+## DWORD_PTR
+Unsigned integer the size of a pointer: a typedef of ULONG_PTR, so unsigned
+long and 32 bits here. Used for values that may hold either a DWORD or a
+pointer.
+
+## INT_PTR
+Signed integer the size of a pointer: int, 32 bits here. Dialog procedures
+on desktop Windows return it; on these headers DLGPROC returns BOOL.
+
+## UINT_PTR
+Unsigned integer the size of a pointer: unsigned int, 32 bits here. WPARAM
+is a typedef of it.
+
+## SIZE_T
+Unsigned byte count the size of a pointer: a typedef of ULONG_PTR (unsigned
+long), 32 bits here.
+
+Not the same type as the C library's size_t, which clang defines as unsigned
+int on these targets: the same size, but distinct for overloading and
+printf. Use %lu for SIZE_T and %u for size_t; the runtime's printf has no
+%zu.
+
+## SSIZE_T
+Signed byte count the size of a pointer: a typedef of LONG_PTR (long), 32
+bits here.
+
+## WPARAM
+First message parameter, passed to window procedures and SendMessageW.
+
+A typedef of UINT_PTR (unsigned int): 32 bits, wide enough for a pointer or
+a handle as well as a small integer. What it holds depends on the message.
+
+## LPARAM
+Second message parameter, passed to window procedures and SendMessageW.
+
+A typedef of LONG_PTR (long): 32 bits, so it carries a pointer or handle as
+often as an integer. Window and timer callbacks also receive one as the
+caller-supplied value.
+
+## LRESULT
+Result of processing a message, returned by window procedures and
+SendMessageW.
+
+A typedef of LONG_PTR (long), 32 bits. Its meaning depends on the message;
+return DefWindowProcW's result for messages you don't handle.
+
+## ATOM
+16-bit identifier for a string in an atom table (WORD).
+
+On Windows CE the only ATOMs a program sees come from RegisterClassW, which
+returns one for the registered class. CE 1.0 to 3.0 ROMs export no atom
+table functions; GlobalAddAtomW and the rest arrive with CE 4.1.
+
+## LCID
+Locale identifier: a DWORD with the LANGID in the low word and the sort
+order in the high word. From GetUserDefaultLCID (CE 2.0 and later) or
+MAKELCID; passed to the winnls functions.
+
+## LANGID
+Language identifier: a WORD holding a primary language in the low 10 bits
+and a sublanguage in the high 6 bits. Build with MAKELANGID, read with
+PRIMARYLANGID and SUBLANGID; GetSystemDefaultLangID returns one.
+
+## COLORREF
+A colour as 0x00BBGGRR in a DWORD. Build with RGB and read with GetRValue,
+GetGValue and GetBValue. CLR_INVALID (0xFFFFFFFF) is the failure value of
+functions that return one.
+
+## FLONG
+32-bit flags field (DWORD), from the NT display driver interface. The
+winddi.h structures use it for their flag members.
+
+## wchar_t
+Wide character type. In C these headers typedef it as unsigned short
+(winnt.h, guarded by _WCHAR_T_DEFINED); in C++ it's the keyword.
+
+grimace compiles with -fshort-wchar, so either way it's 16 bits and
+unsigned, and L"..." literals match. Code built without that flag would have
+a 32-bit wchar_t and can't share wide strings with the ROM.
+
+## LPSTR
+Pointer to a writable narrow (CHAR) string. PSTR is the same type.
+
+The Windows CE API itself takes no narrow strings; LPSTR appears in the C
+runtime and in a few structures. Convert with MultiByteToWideChar (CE 2.0
+and later) before passing text to the API.
+
+## LPCSTR
+Pointer to a read-only narrow (CHAR) string. PCSTR is the same type.
+
+## PSTR
+Pointer to a writable narrow (CHAR) string. The same as LPSTR.
+
+## PCSTR
+Pointer to a read-only narrow (CHAR) string. The same as LPCSTR.
+
+## LPWSTR
+Pointer to a writable wide (WCHAR) string: a buffer the callee fills. PWSTR
+is the same type. The string type of the Windows CE API.
+
+## LPCWSTR
+Pointer to a read-only wide (WCHAR) string: text the callee only reads.
+PCWSTR is the same type. Most API string parameters are this.
+
+## PWSTR
+Pointer to a writable wide (WCHAR) string. The same as LPWSTR.
+
+## PCWSTR
+Pointer to a read-only wide (WCHAR) string. The same as LPCWSTR.
+
+## LPTSTR
+Pointer to a writable generic (TCHAR) string. On Windows CE TCHAR is always
+WCHAR, so this is LPWSTR under another name.
+
+## LPCTSTR
+Pointer to a read-only generic (TCHAR) string. Always LPCWSTR on Windows CE.
+
+## PTSTR
+Pointer to a writable generic (TCHAR) string. The same as LPTSTR, so LPWSTR
+here.
+
+## PCTSTR
+Pointer to a read-only generic (TCHAR) string. The same as LPCTSTR, so
+LPCWSTR here.
+
+## LPVOID
+Pointer to anything (void *). Buffers, caller-defined context passed through
+callbacks, and raw memory. PVOID is the same type.
+
+## LPCVOID
+Pointer to read-only memory of any type (const void *): a buffer the callee
+only reads, as in WriteFile.
+
+## PVOID
+Pointer to anything (void *). The same as LPVOID.
+
+## LPBYTE
+Pointer to BYTE: a byte buffer, as in RegQueryValueExW.
+
+## LPWORD
+Pointer to WORD: a 16-bit value the callee fills in.
+
+## LPDWORD
+Pointer to DWORD: a 32-bit value the callee fills in, such as a byte count
+or a size on input and output.
+
+## LPLONG
+Pointer to long: a 32-bit signed value the callee fills in or, for the
+Interlocked functions, operates on.
+
+## LPBOOL
+Pointer to BOOL: a flag the callee sets, such as WideCharToMultiByte's "used
+default char".
+
+## LPINT
+Pointer to int: an integer the callee fills in, such as a character count or
+an array of widths.
+
+## LPCRECT
+Pointer to a read-only RECT, the rectangle given by its left, top, right and
+bottom edges.
+
+## LPRECT
+Pointer to a RECT the callee reads or fills in, as in GetClientRect.
+
+## LPPOINT
+Pointer to a POINT, the x and y of a position, as filled by GetCursorPos or
+converted by ClientToScreen.
+
+## LPMSG
+Pointer to a MSG, a queued window message as filled by GetMessageW and
+PeekMessageW and passed to TranslateMessage and DispatchMessageW.
+
+## WNDPROC(window, message, first, second)
+Window procedure: the function that handles messages for a window class,
+named in WNDCLASSW.lpfnWndProc.
+
+The system calls it from DispatchMessageW and SendMessageW for every message
+to the window, so it runs on the thread that created the window. Pass
+unhandled messages to DefWindowProcW. Also the type GetWindowLongW returns
+for GWL_WNDPROC when subclassing; call the old one with CallWindowProcW.
+
+On Windows CE a fault inside a window procedure ends the process: grimace
+programs have no .pdata, so the system can't unwind past it.
+
+@param window The window the message is for.
+@param message The message identifier (WM_*).
+@param first The message's wParam.
+@param second The message's lParam.
+@return The message's result, or DefWindowProcW's result for messages you
+        don't handle.
+
+
+## DLGPROC(dialog, message, first, second)
+Dialog procedure, given to CreateDialogIndirectParamW, DialogBoxParamW and
+the other dialog functions.
+
+The dialog manager calls it for each message before its own handling. Unlike
+a window procedure it doesn't call DefWindowProcW. For messages that need a
+specific result, store it with SetWindowLongW(DWL_MSGRESULT) and return
+TRUE.
+
+@param dialog The dialog window.
+@param message The message identifier.
+@param first The message's wParam.
+@param second The message's lParam.
+@return TRUE if the procedure handled the message, FALSE to let the
+        dialog manager handle it. For WM_INITDIALOG, TRUE to give the
+        default control the focus.
+
+
+## WNDENUMPROC(window, context)
+Window enumeration callback for EnumWindows, and EnumChildWindows on CE 3.0
+and later.
+
+Called once per window, on the calling thread, until it returns FALSE.
+
+@param window The window found.
+@param context The lParam given to the enumeration function.
+@return TRUE to continue enumerating, FALSE to stop.
+
+
+## TIMERPROC(window, message, timer, time)
+Timer callback for SetTimer, called in place of posting WM_TIMER.
+
+It's called from the message loop of the thread that set the timer, when
+that thread calls GetMessageW or PeekMessageW with no other message waiting,
+not from another thread. Note the identifier here is a UINT, as the CE SDK
+has it, rather than desktop Windows' UINT_PTR.
+
+@param window The window given to SetTimer, or NULL.
+@param message WM_TIMER.
+@param timer The timer identifier.
+@param time The time the timer fired, as GetTickCount reports it.
+
+
+## HOOKPROC(code, first, second)
+Hook procedure installed with SetWindowsHookExW.
+
+The system calls it when the hooked event occurs. Pass codes less than zero,
+and any event you don't consume, to CallNextHookEx and return its result.
+SetWindowsHookExW is exported from CE 2.11 (x86 CE 2.0) but the CE SDK
+doesn't document it.
+
+@param code Hook code; its meaning depends on the hook type. Below zero,
+       just call CallNextHookEx.
+@param first The hook type's wParam.
+@param second The hook type's lParam.
+@return The hook type's result, usually CallNextHookEx's, or non-zero to
+        consume the event where the hook type allows.
+
+
+## LPTHREAD_START_ROUTINE(parameter)
+Thread function for CreateThread.
+
+The new thread starts by calling it and ends when it returns, or on
+ExitThread. The CE SDK also names it PTHREAD_START_ROUTINE.
+
+@param parameter The lpParameter given to CreateThread.
+@return The thread's exit code, read with GetExitCodeThread.
+
+
+## FARPROC()
+Generic function pointer: int (WINAPI *)() with no prototype. What
+GetProcAddressW returns.
+
+Cast it to the exported function's real pointer type before calling it;
+calling through a FARPROC directly passes arguments by the unprototyped
+rules. FAR means nothing on Win32; PROC is the same type.
+
+@return Meaningless until cast.
+
+
+## PROC()
+Generic function pointer, the same type as FARPROC: int (WINAPI *)() with no
+prototype. Cast it to the real function type before calling.
+
+@return Meaningless until cast.
+
+
+## ABORTPROC(device, error)
+Print abort callback set with SetAbortProc (CE 2.0 and later).
+
+GDI calls it periodically while a print job spools, so a program can pump
+messages and offer a cancel button. Return FALSE to cancel the job.
+
+@param device The printer device context.
+@param error Zero, or SP_OUTOFDISK if the spooler is waiting for disk
+       space.
+@return TRUE to continue printing, FALSE to cancel.
+
+
+## SENDASYNCPROC(window, message, context, result)
+Completion callback for SendMessageCallback, called when the target window
+has processed the message.
+
+No Windows CE ROM exports SendMessageCallback, so the type is only there for
+source compatibility.
+
+@param window The window the message was sent to.
+@param message The message that was sent.
+@param context The value given to SendMessageCallback.
+@param result The window procedure's result.
+
+
+## GRAYSTRINGPROC(device, data, length)
+Output callback for GrayStringW, which draws text in a greyed style.
+
+No Windows CE ROM exports GrayStringW; use DrawTextW with a grey colour
+instead.
+
+@param device A memory device context to draw into.
+@param data The data pointer given to GrayStringW.
+@param length The length given to GrayStringW.
+@return TRUE on success, FALSE on failure.
+
+
+## DRAWSTATEPROC(device, data, flags, width, height)
+Drawing callback for DrawStateW with DST_COMPLEX, called to draw the image
+that DrawStateW then renders in the requested state.
+
+No Windows CE ROM exports DrawStateW, so the type is only there for source
+compatibility.
+
+@param device The device context to draw into.
+@param data The lData given to DrawStateW.
+@param flags The wData given to DrawStateW.
+@param width Width of the image, in pixels.
+@param height Height of the image, in pixels.
+@return TRUE on success, FALSE on failure.
+
+
+## PFNLVCOMPARE(first, second, context)
+Comparison callback for ListView_SortItems and LVM_SORTITEMS.
+
+The list view calls it each time it needs the order of two items, passing
+the items' lParam values rather than their indexes, which change during the
+sort.
+
+@param first The lParam of the first item.
+@param second The lParam of the second item.
+@param context The lParamSort given to the sort.
+@return Negative if the first item sorts before the second, positive if
+        after, zero if equal.
+
+
+## PFNTVCOMPARE(first, second, context)
+Comparison callback for TVM_SORTCHILDRENCB, named in TVSORTCB.lpfnCompare.
+
+The tree view calls it each time it needs the order of two children of the
+item being sorted, passing their lParam values.
+
+@param first The lParam of the first item.
+@param second The lParam of the second item.
+@param context The lParam member of the TVSORTCB.
+@return Negative if the first item sorts before the second, positive if
+        after, zero if equal.
+
+
+## MONITORENUMPROC(monitor, device, clip, context)
+Display monitor enumeration callback for EnumDisplayMonitors.
+
+EnumDisplayMonitors arrives with CE 4.1. Earlier devices have one display,
+described by GetSystemMetrics and GetDeviceCaps.
+
+@param monitor The monitor found.
+@param device The device context given to EnumDisplayMonitors, clipped
+       to the monitor, or NULL.
+@param clip The monitor rectangle, intersected with the clip rectangle.
+@param context The value given to EnumDisplayMonitors.
+@return TRUE to continue enumerating, FALSE to stop.
+
+
+## ENUMRESNAMEPROCW(module, type, name, context)
+Resource name enumeration callback for EnumResourceNamesW.
+
+No Windows CE ROM exports the EnumResource functions; locate resources by
+name with FindResource instead.
+
+@param module The module being enumerated.
+@param type The resource type, a string or MAKEINTRESOURCE value.
+@param name The resource name, a string or MAKEINTRESOURCE value, valid
+       only during the call.
+@param context The value given to EnumResourceNamesW.
+@return TRUE to continue enumerating, FALSE to stop.
+
+
+## ENUMRESTYPEPROCW(module, type, context)
+Resource type enumeration callback for EnumResourceTypesW.
+
+No Windows CE ROM exports the EnumResource functions.
+
+@param module The module being enumerated.
+@param type The resource type, a string or MAKEINTRESOURCE value, valid
+       only during the call.
+@param context The value given to EnumResourceTypesW.
+@return TRUE to continue enumerating, FALSE to stop.
+
+
+## ENUMRESLANGPROCW(module, type, name, language, context)
+Resource language enumeration callback for EnumResourceLanguagesW.
+
+No Windows CE ROM exports the EnumResource functions.
+
+@param module The module being enumerated.
+@param type The resource type, a string or MAKEINTRESOURCE value.
+@param name The resource name, a string or MAKEINTRESOURCE value.
+@param language The language identifier of this copy of the resource.
+@param context The value given to EnumResourceLanguagesW.
+@return TRUE to continue enumerating, FALSE to stop.
+
+
+## PROPENUMPROCW(window, name, data)
+Window property enumeration callback for EnumPropsW.
+
+No Windows CE ROM exports the window property functions (SetPropW, GetPropW,
+EnumPropsW); keep per-window data in GWL_USERDATA or cbWndExtra instead.
+
+@param window The window whose properties are being enumerated.
+@param name The property name, or an atom in the low word if it was set
+       by atom.
+@param data The property value.
+@return TRUE to continue enumerating, FALSE to stop.
+
+
+## PROPENUMPROCEXW(window, name, data, context)
+Window property enumeration callback for EnumPropsExW, the EnumPropsW
+variant that passes a caller value through.
+
+No Windows CE ROM exports the window property functions.
+
+@param window The window whose properties are being enumerated.
+@param name The property name, or an atom in the low word if it was set
+       by atom.
+@param data The property value.
+@param context The value given to EnumPropsExW.
+@return TRUE to continue enumerating, FALSE to stop.
+
+
+## LPOVERLAPPED_COMPLETION_ROUTINE(error, transferred, overlapped)
+Completion routine for ReadFileEx and WriteFileEx, called when the
+asynchronous transfer finishes and the thread is in an alertable wait.
+
+Windows CE has no overlapped I/O: no ROM exports ReadFileEx, WriteFileEx or
+the alertable waits, and the lpOverlapped parameter of ReadFile must be
+NULL. Use a thread instead.
+
+@param error 0 on success, or the error code.
+@param transferred Bytes read or written.
+@param overlapped The OVERLAPPED given to the I/O call.
+
+
+## PAPCFUNC(parameter)
+Asynchronous procedure call function for QueueUserAPC, run on the target
+thread when it next enters an alertable wait.
+
+No Windows CE ROM exports QueueUserAPC or the alertable waits (SleepEx,
+WaitForSingleObjectEx).
+
+@param parameter The value given to QueueUserAPC.
+
+
+## PTIMERAPCROUTINE(context, low_time, high_time)
+Completion routine for SetWaitableTimer, run as an APC on the setting thread
+when the timer fires and the thread is in an alertable wait.
+
+No Windows CE ROM exports waitable timers; use SetTimer or a thread that
+sleeps.
+
+@param context The value given to SetWaitableTimer.
+@param low_time Low 32 bits of the time the timer fired, as a FILETIME.
+@param high_time High 32 bits of that time.
+
+
+## PTOP_LEVEL_EXCEPTION_FILTER(exception)
+Top-level exception filter set with SetUnhandledExceptionFilter, called when
+no frame-based handler takes an exception.
+
+No Windows CE ROM exports SetUnhandledExceptionFilter. grimace programs also
+have no .pdata, so CE can't unwind their frames and __try doesn't work in
+them; a fault ends the process. LPTOP_LEVEL_EXCEPTION_FILTER is the same
+type.
+
+@param exception The exception record and context, as
+       GetExceptionInformation returns.
+@return EXCEPTION_EXECUTE_HANDLER to end the process,
+        EXCEPTION_CONTINUE_EXECUTION to resume at the faulting
+        instruction, or EXCEPTION_CONTINUE_SEARCH for the default
+        handling.
+
+
+## MSGBOXCALLBACK(help)
+Help callback named in MSGBOXPARAMSW.lpfnMsgBoxCallback, called by
+MessageBoxIndirectW when the user asks for help in the message box
+(WM_HELP).
+
+MessageBoxIndirectW needs CE 3.0 or later.
+
+@param help The HELPINFO describing the request: its dwContextId is the
+       dwContextHelpId from the MSGBOXPARAMSW.
+
+
+## LINEDDAPROC(x, y, context)
+Per-pixel callback for LineDDA, called once for each point on a line between
+two coordinates.
+
+No Windows CE ROM exports LineDDA; step the line yourself.
+
+@param x The point's x-coordinate.
+@param y The point's y-coordinate.
+@param context The value given to LineDDA.
+
+
+## ENHMFENUMPROC(device, handles, record, count, context)
+Record enumeration callback for EnumEnhMetaFile, called once per record of
+an enhanced metafile.
+
+No Windows CE ROM exports EnumEnhMetaFile, so metafiles can't be walked this
+way on those targets.
+
+@param device The device context given to EnumEnhMetaFile.
+@param handles The metafile's handle table, for PlayEnhMetaFileRecord.
+@param record The record to process.
+@param count Number of handles in the table.
+@param context The value given to EnumEnhMetaFile.
+@return Non-zero to continue enumerating, zero to stop.
+
+## HWAVEOUT
+Handle to an open waveform output device, from waveOutOpen (CE 2.0 and
+later; 2.11 on ARM).
+
+Queue buffers with waveOutWrite, stop with waveOutReset and close with
+waveOutClose. Also accepted where an HWAVE is asked for.
+
+## HWAVEIN
+Handle to an open waveform input device, from waveInOpen (CE 2.0 and
+later; 2.11 on ARM).
+
+Supply buffers with waveInAddBuffer, start with waveInStart and close with
+waveInClose.
+
+## HWAVE
+Either an HWAVEOUT or an HWAVEIN: the generic handle the shared waveform
+functions take. Cast one of the specific handles to it.
+
+## HMIDIOUT
+Handle to an open MIDI output device, from midiOutOpen.
+
+No Windows CE ROM exports the MIDI functions, so the type is only there
+for source compatibility.
+
+## HMIDIIN
+Handle to an open MIDI input device, from midiInOpen. No Windows CE ROM
+exports the MIDI functions; source compatibility only.
+
+## HMIDISTRM
+Handle to a MIDI stream, from midiStreamOpen. No Windows CE ROM exports
+the MIDI functions; source compatibility only.
+
+## HMIDI
+Either an HMIDIOUT or an HMIDIIN, for the shared MIDI functions. No
+Windows CE ROM exports them; source compatibility only.
+
+## HMIXER
+Handle to an open audio mixer, from mixerOpen (CE 4.1 and later; 4.2 on
+MIPS).
+
+Read and set its lines and controls through the mixer functions, and
+close with mixerClose. Earlier ROMs export no mixer functions.
+
+## HMIXEROBJ
+Any object the mixer functions can address: an HMIXER, or a waveform
+device handle with the matching MIXER_OBJECTF flag. Cast the specific
+handle to it.
+
+## HMMIO
+Handle to an open multimedia file, from mmioOpen.
+
+No Windows CE ROM exports the mmio functions; read .wav files with
+CreateFileW and ReadFile instead. Source compatibility only.
+
+## HDRVR
+Handle to an installable driver, from OpenDriver. No Windows CE ROM
+exports the installable driver functions; source compatibility only.
+
+## HACMDRIVERID
+Identifier of an installed audio compression manager driver, as
+acmDriverEnum passes to its callback and acmDriverID reports for an open
+driver (CE 2.0 and later; 2.11 on ARM).
+
+It identifies the driver without opening it; acmDriverOpen turns it into
+an HACMDRIVER.
+
+## HACMDRIVER
+Handle to an open audio compression manager driver, from acmDriverOpen
+(CE 2.0 and later; 2.11 on ARM).
+
+Pass it to acmStreamOpen to convert through that driver, or NULL to let
+the manager choose. Close with acmDriverClose.
+
+## HACMSTREAM
+Handle to an audio conversion stream, from acmStreamOpen (CE 2.0 and
+later; 2.11 on ARM).
+
+Convert buffers with acmStreamConvert, after preparing their headers with
+acmStreamPrepareHeader, and close with acmStreamClose.
+
+## HACMOBJ
+Any audio compression manager object: an HACMDRIVERID, HACMDRIVER or
+HACMSTREAM, for the functions that accept several. Cast the specific
+handle to it.
+
+## HPROPSHEETPAGE
+Handle to a property sheet page, from CreatePropertySheetPageW.
+
+Put it in the phpage array of a PROPSHEETHEADERW for PropertySheetW, which
+owns it from then on. Destroy a page that never reached a sheet with
+DestroyPropertySheetPage. Windows CE has property sheets from 1.0.
+
+## HDROP
+Handle to a dropped file list, from a WM_DROPFILES message, read with
+DragQueryFileW and released with DragFinish.
+
+No Windows CE ROM exports the drag and drop functions; source
+compatibility only.
+
+## HKL
+Handle to a keyboard layout, from GetKeyboardLayout (CE 2.11 and later)
+or LoadKeyboardLayoutW and ActivateKeyboardLayout (CE 4.2 and later).
+
+Also the type of WM_INPUTLANGCHANGE's lParam. A layout isn't freed.
+
+## HDEVNOTIFY
+Handle to a device notification registration, from
+RegisterDeviceNotification.
+
+No Windows CE ROM exports it; CE sends WM_DEVICECHANGE without
+registration, and drivers use the message queue API. Source
+compatibility only.
+
+## SC_HANDLE
+Handle to the service control manager or one of its services, from
+OpenSCManagerW and OpenServiceW.
+
+No Windows CE ROM exports the NT service functions; CE's services.exe is
+controlled through ActivateService and the device driver API. Source
+compatibility only.
+
+## HRAWINPUT
+Handle to a raw input packet, as WM_INPUT's lParam, read with
+GetRawInputData. No Windows CE ROM exports raw input; source compatibility
+only.
+
+## HWINEVENTHOOK
+Handle to a window event hook, from SetWinEventHook. No Windows CE ROM
+exports it; source compatibility only.
+
+## HMONITOR
+Handle to a display monitor, from MonitorFromWindow, MonitorFromPoint or
+EnumDisplayMonitors (CE 4.1 and later; 4.2 on MIPS).
+
+Earlier ROMs export none of the monitor functions: the one display is
+described by GetSystemMetrics and GetDeviceCaps.
+
+## HENHMETAFILE
+Handle to an enhanced metafile, from CreateEnhMetaFileW's CloseEnhMetaFile
+(CE 2.0 and later; 2.11 on ARM).
+
+Draw it with PlayEnhMetaFile and free it with DeleteEnhMetaFile.
+
+## HMETAFILE
+Handle to a Windows 3.x format metafile. No Windows CE ROM exports the
+old metafile functions; use enhanced metafiles (HENHMETAFILE). Source
+compatibility only.
+
+## HCOLORSPACE
+Handle to a colour space, from CreateColorSpaceW. No Windows CE ROM
+exports colour management; source compatibility only.
+
+## HGLRC
+Handle to an OpenGL rendering context, from wglCreateContext. No Windows
+CE ROM exports the wgl functions; source compatibility only.
+
+## HWINSTA
+Handle to an NT window station. Windows CE has one; no ROM exports the
+window station functions. Source compatibility only.
+
+## HDESK
+Handle to an NT desktop. Windows CE has one; no ROM exports the desktop
+functions. Source compatibility only.
+
+## HTERMINAL
+Handle to a terminal, an NT internal. Nothing in Windows CE uses it;
+source compatibility only.
+
+## HTASK
+Handle to a Win16 task. Nothing in Win32 or Windows CE uses it; source
+compatibility only.
+
+## HSTR
+Handle to a string resource in Win16. Nothing in Win32 or Windows CE uses
+it; source compatibility only.
+
+## HDEV
+GDI's handle for a display device, which it passes to the driver's
+DrvEnablePDEV.
+
+The driver keeps it to identify the device in later calls to GDI, such as
+EngGetDriverName. One of the display driver interface handles in
+winddi.h; applications never see it.
+
+## DHPDEV
+The driver's own handle for a physical device: whatever pointer
+DrvEnablePDEV returns.
+
+GDI stores it and passes it back to every per-device driver entry point
+(DrvEnableSurface, DrvSetPalette, DrvGetMasks), so a driver typically
+returns a pointer to its device structure. Applications never see it.
+
+## HSURF
+GDI's handle for a drawing surface, as DrvEnableSurface returns to GDI.
+
+A driver gets one from EngCreateDeviceSurface or EngCreateBitmap through
+the ENGCALLBACKS table and hands it back as the device's primary surface.
+Applications never see it.
+
+## DHSURF
+The driver's own handle for a device-managed surface: the pointer it
+gives EngCreateDeviceSurface, which GDI passes back in each SURFOBJ and
+to DrvDeleteDeviceBitmap. Applications never see it.

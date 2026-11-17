@@ -75,16 +75,52 @@ extern "C" {
 #ifndef VOID
 #define VOID void
 #endif
+/**
+ * 8-bit character (char). Narrow strings: LPSTR and friends are built on it.
+ *
+ * The Windows CE API takes only wide strings, so CHAR text only reaches the C
+ * runtime, or the API after MultiByteToWideChar (CE 2.0 and later).
+ */
 typedef char CHAR;
+/**
+ * Signed 16-bit integer (short). The x and y of POINTS.
+ */
 typedef short SHORT;
+/**
+ * Signed 32-bit integer (long).
+ *
+ * long is 32 bits on MIPS, SH3, x86 and ARM, so LONG, int and the pointer
+ * types are all the same size. The base of LPARAM, LRESULT and HRESULT.
+ */
 typedef long LONG;
 typedef char CCHAR, *PCCHAR;
-typedef unsigned char UCHAR,*PUCHAR;
-typedef unsigned short USHORT,*PUSHORT;
-typedef unsigned long ULONG,*PULONG;
+/**
+ * Unsigned 8-bit integer (unsigned char). The same as BYTE.
+ */
+typedef unsigned char UCHAR;
+typedef unsigned char *PUCHAR;
+/**
+ * Unsigned 16-bit integer (unsigned short). The same size as WORD.
+ */
+typedef unsigned short USHORT;
+typedef unsigned short *PUSHORT;
+/**
+ * Unsigned 32-bit integer (unsigned long). The same size and sign as DWORD;
+ * used mostly by the NT-derived parts of the headers.
+ */
+typedef unsigned long ULONG;
+typedef unsigned long *PULONG;
 typedef char *PSZ;
 
-typedef void *PVOID,*LPVOID;
+/**
+ * Pointer to anything (void *). The same as LPVOID.
+ */
+typedef void *PVOID;
+/**
+ * Pointer to anything (void *). Buffers, caller-defined context passed through
+ * callbacks, and raw memory. PVOID is the same type.
+ */
+typedef void *LPVOID;
 
 /* FIXME for __WIN64 */
 #ifndef  __ptr64
@@ -98,16 +134,91 @@ typedef void* __ptr64 PVOID64;
 #define _WCHAR_T_
 #undef __need_wchar_t
 #ifndef __cplusplus
+/**
+ * Wide character type. In C these headers typedef it as unsigned short
+ * (winnt.h, guarded by _WCHAR_T_DEFINED); in C++ it's the keyword.
+ *
+ * grimace compiles with -fshort-wchar, so either way it's 16 bits and
+ * unsigned, and L"..." literals match. Code built without that flag would have
+ * a 32-bit wchar_t and can't share wide strings with the ROM.
+ */
 typedef unsigned short wchar_t;
 #endif
 #endif
 #endif
 
+/**
+ * 16-bit wide character (unsigned short): one UTF-16 code unit. The
+ * character type of every string the Windows CE API takes or returns.
+ *
+ * grimace compiles with -fshort-wchar, so L"..." literals and wchar_t are
+ * 16-bit in both C and C++, matching the ROM.
+ */
 typedef wchar_t WCHAR;
-typedef WCHAR *PWCHAR,*LPWCH,*PWCH,*NWPSTR,*LPWSTR,*PWSTR;
-typedef CONST WCHAR *LPCWCH,*PCWCH,*LPCWSTR,*PCWSTR;
-typedef CHAR *PCHAR,*LPCH,*PCH,*NPSTR,*LPSTR,*PSTR;
-typedef CONST CHAR *LPCCH,*PCSTR,*LPCSTR;
+typedef WCHAR *PWCHAR;
+/**
+ * Pointer to a WCHAR.
+ *
+ * See WCHAR: 16-bit wide character (unsigned short): one UTF-16 code unit.
+ */
+typedef WCHAR *LPWCH;
+typedef WCHAR *PWCH;
+typedef WCHAR *NWPSTR;
+/**
+ * Pointer to a writable wide (WCHAR) string: a buffer the callee fills. PWSTR
+ * is the same type. The string type of the Windows CE API.
+ */
+typedef WCHAR *LPWSTR;
+/**
+ * Pointer to a writable wide (WCHAR) string. The same as LPWSTR.
+ */
+typedef WCHAR *PWSTR;
+typedef CONST WCHAR *LPCWCH;
+typedef CONST WCHAR *PCWCH;
+/**
+ * Pointer to a read-only wide (WCHAR) string: text the callee only reads.
+ * PCWSTR is the same type. Most API string parameters are this.
+ */
+typedef CONST WCHAR *LPCWSTR;
+/**
+ * Pointer to a read-only wide (WCHAR) string. The same as LPCWSTR.
+ */
+typedef CONST WCHAR *PCWSTR;
+/**
+ * Pointer to a CHAR.
+ *
+ * See CHAR: 8-bit character (char).
+ */
+typedef CHAR *PCHAR;
+/**
+ * Pointer to a CHAR.
+ *
+ * See CHAR: 8-bit character (char).
+ */
+typedef CHAR *LPCH;
+typedef CHAR *PCH;
+typedef CHAR *NPSTR;
+/**
+ * Pointer to a writable narrow (CHAR) string. PSTR is the same type.
+ *
+ * The Windows CE API itself takes no narrow strings; LPSTR appears in the C
+ * runtime and in a few structures. Convert with MultiByteToWideChar (CE 2.0
+ * and later) before passing text to the API.
+ */
+typedef CHAR *LPSTR;
+/**
+ * Pointer to a writable narrow (CHAR) string. The same as LPSTR.
+ */
+typedef CHAR *PSTR;
+typedef CONST CHAR *LPCCH;
+/**
+ * Pointer to a read-only narrow (CHAR) string. The same as LPCSTR.
+ */
+typedef CONST CHAR *PCSTR;
+/**
+ * Pointer to a read-only narrow (CHAR) string. PCSTR is the same type.
+ */
+typedef CONST CHAR *LPCSTR;
 #ifndef _TCHAR_DEFINED
 #define _TCHAR_DEFINED
 #ifdef UNICODE
@@ -115,7 +226,19 @@ typedef CONST CHAR *LPCCH,*PCSTR,*LPCSTR;
  * NOTE: This tests UNICODE, which is different from the _UNICODE define
  *       used to differentiate standard C runtime calls.
  */
+/**
+ * The generic character type: WCHAR on Windows CE.
+ *
+ * The headers define UNICODE, and CE has only the wide API, so TCHAR is always
+ * WCHAR, TEXT() and _T() always make L"..." literals, and the _tcs functions
+ * in tchar.h map to the wcs ones. There's no narrow build to switch to.
+ */
 typedef WCHAR TCHAR;
+/**
+ * Same as WCHAR.
+ *
+ * See WCHAR: 16-bit wide character (unsigned short): one UTF-16 code unit.
+ */
 typedef WCHAR _TCHAR;
 #else
 typedef CHAR TCHAR;
@@ -123,7 +246,22 @@ typedef CHAR _TCHAR;
 #endif
 #endif
 typedef TCHAR TBYTE,*PTCH,*PTBYTE;
-typedef TCHAR *LPTCH,*PTSTR,*LPTSTR,*LP,*PTCHAR;
+typedef TCHAR *LPTCH;
+/**
+ * Pointer to a writable generic (TCHAR) string. The same as LPTSTR, so LPWSTR
+ * here.
+ */
+typedef TCHAR *PTSTR;
+/**
+ * Pointer to a writable generic (TCHAR) string. On Windows CE TCHAR is always
+ * WCHAR, so this is LPWSTR under another name.
+ */
+typedef TCHAR *LPTSTR;
+typedef TCHAR *LP;
+typedef TCHAR *PTCHAR;
+/**
+ * Pointer to a read-only generic (TCHAR) string. Always LPCWSTR on Windows CE.
+ */
 typedef const TCHAR *LPCTSTR;
 #ifdef UNICODE
 /*
@@ -155,17 +293,54 @@ typedef const TCHAR *LPCTSTR;
  */
 #define TEXT(q) __TEXT(q)    
 typedef SHORT *PSHORT;
+/**
+ * Pointer to a LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG *PLONG;
 #ifdef STRICT
+/**
+ * Opaque handle to a kernel object: a file, event, mutex, semaphore, process,
+ * thread, find context or similar.
+ *
+ * A void *, 32 bits on every grimace target. Most functions return NULL on
+ * failure; CreateFileW and FindFirstFileW return INVALID_HANDLE_VALUE, so
+ * check for the right one. Close with CloseHandle, except find handles
+ * (FindClose) and modules (FreeLibrary). Windows CE doesn't support handle
+ * inheritance or per-handle access rights, so security attributes are always
+ * NULL.
+ */
 typedef void *HANDLE;
 #define DECLARE_HANDLE(n) typedef struct n##__{int i;}*n
 #else
 typedef PVOID HANDLE;
 #define DECLARE_HANDLE(n) typedef HANDLE n
 #endif
-typedef HANDLE *PHANDLE,*LPHANDLE;
+/**
+ * Pointer to a HANDLE.
+ *
+ * See HANDLE: Opaque handle to a kernel object: a file, event, mutex, semaphore, process, thread, find context or similar.
+ */
+typedef HANDLE *PHANDLE;
+/**
+ * Pointer to a HANDLE.
+ *
+ * See HANDLE: Opaque handle to a kernel object: a file, event, mutex, semaphore, process, thread, find context or similar.
+ */
+typedef HANDLE *LPHANDLE;
+/**
+ * Locale identifier: a DWORD with the LANGID in the low word and the sort
+ * order in the high word. From GetUserDefaultLCID (CE 2.0 and later) or
+ * MAKELCID; passed to the winnls functions.
+ */
 typedef DWORD LCID;
 typedef PDWORD PLCID;
+/**
+ * Language identifier: a WORD holding a primary language in the low 10 bits
+ * and a sublanguage in the high 6 bits. Build with MAKELANGID, read with
+ * PRIMARYLANGID and SUBLANGID; GetSystemDefaultLangID returns one.
+ */
 typedef WORD LANGID;
 #ifdef __GNUC__
 #define _HAVE_INT64
@@ -176,14 +351,29 @@ typedef WORD LANGID;
 #define _HAVE_INT64
 #endif /* __GNUC__/__WATCOMC */
 #if defined(_HAVE_INT64) || (defined(_INTEGRAL_MAX_BITS) && _INTEGRAL_MAX_BITS >= 64)
+/**
+ * Signed 64-bit integer (long long, Microsoft's __int64).
+ *
+ * 64-bit division comes from compiler-rt on targets without it. Print with
+ * %lld or Microsoft's I64 modifier (PRId64 in inttypes.h); the runtime's
+ * printf takes both.
+ */
 typedef __int64 LONGLONG;
+/**
+ * Unsigned 64-bit integer (unsigned long long, Microsoft's unsigned __int64).
+ * ULONGLONG is a typedef of it. Print with %llu or PRIu64.
+ */
 typedef unsigned __int64 DWORDLONG;
 #else
 typedef double LONGLONG,DWORDLONG;
 #endif
 typedef LONGLONG *PLONGLONG;
 typedef DWORDLONG *PDWORDLONG;
-typedef DWORDLONG ULONGLONG,*PULONGLONG;
+/**
+ * Unsigned 64-bit integer. A typedef of DWORDLONG (unsigned long long).
+ */
+typedef DWORDLONG ULONGLONG;
+typedef DWORDLONG *PULONGLONG;
 typedef LONGLONG USN;
 #ifdef _HAVE_INT64
 #define Int32x32To64(a,b) ((LONGLONG)(a)*(LONGLONG)(b))
@@ -194,7 +384,13 @@ typedef LONGLONG USN;
 #endif
 #define ANSI_NULL '\0'
 #define UNICODE_NULL L'\0'
-typedef BYTE BOOLEAN,*PBOOLEAN;
+/**
+ * Same as BYTE.
+ *
+ * See BYTE: Unsigned 8-bit integer (unsigned char).
+ */
+typedef BYTE BOOLEAN;
+typedef BYTE *PBOOLEAN;
 #endif
 typedef BYTE FCHAR;
 typedef WORD FSHORT;
@@ -2010,7 +2206,13 @@ typedef DWORD FLONG;
 #define IO_REPARSE_TAG_SYMLINK 0xA000000C
 #define WT_SET_MAX_THREADPOOL_THREADS(Flags,Limit) ((Flags)|=(Limit)<<16)
 #ifndef RC_INVOKED
-typedef DWORD ACCESS_MASK, *PACCESS_MASK;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
+typedef DWORD ACCESS_MASK;
+typedef DWORD *PACCESS_MASK;
 
 #ifdef _GUID_DEFINED
 # warning _GUID_DEFINED is deprecated, use GUID_DEFINED instead
@@ -2834,7 +3036,13 @@ typedef union _ULARGE_INTEGER {
    * Specifies a 64-bit unsigned integer.
    */
   ULONGLONG QuadPart;
-} ULARGE_INTEGER, *PULARGE_INTEGER;
+} ULARGE_INTEGER;
+/**
+ * Pointer to a ULARGE_INTEGER.
+ *
+ * See ULARGE_INTEGER: This union provides a 64-bit data type which is accessible as two DWORDs or as a single DWORDLONG.
+ */
+typedef ULARGE_INTEGER *PULARGE_INTEGER;
 typedef struct _LUID {
   DWORD LowPart;
   LONG HighPart;
@@ -2870,6 +3078,11 @@ typedef struct _SECURITY_QUALITY_OF_SERVICE {
 	SECURITY_CONTEXT_TRACKING_MODE ContextTrackingMode;
 	BOOLEAN EffectiveOnly;
 } SECURITY_QUALITY_OF_SERVICE,*PSECURITY_QUALITY_OF_SERVICE;
+/**
+ * Same as PVOID.
+ *
+ * See PVOID: Pointer to anything (void *).
+ */
 typedef PVOID PACCESS_TOKEN;
 typedef struct _SE_IMPERSONATION_STATE {
 	PACCESS_TOKEN Token;
@@ -2880,6 +3093,11 @@ typedef struct _SE_IMPERSONATION_STATE {
 typedef struct _SID_IDENTIFIER_AUTHORITY {
 	BYTE Value[6];
 } SID_IDENTIFIER_AUTHORITY,*PSID_IDENTIFIER_AUTHORITY,*LPSID_IDENTIFIER_AUTHORITY;
+/**
+ * Same as PVOID.
+ *
+ * See PVOID: Pointer to anything (void *).
+ */
 typedef PVOID PSID;
 typedef struct _SID {
    BYTE  Revision;
@@ -2894,7 +3112,13 @@ typedef struct _SID_AND_ATTRIBUTES {
 typedef SID_AND_ATTRIBUTES SID_AND_ATTRIBUTES_ARRAY[ANYSIZE_ARRAY];
 typedef SID_AND_ATTRIBUTES_ARRAY *PSID_AND_ATTRIBUTES_ARRAY;
 #if (_WIN32_WINNT >= 0x0600)
-typedef ULONG_PTR SID_HASH_ENTRY, *PSID_HASH_ENTRY;
+/**
+ * Same as ULONG_PTR.
+ *
+ * See ULONG_PTR: Unsigned integer the size of a pointer: unsigned long, 32 bits here.
+ */
+typedef ULONG_PTR SID_HASH_ENTRY;
+typedef ULONG_PTR *PSID_HASH_ENTRY;
 typedef struct _SID_AND_ATTRIBUTES_HASH {
 	DWORD SidCount;
 	PSID_AND_ATTRIBUTES SidAttr;
@@ -2971,8 +3195,30 @@ typedef struct _TOKEN_ACCESS_INFORMATION {
 	DWORD Flags;
 } TOKEN_ACCESS_INFORMATION, *PTOKEN_ACCESS_INFORMATION;
 #endif
-typedef DWORD SECURITY_INFORMATION,*PSECURITY_INFORMATION;
-typedef WORD SECURITY_DESCRIPTOR_CONTROL,*PSECURITY_DESCRIPTOR_CONTROL;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
+typedef DWORD SECURITY_INFORMATION;
+/**
+ * Pointer to a DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
+typedef DWORD *PSECURITY_INFORMATION;
+/**
+ * Same as WORD.
+ *
+ * See WORD: Unsigned 16-bit integer (unsigned short).
+ */
+typedef WORD SECURITY_DESCRIPTOR_CONTROL;
+/**
+ * Pointer to a WORD.
+ *
+ * See WORD: Unsigned 16-bit integer (unsigned short).
+ */
+typedef WORD *PSECURITY_DESCRIPTOR_CONTROL;
 typedef struct _SECURITY_DESCRIPTOR {
 	BYTE Revision;
 	BYTE Sbz1;
@@ -3197,7 +3443,13 @@ typedef struct _MEMORY_BASIC_INFORMATION {
 	 * (that is, not shared by other processes).
 	 */
 	DWORD Type;
-} MEMORY_BASIC_INFORMATION,*PMEMORY_BASIC_INFORMATION;
+} MEMORY_BASIC_INFORMATION;
+/**
+ * Pointer to a MEMORY_BASIC_INFORMATION.
+ *
+ * See MEMORY_BASIC_INFORMATION: This structure contains information about a range of pages in the virtual address space of a process.
+ */
+typedef MEMORY_BASIC_INFORMATION *PMEMORY_BASIC_INFORMATION;
 typedef struct _MESSAGE_RESOURCE_ENTRY {
 	WORD Length;
 	WORD Flags;

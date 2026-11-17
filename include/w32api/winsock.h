@@ -34,6 +34,13 @@ typedef unsigned int	u_int;
 typedef unsigned long	u_long;
 #define _BSDTYPES_DEFINED
 #endif /* !defined  _BSDTYPES_DEFINED */
+/**
+ * Winsock socket descriptor, from socket or accept.
+ *
+ * An unsigned int (u_int), not a HANDLE: compare against INVALID_SOCKET, not
+ * NULL or INVALID_HANDLE_VALUE, and close with closesocket. These headers have
+ * Winsock 1.1 (winsock.h); there's no winsock2.h.
+ */
 typedef u_int	SOCKET;
 #ifndef FD_SETSIZE
 #define FD_SETSIZE	64
@@ -340,6 +347,11 @@ typedef struct WSAData {
 	 */
 	char * 	lpVendorInfo;
 } WSADATA;
+/**
+ * Pointer to a WSADATA.
+ *
+ * See WSADATA: This structure is used to store Windows Sockets initialization data returned by a call to WSAStartup.
+ */
 typedef WSADATA *LPWSADATA;
 
 #if !(defined (__INSIDE_CYGWIN__) || defined (__INSIDE_MSYS__))

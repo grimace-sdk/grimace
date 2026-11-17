@@ -91,7 +91,7 @@ def strip_indented_docstring(text, start):
 
 
 def struct_braces(text, name):
-    for match in re.finditer(r"\}\s*(?:[*\w]+\s*,\s*)*%s\s*[,;]" % re.escape(name), text):
+    for match in re.finditer(r"\}\s*(?:[*\w]+\s*,\s*)*\**%s\s*[,;]" % re.escape(name), text):
         close = match.start()
         depth = 0
         for index in range(close, -1, -1):
@@ -146,6 +146,134 @@ def document_define(text, entry, name):
         return text, "not declared"
     before, after = strip_docstring(text, match.start())
     return before + docstring(entry, None) + after, None
+
+
+TYPEDEF_TAIL = re.compile(r"([\s*]*)([A-Za-z_]\w*)\s*((?:\[[^\]]*\])*)\s*$")
+
+
+def split_typedef(statement):
+    parts = split_parameters(statement)
+    match = TYPEDEF_TAIL.search(parts[0])
+    if not match:
+        return None, []
+    base = parts[0][:match.start()].strip()
+    return base, [parts[0][match.start():].strip()] + [part.strip() for part in parts[1:]]
+
+
+def typedef_statement(text, name):
+    pattern = r"^[ \t]*typedef\b([^;{}()]*?)[\s*]%s\s*(?:\[[^\]]*\]\s*)*(?:,[^;{}()]*)?;" % re.escape(name)
+    return next((match for match in re.finditer(pattern, text, re.M) if not in_macro(text, match.start())), None)
+
+
+def document_typedef(text, entry, name):
+    handle = re.search(r"^[ \t]*(?:DECLARE_HANDLE\(\s*%s\s*\)|typedef struct %s__\s*\{\s*int i;\s*\}\s*\*\s*%s);" % ((re.escape(name),) * 3), text, re.M)
+    if handle:
+        text = text[:handle.start()] + "typedef struct %s__ { int i; } *%s;" % (name, name) + text[handle.end():]
+        before, after = strip_docstring(text, handle.start())
+        return before + docstring(entry, None) + after, None
+    pointer = re.search(r"^[ \t]*typedef\b[^;{}]*?\(\s*(?:WINAPI|CALLBACK|APIENTRY)?\s*\*\s*%s\s*\)\s*\(" % re.escape(name), text, re.M)
+    if pointer:
+        problem = None
+        if entry["parameters"]:
+            text, problem = name_parameters(text, pointer.end() - 1, entry["parameters"])
+        before, after = strip_docstring(text, pointer.start())
+        return before + docstring(entry, None) + after, problem
+    plain = typedef_statement(text, name)
+    if plain:
+        statement = text[plain.start():plain.end()]
+        indent = statement[:len(statement) - len(statement.lstrip())]
+        base, declarators = split_typedef(statement.strip()[len("typedef"):-1])
+        if len(declarators) > 1:
+            rewritten = "".join("%stypedef %s %s;\n" % (indent, base, declarator) for declarator in declarators).rstrip("\n")
+            text = text[:plain.start()] + rewritten + text[plain.end():]
+            plain = typedef_statement(text, name)
+        before, after = strip_docstring(text, plain.start())
+        return before + docstring(entry, None) + after, None
+    braces = struct_braces(text, name)
+    if braces:
+        open_brace, close_brace = braces
+        end = text.find(";", close_brace)
+        tail = [declarator.strip() for declarator in text[close_brace + 1:end].split(",")]
+        if tail[0] == name:
+            before, after = strip_docstring(text, statement_start(text, open_brace))
+            return before + docstring(entry, None) + after, None
+        plain_names = [declarator for declarator in tail if not declarator.startswith("*")]
+        tag = re.search(r"typedef\s+(struct|union)\s+(\w+)\s*\{?\s*$", text[statement_start(text, open_brace):open_brace + 1])
+        base = plain_names[0] if plain_names else "%s %s" % (tag.group(1), tag.group(2)) if tag else None
+        if not base:
+            return text, "no name for the %s to point at" % name
+        declarator = next(declarator for declarator in tail if declarator.lstrip("*") == name)
+        remaining = ",".join(other for other in tail if other != declarator)
+        if not remaining:
+            before, after = strip_docstring(text, statement_start(text, open_brace))
+            return before + docstring(entry, None) + after, None
+        line_end = text.find("\n", end)
+        text = (text[:close_brace + 1] + " " + remaining + ";" + text[end + 1:line_end] + "\n"
+                + docstring(entry, None) + "typedef %s %s;" % (base, declarator) + text[line_end:])
+        return text, None
+    return text, "not declared"
+
+
+BASE_QUALIFIERS = QUALIFIERS | BASIC_TYPES | {"far", "near", "FAR", "NEAR", "__cdecl", "WINAPI", "CALLBACK", "APIENTRY"}
+
+
+def first_sentence(entry):
+    paragraph = " ".join(line.strip() for line in entry["body"] if line.strip()).split("@")[0].strip()
+    sentence = re.split(r"(?<=[.!?])\s", paragraph)[0].strip()
+    return sentence if sentence.endswith((".", "!", "?")) else sentence + "."
+
+
+def base_name(base):
+    words = [word for word in re.findall(r"[A-Za-z_]\w*", base) if word not in BASE_QUALIFIERS]
+    return words[-1] if len(words) == 1 else None
+
+
+def derived_entry(declarator, base, entries):
+    stars = declarator.count("*")
+    if stars > 1 or "[" in declarator:
+        return None
+    constant = bool(re.search(r"\b(const|CONST)\b", base))
+    name = base_name(base)
+    if not name or name not in entries or entries[name]["parameters"]:
+        return None
+    if stars:
+        body = ["Pointer to a %s%s." % ("const " if constant else "", name)]
+    elif constant:
+        return None
+    else:
+        body = ["Same as %s." % name]
+    return {"parameters": [], "body": body + ["", "See %s: %s" % (name, first_sentence(entries[name]))], "source": "derived"}
+
+
+def derived_entries(texts, entries):
+    derived = {}
+    mentions = {}
+    for text in texts.values():
+        for word in re.findall(r"[A-Za-z_]\w*", text):
+            mentions[word] = mentions.get(word, 0) + 1
+    for text in texts.values():
+        for match in re.finditer(r"^[ \t]*typedef\b([^;{}()]*);", text, re.M):
+            if in_macro(text, match.start()):
+                continue
+            base, declarators = split_typedef(match.group(1))
+            for declarator in declarators:
+                name = declarator.lstrip("*")
+                if name not in entries and name not in derived and mentions.get(name, 0) > 1:
+                    entry = derived_entry(declarator, base, entries)
+                    if entry:
+                        derived[name] = entry
+        for match in re.finditer(r"\}\s*([^;{}]*?);", text):
+            tail = [declarator.strip() for declarator in match.group(1).split(",")]
+            plain = [declarator for declarator in tail if declarator and not declarator.startswith("*")]
+            if not plain or plain[0] not in entries:
+                continue
+            for declarator in tail:
+                name = declarator.lstrip("*")
+                if declarator.startswith("*") and name.endswith(plain[0]) and name not in entries and name not in derived and mentions.get(name, 0) > 1:
+                    entry = derived_entry(declarator, plain[0], entries)
+                    if entry:
+                        derived[name] = entry
+    return derived
 
 
 def docstring(entry, note):
@@ -257,6 +385,8 @@ def declaration(text, name):
         line = text[line_start:match.start()]
         if line.lstrip().startswith(("#", "/", "*")) or re.search(r"[=;]", line) or "__typeof__" in line:
             continue
+        if re.match(r"\s*(?:WINAPI|CALLBACK|APIENTRY)?\s*\*", text[match.end():]):
+            continue
         end = text.find(";", match.end())
         if end < 0 or "{" in text[match.end():end]:
             continue
@@ -277,6 +407,7 @@ def apply(entries):
     texts = {path: open(path, errors="replace").read() for path in paths}
     changed = set()
     problems = []
+    entries = {**derived_entries(texts, entries), **entries}
     for name in sorted(entries):
         entry = entries[name]
         if any(line.startswith("@member ") for line in entry["body"]):
@@ -289,12 +420,21 @@ def apply(entries):
             continue
         path, found = find_declaration(texts, name)
         if not found:
-            path = next((path for path, text in texts.items() if re.search(r"^[ \t]*#[ \t]*define[ \t]+%s\b" % re.escape(name), text, re.M)), None)
-            if not path:
-                problems.append("%s: not declared" % name)
-                continue
-            texts[path], problem = document_define(texts[path], entry, name)
-            changed.add(path)
+            for path, text in texts.items():
+                text, problem = document_typedef(text, entry, name)
+                if problem != "not declared":
+                    texts[path] = text
+                    changed.add(path)
+                    if problem:
+                        problems.append("%s: %s" % (name, problem))
+                    break
+            else:
+                path = next((path for path, text in texts.items() if re.search(r"^[ \t]*#[ \t]*define[ \t]+%s\b" % re.escape(name), text, re.M)), None)
+                if not path:
+                    problems.append("%s: not declared" % name)
+                    continue
+                texts[path], problem = document_define(texts[path], entry, name)
+                changed.add(path)
             continue
         text = texts[path]
         name_start, open_paren = found
@@ -325,4 +465,4 @@ if __name__ == "__main__":
     problems = apply(entries)
     for problem in problems:
         print("mkdocs: %s" % problem, file=sys.stderr)
-    print("mkdocs: %d functions documented, %d problems" % (len(entries), len(problems)))
+    print("mkdocs: %d entries applied, %d problems" % (len(entries), len(problems)))

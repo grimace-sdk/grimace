@@ -7,6 +7,11 @@
 extern "C" {
 #endif
 
+/**
+ * Same as WCHAR.
+ *
+ * See WCHAR: 16-bit wide character (unsigned short): one UTF-16 code unit.
+ */
 typedef WCHAR OLECHAR;
 typedef OLECHAR *BSTR;
 typedef const OLECHAR *LPCOLESTR;
@@ -15,6 +20,11 @@ typedef CLSID *LPCLSID;
 typedef OLECHAR *LPOLESTR;
 typedef GUID IID;
 typedef unsigned short VARTYPE;
+/**
+ * Same as WORD.
+ *
+ * See WORD: Unsigned 16-bit integer (unsigned short).
+ */
 typedef WORD CLIPFORMAT;
 typedef double DOUBLE;
 union tagCY;
@@ -106,7 +116,17 @@ enum tagMSHLFLAGS {
 };
 
 typedef enum tagMSHLFLAGS MSHLFLAGS;
+/**
+ * Same as ULONG.
+ *
+ * See ULONG: Unsigned 32-bit integer (unsigned long).
+ */
 typedef ULONG PROPID;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG SCODE;
 typedef SCODE *PSCODE;
 struct tagRemHBITMAP;

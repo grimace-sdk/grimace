@@ -7,15 +7,67 @@
 extern "C" {
 #endif
 
-DECLARE_HANDLE(HSURF);
-DECLARE_HANDLE(DHSURF);
-DECLARE_HANDLE(DHPDEV);
-DECLARE_HANDLE(HDEV);
+/**
+ * GDI's handle for a drawing surface, as DrvEnableSurface returns to GDI.
+ *
+ * A driver gets one from EngCreateDeviceSurface or EngCreateBitmap through
+ * the ENGCALLBACKS table and hands it back as the device's primary surface.
+ * Applications never see it.
+ */
+typedef struct HSURF__ { int i; } *HSURF;
+/**
+ * The driver's own handle for a device-managed surface: the pointer it
+ * gives EngCreateDeviceSurface, which GDI passes back in each SURFOBJ and
+ * to DrvDeleteDeviceBitmap. Applications never see it.
+ */
+typedef struct DHSURF__ { int i; } *DHSURF;
+/**
+ * The driver's own handle for a physical device: whatever pointer
+ * DrvEnablePDEV returns.
+ *
+ * GDI stores it and passes it back to every per-device driver entry point
+ * (DrvEnableSurface, DrvSetPalette, DrvGetMasks), so a driver typically
+ * returns a pointer to its device structure. Applications never see it.
+ */
+typedef struct DHPDEV__ { int i; } *DHPDEV;
+/**
+ * GDI's handle for a display device, which it passes to the driver's
+ * DrvEnablePDEV.
+ *
+ * The driver keeps it to identify the device in later calls to GDI, such as
+ * EngGetDriverName. One of the display driver interface handles in
+ * winddi.h; applications never see it.
+ */
+typedef struct HDEV__ { int i; } *HDEV;
 
+/**
+ * 32-bit flags field (DWORD), from the NT display driver interface. The
+ * winddi.h structures use it for their flag members.
+ */
 typedef ULONG FLONG;
+/**
+ * Same as ULONG.
+ *
+ * See ULONG: Unsigned 32-bit integer (unsigned long).
+ */
 typedef ULONG MIX;
+/**
+ * Same as ULONG.
+ *
+ * See ULONG: Unsigned 32-bit integer (unsigned long).
+ */
 typedef ULONG ROP4;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG FIX;
+/**
+ * Same as FLOAT.
+ *
+ * See FLOAT: 32-bit IEEE single precision float.
+ */
 typedef FLOAT FLOATL;
 
 typedef union _FLOAT_LONG {
@@ -676,7 +728,13 @@ typedef struct _ENGCALLBACKS {
      * PAL_RGB or PAL_BGR.
      */
     HPALETTE (*EngCreatePalette)(ULONG iMode, ULONG cColors, PULONG pulColors, FLONG flRed, FLONG flGreen, FLONG flBlue);
-} ENGCALLBACKS, *PENGCALLBACKS;
+} ENGCALLBACKS;
+/**
+ * Pointer to a ENGCALLBACKS.
+ *
+ * See ENGCALLBACKS: GDI's helper functions for display drivers, passed to DrvEnableDriver.
+ */
+typedef ENGCALLBACKS *PENGCALLBACKS;
 
 /**
  * The display driver's entry point: fills in the driver's functions.

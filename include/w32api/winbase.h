@@ -649,7 +649,19 @@ typedef struct _FILETIME {
 	 * date/time value.
 	 */
 	DWORD dwHighDateTime;
-} FILETIME,*PFILETIME,*LPFILETIME;
+} FILETIME;
+/**
+ * Pointer to a FILETIME.
+ *
+ * See FILETIME: This structure is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601.
+ */
+typedef FILETIME *PFILETIME;
+/**
+ * Pointer to a FILETIME.
+ *
+ * See FILETIME: This structure is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601.
+ */
+typedef FILETIME *LPFILETIME;
 /**
  * This structure contains information retrieved by the
  * GetFileInformationByHandle function.
@@ -753,7 +765,13 @@ typedef struct _BY_HANDLE_FILE_INFORMATION {
 #ifdef _WIN32_WCE
 	DWORD	dwOID;
 #endif
-} BY_HANDLE_FILE_INFORMATION,*LPBY_HANDLE_FILE_INFORMATION;
+} BY_HANDLE_FILE_INFORMATION;
+/**
+ * Pointer to a BY_HANDLE_FILE_INFORMATION.
+ *
+ * See BY_HANDLE_FILE_INFORMATION: This structure contains information retrieved by the GetFileInformationByHandle function.
+ */
+typedef BY_HANDLE_FILE_INFORMATION *LPBY_HANDLE_FILE_INFORMATION;
 #if (_WIN32_WINNT >= 0x0600)
 /* http://msdn.microsoft.com/en-us/library/aa364217%28VS.85%29.aspx */
 typedef struct _FILE_BASIC_INFO {
@@ -1033,7 +1051,13 @@ typedef struct _DCB {
 	 * Reserved; do not use.
 	 */
 	WORD wReserved1;
-} DCB,*LPDCB;
+} DCB;
+/**
+ * Pointer to a DCB.
+ *
+ * See DCB: This structure defines the control setting for a serial communications device.
+ */
+typedef DCB *LPDCB;
 typedef struct _COMM_CONFIG {
 	DWORD dwSize;
 	WORD  wVersion;
@@ -1192,7 +1216,13 @@ typedef struct _COMMPROP {
 	 * required by the provider is available.
 	 */
 	WCHAR	wcProvChar[1];
-} COMMPROP,*LPCOMMPROP;
+} COMMPROP;
+/**
+ * Pointer to a COMMPROP.
+ *
+ * See COMMPROP: This structure is used by the GetCommProperties function to return specific communication support driver data.
+ */
+typedef COMMPROP *LPCOMMPROP;
 /**
  * This structure is used in the SetCommTimeouts and GetCommTimeouts
  * functions to set and query the time-out parameters for a communication
@@ -1259,7 +1289,13 @@ typedef struct _COMMTIMEOUTS {
 	 * indicates that total time-outs are not used for write operations.
 	 */
 	DWORD WriteTotalTimeoutConstant;
-} COMMTIMEOUTS,*LPCOMMTIMEOUTS;
+} COMMTIMEOUTS;
+/**
+ * Pointer to a COMMTIMEOUTS.
+ *
+ * See COMMTIMEOUTS: This structure is used in the SetCommTimeouts and GetCommTimeouts functions to set and query the time-out parameters for a communication device.
+ */
+typedef COMMTIMEOUTS *LPCOMMTIMEOUTS;
 /**
  * This structure contains communication device data. This structure is
  * filled by the ClearCommError function.
@@ -1326,8 +1362,23 @@ typedef struct _COMSTAT {
 	 * for a nonoverlapped write.
 	 */
 	DWORD cbOutQue;
-} COMSTAT,*LPCOMSTAT;
-typedef DWORD (WINAPI *LPTHREAD_START_ROUTINE)(LPVOID);
+} COMSTAT;
+/**
+ * Pointer to a COMSTAT.
+ *
+ * See COMSTAT: This structure contains communication device data.
+ */
+typedef COMSTAT *LPCOMSTAT;
+/**
+ * Thread function for CreateThread.
+ *
+ * The new thread starts by calling it and ends when it returns, or on
+ * ExitThread. The CE SDK also names it PTHREAD_START_ROUTINE.
+ *
+ * @param parameter The lpParameter given to CreateThread.
+ * @return The thread's exit code, read with GetExitCodeThread.
+ */
+typedef DWORD (WINAPI *LPTHREAD_START_ROUTINE)(LPVOID parameter);
 /**
  * This structure contains process creation information that can be used by
  * a debugger.
@@ -1647,7 +1698,13 @@ typedef struct _DEBUG_EVENT {
 	 * member.
 	 */
 	} u;
-} DEBUG_EVENT,*LPDEBUG_EVENT;
+} DEBUG_EVENT;
+/**
+ * Pointer to a DEBUG_EVENT.
+ *
+ * See DEBUG_EVENT: This structure describes a debugging event.
+ */
+typedef DEBUG_EVENT *LPDEBUG_EVENT;
 typedef struct _OVERLAPPED {
 	ULONG_PTR Internal;
 	ULONG_PTR InternalHigh;
@@ -1729,7 +1786,13 @@ typedef struct _PROCESS_INFORMATION {
 	 * is created until the time the thread is terminated.
 	 */
 	DWORD dwThreadId;
-} PROCESS_INFORMATION,*PPROCESS_INFORMATION,*LPPROCESS_INFORMATION;
+} PROCESS_INFORMATION,*PPROCESS_INFORMATION;
+/**
+ * Pointer to a PROCESS_INFORMATION.
+ *
+ * See PROCESS_INFORMATION: This structure is filled in by the CreateProcess function with information about a newly created process and its primary thread.
+ */
+typedef PROCESS_INFORMATION *LPPROCESS_INFORMATION;
 typedef struct _CRITICAL_SECTION_DEBUG {
 	WORD Type;
 	WORD CreatorBackTraceIndex;
@@ -1805,7 +1868,13 @@ typedef struct _SYSTEMTIME {
 	 * Specifies the current millisecond.
 	 */
 	WORD wMilliseconds;
-} SYSTEMTIME,*LPSYSTEMTIME;
+} SYSTEMTIME;
+/**
+ * Pointer to a SYSTEMTIME.
+ *
+ * See SYSTEMTIME: This structure represents a date and time using individual members for the month, day, year, weekday, hour, minute, second, and millisecond.
+ */
+typedef SYSTEMTIME *LPSYSTEMTIME;
 typedef struct _WIN32_FILE_ATTRIBUTE_DATA {
 	DWORD	dwFileAttributes;
 	FILETIME	ftCreationTime;
@@ -1994,7 +2063,13 @@ typedef struct _SYSTEM_INFO {
 	 * fixed point number: xx.yy
 	 */
 	WORD wProcessorRevision;
-} SYSTEM_INFO,*LPSYSTEM_INFO;
+} SYSTEM_INFO;
+/**
+ * Pointer to a SYSTEM_INFO.
+ *
+ * See SYSTEM_INFO: This structure contains information about the current computer system.
+ */
+typedef SYSTEM_INFO *LPSYSTEM_INFO;
 #ifndef _WIN32_WCE
 typedef struct _SYSTEM_POWER_STATUS {
 	BYTE ACLineStatus;
@@ -2077,7 +2152,13 @@ typedef struct _SYSTEM_POWER_STATUS_EX {
    * lifetime is unknown.
    */
   DWORD BackupBatteryFullLifeTime;
-} SYSTEM_POWER_STATUS_EX, *PSYSTEM_POWER_STATUS_EX, *LPSYSTEM_POWER_STATUS_EX;
+} SYSTEM_POWER_STATUS_EX,*LPSYSTEM_POWER_STATUS_EX;
+/**
+ * Pointer to a SYSTEM_POWER_STATUS_EX.
+ *
+ * See SYSTEM_POWER_STATUS_EX: This structure contains information about the power status of the system.
+ */
+typedef SYSTEM_POWER_STATUS_EX *PSYSTEM_POWER_STATUS_EX;
 /**
  * This structure contains information about the power status of the
  * system.
@@ -2198,7 +2279,13 @@ typedef struct _SYSTEM_POWER_STATUS_EX2 {
    * BATTERY_CHEMISTRY_LIPOLY BATTERY_CHEMISTRY_UNKNOWN
    */
   BYTE BatteryChemistry;
-} SYSTEM_POWER_STATUS_EX2, *PSYSTEM_POWER_STATUS_EX2, *LPSYSTEM_POWER_STATUS_EX2;
+} SYSTEM_POWER_STATUS_EX2,*LPSYSTEM_POWER_STATUS_EX2;
+/**
+ * Pointer to a SYSTEM_POWER_STATUS_EX2.
+ *
+ * See SYSTEM_POWER_STATUS_EX2: This structure contains information about the power status of the system.
+ */
+typedef SYSTEM_POWER_STATUS_EX2 *PSYSTEM_POWER_STATUS_EX2;
 #endif
 /**
  * This structure specifies information specific to the time zone.
@@ -2280,7 +2367,13 @@ typedef struct _TIME_ZONE_INFORMATION {
 	 * this member is -60.
 	 */
 	LONG DaylightBias;
-} TIME_ZONE_INFORMATION,*LPTIME_ZONE_INFORMATION;
+} TIME_ZONE_INFORMATION;
+/**
+ * Pointer to a TIME_ZONE_INFORMATION.
+ *
+ * See TIME_ZONE_INFORMATION: This structure specifies information specific to the time zone.
+ */
+typedef TIME_ZONE_INFORMATION *LPTIME_ZONE_INFORMATION;
 /**
  * This structure contains information about current memory availability.
  * The GlobalMemoryStatus function uses this structure.
@@ -2331,7 +2424,13 @@ typedef struct _MEMORYSTATUS {
 	 * address space of the calling process.
 	 */
 	DWORD dwAvailVirtual;
-} MEMORYSTATUS,*LPMEMORYSTATUS;
+} MEMORYSTATUS;
+/**
+ * Pointer to a MEMORYSTATUS.
+ *
+ * See MEMORYSTATUS: This structure contains information about current memory availability.
+ */
+typedef MEMORYSTATUS *LPMEMORYSTATUS;
 
 #if (_WIN32_WCE >= 0x0500)
 typedef enum {
@@ -2478,6 +2577,11 @@ typedef enum _COMPUTER_NAME_FORMAT {
 } COMPUTER_NAME_FORMAT;
 #endif
 #if (_WIN32_WINNT >= 0x0500 || _WIN32_WINDOWS >= 0x0410)
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD EXECUTION_STATE;
 #endif
 #if (_WIN32_WINNT >= 0x0600)
@@ -2510,31 +2614,115 @@ typedef enum _FILE_INFO_BY_HANDLE_CLASS {
 typedef DWORD(WINAPI *LPPROGRESS_ROUTINE)(LARGE_INTEGER,LARGE_INTEGER,LARGE_INTEGER,LARGE_INTEGER,DWORD,DWORD,HANDLE,HANDLE,LPVOID);
 typedef void(WINAPI *LPFIBER_START_ROUTINE)(PVOID);
 typedef BOOL(CALLBACK *ENUMRESLANGPROCA)(HMODULE,LPCSTR,LPCSTR,WORD,LONG);
-typedef BOOL(CALLBACK *ENUMRESLANGPROCW)(HMODULE,LPCWSTR,LPCWSTR,WORD,LONG);
+/**
+ * Resource language enumeration callback for EnumResourceLanguagesW.
+ *
+ * No Windows CE ROM exports the EnumResource functions.
+ *
+ * @param module The module being enumerated.
+ * @param type The resource type, a string or MAKEINTRESOURCE value.
+ * @param name The resource name, a string or MAKEINTRESOURCE value.
+ * @param language The language identifier of this copy of the resource.
+ * @param context The value given to EnumResourceLanguagesW.
+ * @return TRUE to continue enumerating, FALSE to stop.
+ */
+typedef BOOL(CALLBACK *ENUMRESLANGPROCW)(HMODULE module,LPCWSTR type,LPCWSTR name,WORD language,LONG context);
 #ifdef UNICODE
 #define ENUMRESLANGPROC ENUMRESLANGPROCW
 #else
 #define ENUMRESLANGPROC ENUMRESLANGPROCA
 #endif
 typedef BOOL(CALLBACK *ENUMRESNAMEPROCA)(HMODULE,LPCSTR,LPSTR,LONG);
-typedef BOOL(CALLBACK *ENUMRESNAMEPROCW)(HMODULE,LPCWSTR,LPWSTR,LONG);
+/**
+ * Resource name enumeration callback for EnumResourceNamesW.
+ *
+ * No Windows CE ROM exports the EnumResource functions; locate resources by
+ * name with FindResource instead.
+ *
+ * @param module The module being enumerated.
+ * @param type The resource type, a string or MAKEINTRESOURCE value.
+ * @param name The resource name, a string or MAKEINTRESOURCE value, valid
+ *        only during the call.
+ * @param context The value given to EnumResourceNamesW.
+ * @return TRUE to continue enumerating, FALSE to stop.
+ */
+typedef BOOL(CALLBACK *ENUMRESNAMEPROCW)(HMODULE module,LPCWSTR type,LPWSTR name,LONG context);
 #ifdef UNICODE
 #define ENUMRESNAMEPROC ENUMRESNAMEPROCW
 #else
 #define ENUMRESNAMEPROC ENUMRESNAMEPROCA
 #endif
 typedef BOOL(CALLBACK *ENUMRESTYPEPROCA)(HMODULE,LPSTR,LONG);
-typedef BOOL(CALLBACK *ENUMRESTYPEPROCW)(HMODULE,LPWSTR,LONG);
+/**
+ * Resource type enumeration callback for EnumResourceTypesW.
+ *
+ * No Windows CE ROM exports the EnumResource functions.
+ *
+ * @param module The module being enumerated.
+ * @param type The resource type, a string or MAKEINTRESOURCE value, valid
+ *        only during the call.
+ * @param context The value given to EnumResourceTypesW.
+ * @return TRUE to continue enumerating, FALSE to stop.
+ */
+typedef BOOL(CALLBACK *ENUMRESTYPEPROCW)(HMODULE module,LPWSTR type,LONG context);
 #ifdef UNICODE
 #define ENUMRESTYPEPROC ENUMRESTYPEPROCW
 #else
 #define ENUMRESTYPEPROC ENUMRESTYPEPROCA
 #endif
-typedef void(CALLBACK *LPOVERLAPPED_COMPLETION_ROUTINE)(DWORD,DWORD,LPOVERLAPPED);
-typedef LONG(CALLBACK *PTOP_LEVEL_EXCEPTION_FILTER)(LPEXCEPTION_POINTERS);
+/**
+ * Completion routine for ReadFileEx and WriteFileEx, called when the
+ * asynchronous transfer finishes and the thread is in an alertable wait.
+ *
+ * Windows CE has no overlapped I/O: no ROM exports ReadFileEx, WriteFileEx or
+ * the alertable waits, and the lpOverlapped parameter of ReadFile must be
+ * NULL. Use a thread instead.
+ *
+ * @param error 0 on success, or the error code.
+ * @param transferred Bytes read or written.
+ * @param overlapped The OVERLAPPED given to the I/O call.
+ */
+typedef void(CALLBACK *LPOVERLAPPED_COMPLETION_ROUTINE)(DWORD error,DWORD transferred,LPOVERLAPPED overlapped);
+/**
+ * Top-level exception filter set with SetUnhandledExceptionFilter, called when
+ * no frame-based handler takes an exception.
+ *
+ * No Windows CE ROM exports SetUnhandledExceptionFilter. grimace programs also
+ * have no .pdata, so CE can't unwind their frames and __try doesn't work in
+ * them; a fault ends the process. LPTOP_LEVEL_EXCEPTION_FILTER is the same
+ * type.
+ *
+ * @param exception The exception record and context, as
+ *        GetExceptionInformation returns.
+ * @return EXCEPTION_EXECUTE_HANDLER to end the process,
+ *         EXCEPTION_CONTINUE_EXECUTION to resume at the faulting
+ *         instruction, or EXCEPTION_CONTINUE_SEARCH for the default
+ *         handling.
+ */
+typedef LONG(CALLBACK *PTOP_LEVEL_EXCEPTION_FILTER)(LPEXCEPTION_POINTERS exception);
 typedef PTOP_LEVEL_EXCEPTION_FILTER LPTOP_LEVEL_EXCEPTION_FILTER;
-typedef void(APIENTRY *PAPCFUNC)(ULONG_PTR);
-typedef void(CALLBACK *PTIMERAPCROUTINE)(PVOID,DWORD,DWORD);
+/**
+ * Asynchronous procedure call function for QueueUserAPC, run on the target
+ * thread when it next enters an alertable wait.
+ *
+ * No Windows CE ROM exports QueueUserAPC or the alertable waits (SleepEx,
+ * WaitForSingleObjectEx).
+ *
+ * @param parameter The value given to QueueUserAPC.
+ */
+typedef void(APIENTRY *PAPCFUNC)(ULONG_PTR parameter);
+/**
+ * Completion routine for SetWaitableTimer, run as an APC on the setting thread
+ * when the timer fires and the thread is in an alertable wait.
+ *
+ * No Windows CE ROM exports waitable timers; use SetTimer or a thread that
+ * sleeps.
+ *
+ * @param context The value given to SetWaitableTimer.
+ * @param low_time Low 32 bits of the time the timer fired, as a FILETIME.
+ * @param high_time High 32 bits of that time.
+ */
+typedef void(CALLBACK *PTIMERAPCROUTINE)(PVOID context,DWORD low_time,DWORD high_time);
 #if (_WIN32_WINNT >= 0x0500)
 typedef void(CALLBACK *WAITORTIMERCALLBACK)(PVOID,BOOLEAN);   
 #endif
@@ -5508,7 +5696,13 @@ typedef struct STORE_INFORMATION {
    *
    */
   DWORD dwFreeSize;
-} STORE_INFORMATION, *LPSTORE_INFORMATION;
+} STORE_INFORMATION;
+/**
+ * Pointer to a STORE_INFORMATION.
+ *
+ * See STORE_INFORMATION: This structure contains the size of the object store and the amount of free space currently in the object store.
+ */
+typedef STORE_INFORMATION *LPSTORE_INFORMATION;
 /**
  * Returns the size and free space of the object store.
  *

@@ -159,9 +159,27 @@ typedef struct _SERVICE_TABLE_ENTRYW {
 	LPWSTR lpServiceName;
 	LPSERVICE_MAIN_FUNCTIONW lpServiceProc;
 } SERVICE_TABLE_ENTRYW,*LPSERVICE_TABLE_ENTRYW;
-DECLARE_HANDLE(SC_HANDLE);
+/**
+ * Handle to the service control manager or one of its services, from
+ * OpenSCManagerW and OpenServiceW.
+ *
+ * No Windows CE ROM exports the NT service functions; CE's services.exe is
+ * controlled through ActivateService and the device driver API. Source
+ * compatibility only.
+ */
+typedef struct SC_HANDLE__ { int i; } *SC_HANDLE;
 typedef SC_HANDLE *LPSC_HANDLE;
+/**
+ * Same as PVOID.
+ *
+ * See PVOID: Pointer to anything (void *).
+ */
 typedef PVOID SC_LOCK;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD SERVICE_STATUS_HANDLE;
 typedef VOID(WINAPI *LPHANDLER_FUNCTION)(DWORD);
 typedef DWORD (WINAPI *LPHANDLER_FUNCTION_EX)(DWORD,DWORD,LPVOID,LPVOID);

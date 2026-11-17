@@ -508,6 +508,11 @@ typedef LPCRECT PCRECT;
 typedef LPCWSTR PCTSTR;
 typedef struct tagDIBSECTION *PDIBSECTION;
 typedef struct tagDIBSECTION2 *PDIBSECTION2;
+/**
+ * Pointer to a DLGITEMTEMPLATE.
+ *
+ * See DLGITEMTEMPLATE: This structure defines the dimensions and style of a control in a dialog box.
+ */
 typedef DLGITEMTEMPLATE *PDLGITEMTEMPLATEW;
 typedef PDLGITEMTEMPLATEW PDLGITEMTEMPLATE;
 typedef DLGITEMTEMPLATE *PDLGITEMTEMPLATEA;

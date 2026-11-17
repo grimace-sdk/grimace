@@ -6,6 +6,11 @@
 extern "C" {
 #endif
 
+/**
+ * Same as ULONG.
+ *
+ * See ULONG: Unsigned 32-bit integer (unsigned long).
+ */
 typedef ULONG HHPRTAG;
 
 #ifdef __cplusplus

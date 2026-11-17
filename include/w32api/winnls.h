@@ -462,12 +462,47 @@ typedef long LONG_PTR;
 #endif 
 
 #ifndef RC_INVOKED
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD LCTYPE;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD CALTYPE;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD CALID;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD LGRPID;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD GEOID;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD GEOTYPE;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD GEOCLASS;
 typedef BOOL (CALLBACK *CALINFO_ENUMPROCA)(LPSTR);
 typedef BOOL (CALLBACK *CALINFO_ENUMPROCW)(LPWSTR);
@@ -544,7 +579,13 @@ typedef struct _cpinfo {
 	 * double-byte terminating null character after the last range.
 	 */
 	BYTE LeadByte[MAX_LEADBYTES];
-} CPINFO,*LPCPINFO;
+} CPINFO;
+/**
+ * Pointer to a CPINFO.
+ *
+ * See CPINFO: This structure contains information about a code page.
+ */
+typedef CPINFO *LPCPINFO;
 typedef struct _cpinfoexA {
 	UINT MaxCharSize;
 	BYTE DefaultChar[MAX_DEFAULTCHAR];

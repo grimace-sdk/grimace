@@ -142,6 +142,11 @@ extern "C" {
 #define NOTIFYICONDATA_V1_SIZE 88
 #endif
 
+/**
+ * Same as WORD.
+ *
+ * See WORD: Unsigned 16-bit integer (unsigned short).
+ */
 typedef WORD FILEOP_FLAGS;
 typedef WORD PRINTEROP_FLAGS;
 #include <pshpack2.h>
@@ -153,7 +158,14 @@ typedef struct _AppBarData {
 	RECT	rc;
 	LPARAM lParam;
 } APPBARDATA,*PAPPBARDATA;
-DECLARE_HANDLE(HDROP);
+/**
+ * Handle to a dropped file list, from a WM_DROPFILES message, read with
+ * DragQueryFileW and released with DragFinish.
+ *
+ * No Windows CE ROM exports the drag and drop functions; source
+ * compatibility only.
+ */
+typedef struct HDROP__ { int i; } *HDROP;
 
 typedef struct _NOTIFYICONDATAA {
   DWORD cbSize;

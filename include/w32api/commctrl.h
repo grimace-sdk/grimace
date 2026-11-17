@@ -5434,7 +5434,13 @@ typedef struct tagLVKEYDOWN {
 	 * Set to zero.
 	 */
 	UINT flags;
-} NMLVKEYDOWN, *LPNMLVKEYDOWN;
+} NMLVKEYDOWN;
+/**
+ * Pointer to a NMLVKEYDOWN.
+ *
+ * See NMLVKEYDOWN: This structure that contains information used in processing the LVN_KEYDOWN notification message.
+ */
+typedef NMLVKEYDOWN *LPNMLVKEYDOWN;
 typedef struct {
 	NMHDR hdr;
 	DWORD dwFlag;
@@ -5535,7 +5541,13 @@ typedef struct tagNMMOUSE {
 	 * mouse when the click occurred.
 	 */
 	POINT pt;
-} NMMOUSE, *LPNMMOUSE;
+} NMMOUSE;
+/**
+ * Pointer to a NMMOUSE.
+ *
+ * See NMMOUSE: This structure contains information used with mouse notification messages.
+ */
+typedef NMMOUSE *LPNMMOUSE;
 #else
 	POINT pt;
 	LPARAM dwHitInfo;
@@ -5635,6 +5647,11 @@ typedef struct _TBBUTTON {
 	 */
 	int iString;
 } TBBUTTON,*PTBBUTTON,*LPTBBUTTON;
+/**
+ * Pointer to a const TBBUTTON.
+ *
+ * See TBBUTTON: This structure contains information about a button in a toolbar.
+ */
 typedef const TBBUTTON *LPCTBBUTTON;
 #if _WIN32_IE >= 0x400
 typedef struct {
@@ -5711,7 +5728,13 @@ typedef struct {
 	 * text.
 	 */
 	LPTSTR pszText;
-} TBNOTIFY,*LPTBNOTIFY;
+} TBNOTIFY;
+/**
+ * Pointer to a TBNOTIFY.
+ *
+ * See TBNOTIFY: This structure contains information used to process notification messages from a toolbar, and is superseded by the NMTOOLBAR structure.
+ */
+typedef TBNOTIFY *LPTBNOTIFY;
 typedef struct {
 	HKEY hkr;
 	LPCTSTR pszSubKey;
@@ -6283,7 +6306,13 @@ typedef struct _NM_UPDOWN {
 	 * in the up-down control's position.
 	 */
 	int iDelta;
-} NMUPDOWN,*LPNMUPDOWN;
+} NMUPDOWN;
+/**
+ * Pointer to a NMUPDOWN.
+ *
+ * See NMUPDOWN: This structure contains information specific to up-down control notification messages.
+ */
+typedef NMUPDOWN *LPNMUPDOWN;
 /* for backward compatibility */
 /**
  * This structure contains information about an up-down control
@@ -6449,7 +6478,20 @@ typedef struct _LVCOLUMNW {
 } LVCOLUMNW, FAR *LPLVCOLUMNW;
 #define _LV_COLUMNW _LVCOLUMNW
 #define LV_COLUMNW LVCOLUMNW
-typedef int(CALLBACK *PFNLVCOMPARE)(LPARAM,LPARAM,LPARAM);
+/**
+ * Comparison callback for ListView_SortItems and LVM_SORTITEMS.
+ *
+ * The list view calls it each time it needs the order of two items, passing
+ * the items' lParam values rather than their indexes, which change during the
+ * sort.
+ *
+ * @param first The lParam of the first item.
+ * @param second The lParam of the second item.
+ * @param context The lParamSort given to the sort.
+ * @return Negative if the first item sorts before the second, positive if
+ *         after, zero if equal.
+ */
+typedef int(CALLBACK *PFNLVCOMPARE)(LPARAM first,LPARAM second,LPARAM context);
 /**
  * This structure contains information about a list view notification
  * message. This structure is the same as the NM_LISTVIEW structure, but
@@ -6498,7 +6540,13 @@ typedef struct tagNMLISTVIEW {
 	 * use it.
 	 */
 	LPARAM lParam;
-} NMLISTVIEW, *LPNMLISTVIEW;
+} NMLISTVIEW;
+/**
+ * Pointer to a NMLISTVIEW.
+ *
+ * See NMLISTVIEW: This structure contains information about a list view notification message.
+ */
+typedef NMLISTVIEW *LPNMLISTVIEW;
 /* for backward compatibility */
 #define _NM_LISTVIEW  tagNMLISTVIEW
 /**
@@ -6560,7 +6608,13 @@ typedef struct tagNMLVCACHEHINT {
 	 * inclusive.
 	 */
 	int iTo;
-} NMLVCACHEHINT, *LPNMLVCACHEHINT;
+} NMLVCACHEHINT;
+/**
+ * Pointer to a NMLVCACHEHINT.
+ *
+ * See NMLVCACHEHINT: This structure contains information used to update the cached item information for use with a virtual list view.
+ */
+typedef NMLVCACHEHINT *LPNMLVCACHEHINT;
 #define NM_CACHEHINT NMLVCACHEHINT
 #define PNM_CACHEHINT LPNMLVCACHEHINT
 #define LPNM_CACHEHINT LPNMLVCACHEHINT
@@ -6668,7 +6722,19 @@ typedef struct tagTVHITTESTINFO {
  */
 #define TV_HITTESTINFO TVHITTESTINFO
 #define LPTV_HITTESTINFO LPTVHITTESTINFO
-typedef int(CALLBACK *PFNTVCOMPARE)(LPARAM,LPARAM,LPARAM);
+/**
+ * Comparison callback for TVM_SORTCHILDRENCB, named in TVSORTCB.lpfnCompare.
+ *
+ * The tree view calls it each time it needs the order of two children of the
+ * item being sorted, passing their lParam values.
+ *
+ * @param first The lParam of the first item.
+ * @param second The lParam of the second item.
+ * @param context The lParam member of the TVSORTCB.
+ * @return Negative if the first item sorts before the second, positive if
+ *         after, zero if equal.
+ */
+typedef int(CALLBACK *PFNTVCOMPARE)(LPARAM first,LPARAM second,LPARAM context);
 typedef struct tagTVSORTCB {
 	HTREEITEM hParent;
 	PFNTVCOMPARE lpfnCompare;
@@ -6855,7 +6921,13 @@ typedef struct tagINITCOMMONCONTROLSEX {
 	 * control class.
 	 */
 	DWORD dwICC;
-} INITCOMMONCONTROLSEX,*LPINITCOMMONCONTROLSEX;
+} INITCOMMONCONTROLSEX;
+/**
+ * Pointer to a INITCOMMONCONTROLSEX.
+ *
+ * See INITCOMMONCONTROLSEX: This structure carries information used to load common control classes from the dynamic-link library (DLL).
+ */
+typedef INITCOMMONCONTROLSEX *LPINITCOMMONCONTROLSEX;
 #endif
 /**
  * This structure contains information about the high and low limits of a
@@ -6936,6 +7008,11 @@ typedef struct tagMCHITTESTINFO {
 	 */
 	SYSTEMTIME st;
 }MCHITTESTINFO, *PMCHITTESTINFO;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD MONTHDAYSTATE;
 typedef MONTHDAYSTATE *LPMONTHDAYSTATE;
 /**
@@ -7068,7 +7145,13 @@ typedef struct tagNMLVODSTATECHANGE {
   int iTo;
   UINT uNewState;
   UINT uOldState;
-} NMLVODSTATECHANGE, *LPNMLVODSTATECHANGE;
+} NMLVODSTATECHANGE;
+/**
+ * Pointer to a NMLVODSTATECHANGE.
+ *
+ * See NMLVODSTATECHANGE: This structure that contains information for use in processing the LVN_ODSTATECHANGED notification message.
+ */
+typedef NMLVODSTATECHANGE *LPNMLVODSTATECHANGE;
 /**
  * This structure contains information about an image list draw operation
  * and is used with the ImageList_DrawIndirect function.
@@ -12249,7 +12332,13 @@ typedef struct tagCOMMANDBANDSRESTOREINFO {
 	 * filled in by the CommandBands_GetRestoreInformation function.
 	 */
 	BOOL fMaximized;
-} COMMANDBANDSRESTOREINFO, *LPCOMMANDBANDSRESTOREINFO;
+} COMMANDBANDSRESTOREINFO;
+/**
+ * Pointer to a COMMANDBANDSRESTOREINFO.
+ *
+ * See COMMANDBANDSRESTOREINFO: This structure contains information necessary to restore a band to its current state.
+ */
+typedef COMMANDBANDSRESTOREINFO *LPCOMMANDBANDSRESTOREINFO;
 #endif /* _WIN32_WCE >= 0x200 */
 
 #endif /* RC_INVOKED */

@@ -748,8 +748,23 @@ extern "C" {
 #define VK_PROCESSKEY 0x0E5
 #endif
 #define STYLE_DESCRIPTION_SIZE 32
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD HIMC;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD HIMCC;
+/**
+ * Pointer to a HKL.
+ *
+ * See HKL: Handle to a keyboard layout, from GetKeyboardLayout (CE 2.11 and later) or LoadKeyboardLayoutW and ActivateKeyboardLayout (CE 4.2 and later).
+ */
 typedef HKL *LPHKL;
 /**
  * This structure contains position information for a composition window.
@@ -773,7 +788,13 @@ typedef struct tagCOMPOSITIONFORM {
 	 * the composition window.
 	 */
 	RECT rcArea;
-} COMPOSITIONFORM,*PCOMPOSITIONFORM,*LPCOMPOSITIONFORM;
+} COMPOSITIONFORM,*LPCOMPOSITIONFORM;
+/**
+ * Pointer to a COMPOSITIONFORM.
+ *
+ * See COMPOSITIONFORM: This structure contains position information for a composition window.
+ */
+typedef COMPOSITIONFORM *PCOMPOSITIONFORM;
 /**
  * This structure contains position information for the candidate window.
  *
@@ -812,7 +833,13 @@ typedef struct tagCANDIDATEFORM {
 	 * the exclusion area.
 	 */
 	RECT rcArea;
-} CANDIDATEFORM,*PCANDIDATEFORM,*LPCANDIDATEFORM;
+} CANDIDATEFORM,*LPCANDIDATEFORM;
+/**
+ * Pointer to a CANDIDATEFORM.
+ *
+ * See CANDIDATEFORM: This structure contains position information for the candidate window.
+ */
+typedef CANDIDATEFORM *PCANDIDATEFORM;
 /**
  * This structure contains information about a candidate list.
  *
@@ -873,7 +900,19 @@ typedef struct tagCANDIDATELIST {
 	 * forming an array of 32-bit offsets.
 	 */
 	DWORD dwOffset[1];
-} CANDIDATELIST,*PCANDIDATELIST,*LPCANDIDATELIST;
+} CANDIDATELIST;
+/**
+ * Pointer to a CANDIDATELIST.
+ *
+ * See CANDIDATELIST: This structure contains information about a candidate list.
+ */
+typedef CANDIDATELIST *PCANDIDATELIST;
+/**
+ * Pointer to a CANDIDATELIST.
+ *
+ * See CANDIDATELIST: This structure contains information about a candidate list.
+ */
+typedef CANDIDATELIST *LPCANDIDATELIST;
 typedef struct tagIMECHARPOSITION {
   DWORD  dwSize;
   DWORD  dwCharPos;

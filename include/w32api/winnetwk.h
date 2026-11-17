@@ -231,10 +231,21 @@ typedef struct _NETINFOSTRUCT{
 	DWORD dwPrinters;
 	DWORD dwDrives;
 } NETINFOSTRUCT,*LPNETINFOSTRUCT;
+/**
+ * Unsigned 32-bit integer (unsigned int). Message identifiers, control IDs and
+ * flags that aren't DWORD.
+ */
 typedef UINT(PASCAL *PFNGETPROFILEPATHA)(LPCSTR,LPSTR,UINT);
 typedef UINT(PASCAL *PFNGETPROFILEPATHW)(LPCWSTR,LPWSTR,UINT);
 typedef UINT(PASCAL *PFNRECONCILEPROFILEA)(LPCSTR,LPCSTR,DWORD);
 typedef UINT(PASCAL *PFNRECONCILEPROFILEW)(LPCWSTR,LPCWSTR,DWORD);
+/**
+ * Boolean result or flag: an int holding TRUE (1) or FALSE (0).
+ *
+ * A typedef of WINBOOL. Functions may return any non-zero value for true, so
+ * test with if (b) or b != FALSE, never b == TRUE. Not the same type as C's
+ * _Bool or C++'s bool.
+ */
 typedef BOOL(PASCAL *PFNPROCESSPOLICIESA)(HWND,LPCSTR,LPCSTR,LPCSTR,DWORD);
 typedef BOOL(PASCAL *PFNPROCESSPOLICIESW)(HWND,LPCWSTR,LPCWSTR,LPCWSTR,DWORD);
 typedef struct _NETCONNECTINFOSTRUCT{

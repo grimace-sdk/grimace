@@ -166,6 +166,7 @@ The Win32 headers are CeGCC's w32api (public domain) in `include/w32api`, patche
 - `STRICT` is on, so handle types are distinct. Define `NO_STRICT` for SDK code that mixes them.
 - CE exports some wide functions without the `W` (`FindResource`, `GetVersionEx`, `GetClassLong`, the `Ras` and `acm` functions): either name works.
 - Every function the ROMs export has a docstring and named parameters, from `docs/api`, with the versions that have it where they differ.
+- The handle, callback, string and integer types have docstrings too, from `docs/api/sdk/types.txt`, and a pointer or alias of a documented type says what it points at. Callback typedefs name their parameters.
 - `windowsx.h` has the SDK's message crackers. Include it yourself, except on CE 1.01, whose `windows.h` includes it.
 
 grimace's own device headers, from Microsoft's public reference unless noted:
@@ -281,7 +282,7 @@ gdb -x build/mips-ce1/hello/hello.elf.gdb -ex "target extended-remote :2001" -ex
 
 Set the character set after connecting, since connecting resets it, so `WCHAR` strings show as text.
 
-For VS Code, copy `vscode/settings.json`, `vscode/launch.json` and `vscode/tasks.json` into a project's `.vscode`. The settings have IntelliSense take the include paths, defines and compiler flags from CMake Tools, so hover, completion and signature help see the headers as the compiler does, with `_WIN32_WCE`, the architecture's defines and 16-bit `wchar_t`. `examples/CMakePresets.json` has a Debug preset per target to copy. The launch configurations need:
+For VS Code, copy `vscode/settings.json`, `vscode/launch.json` and `vscode/tasks.json` into a project's `.vscode`, or into this folder's to work on the examples (it's ignored by git). The settings have IntelliSense take the include paths, defines and compiler flags from CMake Tools, so hover, completion and signature help see the headers as the compiler does, with `_WIN32_WCE`, the architecture's defines and 16-bit `wchar_t`. Without them the C/C++ extension parses the headers with the host compiler, or lets Makefile Tools configure it if that extension is installed, and most names don't resolve. `examples/CMakePresets.json` has a Debug preset per target to copy. The launch configurations need:
 
 - the C/C++ and CMake Tools extensions, with the project configured with the Debug preset for the target you pick
 - `gdb` with MIPS, SH3 or ARM support, and Python for OS symbols (Homebrew's `gdb` on macOS, `gdb-multiarch` on Linux)
@@ -347,7 +348,7 @@ With it set, the `.gdb` scripts load `nk.elf` and add the folder to the shared-l
 | `tools/mksdk.py` | `include/grimace/sdk` from the Handheld PC 2000 SDK, for the functions the Jornada 720 exports that w32api lacks |
 | `tools/mkheaders.py` | the wrappers, and from `exports/` a file per target (each architecture and version, platform and device) in `grimace/unavailable`, `grimace/aliases` and `grimace/lazy`, which `grimace/unavailable.h`, `aliases.h` and `lazy-imports.h` include for the target being built |
 | `tools/mkconstants.py`, `tools/mksdkconstants.py` | `grimace/constants.h` and `grimace/types.h` (CE 1.0, 1.01 and 2.0) and `grimace/constants-sdk.h` (CE 3.0 and later), with the SDK constants, macros and types the headers lack |
-| `tools/mkdocs.py` | the docstrings from `docs/api` above each declaration, naming its parameters. Entries in `docs/api/sdk` fill in macros, messages and structures `docs/api` doesn't cover |
+| `tools/mkdocs.py` | the docstrings from `docs/api` above each declaration, naming its parameters. Entries in `docs/api/sdk` fill in macros, messages, structures and types `docs/api` doesn't cover. Typedefs, `DECLARE_HANDLE` lines and the pointer names after a structure take entries too, and an undocumented alias of a documented type gets a derived one |
 
 ## Licence
 

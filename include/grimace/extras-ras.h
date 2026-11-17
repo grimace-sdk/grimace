@@ -63,7 +63,13 @@ typedef struct varstring_tag {
      * bytes, from the beginning of this data structure.
      */
     DWORD dwStringOffset;
-} VARSTRING, *LPVARSTRING;
+} VARSTRING;
+/**
+ * Pointer to a VARSTRING.
+ *
+ * See VARSTRING: This structure is used for returning variably sized strings.
+ */
+typedef VARSTRING *LPVARSTRING;
 #endif
 
 /**

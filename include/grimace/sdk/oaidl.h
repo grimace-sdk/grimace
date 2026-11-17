@@ -42,6 +42,11 @@ typedef struct tagVARIANT VARIANT;
 typedef VARIANT VARIANTARG;
 struct ITypeInfo;
 typedef struct ITypeInfo ITypeInfo;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG DISPID;
 struct tagDISPPARAMS;
 typedef struct tagDISPPARAMS DISPPARAMS;
@@ -118,6 +123,11 @@ enum tagFUNCKIND {
 };
 
 typedef enum tagFUNCKIND FUNCKIND;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD HREFTYPE;
 struct ICreateErrorInfoVtbl;
 typedef struct ICreateErrorInfoVtbl ICreateErrorInfoVtbl;

@@ -94,6 +94,10 @@ extern "C" {
 #endif
 
 #if GRIMACE_CE == 1
+/**
+ * Pointer to a read-only generic (TCHAR) string. The same as LPCTSTR, so
+ * LPCWSTR here.
+ */
 typedef const TCHAR *PCTSTR;
 #endif
 

@@ -906,10 +906,30 @@ extern "C" {
 #define SEEK_END 2
 #endif
 
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD MCIERROR;
+/**
+ * Same as UINT.
+ *
+ * See UINT: Unsigned 32-bit integer (unsigned int).
+ */
 typedef UINT MCIDEVICEID;
 typedef UINT(CALLBACK *YIELDPROC)(MCIDEVICEID,DWORD);
+/**
+ * Same as UINT.
+ *
+ * See UINT: Unsigned 32-bit integer (unsigned int).
+ */
 typedef UINT MMVERSION;
+/**
+ * Same as UINT.
+ *
+ * See UINT: Unsigned 32-bit integer (unsigned int).
+ */
 typedef UINT MMRESULT;
 /**
  * This structure contains timing information for different types of
@@ -985,8 +1005,18 @@ typedef struct mmtime_tag {
 		 */
 		} midi;
 	} u;
-} MMTIME,*PMMTIME,*LPMMTIME;
-DECLARE_HANDLE(HDRVR);
+} MMTIME,*PMMTIME;
+/**
+ * Pointer to a MMTIME.
+ *
+ * See MMTIME: This structure contains timing information for different types of multimedia data.
+ */
+typedef MMTIME *LPMMTIME;
+/**
+ * Handle to an installable driver, from OpenDriver. No Windows CE ROM
+ * exports the installable driver functions; source compatibility only.
+ */
+typedef struct HDRVR__ { int i; } *HDRVR;
 typedef struct tagDRVCONFIGINFO {
 	DWORD dwDCISize;
 	LPCWSTR lpszDCISectionName;
@@ -1002,10 +1032,38 @@ typedef LRESULT(CALLBACK* DRIVERPROC)(DWORD,HDRVR,UINT,LPARAM,LPARAM);
 typedef void (CALLBACK DRVCALLBACK)(HDRVR,UINT,DWORD,DWORD,DWORD);
 typedef DRVCALLBACK *LPDRVCALLBACK;
 typedef DRVCALLBACK *PDRVCALLBACK;
-DECLARE_HANDLE(HWAVE);
-DECLARE_HANDLE(HWAVEIN);
-DECLARE_HANDLE(HWAVEOUT);
+/**
+ * Either an HWAVEOUT or an HWAVEIN: the generic handle the shared waveform
+ * functions take. Cast one of the specific handles to it.
+ */
+typedef struct HWAVE__ { int i; } *HWAVE;
+/**
+ * Handle to an open waveform input device, from waveInOpen (CE 2.0 and
+ * later; 2.11 on ARM).
+ *
+ * Supply buffers with waveInAddBuffer, start with waveInStart and close with
+ * waveInClose.
+ */
+typedef struct HWAVEIN__ { int i; } *HWAVEIN;
+/**
+ * Handle to an open waveform output device, from waveOutOpen (CE 2.0 and
+ * later; 2.11 on ARM).
+ *
+ * Queue buffers with waveOutWrite, stop with waveOutReset and close with
+ * waveOutClose. Also accepted where an HWAVE is asked for.
+ */
+typedef struct HWAVEOUT__ { int i; } *HWAVEOUT;
+/**
+ * Pointer to a HWAVEIN.
+ *
+ * See HWAVEIN: Handle to an open waveform input device, from waveInOpen (CE 2.0 and later; 2.11 on ARM).
+ */
 typedef HWAVEIN *LPHWAVEIN;
+/**
+ * Pointer to a HWAVEOUT.
+ *
+ * See HWAVEOUT: Handle to an open waveform output device, from waveOutOpen (CE 2.0 and later; 2.11 on ARM).
+ */
 typedef HWAVEOUT *LPHWAVEOUT;
 typedef DRVCALLBACK WAVECALLBACK;
 typedef WAVECALLBACK *LPWAVECALLBACK;
@@ -1065,7 +1123,13 @@ typedef struct wavehdr_tag {
 	 * Reserved.
 	 */
 	DWORD reserved;
-} WAVEHDR,*PWAVEHDR,*LPWAVEHDR;
+} WAVEHDR,*PWAVEHDR;
+/**
+ * Pointer to a WAVEHDR.
+ *
+ * See WAVEHDR: This structure defines the header used to identify a waveform-audio buffer.
+ */
+typedef WAVEHDR *LPWAVEHDR;
 typedef struct tagWAVEOUTCAPSA {
 	WORD wMid;
 	WORD wPid;
@@ -1195,16 +1259,60 @@ typedef struct tWAVEFORMATEX {
 	 * formats only, this member is ignored.
 	 */
 	WORD cbSize;
-} WAVEFORMATEX,*PWAVEFORMATEX,*LPWAVEFORMATEX;
+} WAVEFORMATEX,*PWAVEFORMATEX;
+/**
+ * Pointer to a WAVEFORMATEX.
+ *
+ * See WAVEFORMATEX: This structure defines the format of waveform-audio data.
+ */
+typedef WAVEFORMATEX *LPWAVEFORMATEX;
+/**
+ * Pointer to a const WAVEFORMATEX.
+ *
+ * See WAVEFORMATEX: This structure defines the format of waveform-audio data.
+ */
 typedef const WAVEFORMATEX *LPCWAVEFORMATEX;
 #endif
-DECLARE_HANDLE(HMIDI);
-DECLARE_HANDLE(HMIDIIN);
-DECLARE_HANDLE(HMIDIOUT);
-DECLARE_HANDLE(HMIDISTRM);
+/**
+ * Either an HMIDIOUT or an HMIDIIN, for the shared MIDI functions. No
+ * Windows CE ROM exports them; source compatibility only.
+ */
+typedef struct HMIDI__ { int i; } *HMIDI;
+/**
+ * Handle to an open MIDI input device, from midiInOpen. No Windows CE ROM
+ * exports the MIDI functions; source compatibility only.
+ */
+typedef struct HMIDIIN__ { int i; } *HMIDIIN;
+/**
+ * Handle to an open MIDI output device, from midiOutOpen.
+ *
+ * No Windows CE ROM exports the MIDI functions, so the type is only there
+ * for source compatibility.
+ */
+typedef struct HMIDIOUT__ { int i; } *HMIDIOUT;
+/**
+ * Handle to a MIDI stream, from midiStreamOpen. No Windows CE ROM exports
+ * the MIDI functions; source compatibility only.
+ */
+typedef struct HMIDISTRM__ { int i; } *HMIDISTRM;
 typedef HMIDI *LPHMIDI;
+/**
+ * Pointer to a HMIDIIN.
+ *
+ * See HMIDIIN: Handle to an open MIDI input device, from midiInOpen.
+ */
 typedef HMIDIIN *LPHMIDIIN;
+/**
+ * Pointer to a HMIDIOUT.
+ *
+ * See HMIDIOUT: Handle to an open MIDI output device, from midiOutOpen.
+ */
 typedef HMIDIOUT *LPHMIDIOUT;
+/**
+ * Pointer to a HMIDISTRM.
+ *
+ * See HMIDISTRM: Handle to a MIDI stream, from midiStreamOpen.
+ */
 typedef HMIDISTRM *LPHMIDISTRM;
 typedef DRVCALLBACK MIDICALLBACK;
 typedef MIDICALLBACK *LPMIDICALLBACK;
@@ -1298,9 +1406,26 @@ typedef struct tagAUXCAPSW {
 	WORD wReserved1;
 	DWORD dwSupport;
 } AUXCAPSW,*PAUXCAPSW,*LPAUXCAPSW;
-DECLARE_HANDLE(HMIXEROBJ);
+/**
+ * Any object the mixer functions can address: an HMIXER, or a waveform
+ * device handle with the matching MIXER_OBJECTF flag. Cast the specific
+ * handle to it.
+ */
+typedef struct HMIXEROBJ__ { int i; } *HMIXEROBJ;
 typedef HMIXEROBJ *LPHMIXEROBJ;
-DECLARE_HANDLE(HMIXER);
+/**
+ * Handle to an open audio mixer, from mixerOpen (CE 4.1 and later; 4.2 on
+ * MIPS).
+ *
+ * Read and set its lines and controls through the mixer functions, and
+ * close with mixerClose. Earlier ROMs export no mixer functions.
+ */
+typedef struct HMIXER__ { int i; } *HMIXER;
+/**
+ * Pointer to a HMIXER.
+ *
+ * See HMIXER: Handle to an open audio mixer, from mixerOpen (CE 4.1 and later; 4.2 on MIPS).
+ */
 typedef HMIXER *LPHMIXER;
 typedef struct tagMIXERCAPSA {
 	WORD wMid;
@@ -1543,9 +1668,27 @@ typedef struct joyinfoex_tag {
 	DWORD dwReserved1;
 	DWORD dwReserved2;
 } JOYINFOEX,*PJOYINFOEX,*LPJOYINFOEX;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD FOURCC;
 typedef char *HPSTR;
-DECLARE_HANDLE(HMMIO);
+/**
+ * Handle to an open multimedia file, from mmioOpen.
+ *
+ * No Windows CE ROM exports the mmio functions; read .wav files with
+ * CreateFileW and ReadFile instead. Source compatibility only.
+ */
+typedef struct HMMIO__ { int i; } *HMMIO;
+/**
+ * Result of processing a message, returned by window procedures and
+ * SendMessageW.
+ *
+ * A typedef of LONG_PTR (long), 32 bits. Its meaning depends on the message;
+ * return DefWindowProcW's result for messages you don't handle.
+ */
 typedef LRESULT (CALLBACK MMIOPROC)(LPSTR,UINT,LPARAM,LPARAM);
 typedef MMIOPROC *LPMMIOPROC;
 typedef struct _MMIOINFO {

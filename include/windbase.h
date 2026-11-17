@@ -5,8 +5,18 @@
 
 #ifndef RC_INVOKED
 
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD CEOID;
 typedef CEOID *PCEOID;
+/**
+ * Same as DWORD.
+ *
+ * See DWORD: Unsigned 32-bit integer (unsigned long).
+ */
 typedef DWORD CEPROPID;
 typedef CEPROPID *PCEPROPID;
 
@@ -252,6 +262,11 @@ typedef struct _CEPROPVAL {
      */
     CEVALUNION val;
 } CEPROPVAL;
+/**
+ * Pointer to a CEPROPVAL.
+ *
+ * See CEPROPVAL: This structure contains a property value.
+ */
 typedef CEPROPVAL *PCEPROPVAL;
 
 /**
@@ -306,11 +321,26 @@ typedef PCEPROPID PPEGPROPID;
 typedef CEFILEINFO PEGFILEINFO;
 typedef CEDIRINFO PEGDIRINFO;
 typedef CERECORDINFO PEGRECORDINFO;
+/**
+ * Same as CEDBASEINFO.
+ *
+ * See CEDBASEINFO: This structure contains information about a database object.
+ */
 typedef CEDBASEINFO PEGDBASEINFO;
 typedef CEBLOB PEGBLOB;
 typedef CEVALUNION PEGVALUNION;
+/**
+ * Same as CEPROPVAL.
+ *
+ * See CEPROPVAL: This structure contains a property value.
+ */
 typedef CEPROPVAL PEGPROPVAL;
 typedef PCEPROPVAL PPEGPROPVAL;
+/**
+ * Same as CEOIDINFO.
+ *
+ * See CEOIDINFO: This structure contains information about an object in the object store or database volume.
+ */
 typedef CEOIDINFO PEGOIDINFO;
 
 #endif

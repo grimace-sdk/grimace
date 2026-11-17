@@ -1789,7 +1789,13 @@ typedef struct tagBITMAPINFO {
 	 * "Remarks" section.
 	 */
 	RGBQUAD bmiColors[1];
-} BITMAPINFO,*LPBITMAPINFO,*PBITMAPINFO;
+} BITMAPINFO,*PBITMAPINFO;
+/**
+ * Pointer to a BITMAPINFO.
+ *
+ * See BITMAPINFO: This structure defines the dimensions and color information of a Windows-based device-independent bitmap (DIB).
+ */
+typedef BITMAPINFO *LPBITMAPINFO;
 typedef long FXPT16DOT16,*LPFXPT16DOT16;
 typedef long FXPT2DOT30,*LPFXPT2DOT30;
 typedef struct tagCIEXYZ {
@@ -1877,7 +1883,13 @@ typedef struct tagFONTSIGNATURE {
 	 * non-Windows code pages.
 	 */
 	DWORD	fsCsb[2];
-} FONTSIGNATURE,*LPFONTSIGNATURE;
+} FONTSIGNATURE;
+/**
+ * Pointer to a FONTSIGNATURE.
+ *
+ * See FONTSIGNATURE: This structure contains information identifying the code pages and Unicode subranges for which a specified font provides glyphs.
+ */
+typedef FONTSIGNATURE *LPFONTSIGNATURE;
 /**
  * This structure contains information about a character set.
  */
@@ -1895,7 +1907,13 @@ typedef struct {
 	 * code-page font signature values.
 	 */
 	FONTSIGNATURE fs;
-} CHARSETINFO,*LPCHARSETINFO;
+} CHARSETINFO;
+/**
+ * Pointer to a CHARSETINFO.
+ *
+ * See CHARSETINFO: This structure contains information about a character set.
+ */
+typedef CHARSETINFO *LPCHARSETINFO;
 typedef struct  tagCOLORADJUSTMENT {
 	WORD	caSize;
 	WORD	caFlags;
@@ -2222,7 +2240,17 @@ typedef struct tagEMRCREATEBRUSHINDIRECT {
 	DWORD ihBrush;
 	LOGBRUSH lb;
 } EMRCREATEBRUSHINDIRECT,*PEMRCREATEBRUSHINDIRECT;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG LCSCSTYPE;
+/**
+ * Same as LONG.
+ *
+ * See LONG: Signed 32-bit integer (long).
+ */
 typedef LONG LCSGAMUTMATCH;
 typedef struct tagLOGCOLORSPACEA {
 	DWORD lcsSignature;
@@ -2309,7 +2337,13 @@ typedef struct tagPALETTEENTRY {
 	 * that entry. Otherwise, the color is not available for animation.
 	 */
 	BYTE peFlags;
-} PALETTEENTRY,*LPPALETTEENTRY,*PPALETTEENTRY;
+} PALETTEENTRY,*PPALETTEENTRY;
+/**
+ * Pointer to a PALETTEENTRY.
+ *
+ * See PALETTEENTRY: This structure specifies the color and usage of a logical palette entry.
+ */
+typedef PALETTEENTRY *LPPALETTEENTRY;
 /**
  * This structure defines a logical color palette.
  *
@@ -2954,7 +2988,13 @@ typedef struct _RGNDATA {
 	 * structures that make up the region.
 	 */
 	char Buffer[1];
-} RGNDATA,*PRGNDATA, *LPRGNDATA;
+} RGNDATA,*PRGNDATA;
+/**
+ * Pointer to a RGNDATA.
+ *
+ * See RGNDATA: This structure contains a header and an array of rectangles that comprise a region.
+ */
+typedef RGNDATA *LPRGNDATA;
 /* for GetRandomRgn */
 #define SYSRGN  4
 typedef struct tagGCP_RESULTSA {
@@ -3348,6 +3388,11 @@ typedef struct tagENUMLOGFONTEXDVW
 	DESIGNVECTOR elfDesignVector;
 } ENUMLOGFONTEXDVW, *PENUMLOGFONTEXDVW, *LPENUMLOGFONTEXDVW;
 #endif /* _WIN32_WINNT >= 0x0500 */
+/**
+ * Same as USHORT.
+ *
+ * See USHORT: Unsigned 16-bit integer (unsigned short).
+ */
 typedef USHORT COLOR16;
 typedef struct _TRIVERTEX {
 	LONG x;
@@ -3383,9 +3428,34 @@ typedef struct _DISPLAY_DEVICEW {
   WCHAR DeviceKey[128];
 } DISPLAY_DEVICEW, *PDISPLAY_DEVICEW, *LPDISPLAY_DEVICEW;
 
-typedef BOOL (CALLBACK *ABORTPROC)(HDC,int);
+/**
+ * Print abort callback set with SetAbortProc (CE 2.0 and later).
+ *
+ * GDI calls it periodically while a print job spools, so a program can pump
+ * messages and offer a cancel button. Return FALSE to cancel the job.
+ *
+ * @param device The printer device context.
+ * @param error Zero, or SP_OUTOFDISK if the spooler is waiting for disk
+ *        space.
+ * @return TRUE to continue printing, FALSE to cancel.
+ */
+typedef BOOL (CALLBACK *ABORTPROC)(HDC device,int error);
 typedef int (CALLBACK *MFENUMPROC)(HDC,HANDLETABLE*,METARECORD*,int,LPARAM);
-typedef int (CALLBACK *ENHMFENUMPROC)(HDC,HANDLETABLE*,const ENHMETARECORD*,int,LPARAM);
+/**
+ * Record enumeration callback for EnumEnhMetaFile, called once per record of
+ * an enhanced metafile.
+ *
+ * No Windows CE ROM exports EnumEnhMetaFile, so metafiles can't be walked this
+ * way on those targets.
+ *
+ * @param device The device context given to EnumEnhMetaFile.
+ * @param handles The metafile's handle table, for PlayEnhMetaFileRecord.
+ * @param record The record to process.
+ * @param count Number of handles in the table.
+ * @param context The value given to EnumEnhMetaFile.
+ * @return Non-zero to continue enumerating, zero to stop.
+ */
+typedef int (CALLBACK *ENHMFENUMPROC)(HDC device,HANDLETABLE*handles,const ENHMETARECORD*record,int count,LPARAM context);
 typedef int (CALLBACK *OLDFONTENUMPROCA)(const LOGFONTA*,const TEXTMETRICA*,DWORD,LPARAM);
 typedef int (CALLBACK *OLDFONTENUMPROCW)(const LOGFONTW*,const TEXTMETRICW*,DWORD,LPARAM);
 typedef OLDFONTENUMPROCA FONTENUMPROCA;
@@ -3393,7 +3463,17 @@ typedef OLDFONTENUMPROCW FONTENUMPROCW;
 typedef int (CALLBACK *ICMENUMPROCA)(LPSTR,LPARAM);
 typedef int (CALLBACK *ICMENUMPROCW)(LPWSTR,LPARAM);
 typedef void (CALLBACK *GOBJENUMPROC)(LPVOID,LPARAM);
-typedef void (CALLBACK *LINEDDAPROC)(int,int,LPARAM);
+/**
+ * Per-pixel callback for LineDDA, called once for each point on a line between
+ * two coordinates.
+ *
+ * No Windows CE ROM exports LineDDA; step the line yourself.
+ *
+ * @param x The point's x-coordinate.
+ * @param y The point's y-coordinate.
+ * @param context The value given to LineDDA.
+ */
+typedef void (CALLBACK *LINEDDAPROC)(int x,int y,LPARAM context);
 typedef UINT (CALLBACK *LPFNDEVMODE)(HWND,HMODULE,LPDEVMODEA,LPSTR,LPSTR,LPDEVMODEA,LPSTR,UINT);
 typedef DWORD (CALLBACK *LPFNDEVCAPS)(LPSTR,LPSTR,UINT,LPSTR,LPDEVMODEA);
 
@@ -4980,6 +5060,11 @@ WINGDIAPI DWORD WINAPI SetLayout(HDC, DWORD);
 #endif
 
 #ifdef UNICODE
+/**
+ * Same as WCHAR.
+ *
+ * See WCHAR: 16-bit wide character (unsigned short): one UTF-16 code unit.
+ */
 typedef WCHAR BCHAR;
 typedef DOCINFOW DOCINFO, *LPDOCINFO;
 typedef LOGFONTW LOGFONT,*PLOGFONT,*LPLOGFONT;

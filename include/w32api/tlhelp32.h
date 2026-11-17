@@ -62,7 +62,13 @@ typedef struct tagHEAPLIST32 {
 	 * default heap.
 	 */
 	DWORD dwFlags;
-} HEAPLIST32,*PHEAPLIST32,*LPHEAPLIST32;
+} HEAPLIST32,*PHEAPLIST32;
+/**
+ * Pointer to a HEAPLIST32.
+ *
+ * See HEAPLIST32: This structure describes an entry from a list that enumerates the heaps used by a specified process.
+ */
+typedef HEAPLIST32 *LPHEAPLIST32;
 /**
  * This structure describes one entry (block) of a heap that is being
  * examined.
@@ -121,7 +127,13 @@ typedef struct tagHEAPENTRY32 {
 	 * elements.
 	 */
 	DWORD th32HeapID;
-} HEAPENTRY32,*PHEAPENTRY32,*LPHEAPENTRY32;
+} HEAPENTRY32,*PHEAPENTRY32;
+/**
+ * Pointer to a HEAPENTRY32.
+ *
+ * See HEAPENTRY32: This structure describes one entry (block) of a heap that is being examined.
+ */
+typedef HEAPENTRY32 *LPHEAPENTRY32;
 typedef struct tagPROCESSENTRY32W {
 	DWORD dwSize;
 	DWORD cntUsage;
@@ -204,7 +216,19 @@ typedef struct tagPROCESSENTRY32 {
 #else
 	CHAR  szExeFile[MAX_PATH];
 #endif
-} PROCESSENTRY32,*PPROCESSENTRY32,*LPPROCESSENTRY32;
+} PROCESSENTRY32;
+/**
+ * Pointer to a PROCESSENTRY32.
+ *
+ * See PROCESSENTRY32: This structure describes an entry from a list that enumerates the processes residing in the system address space when a snapshot was taken.
+ */
+typedef PROCESSENTRY32 *PPROCESSENTRY32;
+/**
+ * Pointer to a PROCESSENTRY32.
+ *
+ * See PROCESSENTRY32: This structure describes an entry from a list that enumerates the processes residing in the system address space when a snapshot was taken.
+ */
+typedef PROCESSENTRY32 *LPPROCESSENTRY32;
 /**
  * This structure describes an entry from a list that enumerates the
  * threads executing in the system when a snapshot was taken.
@@ -277,7 +301,13 @@ typedef struct tagTHREADENTRY32 {
 	DWORD th32AccessKey;
 	DWORD th32CurrentProcessID;
 #endif
-} THREADENTRY32,*PTHREADENTRY32,*LPTHREADENTRY32;
+} THREADENTRY32,*PTHREADENTRY32;
+/**
+ * Pointer to a THREADENTRY32.
+ *
+ * See THREADENTRY32: This structure describes an entry from a list that enumerates the threads executing in the system when a snapshot was taken.
+ */
+typedef THREADENTRY32 *LPTHREADENTRY32;
 typedef struct tagMODULEENTRY32W {
 	DWORD dwSize;
 	DWORD th32ModuleID;
@@ -358,7 +388,19 @@ typedef struct tagMODULEENTRY32 {
 	CHAR szModule[MAX_MODULE_NAME32 + 1];
 	CHAR szExePath[MAX_PATH];
 #endif
-} MODULEENTRY32,*PMODULEENTRY32,*LPMODULEENTRY32;
+} MODULEENTRY32;
+/**
+ * Pointer to a MODULEENTRY32.
+ *
+ * See MODULEENTRY32: This structure describes an entry from a list that enumerates the modules used by a specified process.
+ */
+typedef MODULEENTRY32 *PMODULEENTRY32;
+/**
+ * Pointer to a MODULEENTRY32.
+ *
+ * See MODULEENTRY32: This structure describes an entry from a list that enumerates the modules used by a specified process.
+ */
+typedef MODULEENTRY32 *LPMODULEENTRY32;
 #ifdef _WIN32_WCE
 /**
  * Retrieves the first block in a process heap.

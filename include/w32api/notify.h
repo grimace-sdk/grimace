@@ -79,7 +79,13 @@ typedef struct UserNotificationType {
 	 * Reserved; set to zero.
 	 */
 	DWORD		dwReserved;
-} CE_USER_NOTIFICATION, *PCE_USER_NOTIFICATION;
+} CE_USER_NOTIFICATION;
+/**
+ * Pointer to a CE_USER_NOTIFICATION.
+ *
+ * See CE_USER_NOTIFICATION: This structure contains information used to initialize the user notifications settings dialog box, and receives the user's notification preferences entered by way of the dialog box.
+ */
+typedef CE_USER_NOTIFICATION *PCE_USER_NOTIFICATION;
 
 typedef struct UserNotificationTrigger {
 	DWORD		dwSize;

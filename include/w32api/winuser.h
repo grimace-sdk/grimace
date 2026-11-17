@@ -6790,30 +6790,194 @@ extern "C" {
 #endif
 
 #ifndef RC_INVOKED
-typedef BOOL(CALLBACK *DLGPROC)(HWND,UINT,WPARAM,LPARAM);
-typedef VOID(CALLBACK *TIMERPROC)(HWND,UINT,UINT,DWORD);
-typedef BOOL(CALLBACK *GRAYSTRINGPROC)(HDC,LPARAM,int);
-typedef LRESULT(CALLBACK *HOOKPROC)(int,WPARAM,LPARAM);
+/**
+ * Dialog procedure, given to CreateDialogIndirectParamW, DialogBoxParamW and
+ * the other dialog functions.
+ *
+ * The dialog manager calls it for each message before its own handling. Unlike
+ * a window procedure it doesn't call DefWindowProcW. For messages that need a
+ * specific result, store it with SetWindowLongW(DWL_MSGRESULT) and return
+ * TRUE.
+ *
+ * @param dialog The dialog window.
+ * @param message The message identifier.
+ * @param first The message's wParam.
+ * @param second The message's lParam.
+ * @return TRUE if the procedure handled the message, FALSE to let the
+ *         dialog manager handle it. For WM_INITDIALOG, TRUE to give the
+ *         default control the focus.
+ */
+typedef BOOL(CALLBACK *DLGPROC)(HWND dialog,UINT message,WPARAM first,LPARAM second);
+/**
+ * Timer callback for SetTimer, called in place of posting WM_TIMER.
+ *
+ * It's called from the message loop of the thread that set the timer, when
+ * that thread calls GetMessageW or PeekMessageW with no other message waiting,
+ * not from another thread. Note the identifier here is a UINT, as the CE SDK
+ * has it, rather than desktop Windows' UINT_PTR.
+ *
+ * @param window The window given to SetTimer, or NULL.
+ * @param message WM_TIMER.
+ * @param timer The timer identifier.
+ * @param time The time the timer fired, as GetTickCount reports it.
+ */
+typedef VOID(CALLBACK *TIMERPROC)(HWND window,UINT message,UINT timer,DWORD time);
+/**
+ * Output callback for GrayStringW, which draws text in a greyed style.
+ *
+ * No Windows CE ROM exports GrayStringW; use DrawTextW with a grey colour
+ * instead.
+ *
+ * @param device A memory device context to draw into.
+ * @param data The data pointer given to GrayStringW.
+ * @param length The length given to GrayStringW.
+ * @return TRUE on success, FALSE on failure.
+ */
+typedef BOOL(CALLBACK *GRAYSTRINGPROC)(HDC device,LPARAM data,int length);
+/**
+ * Hook procedure installed with SetWindowsHookExW.
+ *
+ * The system calls it when the hooked event occurs. Pass codes less than zero,
+ * and any event you don't consume, to CallNextHookEx and return its result.
+ * SetWindowsHookExW is exported from CE 2.11 (x86 CE 2.0) but the CE SDK
+ * doesn't document it.
+ *
+ * @param code Hook code; its meaning depends on the hook type. Below zero,
+ *        just call CallNextHookEx.
+ * @param first The hook type's wParam.
+ * @param second The hook type's lParam.
+ * @return The hook type's result, usually CallNextHookEx's, or non-zero to
+ *         consume the event where the hook type allows.
+ */
+typedef LRESULT(CALLBACK *HOOKPROC)(int code,WPARAM first,LPARAM second);
 typedef BOOL(CALLBACK *PROPENUMPROCA)(HWND,LPCSTR,HANDLE);
-typedef BOOL(CALLBACK *PROPENUMPROCW)(HWND,LPCWSTR,HANDLE);
+/**
+ * Window property enumeration callback for EnumPropsW.
+ *
+ * No Windows CE ROM exports the window property functions (SetPropW, GetPropW,
+ * EnumPropsW); keep per-window data in GWL_USERDATA or cbWndExtra instead.
+ *
+ * @param window The window whose properties are being enumerated.
+ * @param name The property name, or an atom in the low word if it was set
+ *        by atom.
+ * @param data The property value.
+ * @return TRUE to continue enumerating, FALSE to stop.
+ */
+typedef BOOL(CALLBACK *PROPENUMPROCW)(HWND window,LPCWSTR name,HANDLE data);
 typedef BOOL(CALLBACK *PROPENUMPROCEXA)(HWND,LPSTR,HANDLE,DWORD);
-typedef BOOL(CALLBACK *PROPENUMPROCEXW)(HWND,LPWSTR,HANDLE,DWORD);
+/**
+ * Window property enumeration callback for EnumPropsExW, the EnumPropsW
+ * variant that passes a caller value through.
+ *
+ * No Windows CE ROM exports the window property functions.
+ *
+ * @param window The window whose properties are being enumerated.
+ * @param name The property name, or an atom in the low word if it was set
+ *        by atom.
+ * @param data The property value.
+ * @param context The value given to EnumPropsExW.
+ * @return TRUE to continue enumerating, FALSE to stop.
+ */
+typedef BOOL(CALLBACK *PROPENUMPROCEXW)(HWND window,LPWSTR name,HANDLE data,DWORD context);
 typedef int(CALLBACK *EDITWORDBREAKPROCA)(LPSTR,int,int,int);
 typedef int(CALLBACK *EDITWORDBREAKPROCW)(LPWSTR,int,int,int);
-typedef LRESULT(CALLBACK *WNDPROC)(HWND,UINT,WPARAM,LPARAM);
-typedef BOOL(CALLBACK *DRAWSTATEPROC)(HDC,LPARAM,WPARAM,int,int);
-typedef BOOL(CALLBACK *WNDENUMPROC)(HWND,LPARAM);
+/**
+ * Window procedure: the function that handles messages for a window class,
+ * named in WNDCLASSW.lpfnWndProc.
+ *
+ * The system calls it from DispatchMessageW and SendMessageW for every message
+ * to the window, so it runs on the thread that created the window. Pass
+ * unhandled messages to DefWindowProcW. Also the type GetWindowLongW returns
+ * for GWL_WNDPROC when subclassing; call the old one with CallWindowProcW.
+ *
+ * On Windows CE a fault inside a window procedure ends the process: grimace
+ * programs have no .pdata, so the system can't unwind past it.
+ *
+ * @param window The window the message is for.
+ * @param message The message identifier (WM_*).
+ * @param first The message's wParam.
+ * @param second The message's lParam.
+ * @return The message's result, or DefWindowProcW's result for messages you
+ *         don't handle.
+ */
+typedef LRESULT(CALLBACK *WNDPROC)(HWND window,UINT message,WPARAM first,LPARAM second);
+/**
+ * Drawing callback for DrawStateW with DST_COMPLEX, called to draw the image
+ * that DrawStateW then renders in the requested state.
+ *
+ * No Windows CE ROM exports DrawStateW, so the type is only there for source
+ * compatibility.
+ *
+ * @param device The device context to draw into.
+ * @param data The lData given to DrawStateW.
+ * @param flags The wData given to DrawStateW.
+ * @param width Width of the image, in pixels.
+ * @param height Height of the image, in pixels.
+ * @return TRUE on success, FALSE on failure.
+ */
+typedef BOOL(CALLBACK *DRAWSTATEPROC)(HDC device,LPARAM data,WPARAM flags,int width,int height);
+/**
+ * Window enumeration callback for EnumWindows, and EnumChildWindows on CE 3.0
+ * and later.
+ *
+ * Called once per window, on the calling thread, until it returns FALSE.
+ *
+ * @param window The window found.
+ * @param context The lParam given to the enumeration function.
+ * @return TRUE to continue enumerating, FALSE to stop.
+ */
+typedef BOOL(CALLBACK *WNDENUMPROC)(HWND window,LPARAM context);
 typedef BOOL(CALLBACK *ENUMWINDOWSPROC)(HWND,LPARAM);
-typedef BOOL(CALLBACK* MONITORENUMPROC)(HMONITOR,HDC,LPRECT,LPARAM);
+/**
+ * Display monitor enumeration callback for EnumDisplayMonitors.
+ *
+ * EnumDisplayMonitors arrives with CE 4.1. Earlier devices have one display,
+ * described by GetSystemMetrics and GetDeviceCaps.
+ *
+ * @param monitor The monitor found.
+ * @param device The device context given to EnumDisplayMonitors, clipped
+ *        to the monitor, or NULL.
+ * @param clip The monitor rectangle, intersected with the clip rectangle.
+ * @param context The value given to EnumDisplayMonitors.
+ * @return TRUE to continue enumerating, FALSE to stop.
+ */
+typedef BOOL(CALLBACK* MONITORENUMPROC)(HMONITOR monitor,HDC device,LPRECT clip,LPARAM context);
 typedef BOOL(CALLBACK *NAMEENUMPROCA)(LPSTR,LPARAM);
 typedef BOOL(CALLBACK *NAMEENUMPROCW)(LPWSTR,LPARAM);
 typedef NAMEENUMPROCA DESKTOPENUMPROCA;
 typedef NAMEENUMPROCW DESKTOPENUMPROCW;
 typedef NAMEENUMPROCA WINSTAENUMPROCA;
 typedef NAMEENUMPROCW WINSTAENUMPROCW;
-typedef void(CALLBACK *SENDASYNCPROC)(HWND,UINT,DWORD,LRESULT);
-DECLARE_HANDLE(HDWP);
-DECLARE_HANDLE(HDEVNOTIFY);
+/**
+ * Completion callback for SendMessageCallback, called when the target window
+ * has processed the message.
+ *
+ * No Windows CE ROM exports SendMessageCallback, so the type is only there for
+ * source compatibility.
+ *
+ * @param window The window the message was sent to.
+ * @param message The message that was sent.
+ * @param context The value given to SendMessageCallback.
+ * @param result The window procedure's result.
+ */
+typedef void(CALLBACK *SENDASYNCPROC)(HWND window,UINT message,DWORD context,LRESULT result);
+/**
+ * Handle to a deferred window position batch, from BeginDeferWindowPos.
+ *
+ * Pass it to each DeferWindowPos call, using the returned handle for the next,
+ * and finish with EndDeferWindowPos, which moves the windows and frees the
+ * handle. Needs CE 2.0 or later.
+ */
+typedef struct HDWP__ { int i; } *HDWP;
+/**
+ * Handle to a device notification registration, from
+ * RegisterDeviceNotification.
+ *
+ * No Windows CE ROM exports it; CE sends WM_DEVICECHANGE without
+ * registration, and drivers use the message queue API. Source
+ * compatibility only.
+ */
+typedef struct HDEVNOTIFY__ { int i; } *HDEVNOTIFY;
 typedef struct tagMENUGETOBJECTINFO {
   DWORD  dwFlags;
   UINT  uPos;
@@ -6856,7 +7020,13 @@ typedef struct tagACCEL {
 	 * accelerator table entries.
 	 */
 	WORD pad;
-} ACCEL,*LPACCEL;
+} ACCEL;
+/**
+ * Pointer to a ACCEL.
+ *
+ * See ACCEL: This structure defines an accelerator key used in an accelerator table.
+ */
+typedef ACCEL *LPACCEL;
 #else
 	WORD cmd;
 } ACCEL,*LPACCEL;
@@ -7249,6 +7419,11 @@ typedef struct {
 	 */
 	short cy;
 } DLGTEMPLATE,*LPDLGTEMPLATE,*LPDLGTEMPLATEA,*LPDLGTEMPLATEW;
+/**
+ * Pointer to a const DLGTEMPLATE.
+ *
+ * See DLGTEMPLATE: This structure defines the dimensions and style of a dialog box.
+ */
 typedef const DLGTEMPLATE *LPCDLGTEMPLATE;
 #pragma pack(pop)
 /**
@@ -7384,7 +7559,13 @@ typedef struct tagPAINTSTRUCT {
 	 * Reserved; used internally by the system.
 	 */
 	BYTE rgbReserved[32];
-} PAINTSTRUCT,*LPPAINTSTRUCT;
+} PAINTSTRUCT;
+/**
+ * Pointer to a PAINTSTRUCT.
+ *
+ * See PAINTSTRUCT: This structure contains information that an application uses to paint the client area of a window owned by that application.
+ */
+typedef PAINTSTRUCT *LPPAINTSTRUCT;
 /**
  * This structure contains message information from a thread's message
  * queue.
@@ -7428,7 +7609,12 @@ typedef struct tagMSG {
 	 * the message was posted.
 	 */
 	POINT pt;
-} MSG,*LPMSG,*PMSG;
+} MSG,*PMSG;
+/**
+ * Pointer to a MSG, a queued window message as filled by GetMessageW and
+ * PeekMessageW and passed to TranslateMessage and DispatchMessageW.
+ */
+typedef MSG *LPMSG;
 /**
  * This structure contains information about an icon.
  *
@@ -7473,7 +7659,13 @@ typedef struct _ICONINFO {
 	 * XOR) to the destination by using the SRCINVERT flag.
 	 */
 	HBITMAP hbmColor;
-} ICONINFO,*PICONINFO;
+} ICONINFO;
+/**
+ * Pointer to a ICONINFO.
+ *
+ * See ICONINFO: This structure contains information about an icon.
+ */
+typedef ICONINFO *PICONINFO;
 /**
  * This structure contains information about a notification message. The
  * pointer to this structure is specified as the lParam member of the
@@ -7632,7 +7824,18 @@ typedef struct tagSCROLLINFO {
 	 * SetScrollInfo function ignores this member.
 	 */
 	int nTrackPos;
-} SCROLLINFO,*LPSCROLLINFO;
+} SCROLLINFO;
+/**
+ * Pointer to a SCROLLINFO.
+ *
+ * See SCROLLINFO: This structure contains scroll bar parameters to be set by the SetScrollInfo function or retrieved by the GetScrollInfo function.
+ */
+typedef SCROLLINFO *LPSCROLLINFO;
+/**
+ * Pointer to a const SCROLLINFO.
+ *
+ * See SCROLLINFO: This structure contains scroll bar parameters to be set by the SetScrollInfo function or retrieved by the GetScrollInfo function.
+ */
 typedef const SCROLLINFO *LPCSCROLLINFO;
 typedef struct _WINDOWPLACEMENT {
 	UINT length;
@@ -7660,7 +7863,17 @@ typedef struct tagHELPINFO {
 	DWORD dwContextId;
 	POINT MousePos;
 } HELPINFO,*LPHELPINFO;
-typedef void(CALLBACK *MSGBOXCALLBACK)(LPHELPINFO);
+/**
+ * Help callback named in MSGBOXPARAMSW.lpfnMsgBoxCallback, called by
+ * MessageBoxIndirectW when the user asks for help in the message box
+ * (WM_HELP).
+ *
+ * MessageBoxIndirectW needs CE 3.0 or later.
+ *
+ * @param help The HELPINFO describing the request: its dwContextId is the
+ *        dwContextHelpId from the MSGBOXPARAMSW.
+ */
+typedef void(CALLBACK *MSGBOXCALLBACK)(LPHELPINFO help);
 typedef struct {
 	UINT cbSize;
 	HWND hwndOwner;
@@ -7853,7 +8066,13 @@ typedef struct tagTPMPARAMS {
 	 * screen coordinates.
 	 */
 	RECT rcExclude;
-} TPMPARAMS,*LPTPMPARAMS;
+} TPMPARAMS;
+/**
+ * Pointer to a TPMPARAMS.
+ *
+ * See TPMPARAMS: This structure contains extended parameters for the TrackPopupMenuEx function.
+ */
+typedef TPMPARAMS *LPTPMPARAMS;
 typedef struct tagEVENTMSG {
 	UINT message;
 	UINT paramL;
@@ -7925,7 +8144,13 @@ typedef struct _WINDOWPOS {
 	 * SWP_SHOWWINDOW: Displays the window.
 	 */
 	UINT flags;
-} WINDOWPOS,*PWINDOWPOS,*LPWINDOWPOS;
+} WINDOWPOS,*LPWINDOWPOS;
+/**
+ * Pointer to a WINDOWPOS.
+ *
+ * See WINDOWPOS: This structure contains information about the size and position of a window.
+ */
+typedef WINDOWPOS *PWINDOWPOS;
 typedef struct tagNCCALCSIZE_PARAMS {
 	RECT rgrc[3];
 	PWINDOWPOS lppos;
@@ -8270,7 +8495,13 @@ typedef struct tagINPUT {
 		 */
 		HARDWAREINPUT hi;
   } DUMMYUNIONNAME;
-} INPUT,*PINPUT,*LPINPUT;
+} INPUT,*PINPUT;
+/**
+ * Pointer to a INPUT.
+ *
+ * See INPUT: This structure is used by the SendInput function to synthesize keystrokes, stylus and mouse motions, and button clicks.
+ */
+typedef INPUT *LPINPUT;
 #endif /* (_WIN32_WINNT >= 0x0403) */
 #if (_WIN32_WINNT >= 0x0601)
 typedef struct _TOUCHINPUT {
@@ -8308,7 +8539,12 @@ typedef struct {
 	HWND  hwnd;
 	LUID  luid;
 } BSMINFO,*PBSMINFO;
-DECLARE_HANDLE(HRAWINPUT);
+/**
+ * Handle to a raw input packet, as WM_INPUT's lParam, read with
+ * GetRawInputData. No Windows CE ROM exports raw input; source compatibility
+ * only.
+ */
+typedef struct HRAWINPUT__ { int i; } *HRAWINPUT;
 typedef struct tagRAWINPUTHEADER {
 	DWORD dwType;
 	DWORD dwSize;
@@ -8478,6 +8714,11 @@ typedef const GUID *LPCGUID;
 #endif
 	
 #if (_WIN32_WINNT >= 0x0600)
+/**
+ * Same as HANDLE.
+ *
+ * See HANDLE: Opaque handle to a kernel object: a file, event, mutex, semaphore, process, thread, find context or similar.
+ */
 typedef HANDLE HPOWERNOTIFY;
 
 typedef struct {

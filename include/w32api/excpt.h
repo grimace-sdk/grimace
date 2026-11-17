@@ -18,10 +18,30 @@ typedef struct _CONTEXT CONTEXT;
 struct _EXCEPTION_RECORD;
 struct _EXCEPTION_POINTERS;
 typedef struct _CONTEXT *PCONTEXT;
+/**
+ * Pointer to a EXCEPTION_RECORD.
+ *
+ * See EXCEPTION_RECORD: This structure describes an exception.
+ */
 typedef struct _EXCEPTION_RECORD *PEXCEPTION_RECORD;
+/**
+ * Pointer to a EXCEPTION_POINTERS.
+ *
+ * See EXCEPTION_POINTERS: This structure contains an exception record with a machine-independent description of an exception and a context record with a machine-dependent description of the processor context at the time of the exception.
+ */
 typedef struct _EXCEPTION_POINTERS *PEXCEPTION_POINTERS;
 typedef PCONTEXT LPCONTEXT;
+/**
+ * Pointer to a EXCEPTION_RECORD.
+ *
+ * See EXCEPTION_RECORD: This structure describes an exception.
+ */
 typedef PEXCEPTION_RECORD LPEXCEPTION_RECORD;
+/**
+ * Pointer to a EXCEPTION_POINTERS.
+ *
+ * See EXCEPTION_POINTERS: This structure contains an exception record with a machine-independent description of an exception and a context record with a machine-dependent description of the processor context at the time of the exception.
+ */
 typedef PEXCEPTION_POINTERS LPEXCEPTION_POINTERS;
 struct _RUNTIME_FUNCTION;
 

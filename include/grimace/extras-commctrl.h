@@ -65,7 +65,18 @@ HBITMAP WINAPI CreateMonoBitmap(int cx, int cy);
 #if GRIMACE_CE == 1
 typedef LV_KEYDOWN NMLVKEYDOWN, *LPNMLVKEYDOWN;
 #endif
-typedef TV_KEYDOWN NMTVKEYDOWN, *LPNMTVKEYDOWN;
+/**
+ * Same as TV_KEYDOWN.
+ *
+ * See TV_KEYDOWN: This structure contains information about a keyboard event in a tree view control.
+ */
+typedef TV_KEYDOWN NMTVKEYDOWN;
+typedef TV_KEYDOWN *LPNMTVKEYDOWN;
+/**
+ * Same as TC_KEYDOWN.
+ *
+ * See TC_KEYDOWN: This structure contains information about a key press in a tab control, and is superseded by the NMTCKEYDOWN structure.
+ */
 typedef TC_KEYDOWN NMTCKEYDOWN;
 
 #if GRIMACE_CE >= 2
