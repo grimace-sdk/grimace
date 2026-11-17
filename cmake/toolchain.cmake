@@ -1,3 +1,6 @@
+# The toolchain file, for -DCMAKE_TOOLCHAIN_FILE. Choose the processor, CE version, platform and device from the
+# cache, find an LLVM with the backend, and set clang up as a freestanding cross compiler with lld linking ELF
+# for tools/mkpe.py to convert. A project then include(Grimace)s.
 set(CMAKE_SYSTEM_NAME Generic)
 
 get_filename_component(GRIMACE_TOOLCHAIN_ROOT "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
@@ -13,6 +16,7 @@ set(GRIMACE_CE_VERSION ${GRIMACE_DEFAULT_CE_VERSION} CACHE STRING "Windows CE ve
 set_property(CACHE GRIMACE_CE_VERSION PROPERTY STRINGS 1 1.01 2 3 5.2 6)
 set(GRIMACE_PLATFORM "" CACHE STRING "Platform to target, e.g. hpc, hpc2000, autopc, brain or wm: only its devices' export lists count. Empty for all")
 set(GRIMACE_DEVICE "" CACHE STRING "Device to pin to, e.g. velo1, joyride or jornada720: import exactly what its ROM exports. Empty for any device")
+# _WIN32_WCE as the SDK headers expect: 101, 502, or the major version times 100.
 if(GRIMACE_CE_VERSION STREQUAL "1.01")
     set(GRIMACE_WIN32_WCE 101)
 elseif(GRIMACE_CE_VERSION STREQUAL "5.2")
@@ -57,6 +61,7 @@ else()
     message(FATAL_ERROR "GRIMACE_ARCH must be mips, sh3, x86 or arm, not ${GRIMACE_ARCH}")
 endif()
 
+# Find LLVM: GRIMACE_LLVM_ROOT, the environment, llvm/ in the toolchain, then Homebrew's.
 if(NOT GRIMACE_LLVM_ROOT)
     set(GRIMACE_LLVM_ROOT "$ENV{GRIMACE_LLVM_ROOT}")
 endif()
@@ -86,6 +91,8 @@ set(CMAKE_LINKER "${GRIMACE_LLD}")
 set(CMAKE_C_COMPILER_TARGET ${GRIMACE_TARGET})
 set(CMAKE_CXX_COMPILER_TARGET ${GRIMACE_TARGET})
 set(CMAKE_ASM_COMPILER_TARGET ${GRIMACE_TARGET})
+# Nothing links without the runtime, so compiler checks build a static library, with the target selection
+# passed through.
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 list(APPEND CMAKE_TRY_COMPILE_PLATFORM_VARIABLES GRIMACE_ARCH GRIMACE_CE_VERSION GRIMACE_PLATFORM GRIMACE_DEVICE GRIMACE_LLVM_ROOT)
 
@@ -102,6 +109,7 @@ foreach(define IN LISTS GRIMACE_ARCH_DEFINES)
     string(APPEND CMAKE_C_FLAGS_INIT " -D${define}")
 endforeach()
 set(CMAKE_CXX_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} ${GRIMACE_CXX_TARGET_FLAGS} -std=c++20 -fno-exceptions -fno-rtti -fno-threadsafe-statics")
+# Use libc++ when this LLVM build ships its headers and sources, from CE 3.0 up.
 if(GRIMACE_WIN32_WCE GREATER_EQUAL 300 AND EXISTS "${GRIMACE_LLVM_ROOT}/include/c++/v1/__config" AND EXISTS "${GRIMACE_LLVM_ROOT}/share/libcxx/src/string.cpp")
     set(GRIMACE_LIBCXX ON)
     string(APPEND CMAKE_CXX_FLAGS_INIT " -nostdinc++")
@@ -118,6 +126,7 @@ set(CMAKE_EXE_LINKER_FLAGS_INIT "-static --emit-relocs --gc-sections")
 set(CMAKE_C_LINK_EXECUTABLE "<CMAKE_LINKER> <LINK_FLAGS> <CMAKE_C_LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>")
 set(CMAKE_CXX_LINK_EXECUTABLE "<CMAKE_LINKER> <LINK_FLAGS> <CMAKE_CXX_LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>")
 
+# Run clang through tools/grimace-cc on MIPS, which drops its experimental backend warning.
 if(GRIMACE_ARCH STREQUAL "mips")
     if(NOT DEFINED CMAKE_C_COMPILER_LAUNCHER)
         set(CMAKE_C_COMPILER_LAUNCHER "${GRIMACE_TOOLCHAIN_ROOT}/tools/grimace-cc")

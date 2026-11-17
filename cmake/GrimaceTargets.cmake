@@ -1,3 +1,6 @@
+# grimace_add_executable() and grimace_add_library(): link an ELF with lld against a linker script in ld/, then
+# have tools/mkpe.py convert it to a Windows CE PE after the build. A DLL is linked as an executable too, with
+# --undefined keeping each export alive.
 include_guard(GLOBAL)
 
 function(_grimace_link target script)
@@ -17,6 +20,9 @@ function(_grimace_pe target output)
     )
 endfunction()
 
+# Compile each .rc in RESOURCES with llvm-rc, against the SDK headers and GRIMACE_RC_INCLUDES. The other files
+# in RESOURCES are what the scripts refer to, so a change rebuilds them. Return the --resources options for
+# tools/mkpe.py.
 function(_grimace_resources target out_options)
     set(options "")
     set(dependencies "")

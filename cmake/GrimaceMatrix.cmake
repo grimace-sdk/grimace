@@ -1,3 +1,5 @@
+# grimace_matrix(): build a project for several targets at once, each an ExternalProject configured with the
+# toolchain file, and with PACKAGE gather their packages into one folder with an Application Manager .ini.
 include_guard(GLOBAL)
 include(ExternalProject)
 

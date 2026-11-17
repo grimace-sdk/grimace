@@ -1,3 +1,7 @@
+# Write a gdb script beside each program, <program>.elf.gdb, for debugging on a device with ce-debug: load the
+# symbols, search the build and GRIMACE_OS_SYMBOLS for DLLs, and define grimace-load to copy the program and
+# the project's DLLs to \Windows. The scripts are written once at the end of configure, so they list every DLL
+# the project defines, and are templated from grimace.gdb.in.
 include_guard(GLOBAL)
 
 function(_grimace_gdb_scripts)
@@ -37,6 +41,7 @@ function(_grimace_gdb_scripts)
     endforeach()
 endfunction()
 
+# Record a program or DLL for the scripts, and arrange to write them once configure is done.
 function(_grimace_add_gdb_script target output kind)
     set_target_properties(${target} PROPERTIES GRIMACE_OUTPUT "${output}")
     set_property(GLOBAL APPEND PROPERTY ${kind} ${target})

@@ -1,5 +1,8 @@
+# grimace_package(): describe a package as JSON for tools/mkpackage.py, built by the packages target. The paths
+# are generator expressions, so file(GENERATE) writes the description.
 include_guard(GLOBAL)
 
+# Set a string member. string(JSON) takes a JSON value, so quote and escape it here.
 function(_grimace_json_set json_variable member text)
     string(REPLACE "\\" "\\\\" text "${text}")
     string(REPLACE "\"" "\\\"" text "${text}")
@@ -7,6 +10,7 @@ function(_grimace_json_set json_variable member text)
     set(${json_variable} "${json}" PARENT_SCOPE)
 endfunction()
 
+# Append a JSON value to an array.
 function(_grimace_json_append json_variable value)
     string(JSON count LENGTH "${${json_variable}}")
     string(JSON json SET "${${json_variable}}" ${count} "${value}")

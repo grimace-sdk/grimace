@@ -1,11 +1,15 @@
+# Define the import libraries, C runtime and C++ runtime. Build only what a program links.
 include_guard(GLOBAL)
 
 set(GRIMACE_IMPORTS_DIR "${CMAKE_BINARY_DIR}/grimace/imports")
+# Import stubs are assembly, so they need the ARM variant: ARMv4I on CE 4.0 and later.
 set(GRIMACE_IMPLIB_ARCH "${GRIMACE_ARCH}")
 if(GRIMACE_ARCH STREQUAL "arm" AND GRIMACE_WIN32_WCE GREATER_EQUAL 400)
     set(GRIMACE_IMPLIB_ARCH armv4i)
 endif()
 
+# Work out the target's imports from the export lists in exports/: a <dll>.txt per DLL it can import from, and a
+# <dll>.lazy naming the imports to bind on first call. Reconfigure when a list changes.
 file(GLOB GRIMACE_MANIFEST_FILES "${GRIMACE_TOOLCHAIN_ROOT}/exports/*/*")
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${GRIMACE_MANIFEST_FILES})
 _grimace_run_tool(manifests.py GRIMACE_IMPORTS_SUMMARY
@@ -14,6 +18,8 @@ _grimace_run_tool(manifests.py GRIMACE_IMPORTS_SUMMARY
 )
 message(STATUS "${GRIMACE_IMPORTS_SUMMARY}")
 
+# GRIMACE_OS_SYMBOLS is a folder with the device ROM's symbols, nk.elf and rom.elf, for the gdb scripts. Take it
+# from the environment unless set, from GRIMACE_SH3_OS_SYMBOLS for SH3.
 if(NOT DEFINED GRIMACE_OS_SYMBOLS)
     if(GRIMACE_ARCH STREQUAL "sh3")
         set(GRIMACE_OS_SYMBOLS "$ENV{GRIMACE_SH3_OS_SYMBOLS}")
@@ -28,6 +34,8 @@ if(GRIMACE_OS_SYMBOLS)
     endif()
 endif()
 
+# grimace::headers: the SDK headers, plus libc++'s for C++. -femulated-tls: thread_local variables are kept by
+# runtime/c99/emutls.c, as the loader does not set up thread-local storage.
 add_library(grimace_headers INTERFACE)
 if(GRIMACE_LIBCXX)
     target_include_directories(grimace_headers SYSTEM INTERFACE
@@ -41,6 +49,9 @@ target_include_directories(grimace_headers SYSTEM INTERFACE
 target_compile_options(grimace_headers INTERFACE -femulated-tls)
 add_library(grimace::headers ALIAS grimace_headers)
 
+# grimace::runtime: startup, DllMain, lazy import binding, compiler-rt's builtins, the C99 additions, and the
+# runtime/libc functions the target's coredll lacks, as tools/runtime.py picks them. -fno-builtin stops clang
+# turning a libc function into a call to itself.
 file(GLOB_RECURSE GRIMACE_LIBC_FILES "${GRIMACE_TOOLCHAIN_ROOT}/runtime/libc/*")
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${GRIMACE_LIBC_FILES})
 _grimace_run_tool(runtime.py GRIMACE_LIBC_SUMMARY
@@ -56,6 +67,7 @@ target_include_directories(grimace_runtime PRIVATE "${GRIMACE_TOOLCHAIN_ROOT}/in
 target_compile_options(grimace_runtime PRIVATE -fno-builtin -w)
 add_library(grimace::runtime ALIAS grimace_runtime)
 
+# grimace::posix: the POSIX layer for ported code, opt in. Its headers shadow the SDK's.
 file(GLOB GRIMACE_POSIX_SOURCES "${GRIMACE_TOOLCHAIN_ROOT}/runtime/posix/*.c")
 add_library(grimace_posix STATIC EXCLUDE_FROM_ALL ${GRIMACE_POSIX_SOURCES})
 target_include_directories(grimace_posix SYSTEM PUBLIC "${GRIMACE_TOOLCHAIN_ROOT}/include/grimace/posix")
@@ -63,6 +75,8 @@ target_compile_definitions(grimace_posix PUBLIC GRIMACE_POSIX)
 target_link_libraries(grimace_posix PRIVATE grimace_headers)
 add_library(grimace::posix ALIAS grimace_posix)
 
+# grimace::cxx_runtime: new, delete and the C++ ABI support every C++ program links. grimace::rtti turns RTTI on
+# for a target, as it is off by default.
 file(GLOB GRIMACE_CXX_RUNTIME_SOURCES "${GRIMACE_TOOLCHAIN_ROOT}/runtime/cxx/*.cpp")
 add_library(grimace_cxx_runtime STATIC EXCLUDE_FROM_ALL ${GRIMACE_CXX_RUNTIME_SOURCES})
 target_link_libraries(grimace_cxx_runtime PRIVATE grimace_headers)
@@ -73,6 +87,9 @@ add_library(grimace_rtti INTERFACE)
 target_compile_options(grimace_rtti INTERFACE "$<$<COMPILE_LANGUAGE:CXX>:-frtti>")
 add_library(grimace::rtti ALIAS grimace_rtti)
 
+# With GRIMACE_LIBCXX, from toolchain.cmake, build the parts of libc++'s library that work without
+# exceptions or locales: grimace::cxx_stdlib, which every C++ program links, and grimace::iostreams, which a
+# program links to use <iostream>. runtime/libcxx supplies what the sources expect from the OS.
 set(GRIMACE_CXX_LIBRARIES grimace::cxx_runtime)
 if(GRIMACE_LIBCXX)
     set(GRIMACE_LIBCXX_SOURCE "${GRIMACE_LLVM_ROOT}/share/libcxx/src")
@@ -114,6 +131,8 @@ if(GRIMACE_LIBCXX)
     add_library(grimace::iostreams ALIAS grimace_iostreams)
 endif()
 
+# grimace::<dll>: an import library per DLL, weak stubs from tools/mkimplib.py, so a program only carries the
+# imports it calls and may define a name itself.
 file(GLOB GRIMACE_EXPORT_LISTS "${GRIMACE_IMPORTS_DIR}/*.txt")
 foreach(exports IN LISTS GRIMACE_EXPORT_LISTS)
     get_filename_component(dll "${exports}" NAME_WLE)
