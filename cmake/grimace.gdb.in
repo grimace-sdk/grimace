@@ -1,0 +1,13 @@
+@architecture@
+set confirm off
+set exec-file-mismatch off
+maint set target-non-stop on
+file "$<TARGET_FILE:@target@>"
+@os_symbols@
+set breakpoint pending on
+set solib-search-path @search_path@
+set remote exec-file /Windows/@output@
+define grimace-load
+  remote put "$<TARGET_FILE_DIR:@target@>/@output@" /Windows/@output@
+@uploads@
+end
