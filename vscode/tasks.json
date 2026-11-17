@@ -1,0 +1,93 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "grimace: emulator mips-ce1",
+            "type": "process",
+            "command": "${env:GRIMACE_TOOLCHAIN}/tools/grimace-emulator",
+            "args": [
+                "--target",
+                "mips-ce1"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "grimace",
+                "pattern": {
+                    "regexp": "^grimace-emulator: error: (.*)$",
+                    "message": 1
+                },
+                "background": {
+                    "activelyMatching": true,
+                    "beginsPattern": "^grimace-emulator: starting",
+                    "endsPattern": "^(debugmgr: ready|gdb: listening on )"
+                }
+            }
+        },
+        {
+            "label": "grimace: emulator mips-ce2",
+            "type": "process",
+            "command": "${env:GRIMACE_TOOLCHAIN}/tools/grimace-emulator",
+            "args": [
+                "--target",
+                "mips-ce2"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "grimace",
+                "pattern": {
+                    "regexp": "^grimace-emulator: error: (.*)$",
+                    "message": 1
+                },
+                "background": {
+                    "activelyMatching": true,
+                    "beginsPattern": "^grimace-emulator: starting",
+                    "endsPattern": "^(debugmgr: ready|gdb: listening on )"
+                }
+            }
+        },
+        {
+            "label": "grimace: emulator sh3-ce2",
+            "type": "process",
+            "command": "${env:GRIMACE_TOOLCHAIN}/tools/grimace-emulator",
+            "args": [
+                "--target",
+                "sh3-ce2"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "grimace",
+                "pattern": {
+                    "regexp": "^grimace-emulator: error: (.*)$",
+                    "message": 1
+                },
+                "background": {
+                    "activelyMatching": true,
+                    "beginsPattern": "^grimace-emulator: starting",
+                    "endsPattern": "^(debugmgr: ready|gdb: listening on )"
+                }
+            }
+        },
+        {
+            "label": "grimace: emulator arm-ce3",
+            "type": "process",
+            "command": "${env:GRIMACE_TOOLCHAIN}/tools/grimace-emulator",
+            "args": [
+                "--target",
+                "arm-ce3"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "grimace",
+                "pattern": {
+                    "regexp": "^grimace-emulator: error: (.*)$",
+                    "message": 1
+                },
+                "background": {
+                    "activelyMatching": true,
+                    "beginsPattern": "^grimace-emulator: starting",
+                    "endsPattern": "^(debugmgr: ready|gdb: listening on )"
+                }
+            }
+        }
+    ]
+}

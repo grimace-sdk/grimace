@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+"""
+Start the emulator for a target with its GDB stub listening, for the .gdb scripts grimace_add_executable() writes, or
+report one already listening on its port. velo-emu serves MIPS CE 1.0 and 2.0 (VELO_EMU, with CE 1.0's ROM at rom/nk.bin
+there and CE 2.0's in VELO_CE2_ROM), the SH3 emulator SH3 CE 2.0 (VELO_SH3_EMU, VELO_SH3_ROM), and jornada-72x-emu ARM
+CE 3.0 (JORNADA_EMU). The agent socket for ce-debug is build/debugmgr/<target>/agent.sock here.
+"""
+import argparse
+import hashlib
+import os
+import shutil
+import socket
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TARGETS = {
+    "mips-ce1": {"port": 2001, "emulator": "VELO_EMU", "program": "velo", "rom": lambda: os.path.join(setting("VELO_EMU"), "rom", "nk.bin"),
+                 "symbols": "GRIMACE_OS_SYMBOLS"},
+    "mips-ce2": {"port": 2002, "emulator": "VELO_EMU", "program": "velo", "rom": lambda: setting("VELO_CE2_ROM"),
+                 "symbols": "GRIMACE_OS_SYMBOLS"},
+    "sh3-ce2": {"port": 2003, "emulator": "VELO_SH3_EMU", "program": "sh3emu", "rom": lambda: setting("VELO_SH3_ROM"), "agent": True,
+                "symbols": "GRIMACE_SH3_OS_SYMBOLS"},
+    "arm-ce3": {"port": 2720, "emulator": "JORNADA_EMU", "program": "jornada720", "rom": lambda: None, "agent": True, "net": True,
+                "symbols": "GRIMACE_OS_SYMBOLS"},
+}
+
+
+def fail(message):
+    sys.exit("grimace-emulator: error: " + message)
+
+
+def setting(name):
+    value = os.environ.get(name)
+    if not value:
+        fail("set %s" % name)
+    return os.path.expanduser(value)
+
+
+def file_digest(path):
+    with open(path, "rb") as file:
+        return hashlib.sha256(file.read()).hexdigest()
+
+
+def port_free(port):
+    probe = socket.socket()
+    probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    try:
+        probe.bind(("127.0.0.1", port))
+    except OSError:
+        return False
+    finally:
+        probe.close()
+    return True
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Start a target's emulator with its GDB stub listening, or report one already running")
+    parser.add_argument("--target", choices=sorted(TARGETS), required=True)
+    parser.add_argument("--gdb", type=int, help="GDB port, default 2001 for mips-ce1, 2002 for mips-ce2, 2003 for sh3-ce2 and 2720 for arm-ce3")
+    parser.add_argument("--state", help="saved emulator state to start from, copied so the file is kept")
+    parser.add_argument("--headless", action="store_true", help="velo-emu only: no window, run until GDB detaches")
+    arguments = parser.parse_args()
+    target = TARGETS[arguments.target]
+    port = arguments.gdb or target["port"]
+    print("grimace-emulator: starting %s on GDB port %d" % (arguments.target, port), flush=True)
+    if not port_free(port):
+        print("gdb: listening on 127.0.0.1:%d (already running)" % port, flush=True)
+        return
+    emulator = setting(target["emulator"])
+    program = os.path.join(emulator, "headless" if arguments.headless and target["program"] == "velo" else target["program"])
+    if not os.access(program, os.X_OK):
+        fail("no %s; build %s" % (program, target["emulator"]))
+    rom = target["rom"]()
+    symbols = os.environ.get(target["symbols"])
+    if rom and symbols and os.path.exists(os.path.join(os.path.expanduser(symbols), "rom.sha256")):
+        expected = open(os.path.join(os.path.expanduser(symbols), "rom.sha256")).read().split()[0]
+        if expected != file_digest(rom):
+            print("grimace-emulator: warning: %s is for another ROM than %s" % (target["symbols"], rom), flush=True)
+    work = os.path.join(ROOT, "build", "debugmgr", arguments.target)
+    os.makedirs(work, exist_ok=True)
+    command = [program, "--gdb=%d" % port]
+    if target.get("net"):
+        command.append("--net")
+    if target.get("agent"):
+        command.append("--agent=%s" % os.path.join(work, "agent.sock"))
+    if arguments.state:
+        session = os.path.join(work, "session.state")
+        shutil.copyfile(os.path.expanduser(arguments.state), session)
+        command.append(("--load=%s" if arguments.headless and target["program"] == "velo" else "--state=%s") % session)
+    if rom:
+        command.append(rom)
+    os.chdir(emulator)
+    os.execv(program, command)
+
+
+if __name__ == "__main__":
+    main()

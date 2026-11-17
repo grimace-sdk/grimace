@@ -1,0 +1,128 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "MIPS CE 1.0 emulator",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "linux": {
+                "miDebuggerPath": "gdb-multiarch"
+            },
+            "preLaunchTask": "grimace: emulator mips-ce1",
+            "miDebuggerServerAddress": "localhost:2001",
+            "useExtendedRemote": true,
+            "customLaunchSetupCommands": [
+                {
+                    "text": "source ${command:cmake.launchTargetPath}.gdb"
+                },
+                {
+                    "text": "target extended-remote localhost:2001"
+                },
+                {
+                    "text": "-gdb-set target-wide-charset UTF-16LE"
+                },
+                {
+                    "text": "grimace-load"
+                }
+            ],
+            "launchCompleteCommand": "exec-run",
+            "targetArchitecture": "mips"
+        },
+        {
+            "name": "MIPS CE 2.0 emulator",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "linux": {
+                "miDebuggerPath": "gdb-multiarch"
+            },
+            "preLaunchTask": "grimace: emulator mips-ce2",
+            "miDebuggerServerAddress": "localhost:2002",
+            "useExtendedRemote": true,
+            "customLaunchSetupCommands": [
+                {
+                    "text": "source ${command:cmake.launchTargetPath}.gdb"
+                },
+                {
+                    "text": "target extended-remote localhost:2002"
+                },
+                {
+                    "text": "-gdb-set target-wide-charset UTF-16LE"
+                },
+                {
+                    "text": "grimace-load"
+                }
+            ],
+            "launchCompleteCommand": "exec-run",
+            "targetArchitecture": "mips"
+        },
+        {
+            "name": "SH3 CE 2.0 emulator",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "linux": {
+                "miDebuggerPath": "gdb-multiarch"
+            },
+            "preLaunchTask": "grimace: emulator sh3-ce2",
+            "miDebuggerServerAddress": "localhost:2003",
+            "useExtendedRemote": true,
+            "customLaunchSetupCommands": [
+                {
+                    "text": "source ${command:cmake.launchTargetPath}.gdb"
+                },
+                {
+                    "text": "target extended-remote localhost:2003"
+                },
+                {
+                    "text": "-gdb-set target-wide-charset UTF-16LE"
+                },
+                {
+                    "text": "grimace-load"
+                }
+            ],
+            "launchCompleteCommand": "exec-run"
+        },
+        {
+            "name": "ARM CE 3.0 emulator",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "linux": {
+                "miDebuggerPath": "gdb-multiarch"
+            },
+            "preLaunchTask": "grimace: emulator arm-ce3",
+            "miDebuggerServerAddress": "localhost:2720",
+            "useExtendedRemote": true,
+            "customLaunchSetupCommands": [
+                {
+                    "text": "source ${command:cmake.launchTargetPath}.gdb"
+                },
+                {
+                    "text": "target extended-remote localhost:2720"
+                },
+                {
+                    "text": "-gdb-set target-wide-charset UTF-16LE"
+                },
+                {
+                    "text": "grimace-load"
+                }
+            ],
+            "launchCompleteCommand": "exec-run",
+            "targetArchitecture": "arm"
+        }
+    ]
+}

@@ -268,6 +268,42 @@ grimace's own device headers, from Microsoft's public reference unless noted:
 
 [ce-debug](https://github.com/grimace-sdk/ce-debug) is the debugger for grimace programs: an agent on the device, built with grimace, for copying files, listing folders, starting and stopping programs and taking screenshots, over TCP, serial, USB or an emulator's host mailbox.
 
+### GDB and VS Code
+
+Each program gets a GDB script beside its `.elf`, `<name>.elf.gdb`. It loads the symbols, sets the program to run as `\Windows\<name>.exe`, and defines `grimace-load`, which uploads the `.exe` and the project's DLLs (all but `EXCLUDE_FROM_ALL` ones) to `\Windows` through debugmgr, where `LoadLibraryW` finds them by name.
+
+The emulators' GDB stubs serve these: [velo-emu](https://github.com/Gadgetoid/velo-emu) for MIPS CE 1.0 and 2.0, the SH3 emulator for SH3 CE 2.0, and [jornada-72x-emu](https://github.com/Gadgetoid/jornada-72x-emu) for ARM CE 3.0. `tools/grimace-emulator --target <target>` starts the one for `mips-ce1`, `mips-ce2`, `sh3-ce2` or `arm-ce3` with its GDB stub on port 2001, 2002, 2003 or 2720, or reports one already listening there. It finds velo-emu in `VELO_EMU`, with CE 1.0's ROM at `rom/nk.bin` there and CE 2.0's in `VELO_CE2_ROM`; the SH3 emulator in `VELO_SH3_EMU` with `VELO_SH3_ROM`; and jornada-72x-emu in `JORNADA_EMU`. `--state FILE` starts from a saved emulator state, copied so the file is kept, and `--headless` runs velo-emu without a window. The agent socket for ce-debug is `build/debugmgr/<target>/agent.sock` here.
+
+```sh
+tools/grimace-emulator --target mips-ce1 &
+gdb -x build/mips-ce1/hello/hello.elf.gdb -ex "target extended-remote :2001" -ex "set target-wide-charset UTF-16LE" -ex grimace-load -ex "break WinMain" -ex run
+```
+
+Set the character set after connecting, since connecting resets it, so `WCHAR` strings show as text.
+
+For VS Code, copy `vscode/settings.json`, `vscode/launch.json` and `vscode/tasks.json` into a project's `.vscode`. The settings have IntelliSense take the include paths, defines and compiler flags from CMake Tools, so hover, completion and signature help see the headers as the compiler does, with `_WIN32_WCE`, the architecture's defines and 16-bit `wchar_t`. `examples/CMakePresets.json` has a Debug preset per target to copy. The launch configurations need:
+
+- the C/C++ and CMake Tools extensions, with the project configured with the Debug preset for the target you pick
+- `gdb` with MIPS, SH3 or ARM support, and Python for OS symbols (Homebrew's `gdb` on macOS, `gdb-multiarch` on Linux)
+- `GRIMACE_TOOLCHAIN` (this folder) and the emulator's variables above in VS Code's environment
+
+F5 starts the emulator if it isn't running, uploads the selected target's `.exe` and runs it, stopping at breakpoints. The emulator keeps running between sessions. The emulators have no hardware watchpoints, so GDB uses software ones.
+
+### OS symbols
+
+For a CE image built with Platform Builder, GDB can also show the kernel's and the system DLLs' functions and source lines. Philips' Velo ROMs have no symbols, so this only applies to self-built images.
+
+Set `GRIMACE_OS_SYMBOLS` (`GRIMACE_SH3_OS_SYMBOLS` for SH3) to a folder of ELF symbol files for the image, one per module, when configuring the project: `-DGRIMACE_OS_SYMBOLS=folder`, or in the environment, which also covers VS Code. The folder holds:
+
+- `nk.elf`: the kernel, at its run-time addresses
+- an ELF for each DLL, at its address in ROM, named as the emulator's GDB stub reports it: the name in the ROM's module table, with `.elf` for `.dll` (`coredll.elf`)
+- `rom.elf`: the kernel and all the DLLs in one file
+- optionally `rom.sha256`: the image's SHA-256, as `shasum -a 256` prints it, which `tools/grimace-emulator` checks against the ROM it starts
+
+Make them from the PDBs and map files Platform Builder leaves in the image's release folder. They're derived from Microsoft's binaries, so keep them out of anything you publish.
+
+With it set, the `.gdb` scripts load `nk.elf` and add the folder to the shared-library search path after the project's folders, and `grimace-load` runs `sharedlibrary`, so GDB reads each system DLL's symbols as the stub reports it. The stub names a DLL as the program loaded it, so a file in the folder whose name only differs in case is loaded too. If no system DLL has been read by the first stop, because the stub has no module list, `tools/gdbsymbols.py` replaces `nk.elf` with `rom.elf`, which works as ROM DLLs don't move. That needs GDB with Python. Source lines name files on the machine the image was built on, so GDB shows the line number without the text. Without the setting, the scripts are unchanged.
+
 ## Notes
 
 - CE 1.0 has no `GetModuleFileNameW`, and `LoadLibraryW` doesn't search the program's folder. DLLs normally go in `\Windows`, or pass a full path (see `examples/dll`).

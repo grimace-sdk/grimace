@@ -1,4 +1,4 @@
-# Write a gdb script beside each program, <program>.elf.gdb, for debugging on a device with ce-debug: load the
+# Write a gdb script beside each program, <program>.elf.gdb, for an emulator's GDB stub (see README): load the
 # symbols, search the build and GRIMACE_OS_SYMBOLS for DLLs, and define grimace-load to copy the program and
 # the project's DLLs to \Windows. The scripts are written once at the end of configure, so they list every DLL
 # the project defines, and are templated from grimace.gdb.in.
