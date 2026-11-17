@@ -248,7 +248,6 @@ def check(clang, reference, version, work, arch, target_arch):
 
     sdk_tree = sdk.tree()
     sdk_records = records(sdk_tree)
-    our_records = records(ours.tree())
     type_where = type_headers(sdk_tree)
     sizes = {}
     excluded_types = set()

@@ -232,7 +232,7 @@ static void posix(void) {
     check("open for writing", file >= 3, NULL);
     check("write", write(file, "0123456789", 10) == 10, NULL);
     check("close", close(file) == 0 && close(file) == -1 && errno == EBADF, NULL);
-    check("open O_EXCL", open("/posix-test.bin", O_WRONLY | O_CREAT | O_EXCL) == -1 && errno == EEXIST, NULL);
+    check("open O_EXCL", open("/posix-test.bin", O_WRONLY | O_CREAT | O_EXCL, 0644) == -1 && errno == EEXIST, NULL);
     file = open("/posix-test.bin", O_RDWR);
     check("lseek", lseek(file, 0, SEEK_END) == 10 && lseek(file, 2, SEEK_SET) == 2 && lseek(file, 1, SEEK_CUR) == 3, NULL);
     check("read", read(file, text, 4) == 4 && !memcmp(text, "3456", 4), NULL);
