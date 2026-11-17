@@ -7947,7 +7947,19 @@ HDSA WINAPI DSA_Create(INT cbItem,INT cItemGrow);
  * @return TRUE on success, FALSE on failure.
  */
 BOOL WINAPI DSA_Destroy(HDSA hdsa);
-VOID WINAPI DSA_DestroyCallback(HDSA,PFNDSAENUMCALLBACK,PVOID);
+/**
+ * Calls a function for each item in a dynamic structure array, then
+ * destroys the array.
+ *
+ * Windows CE 5.0 and later.
+ *
+ * @param hdsa Array handle.
+ * @param pfnCB Function called with a pointer to each item.
+ * @param pData Value passed to pfnCB.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+VOID WINAPI DSA_DestroyCallback(HDSA hdsa,PFNDSAENUMCALLBACK pfnCB,PVOID pData);
 /**
  * Returns a pointer to an item in a dynamic structure array.
  *
@@ -7971,7 +7983,17 @@ PVOID WINAPI DSA_GetItemPtr(HDSA hdsa,INT i);
  * @return Index of the new item, or -1 on failure.
  */
 INT WINAPI DSA_InsertItem(HDSA hdsa,INT i,PVOID pitem);
-HDPA WINAPI DPA_Create(INT);
+/**
+ * Creates an empty dynamic pointer array.
+ *
+ * Free with DPA_Destroy or DPA_DestroyCallback. Windows CE 5.0 and later.
+ *
+ * @param cpGrow Number of slots to add each time the array grows.
+ * @return Array handle, or NULL on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+HDPA WINAPI DPA_Create(INT cpGrow);
 /**
  * Frees a dynamic pointer array.
  *
@@ -7984,10 +8006,56 @@ HDPA WINAPI DPA_Create(INT);
 BOOL WINAPI DPA_Destroy(HDPA hdpa);
 PVOID WINAPI DPA_DeletePtr(HDPA,INT);
 BOOL WINAPI DPA_DeleteAllPtrs(HDPA);
-VOID WINAPI DPA_EnumCallback(HDPA,PFNDPAENUMCALLBACK,PVOID);
-VOID WINAPI DPA_DestroyCallback(HDPA,PFNDPAENUMCALLBACK,PVOID);
-BOOL WINAPI DPA_SetPtr(HDPA,INT,PVOID);
-INT WINAPI DPA_InsertPtr(HDPA,INT,PVOID);
+/**
+ * Calls a function for each pointer in a dynamic pointer array.
+ *
+ * Enumeration stops when pfnCB returns zero. Windows CE 5.0 and later.
+ *
+ * @param hdpa Array handle.
+ * @param pfnCB Function called for each item.
+ * @param pData Value passed to pfnCB.
+ */
+VOID WINAPI DPA_EnumCallback(HDPA hdpa,PFNDPAENUMCALLBACK pfnCB,PVOID pData);
+/**
+ * Calls a function for each pointer in a dynamic pointer array, then
+ * destroys the array.
+ *
+ * Use it to free the items as the array goes. Windows CE 5.0 and later.
+ *
+ * @param hdpa Array handle.
+ * @param pfnCB Function called for each item.
+ * @param pData Value passed to pfnCB.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+VOID WINAPI DPA_DestroyCallback(HDPA hdpa,PFNDPAENUMCALLBACK pfnCB,PVOID pData);
+/**
+ * Stores a pointer at an index in a dynamic pointer array, growing it if
+ * needed.
+ *
+ * Windows CE 5.0 and later.
+ *
+ * @param hdpa Array handle.
+ * @param i Index to set.
+ * @param p Pointer to store.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+BOOL WINAPI DPA_SetPtr(HDPA hdpa,INT i,PVOID p);
+/**
+ * Inserts a pointer into a dynamic pointer array.
+ *
+ * Windows CE 5.0 and later.
+ *
+ * @param hdpa Array handle.
+ * @param i Index to insert at. DA_LAST or any index past the end appends.
+ * @param p Pointer to insert.
+ * @return Index of the new item, or -1 on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+INT WINAPI DPA_InsertPtr(HDPA hdpa,INT i,PVOID p);
 /**
  * Returns an item from a dynamic pointer array.
  *
@@ -7998,7 +8066,20 @@ INT WINAPI DPA_InsertPtr(HDPA,INT,PVOID);
  * @return The item, or NULL if i is out of range.
  */
 PVOID WINAPI DPA_GetPtr(HDPA hdpa,INT_PTR i);
-BOOL WINAPI DPA_Sort(HDPA,PFNDPACOMPARE,LPARAM);
+/**
+ * Sorts a dynamic pointer array with a comparison function.
+ *
+ * Windows CE 5.0 and later.
+ *
+ * @param hdpa Array handle.
+ * @param pfnCompare Returns less than, equal to or greater than zero for
+ *        two items, as for qsort.
+ * @param lParam Value passed to pfnCompare.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+BOOL WINAPI DPA_Sort(HDPA hdpa,PFNDPACOMPARE pfnCompare,LPARAM lParam);
 INT WINAPI DPA_Search(HDPA,PVOID,INT,PFNDPACOMPARE,LPARAM,UINT);
 /**
  * Replaces a dynamically allocated string with a newly allocated copy of

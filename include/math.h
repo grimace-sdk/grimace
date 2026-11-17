@@ -510,6 +510,14 @@ double exp2(double value);
 double cbrt(double value);
 double hypot(double x, double y);
 double copysign(double value, double sign);
+/**
+ * Returns the square root of a float.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param value Non-negative single-precision value.
+ * @return The square root. A negative value gives an indefinite result.
+ */
 float sqrtf(float value);
 float sinf(float value);
 float cosf(float value);
@@ -527,11 +535,44 @@ float log10f(float value);
 float log2f(float value);
 float exp2f(float value);
 float powf(float base, float exponent);
+/**
+ * Returns the largest whole number not greater than a float.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param value Single-precision value.
+ * @return The rounded-down value.
+ */
 float floorf(float value);
+/**
+ * Returns the smallest whole number not less than a float.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param value Single-precision value.
+ * @return The rounded-up value.
+ */
 float ceilf(float value);
 float truncf(float value);
 float roundf(float value);
+/**
+ * Returns the floating-point remainder of a float division.
+ *
+ * The result has the sign of dividend. Windows CE 4.1 and later.
+ *
+ * @param dividend Value to divide.
+ * @param divisor Value to divide by.
+ * @return The remainder, or 0 when divisor is 0.
+ */
 float fmodf(float dividend, float divisor);
+/**
+ * Returns the absolute value of a float.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param value Single-precision value.
+ * @return The value without its sign.
+ */
 float fabsf(float value);
 float fminf(float first, float second);
 float fmaxf(float first, float second);

@@ -2,6 +2,8 @@
 extern struct grimace_lazy_import __grimace_lazy_import_AbortDoc;
 #define __grimace_lazy_AppendMenuA 1
 extern struct grimace_lazy_import __grimace_lazy_import_AppendMenuA;
+#define __grimace_lazy_CeLogReSync 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeLogReSync;
 #define __grimace_lazy_CeResyncFilesys 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeResyncFilesys;
 #define __grimace_lazy_CloseEnhMetaFile 1
@@ -92,6 +94,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_SHSipPreference;
 extern struct grimace_lazy_import __grimace_lazy_import_SetAbortProc;
 #define __grimace_lazy_SetDlgItemTextA 1
 extern struct grimace_lazy_import __grimace_lazy_import_SetDlgItemTextA;
+#define __grimace_lazy_SetOOMEvent 1
+extern struct grimace_lazy_import __grimace_lazy_import_SetOOMEvent;
 #define __grimace_lazy_StartDocW 1
 extern struct grimace_lazy_import __grimace_lazy_import_StartDocW;
 #define __grimace_lazy_StartPage 1

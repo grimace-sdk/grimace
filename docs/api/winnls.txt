@@ -372,3 +372,29 @@ Converts a WCHAR string to a multibyte or single-byte string.
        or NULL.
 @return Bytes written, or the size needed if cchMultiByte is 0, or 0 on
         failure (see GetLastError).
+
+## EnumUILanguagesW(lpUILanguageEnumProc, dwFlags, lParam)
+Enumerates the user interface languages installed on the device.
+
+The callback receives each language ID as a hexadecimal string. Windows
+CE 4.21 and later.
+
+@param lpUILanguageEnumProc Called for each language. Return FALSE to
+       stop.
+@param dwFlags Reserved, pass 0.
+@param lParam Value passed to the callback.
+@return Nonzero on success, zero on failure.
+
+## GetSystemDefaultUILanguage()
+Gets the language of the device's base user interface.
+
+Windows CE 4.21 and later.
+
+@return Language ID.
+
+## GetUserDefaultUILanguage()
+Gets the user interface language chosen for the current user.
+
+Windows CE 4.21 and later.
+
+@return Language ID.

@@ -1,0 +1,21 @@
+## ActivateKeyboardLayout(hkl, Flags)
+Makes a loaded keyboard layout the active one.
+
+Windows CE 4.2 and later.
+
+@param hkl Layout handle from LoadKeyboardLayoutW or
+       GetKeyboardLayoutList, or HKL_NEXT or HKL_PREV.
+@param Flags KLF_ flags controlling activation, often 0.
+@return Handle of the previously active layout, or NULL on failure.
+
+## EnumDisplayMonitors(hdc, lprcClip, lpfnEnum, dwData)
+Calls a function for each display monitor that intersects a region.
+
+With hdc NULL every monitor is enumerated. Windows CE 4.1 and later.
+
+@param hdc Device context to limit the enumeration to its visible
+       region, or NULL.
+@param lprcClip Rectangle to intersect with, or NULL.
+@param lpfnEnum Called for each monitor. Return FALSE to stop.
+@param dwData Value passed to lpfnEnum.
+@return Nonzero on success, zero on failure.

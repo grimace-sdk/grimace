@@ -50,10 +50,14 @@ extern struct grimace_lazy_import __grimace_lazy_import_DeleteFiber;
 extern struct grimace_lazy_import __grimace_lazy_import_DeleteFileA;
 #define __grimace_lazy_DestroyCursor 1
 extern struct grimace_lazy_import __grimace_lazy_import_DestroyCursor;
+#define __grimace_lazy_DisableGestures 1
+extern struct grimace_lazy_import __grimace_lazy_import_DisableGestures;
 #define __grimace_lazy_DispatchMessageA 1
 extern struct grimace_lazy_import __grimace_lazy_import_DispatchMessageA;
 #define __grimace_lazy_DosDateTimeToFileTime 1
 extern struct grimace_lazy_import __grimace_lazy_import_DosDateTimeToFileTime;
+#define __grimace_lazy_EnableGestures 1
+extern struct grimace_lazy_import __grimace_lazy_import_EnableGestures;
 #define __grimace_lazy_EnumChildWindows 1
 extern struct grimace_lazy_import __grimace_lazy_import_EnumChildWindows;
 #define __grimace_lazy_EnumObjects 1
@@ -176,6 +180,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_OutputDebugStringA;
 extern struct grimace_lazy_import __grimace_lazy_import_PeekMessageA;
 #define __grimace_lazy_PostMessageA 1
 extern struct grimace_lazy_import __grimace_lazy_import_PostMessageA;
+#define __grimace_lazy_QueryGestures 1
+extern struct grimace_lazy_import __grimace_lazy_import_QueryGestures;
 #define __grimace_lazy_RegCreateKeyA 1
 extern struct grimace_lazy_import __grimace_lazy_import_RegCreateKeyA;
 #define __grimace_lazy_RegCreateKeyW 1
@@ -190,6 +196,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_RegQueryValueW;
 extern struct grimace_lazy_import __grimace_lazy_import_RegSetValueW;
 #define __grimace_lazy_RegisterClipboardFormatA 1
 extern struct grimace_lazy_import __grimace_lazy_import_RegisterClipboardFormatA;
+#define __grimace_lazy_RegisterGesture 1
+extern struct grimace_lazy_import __grimace_lazy_import_RegisterGesture;
 #define __grimace_lazy_RegisterWindowMessageA 1
 extern struct grimace_lazy_import __grimace_lazy_import_RegisterWindowMessageA;
 #define __grimace_lazy_RemoveDirectoryA 1

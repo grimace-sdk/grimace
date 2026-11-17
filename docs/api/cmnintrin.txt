@@ -1,0 +1,108 @@
+## _CountLeadingOnes(value)
+Counts the contiguous one bits at the top of a 32-bit value.
+
+Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of leading one bits, 32 if all bits are set.
+
+## _CountLeadingOnes64(value)
+Counts the contiguous one bits at the top of a 64-bit value.
+
+Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of leading one bits, 64 if all bits are set.
+
+## _CountLeadingSigns(value)
+Counts the contiguous bits below the sign bit of a 32-bit value that match
+it.
+
+Useful for normalising fixed-point values. Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of bits after the sign bit that equal it.
+
+## _CountLeadingSigns64(value)
+Counts the contiguous bits below the sign bit of a 64-bit value that match
+it.
+
+Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of bits after the sign bit that equal it.
+
+## _CountLeadingZeros(value)
+Counts the contiguous zero bits at the top of a 32-bit value.
+
+The compiler can emit the ARM CLZ instruction for this when targeting ARMv5
+or later. Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of leading zero bits, 32 if value is zero.
+
+## _CountLeadingZeros64(value)
+Counts the contiguous zero bits at the top of a 64-bit value.
+
+Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of leading zero bits, 64 if value is zero.
+
+## _CountOneBits(value)
+Counts the one bits in a 32-bit value.
+
+Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of bits set.
+
+## _CountOneBits64(value)
+Counts the one bits in a 64-bit value.
+
+Windows CE 4.1 and later.
+
+@param value Value to examine.
+@return Number of bits set.
+
+## _MulHigh(first, second)
+Multiplies two signed 32-bit values and returns the high 32 bits of the
+64-bit product.
+
+Useful for overflow checks and fixed-point multiplication. Windows CE 4.1
+and later.
+
+@param first First factor.
+@param second Second factor.
+@return High-order 32 bits of the product.
+
+## _MulUnsignedHigh(first, second)
+Multiplies two unsigned 32-bit values and returns the high 32 bits of the
+64-bit product.
+
+Useful for overflow checks and fixed-point multiplication. Windows CE 4.1
+and later.
+
+@param first First factor.
+@param second Second factor.
+@return High-order 32 bits of the product.
+
+## _isunordered(first, second)
+Tests whether two doubles are unordered, that is, either is a NaN.
+
+The other IEEE comparison results (less, equal, greater) can be tested with
+the usual operators; this covers the remaining case. Windows CE 4.1 and
+later.
+
+@param first First value.
+@param second Second value.
+@return Nonzero if either value is a NaN, otherwise 0.
+
+## _isunorderedf(first, second)
+Tests whether two floats are unordered, that is, either is a NaN.
+
+Windows CE 4.1 and later.
+
+@param first First value.
+@param second Second value.
+@return Nonzero if either value is a NaN, otherwise 0.

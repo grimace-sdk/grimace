@@ -8738,7 +8738,17 @@ extern const GUID GUID_SYSTEM_AWAYMODE;
 extern const GUID GUID_MONITOR_POWER_ON;
 #endif
 	
-WINUSERAPI HKL WINAPI ActivateKeyboardLayout(HKL,UINT);
+/**
+ * Makes a loaded keyboard layout the active one.
+ *
+ * Windows CE 4.2 and later.
+ *
+ * @param hkl Layout handle from LoadKeyboardLayoutW or
+ *        GetKeyboardLayoutList, or HKL_NEXT or HKL_PREV.
+ * @param Flags KLF_ flags controlling activation, often 0.
+ * @return Handle of the previously active layout, or NULL on failure.
+ */
+WINUSERAPI HKL WINAPI ActivateKeyboardLayout(HKL hkl,UINT Flags);
 #ifndef _WIN32_WCE
 WINUSERAPI BOOL WINAPI AdjustWindowRect(LPRECT,DWORD,BOOL);
 #endif
@@ -8873,7 +8883,26 @@ WINUSERAPI LONG WINAPI ChangeDisplaySettingsA(PDEVMODEA,DWORD);
 WINUSERAPI LONG WINAPI ChangeDisplaySettingsW(PDEVMODEW,DWORD);
 #endif
 WINUSERAPI LONG WINAPI ChangeDisplaySettingsExA(LPCSTR,LPDEVMODEA,HWND,DWORD,LPVOID);
-WINUSERAPI LONG WINAPI _WNAME(ChangeDisplaySettingsEx)(LPCWSTR,LPDEVMODEW,HWND,DWORD,LPVOID);
+/**
+ * Changes the display mode, or tests whether a mode is supported.
+ *
+ * Mostly used to rotate the screen: set dmDisplayOrientation and
+ * DM_DISPLAYORIENTATION in dmFields. DM_DISPLAYQUERYORIENTATION returns
+ * the supported orientations in dmDisplayOrientation. Resolution changes
+ * with DM_PELSWIDTH and DM_PELSHEIGHT need CE 6.0; bit depth can't be
+ * changed. Set dmSize first. A NULL lpDevMode with dwflags 0 restores the
+ * registry defaults. Running windows get WM_SETTINGCHANGE with
+ * SETTINGCHANGE_RESET. Windows CE 4.1 and later.
+ *
+ * @param lpszDeviceName Unused. Set to NULL.
+ * @param lpDevMode New mode, or NULL for the registry defaults.
+ * @param hwnd Reserved. Set to NULL.
+ * @param dwflags 0, CDS_RESET, CDS_TEST or CDS_VIDEOPARAMETERS.
+ * @param lParam VIDEOPARAMETERS pointer with CDS_VIDEOPARAMETERS, else
+ *        NULL.
+ * @return DISP_CHANGE_SUCCESSFUL, or a DISP_CHANGE_* error code.
+ */
+WINUSERAPI LONG WINAPI _WNAME(ChangeDisplaySettingsEx)(LPCWSTR lpszDeviceName,LPDEVMODEW lpDevMode,HWND hwnd,DWORD dwflags,LPVOID lParam);
 #endif
 WINUSERAPI BOOL WINAPI ChangeMenuA(HMENU,UINT,LPCSTR,UINT,UINT);
 WINUSERAPI BOOL WINAPI ChangeMenuW(HMENU,UINT,LPCWSTR,UINT,UINT);
@@ -9687,16 +9716,58 @@ WINUSERAPI UINT WINAPI EnumClipboardFormats(UINT format);
 WINUSERAPI BOOL WINAPI EnumDesktopsA(HWINSTA,DESKTOPENUMPROCA,LPARAM);
 WINUSERAPI BOOL WINAPI EnumDesktopsW(HWINSTA,DESKTOPENUMPROCW,LPARAM);
 WINUSERAPI BOOL WINAPI EnumDesktopWindows(HDESK,ENUMWINDOWSPROC,LPARAM);
-WINUSERAPI BOOL WINAPI EnumDisplayMonitors(HDC,LPCRECT,MONITORENUMPROC,LPARAM);
+/**
+ * Calls a function for each display monitor that intersects a region.
+ *
+ * With hdc NULL every monitor is enumerated. Windows CE 4.1 and later.
+ *
+ * @param hdc Device context to limit the enumeration to its visible
+ *        region, or NULL.
+ * @param lprcClip Rectangle to intersect with, or NULL.
+ * @param lpfnEnum Called for each monitor. Return FALSE to stop.
+ * @param dwData Value passed to lpfnEnum.
+ * @return Nonzero on success, zero on failure.
+ */
+WINUSERAPI BOOL WINAPI EnumDisplayMonitors(HDC hdc,LPCRECT lprcClip,MONITORENUMPROC lpfnEnum,LPARAM dwData);
 #ifndef NOGDI
 WINUSERAPI BOOL WINAPI EnumDisplaySettingsA(LPCSTR,DWORD,PDEVMODEA);
-WINUSERAPI BOOL WINAPI _WNAME(EnumDisplaySettings)(LPCWSTR,DWORD,PDEVMODEW);
+/**
+ * Gets one of a display's graphics modes, or its current or saved mode.
+ *
+ * Call with iModeNum 0, 1, 2... until it fails to list every mode. Index
+ * 0 refreshes the cached mode list that later indexes read from. Fills
+ * dmBitsPerPel, dmPelsWidth, dmPelsHeight, dmDisplayFlags and
+ * dmDisplayFrequency. Set dmSize and dmDriverExtra first. Windows CE 4.2
+ * and later.
+ *
+ * @param lpszDeviceName Device name from EnumDisplayDevices, or NULL for
+ *        the current display.
+ * @param iModeNum Mode index, ENUM_CURRENT_SETTINGS or
+ *        ENUM_REGISTRY_SETTINGS.
+ * @param lpDevMode Receives the mode.
+ * @return Nonzero on success, zero on failure or past the last mode.
+ */
+WINUSERAPI BOOL WINAPI _WNAME(EnumDisplaySettings)(LPCWSTR lpszDeviceName,DWORD iModeNum,PDEVMODEW lpDevMode);
 #if (_WIN32_WINNT >= 0x0500 || _WIN32_WINDOWS >= 0x0410)
 WINUSERAPI BOOL WINAPI EnumDisplaySettingsExA(LPCSTR,DWORD,LPDEVMODEA,DWORD);
 WINUSERAPI BOOL WINAPI EnumDisplaySettingsExW(LPCWSTR,DWORD,LPDEVMODEW,DWORD);
 #endif
 WINUSERAPI BOOL WINAPI EnumDisplayDevicesA(LPCSTR,DWORD,PDISPLAY_DEVICEA,DWORD);
-WINUSERAPI BOOL WINAPI _WNAME(EnumDisplayDevices)(LPCWSTR,DWORD,PDISPLAY_DEVICEW,DWORD);
+/**
+ * Gets information about a display device, or the monitor on one.
+ *
+ * Call with lpDevice NULL and iDevNum 0, 1, 2... until it fails to list
+ * the devices. Pass a returned DeviceName as lpDevice with iDevNum 0 to
+ * get its monitor. Only one monitor per device is reported. Set cb in
+ * lpDisplayDevice first. Windows CE 4.2 and later.
+ *
+ * @param lpDevice Device name, or NULL to enumerate devices.
+ * @param iDevNum Index of the device, from 0.
+ * @param lpDisplayDevice Receives the information.
+ * @param dwFlags Set to 0.
+ * @return Nonzero on success, zero on failure or past the last index.
+ */
+WINUSERAPI BOOL WINAPI _WNAME(EnumDisplayDevices)(LPCWSTR lpDevice,DWORD iDevNum,PDISPLAY_DEVICEW lpDisplayDevice,DWORD dwFlags);
 #endif
 WINUSERAPI int WINAPI EnumPropsA(HWND,PROPENUMPROCA);
 WINUSERAPI int WINAPI EnumPropsW(HWND,PROPENUMPROCW);
@@ -10060,7 +10131,17 @@ WINUSERAPI HWND WINAPI GetForegroundWindow(void);
 #if (_WIN32_WINNT >= 0x0500)
 WINUSERAPI DWORD WINAPI GetGuiResources(HANDLE,DWORD);
 #endif
-WINUSERAPI BOOL WINAPI GetIconInfo(HICON,PICONINFO);
+/**
+ * Gets the bitmaps and hotspot of an icon or cursor.
+ *
+ * The function creates new bitmaps in ICONINFO, which the caller must free
+ * with DeleteObject. Windows CE 4.21 and later.
+ *
+ * @param hIcon Icon or cursor.
+ * @param piconinfo Receives the information.
+ * @return Nonzero on success, zero on failure.
+ */
+WINUSERAPI BOOL WINAPI GetIconInfo(HICON hIcon,PICONINFO piconinfo);
 WINUSERAPI BOOL WINAPI GetInputState(void);
 WINUSERAPI UINT WINAPI GetKBCodePage(void);
 /**
@@ -10074,7 +10155,16 @@ WINUSERAPI UINT WINAPI GetKBCodePage(void);
  * @note Windows CE 3.0 and later.
  */
 WINUSERAPI HKL WINAPI GetKeyboardLayout(DWORD dwThreadId);
-WINUSERAPI UINT WINAPI GetKeyboardLayoutList(int,HKL*);
+/**
+ * Gets the handles of the keyboard layouts loaded on the device.
+ *
+ * Windows CE 4.2 and later.
+ *
+ * @param nBuff Number of handles lpList can hold, or 0 to get the count.
+ * @param lpList Receives the handles.
+ * @return Number of handles copied, or the number loaded when nBuff is 0.
+ */
+WINUSERAPI UINT WINAPI GetKeyboardLayoutList(int nBuff,HKL*lpList);
 WINUSERAPI BOOL WINAPI GetKeyboardLayoutNameA(LPSTR);
 /**
  * Retrieves the active keyboard layout name from the registry.
@@ -10090,7 +10180,17 @@ WINUSERAPI BOOL WINAPI GetKeyboardLayoutNameA(LPSTR);
  */
 WINUSERAPI BOOL WINAPI GetKeyboardLayoutNameW(LPWSTR pwszKLID);
 WINUSERAPI BOOL WINAPI GetKeyboardState(PBYTE);
-WINUSERAPI int WINAPI GetKeyboardType(int);
+/**
+ * Gets the type of the keyboard, its subtype, or its number of function
+ * keys.
+ *
+ * Windows CE 4.2 and later.
+ *
+ * @param nTypeFlag 0 for the type, 1 for the OEM subtype, 2 for the
+ *        number of function keys.
+ * @return The value requested, or 0 on failure.
+ */
+WINUSERAPI int WINAPI GetKeyboardType(int nTypeFlag);
 WINUSERAPI int WINAPI GetKeyNameTextA(LONG,LPSTR,int);
 WINUSERAPI int WINAPI GetKeyNameTextW(LONG,LPWSTR,int);
 /**
@@ -10217,7 +10317,18 @@ WINUSERAPI HWND WINAPI GetParent(HWND hWnd);
  */
 WINUSERAPI int WINAPI GetPriorityClipboardFormat(UINT*paFormatPriorityList,int cFormats);
 WINUSERAPI HANDLE WINAPI GetPropA(HWND,LPCSTR);
-WINUSERAPI HANDLE WINAPI _WNAME(GetProp)(HWND,LPCWSTR);
+/**
+ * Gets a data handle from a window's property list.
+ *
+ * The property must have been added with SetProp. Windows CE 4.1 and later.
+ *
+ * @param hWnd Window whose property list to search.
+ * @param lpString Property name, or an atom from GlobalAddAtom in the low
+ *        word with the high word zero.
+ * @return The property's data handle, or NULL if the window has no such
+ *         property.
+ */
+WINUSERAPI HANDLE WINAPI _WNAME(GetProp)(HWND hWnd,LPCWSTR lpString);
 #if (_WIN32_WINNT >= 0x0501)
 WINUSERAPI UINT WINAPI GetRawInputBuffer(PRAWINPUT,PUINT,UINT);
 WINUSERAPI UINT WINAPI GetRawInputData(HRAWINPUT,UINT,LPVOID,PUINT,UINT);
@@ -10578,7 +10689,20 @@ WINUSERAPI BOOL WINAPI IntersectRect(LPRECT lprcDst,LPCRECT lprcSrc1,LPCRECT lpr
  * @return TRUE on success, FALSE on failure.
  */
 WINUSERAPI BOOL WINAPI InvalidateRect(HWND hWnd,LPCRECT lpRect,BOOL bErase);
-WINUSERAPI BOOL WINAPI InvalidateRgn(HWND,HRGN,BOOL);
+/**
+ * Adds a region to a window's update region, so it is repainted.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hWnd Window to invalidate.
+ * @param hRgn Region in client coordinates, or NULL for the whole client
+ *        area.
+ * @param bErase TRUE to erase the background when the window is painted.
+ * @return Nonzero.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINUSERAPI BOOL WINAPI InvalidateRgn(HWND hWnd,HRGN hRgn,BOOL bErase);
 /**
  * Inverts the colours of the pixels in a rectangle.
  *
@@ -10789,7 +10913,17 @@ WINUSERAPI HANDLE WINAPI LoadImageA(HINSTANCE,LPCSTR,UINT,int,int,UINT);
  */
 WINUSERAPI HANDLE WINAPI LoadImageW(HINSTANCE hinst,LPCWSTR lpszName,UINT uType,int cxDesired,int cyDesired,UINT fuLoad);
 WINUSERAPI HKL WINAPI LoadKeyboardLayoutA(LPCSTR,UINT);
-WINUSERAPI HKL WINAPI LoadKeyboardLayoutW(LPCWSTR,UINT);
+/**
+ * Loads a keyboard layout and optionally activates it.
+ *
+ * Windows CE 4.2 and later.
+ *
+ * @param pwszKLID Layout identifier as eight hex digits, such as
+ *        L"00000409".
+ * @param Flags KLF_ flags, such as KLF_ACTIVATE.
+ * @return Layout handle, or NULL on failure.
+ */
+WINUSERAPI HKL WINAPI LoadKeyboardLayoutW(LPCWSTR pwszKLID,UINT Flags);
 WINUSERAPI HMENU WINAPI LoadMenuA(HINSTANCE,LPCSTR);
 WINUSERAPI HMENU WINAPI LoadMenuIndirectA(const MENUTEMPLATE*);
 WINUSERAPI HMENU WINAPI LoadMenuIndirectW(const MENUTEMPLATE*);
@@ -10907,9 +11041,40 @@ WINUSERAPI int WINAPI MessageBoxIndirectW(CONST MSGBOXPARAMSW*);
 WINUSERAPI BOOL WINAPI ModifyMenuA(HMENU,UINT,UINT,UINT,LPCSTR);
 WINUSERAPI BOOL WINAPI ModifyMenuW(HMENU,UINT,UINT,UINT,LPCWSTR);
 #if (_WIN32_WINNT >= 0x0500 || _WIN32_WINDOWS >= 0x0410 || _WIN32_WCE >= 0x0400)
-WINUSERAPI HMONITOR WINAPI MonitorFromPoint(POINT,DWORD);
-WINUSERAPI HMONITOR WINAPI MonitorFromRect(LPCRECT,DWORD);
-WINUSERAPI HMONITOR WINAPI MonitorFromWindow(HWND,DWORD);
+/**
+ * Gets the display monitor containing a point.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param pt Point in screen coordinates.
+ * @param dwFlags MONITOR_DEFAULTTONULL, MONITOR_DEFAULTTOPRIMARY or
+ *        MONITOR_DEFAULTTONEAREST, for when no monitor contains it.
+ * @return Monitor handle, or NULL with MONITOR_DEFAULTTONULL.
+ */
+WINUSERAPI HMONITOR WINAPI MonitorFromPoint(POINT pt,DWORD dwFlags);
+/**
+ * Gets the display monitor with the largest intersection with a
+ * rectangle.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param lprc Rectangle in screen coordinates.
+ * @param dwFlags MONITOR_DEFAULTTONULL, MONITOR_DEFAULTTOPRIMARY or
+ *        MONITOR_DEFAULTTONEAREST, for when none intersects it.
+ * @return Monitor handle, or NULL with MONITOR_DEFAULTTONULL.
+ */
+WINUSERAPI HMONITOR WINAPI MonitorFromRect(LPCRECT lprc,DWORD dwFlags);
+/**
+ * Gets the display monitor with the largest intersection with a window.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hwnd Window.
+ * @param dwFlags MONITOR_DEFAULTTONULL, MONITOR_DEFAULTTOPRIMARY or
+ *        MONITOR_DEFAULTTONEAREST, for when none intersects it.
+ * @return Monitor handle, or NULL with MONITOR_DEFAULTTONULL.
+ */
+WINUSERAPI HMONITOR WINAPI MonitorFromWindow(HWND hwnd,DWORD dwFlags);
 #endif
 /**
  * Synthesizes mouse or stylus movement and button clicks.
@@ -11178,7 +11343,22 @@ WINUSERAPI BOOL WINAPI PtInRect(LPCRECT lprc,POINT pt);
 WINUSERAPI HWND WINAPI RealChildWindowFromPoint(HWND,POINT);
 WINUSERAPI UINT WINAPI RealGetWindowClassA(HWND,LPSTR,UINT);
 WINUSERAPI UINT WINAPI RealGetWindowClassW(HWND,LPWSTR,UINT);
-WINUSERAPI BOOL WINAPI RedrawWindow(HWND,LPCRECT,HRGN,UINT);
+/**
+ * Invalidates, validates or repaints part of a window.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hWnd Window, or NULL for the desktop.
+ * @param lprcUpdate Rectangle in client coordinates, or NULL.
+ * @param hrgnUpdate Region in client coordinates, or NULL. Used in place
+ *        of lprcUpdate when given. Both NULL means the whole client area.
+ * @param flags RDW_ flags, such as RDW_INVALIDATE, RDW_ERASE and
+ *        RDW_UPDATENOW.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINUSERAPI BOOL WINAPI RedrawWindow(HWND hWnd,LPCRECT lprcUpdate,HRGN hrgnUpdate,UINT flags);
 WINUSERAPI ATOM WINAPI RegisterClassA(CONST WNDCLASSA*);
 /**
  * Registers a window class for CreateWindowExW.
@@ -11281,7 +11461,19 @@ WINUSERAPI int WINAPI ReleaseDC(HWND hWnd,HDC hDC);
  */
 WINUSERAPI BOOL WINAPI RemoveMenu(HMENU hMenu,UINT uPosition,UINT uFlags);
 WINUSERAPI HANDLE WINAPI RemovePropA(HWND,LPCSTR);
-WINUSERAPI HANDLE WINAPI _WNAME(RemoveProp)(HWND,LPCWSTR);
+/**
+ * Removes a property from a window's property list.
+ *
+ * Only the association is removed; freeing whatever the handle refers to is
+ * up to the caller. Remove only properties your own code added. Windows CE
+ * 4.1 and later.
+ *
+ * @param hWnd Window whose property list to change.
+ * @param lpString Property name, or an atom from GlobalAddAtom in the low word
+ *        with the high word zero.
+ * @return The handle that was stored, or NULL if the property was not set.
+ */
+WINUSERAPI HANDLE WINAPI _WNAME(RemoveProp)(HWND hWnd,LPCWSTR lpString);
 WINUSERAPI BOOL WINAPI ReplyMessage(LRESULT);
 /**
  * Converts a point from screen to client coordinates.
@@ -11589,7 +11781,19 @@ WINUSERAPI BOOL WINAPI SetProcessDefaultLayout(DWORD);
 #endif /* (_WIN32_WINNT >= 0x0500) */
 WINUSERAPI BOOL WINAPI SetProcessWindowStation(HWINSTA);
 WINUSERAPI BOOL WINAPI SetPropA(HWND,LPCSTR,HANDLE);
-WINUSERAPI BOOL WINAPI _WNAME(SetProp)(HWND,LPCWSTR,HANDLE);
+/**
+ * Adds or replaces a value in a window's property list.
+ *
+ * Remove every property you add with RemoveProp before the window is
+ * destroyed, typically in WM_DESTROY. Windows CE 4.1 and later.
+ *
+ * @param hWnd Window whose property list to change.
+ * @param lpString Property name, or an atom from GlobalAddAtom in the low word
+ *        with the high word zero.
+ * @param hData Value to store; any handle-sized value.
+ * @return Nonzero on success, zero on failure. Call GetLastError for details.
+ */
+WINUSERAPI BOOL WINAPI _WNAME(SetProp)(HWND hWnd,LPCWSTR lpString,HANDLE hData);
 /**
  * Fills in the coordinates of a RECT.
  *
@@ -12055,7 +12259,17 @@ WINUSERAPI BOOL WINAPI UserHandleGrantAccess(HANDLE,HANDLE,BOOL);
  * @return TRUE on success, FALSE on failure.
  */
 WINUSERAPI BOOL WINAPI ValidateRect(HWND hWnd,LPCRECT lpRect);
-WINUSERAPI BOOL WINAPI ValidateRgn(HWND,HRGN);
+/**
+ * Removes a region from a window's update region.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hWnd Window.
+ * @param hRgn Region in client coordinates, or NULL for the whole client
+ *        area.
+ * @return Nonzero on success, zero on failure.
+ */
+WINUSERAPI BOOL WINAPI ValidateRgn(HWND hWnd,HRGN hRgn);
 WINUSERAPI SHORT WINAPI VkKeyScanA(CHAR);
 WINUSERAPI SHORT WINAPI VkKeyScanExA(CHAR,HKL);
 WINUSERAPI SHORT WINAPI VkKeyScanExW(WCHAR,HKL);
@@ -13316,6 +13530,16 @@ typedef MONITORINFOEXW MONITORINFOEX, *LPMONITORINFOEX;
  * @return The image (cast to HBITMAP or HICON), or NULL on failure.
  */
 #define LoadImage LoadImageW
+/**
+ * Loads a keyboard layout and optionally activates it.
+ *
+ * Windows CE 4.2 and later.
+ *
+ * @param pwszKLID Layout identifier as eight hex digits, such as
+ *        L"00000409".
+ * @param Flags KLF_ flags, such as KLF_ACTIVATE.
+ * @return Layout handle, or NULL on failure.
+ */
 #define LoadKeyboardLayout LoadKeyboardLayoutW
 /**
  * Loads a menu resource.

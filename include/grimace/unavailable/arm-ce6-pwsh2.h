@@ -12,6 +12,39 @@ extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("n
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
 #endif
+#ifdef GRIMACE_EXTRAS_COREDLL_H
+extern __typeof__(CeAddSyncPartner) CeAddSyncPartner __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeAttachCustomTrackingData) CeAttachCustomTrackingData __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeCreateSession) CeCreateSession __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeEndSyncSession) CeEndSyncSession __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeEndTransaction) CeEndTransaction __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeFindNextChangedRecord) CeFindNextChangedRecord __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeGetChangedRecordCnt) CeGetChangedRecordCnt __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeGetChangedRecords) CeGetChangedRecords __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeGetCustomTrackingData) CeGetCustomTrackingData __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeGetDatabaseSession) CeGetDatabaseSession __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeGetPropChangeInfo) CeGetPropChangeInfo __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeMarkRecord) CeMarkRecord __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeOpenStream) CeOpenStream __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CePurgeTrackingData) CePurgeTrackingData __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeRemoveDatabaseProps) CeRemoveDatabaseProps __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeRemoveDatabaseTracking) CeRemoveDatabaseTracking __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeRemoveSyncPartner) CeRemoveSyncPartner __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeSetSessionOption) CeSetSessionOption __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeStreamRead) CeStreamRead __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeStreamSaveChanges) CeStreamSaveChanges __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeStreamSeek) CeStreamSeek __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeStreamSetSize) CeStreamSetSize __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeStreamWrite) CeStreamWrite __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeTrackDatabase) CeTrackDatabase __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(CeTrackProperty) CeTrackProperty __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(RasGetEapConnectionData) RasGetEapConnectionData __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(RasGetEapUserData) RasGetEapUserData __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(RasSetEapConnectionData) RasSetEapConnectionData __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(RasSetEapUserData) RasSetEapUserData __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(RequestBluetoothNotifications) RequestBluetoothNotifications __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+extern __typeof__(StopBluetoothNotifications) StopBluetoothNotifications __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
+#endif
 #ifdef GRIMACE_EXTRAS_H
 extern __typeof__(MapUncompressedFileW) MapUncompressedFileW __attribute__((unavailable("not in Windows CE 6.0 on pwsh2")));
 #endif

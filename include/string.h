@@ -7,6 +7,11 @@
 extern "C" {
 #endif
 
+#ifndef _ERRNO_T_DEFINED
+#define _ERRNO_T_DEFINED
+typedef int errno_t;
+#endif
+
 /**
  * Copies bytes between blocks of memory that don't overlap.
  *
@@ -369,11 +374,188 @@ char *_strset(char *string, int character);
  */
 char *_strnset(char *string, int character, size_t count);
 char *strerror(int number);
+/**
+ * Returns the length of a string, examining at most a given number of
+ * characters.
+ *
+ * Use it on buffers that may not be terminated. Windows CE 6.0 and later.
+ *
+ * @param string String to measure.
+ * @param limit Maximum number of characters to examine.
+ * @return Number of characters before the terminator, or limit if none is
+ *         found within it.
+ */
 size_t strnlen(const char *string, size_t limit);
 int strcoll(const char *first, const char *second);
 size_t strxfrm(char *destination, const char *source, size_t count);
 char *strdup(const char *string);
 char *strndup(const char *string, size_t limit);
+
+/**
+ * Converts a string to lowercase in place, checking it fits its buffer.
+ *
+ * Conversion follows the LC_CTYPE locale setting. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param string String to convert.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _strlwr_s(char *string, size_t size);
+/**
+ * Sets up to count characters of a string to one value.
+ *
+ * Stops at the end of the string if that comes first. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param string String to fill.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @param character Fill character.
+ * @param count Number of characters to set.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _strnset_s(char *string, size_t size, int character, size_t count);
+/**
+ * Sets every character of a string to one value.
+ *
+ * Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param string String to fill.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @param character Fill character.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _strset_s(char *string, size_t size, int character);
+/**
+ * Converts a string to uppercase in place, checking it fits its buffer.
+ *
+ * Conversion follows the LC_CTYPE locale setting. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param string String to convert.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _strupr_s(char *string, size_t size);
+/**
+ * Copies bytes between buffers, failing if they don't fit in the destination.
+ *
+ * If count is larger than size, destination is zeroed. Overlapping buffers
+ * give undefined results; use memmove_s for those. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param destination Buffer to copy into.
+ * @param size Size of destination in bytes.
+ * @param source Bytes to copy.
+ * @param count Number of bytes to copy.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t memcpy_s(void *destination, size_t size, const void *source, size_t count);
+/**
+ * Moves bytes between buffers, failing if they don't fit in the destination.
+ *
+ * The buffers may overlap. Bad arguments call the invalid parameter handler
+ * (see _set_invalid_parameter_handler); if it returns, the function sets errno
+ * and returns the error. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to copy into.
+ * @param size Size of destination in bytes.
+ * @param source Bytes to copy.
+ * @param count Number of bytes to copy.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t memmove_s(void *destination, size_t size, const void *source, size_t count);
+/**
+ * Appends a string to a string in a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to append to, holding a null-terminated string.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to append.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t strcat_s(char *destination, size_t size, const char *source);
+/**
+ * Copies a string into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to receive the copy.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to copy.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t strcpy_s(char *destination, size_t size, const char *source);
+/**
+ * Appends at most count characters of a string to a string in a buffer of
+ * known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error.
+ *
+ * Pass _TRUNCATE as count to copy as much as fits and return STRUNCATE instead
+ * of failing. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to append to, holding a null-terminated string.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to append.
+ * @param count Maximum number of characters to append, or _TRUNCATE.
+ * @return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+ *         errno value such as EINVAL or ERANGE.
+ */
+errno_t strncat_s(char *destination, size_t size, const char *source, size_t count);
+/**
+ * Copies at most count characters of a string into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error.
+ *
+ * Pass _TRUNCATE as count to copy as much as fits and return STRUNCATE instead
+ * of failing. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to receive the copy.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to copy.
+ * @param count Maximum number of characters to copy, or _TRUNCATE.
+ * @return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+ *         errno value such as EINVAL or ERANGE.
+ */
+errno_t strncpy_s(char *destination, size_t size, const char *source, size_t count);
+/**
+ * Finds the next token in a string, keeping its position in a caller-supplied
+ * context.
+ *
+ * Pass the string on the first call and NULL after that. Separate contexts let
+ * several strings be tokenised at once, unlike strtok. The string is modified.
+ * Windows CE 6.0 and later.
+ *
+ * @param string String to tokenise, or NULL to continue.
+ * @param delimiters Set of delimiter characters.
+ * @param context Holds the position between calls.
+ * @return Pointer to the next token, or NULL when there are none left.
+ */
+char *strtok_s(char *string, const char *delimiters, char **context);
 
 #ifdef __cplusplus
 }

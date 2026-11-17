@@ -12,6 +12,20 @@ extern __typeof__(SHSipPreference) SHSipPreference __attribute__((unavailable("n
 extern __typeof__(MmMapIoSpace) MmMapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(MmUnmapIoSpace) MmUnmapIoSpace __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 #endif
+#ifdef GRIMACE_CMNINTRIN_H
+extern __typeof__(_CountLeadingOnes) _CountLeadingOnes __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_CountLeadingOnes64) _CountLeadingOnes64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_CountLeadingSigns) _CountLeadingSigns __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_CountLeadingSigns64) _CountLeadingSigns64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_CountLeadingZeros) _CountLeadingZeros __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_CountLeadingZeros64) _CountLeadingZeros64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_CountOneBits) _CountOneBits __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_CountOneBits64) _CountOneBits64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_MulHigh) _MulHigh __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_MulUnsignedHigh) _MulUnsignedHigh __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_isunordered) _isunordered __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_isunorderedf) _isunorderedf __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+#endif
 #ifdef GRIMACE_EXTRAS_COMMCTRL_H
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
@@ -39,13 +53,137 @@ extern __typeof__(WaitForAPIReady) WaitForAPIReady __attribute__((unavailable("n
 #endif
 #ifdef GRIMACE_PM_H
 extern __typeof__(DevicePowerNotify) DevicePowerNotify __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(GetDevicePower) GetDevicePower __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(GetSystemPowerState) GetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(PowerPolicyNotify) PowerPolicyNotify __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(RegisterPowerRelationship) RegisterPowerRelationship __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(ReleasePowerRequirement) ReleasePowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(RequestPowerNotifications) RequestPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(SetDevicePower) SetDevicePower __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(SetPowerRequirement) SetPowerRequirement __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(SetSystemPowerState) SetSystemPowerState __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(StopPowerNotifications) StopPowerNotifications __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+#endif
+#ifdef GRIMACE_STDIO_H
+extern __typeof__(_snprintf_s) _snprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_snwprintf_s) _snwprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_vsnprintf_s) _vsnprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_vsnwprintf_s) _vsnwprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_wfopen_s) _wfopen_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_wfreopen_s) _wfreopen_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(clearerr_s) clearerr_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(fopen_s) fopen_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(fprintf_s) fprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(fread_s) fread_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(fscanf_s) fscanf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(fwprintf_s) fwprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(fwscanf_s) fwscanf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(gets_s) gets_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(printf_s) printf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(scanf_s) scanf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(sprintf_s) sprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(sscanf_s) sscanf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(swprintf_s) swprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(swscanf_s) swscanf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(vfprintf_s) vfprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(vfwprintf_s) vfwprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(vprintf_s) vprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(vsprintf_s) vsprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(vswprintf_s) vswprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(vwprintf_s) vwprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wprintf_s) wprintf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wscanf_s) wscanf_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+#endif
+#ifdef GRIMACE_STDLIB_H
+extern __typeof__(_abs64) _abs64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_byteswap_uint64) _byteswap_uint64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_byteswap_ulong) _byteswap_ulong __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_byteswap_ushort) _byteswap_ushort __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_controlfp_s) _controlfp_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_ecvt_s) _ecvt_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_fcvt_s) _fcvt_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_gcvt_s) _gcvt_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_get_invalid_parameter_handler) _get_invalid_parameter_handler __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_getws_s) _getws_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_itoa_s) _itoa_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_itow_s) _itow_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_ltoa_s) _ltoa_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_ltow_s) _ltow_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_recalloc) _recalloc __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_rotl64) _rotl64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_rotr64) _rotr64 __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_set_invalid_parameter_handler) _set_invalid_parameter_handler __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_ultoa_s) _ultoa_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_ultow_s) _ultow_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(mbstowcs_s) mbstowcs_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(qsort_s) qsort_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(rand_s) rand_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wcstombs_s) wcstombs_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+#endif
+#ifdef GRIMACE_STRING_H
+extern __typeof__(_strlwr_s) _strlwr_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_strnset_s) _strnset_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_strset_s) _strset_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_strupr_s) _strupr_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(memcpy_s) memcpy_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(memmove_s) memmove_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(strcat_s) strcat_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(strcpy_s) strcpy_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(strncat_s) strncat_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(strncpy_s) strncpy_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(strtok_s) strtok_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+#endif
+#ifdef GRIMACE_STRSAFE_H
+extern __typeof__(StringCbCatA) StringCbCatA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCatExA) StringCbCatExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCatExW) StringCbCatExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCatNA) StringCbCatNA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCatNExA) StringCbCatNExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCatNExW) StringCbCatNExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCatNW) StringCbCatNW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCatW) StringCbCatW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCopyA) StringCbCopyA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCopyExA) StringCbCopyExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCopyExW) StringCbCopyExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCopyNA) StringCbCopyNA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCopyNExW) StringCbCopyNExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCopyNW) StringCbCopyNW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbCopyW) StringCbCopyW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbLengthA) StringCbLengthA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbLengthW) StringCbLengthW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbPrintfA) StringCbPrintfA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbPrintfExA) StringCbPrintfExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbPrintfExW) StringCbPrintfExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbPrintfW) StringCbPrintfW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbVPrintfA) StringCbVPrintfA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbVPrintfExA) StringCbVPrintfExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbVPrintfExW) StringCbVPrintfExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCbVPrintfW) StringCbVPrintfW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatA) StringCchCatA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatExA) StringCchCatExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatExW) StringCchCatExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatNA) StringCchCatNA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatNExA) StringCchCatNExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatNExW) StringCchCatNExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatNW) StringCchCatNW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCatW) StringCchCatW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCopyA) StringCchCopyA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCopyExA) StringCchCopyExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCopyExW) StringCchCopyExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCopyNA) StringCchCopyNA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCopyNExW) StringCchCopyNExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCopyNW) StringCchCopyNW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchCopyW) StringCchCopyW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchLengthA) StringCchLengthA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchLengthW) StringCchLengthW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchPrintfA) StringCchPrintfA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchPrintfExA) StringCchPrintfExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchPrintfExW) StringCchPrintfExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchPrintfW) StringCchPrintfW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchVPrintfA) StringCchVPrintfA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchVPrintfExA) StringCchVPrintfExA __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchVPrintfExW) StringCchVPrintfExW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(StringCchVPrintfW) StringCchVPrintfW __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 #endif
 #ifdef GRIMACE_TCHAR_H
 extern __typeof__(_wcsicoll) _wcsicoll __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
@@ -53,6 +191,18 @@ extern __typeof__(fgetwchar) fgetwchar __attribute__((unavailable("not in Window
 extern __typeof__(fputwchar) fputwchar __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(getws) getws __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 extern __typeof__(putws) putws __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+#endif
+#ifdef GRIMACE_WCHAR_H
+extern __typeof__(_wcslwr_s) _wcslwr_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_wcsnset_s) _wcsnset_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_wcsset_s) _wcsset_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(_wcsupr_s) _wcsupr_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wcscat_s) wcscat_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wcscpy_s) wcscpy_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wcsncat_s) wcsncat_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wcsncpy_s) wcsncpy_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wcsnlen) wcsnlen __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
+extern __typeof__(wcstok_s) wcstok_s __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));
 #endif
 #ifdef _COMMCTRL_H
 extern __typeof__(CommandBands_AddAdornments) CommandBands_AddAdornments __attribute__((unavailable("not in Windows CE 2.0 or later on X86")));

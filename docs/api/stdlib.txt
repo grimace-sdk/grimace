@@ -320,3 +320,310 @@ within count.
 @param count Size of destination, in bytes.
 @return Bytes written, not counting the terminator, or (size_t)-1 if a
         character can't be converted.
+
+## _abs64(value)
+Returns the absolute value of a 64-bit integer.
+
+Not in Microsoft's Windows CE reference; signature from the Visual C++ CRT
+reference. Windows CE 4.1 and later.
+
+@param value Integer value.
+@return Absolute value of value.
+
+## _byteswap_uint64(value)
+Reverses the byte order of a 64-bit value.
+
+Converts between big-endian and little-endian representations. Windows CE
+4.1 and later.
+
+@param value Value to swap.
+@return value with its bytes reversed.
+
+## _byteswap_ulong(value)
+Reverses the byte order of a 32-bit value.
+
+Converts between big-endian and little-endian representations. Windows CE
+4.1 and later.
+
+@param value Value to swap.
+@return value with its bytes reversed.
+
+## _byteswap_ushort(value)
+Reverses the byte order of a 16-bit value.
+
+Converts between big-endian and little-endian representations. Windows CE
+4.1 and later.
+
+@param value Value to swap.
+@return value with its bytes reversed.
+
+## _controlfp_s(current, value, mask)
+Gets and sets the floating-point control word.
+
+Bits set in mask are replaced by those in value. A mask of 0 just reads the
+control word. Unlike _controlfp, invalid bits are reported as an error.
+Windows CE 6.0 and later.
+
+@param current Receives the control word after the change. Can be NULL.
+@param value New control word bits.
+@param mask Bits to change.
+@return 0 on success, or EINVAL for an invalid mask or value.
+
+## _ecvt_s(buffer, size, value, digits, decimal, sign)
+Converts a double to a string of digits, rounded to a number of significant
+digits.
+
+The string holds only digits; the decimal point position and sign come back
+separately. Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error. Windows CE 6.0 and later.
+
+@param buffer Receives the digits.
+@param size Size of buffer in bytes.
+@param value Number to convert.
+@param digits Number of significant digits.
+@param decimal Receives the position of the decimal point relative to the
+       start of the string.
+@param sign Receives nonzero if value is negative.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _fcvt_s(buffer, size, value, digits, decimal, sign)
+Converts a double to a string of digits, rounded to a number of digits after
+the decimal point.
+
+The string holds only digits; the decimal point position and sign come back
+separately. Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error. Windows CE 6.0 and later.
+
+@param buffer Receives the digits.
+@param size Size of buffer in bytes.
+@param value Number to convert.
+@param digits Number of digits after the decimal point.
+@param decimal Receives the position of the decimal point relative to the
+       start of the string.
+@param sign Receives nonzero if value is negative.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _gcvt_s(buffer, size, value, digits)
+Converts a double to a string with a number of significant digits, in fixed
+or exponential form.
+
+Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error. Windows CE 6.0 and later.
+
+@param buffer Receives the string.
+@param size Size of buffer in bytes.
+@param value Number to convert.
+@param digits Number of significant digits.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _get_invalid_parameter_handler()
+Gets the function the CRT calls when a function detects an invalid argument.
+
+Not listed in Microsoft's CE 6.0 table of security-enhanced functions, but
+exported by coredll. Windows CE 6.0 and later.
+
+@return The current handler, or NULL if none has been set.
+
+## _getws_s(buffer, size)
+Reads a line from stdin into a buffer of known size.
+
+The newline is dropped. If the line doesn't fit, buffer[0] is set to 0 and
+the invalid parameter handler is called. Windows CE 6.0 and later.
+
+@param buffer Receives the line.
+@param size Size of buffer in characters, including the terminator.
+@return buffer, or NULL at end of file or on error.
+
+## _itoa_s(value, buffer, size, radix)
+Converts an int to a string in a buffer of known size.
+
+The buffer must hold every digit, any sign and the terminator. Bad arguments
+call the invalid parameter handler (see _set_invalid_parameter_handler); if
+it returns, the function sets errno and returns the error. Windows CE 6.0
+and later.
+
+@param value Number to convert.
+@param buffer Receives the string.
+@param size Size of buffer in characters.
+@param radix Base, 2 to 36.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _itow_s(value, buffer, size, radix)
+Converts an int to a string in a buffer of known size.
+
+The buffer must hold every digit, any sign and the terminator. Bad arguments
+call the invalid parameter handler (see _set_invalid_parameter_handler); if
+it returns, the function sets errno and returns the error. Windows CE 6.0
+and later.
+
+@param value Number to convert.
+@param buffer Receives the string.
+@param size Size of buffer in characters.
+@param radix Base, 2 to 36.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _ltoa_s(value, buffer, size, radix)
+Converts a long to a string in a buffer of known size.
+
+The buffer must hold every digit, any sign and the terminator. Bad arguments
+call the invalid parameter handler (see _set_invalid_parameter_handler); if
+it returns, the function sets errno and returns the error. Windows CE 6.0
+and later.
+
+@param value Number to convert.
+@param buffer Receives the string.
+@param size Size of buffer in characters.
+@param radix Base, 2 to 36.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _ltow_s(value, buffer, size, radix)
+Converts a long to a string in a buffer of known size.
+
+The buffer must hold every digit, any sign and the terminator. Bad arguments
+call the invalid parameter handler (see _set_invalid_parameter_handler); if
+it returns, the function sets errno and returns the error. Windows CE 6.0
+and later.
+
+@param value Number to convert.
+@param buffer Receives the string.
+@param size Size of buffer in characters.
+@param radix Base, 2 to 36.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _recalloc(memory, count, size)
+Resizes a block from calloc to count elements of size bytes, zeroing any
+added space.
+
+Like realloc, the block may move and the old pointer is invalid on success.
+On failure the original block is untouched. Windows CE 6.0 and later.
+
+@param memory Block from calloc or _recalloc, or NULL to allocate a new one.
+@param count Number of elements.
+@param size Size of each element in bytes.
+@return Pointer to the resized block, or NULL on failure.
+
+## _rotl64(value, shift)
+Rotates the bits of a 64-bit value to the left.
+
+Bits shifted off one end come back in at the other. Not in Microsoft's
+Windows CE reference; signature from the Visual C++ CRT reference. Windows
+CE 4.1 and later.
+
+@param value Value to rotate.
+@param shift Number of bits to rotate by.
+@return The rotated value.
+
+## _rotr64(value, shift)
+Rotates the bits of a 64-bit value to the right.
+
+Bits shifted off one end come back in at the other. Not in Microsoft's
+Windows CE reference; signature from the Visual C++ CRT reference. Windows
+CE 4.1 and later.
+
+@param value Value to rotate.
+@param shift Number of bits to rotate by.
+@return The rotated value.
+
+## _set_invalid_parameter_handler(handler)
+Sets the function the CRT calls when a function detects an invalid argument.
+
+The handler receives the expression, function name, file and line (these may
+be NULL or 0 in release builds). If it returns, the failing function sets
+errno and returns an error code. Windows CE 6.0 and later.
+
+@param handler New handler.
+@return The previous handler.
+
+## _ultoa_s(value, buffer, size, radix)
+Converts an unsigned long to a string in a buffer of known size.
+
+The buffer must hold every digit, any sign and the terminator. Bad arguments
+call the invalid parameter handler (see _set_invalid_parameter_handler); if
+it returns, the function sets errno and returns the error. Windows CE 6.0
+and later.
+
+@param value Number to convert.
+@param buffer Receives the string.
+@param size Size of buffer in characters.
+@param radix Base, 2 to 36.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _ultow_s(value, buffer, size, radix)
+Converts an unsigned long to a string in a buffer of known size.
+
+The buffer must hold every digit, any sign and the terminator. Bad arguments
+call the invalid parameter handler (see _set_invalid_parameter_handler); if
+it returns, the function sets errno and returns the error. Windows CE 6.0
+and later.
+
+@param value Number to convert.
+@param buffer Receives the string.
+@param size Size of buffer in characters.
+@param radix Base, 2 to 36.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## mbstowcs_s(converted, destination, size, source, count)
+Converts a multibyte string to a wide string in a buffer of known size.
+
+The result is always null-terminated. Pass _TRUNCATE as count to copy as
+much as fits and return STRUNCATE instead of failing. Pass NULL as
+destination and 0 as size to get the size needed. Bad arguments call the
+invalid parameter handler (see _set_invalid_parameter_handler); if it
+returns, the function sets errno and returns the error. Windows CE 6.0 and
+later.
+
+@param converted Receives the number of wide characters written, including
+       the terminator. Can be NULL.
+@param destination Receives the wide string, or NULL.
+@param size Size of destination in wide characters.
+@param source Multibyte string to convert.
+@param count Maximum number of wide characters to store, excluding the
+       terminator, or _TRUNCATE.
+@return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+        errno value such as EINVAL, ERANGE or EILSEQ.
+
+## qsort_s(base, count, size, compare, context)
+Sorts an array, passing a caller-supplied context to the comparison
+function.
+
+compare receives context first, then pointers to the two elements, and
+returns less than, equal to or greater than zero. Windows CE 6.0 and later.
+
+@param base Start of the array.
+@param count Number of elements.
+@param size Size of each element in bytes.
+@param compare Comparison function.
+@param context Value passed through to compare.
+
+## rand_s(value)
+Generates a random number without needing a seed.
+
+Unlike rand the sequence is not reproducible. The image must include
+filesys.dll (any of the SYSGEN_FS* variables, SYSGEN_ACL or
+SYSGEN_ACCOUNTDB). Windows CE 6.0 and later.
+
+@param value Receives a number from 0 to UINT_MAX.
+@return 0 on success, otherwise an errno value.
+
+## wcstombs_s(converted, destination, size, source, count)
+Converts a wide string to a multibyte string in a buffer of known size.
+
+The result is always null-terminated. Pass _TRUNCATE as count to copy as
+much as fits and return STRUNCATE instead of failing. Pass NULL as
+destination and 0 as size to get the size needed. Bad arguments call the
+invalid parameter handler (see _set_invalid_parameter_handler); if it
+returns, the function sets errno and returns the error. Windows CE 6.0 and
+later.
+
+@param converted Receives the number of bytes written, including the
+       terminator. Can be NULL.
+@param destination Receives the multibyte string, or NULL.
+@param size Size of destination in bytes.
+@param source Wide string to convert.
+@param count Maximum number of bytes to store, excluding the terminator, or
+       _TRUNCATE.
+@return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+        errno value such as EINVAL, ERANGE or EILSEQ.

@@ -7,6 +7,10 @@ extern __typeof__(SHIdleTimerReset) SHIdleTimerReset __attribute__((unavailable(
 extern __typeof__(CreateColorBitmap) CreateColorBitmap __attribute__((unavailable("not in Windows CE 6.0 on nec_rockhopper_mips4_ce6")));
 extern __typeof__(CreateMonoBitmap) CreateMonoBitmap __attribute__((unavailable("not in Windows CE 6.0 on nec_rockhopper_mips4_ce6")));
 #endif
+#ifdef GRIMACE_EXTRAS_COREDLL_H
+extern __typeof__(RequestBluetoothNotifications) RequestBluetoothNotifications __attribute__((unavailable("not in Windows CE 6.0 on nec_rockhopper_mips4_ce6")));
+extern __typeof__(StopBluetoothNotifications) StopBluetoothNotifications __attribute__((unavailable("not in Windows CE 6.0 on nec_rockhopper_mips4_ce6")));
+#endif
 #ifdef GRIMACE_EXTRAS_H
 extern __typeof__(BatteryNotifyOfTimeChange) BatteryNotifyOfTimeChange __attribute__((unavailable("not in Windows CE 6.0 on nec_rockhopper_mips4_ce6")));
 extern __typeof__(MapUncompressedFileW) MapUncompressedFileW __attribute__((unavailable("not in Windows CE 6.0 on nec_rockhopper_mips4_ce6")));

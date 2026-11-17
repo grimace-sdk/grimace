@@ -10,6 +10,11 @@
 extern "C" {
 #endif
 
+#ifndef _ERRNO_T_DEFINED
+#define _ERRNO_T_DEFINED
+typedef int errno_t;
+#endif
+
 #ifndef GRIMACE_WINT_T
 #define GRIMACE_WINT_T
 typedef unsigned short wint_t;
@@ -582,6 +587,153 @@ size_t wcsxfrm(wchar_t *destination, const wchar_t *source, size_t count);
 #define iswprint(character) iswctype(character, _BLANK | _PUNCT | _ALPHA | _DIGIT)
 #define iswgraph(character) iswctype(character, _PUNCT | _ALPHA | _DIGIT)
 #define iswcntrl(character) iswctype(character, _CONTROL)
+
+/**
+ * Converts a string to lowercase in place, checking it fits its buffer.
+ *
+ * Conversion follows the LC_CTYPE locale setting. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param string String to convert.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _wcslwr_s(wchar_t *string, size_t size);
+/**
+ * Sets up to count characters of a string to one value.
+ *
+ * Stops at the end of the string if that comes first. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param string String to fill.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @param character Fill character.
+ * @param count Number of characters to set.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _wcsnset_s(wchar_t *string, size_t size, wchar_t character, size_t count);
+/**
+ * Sets every character of a string to one value.
+ *
+ * Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param string String to fill.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @param character Fill character.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _wcsset_s(wchar_t *string, size_t size, wchar_t character);
+/**
+ * Converts a string to uppercase in place, checking it fits its buffer.
+ *
+ * Conversion follows the LC_CTYPE locale setting. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param string String to convert.
+ * @param size Size of the buffer in characters, including the terminator.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t _wcsupr_s(wchar_t *string, size_t size);
+/**
+ * Appends a string to a string in a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to append to, holding a null-terminated string.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to append.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t wcscat_s(wchar_t *destination, size_t size, const wchar_t *source);
+/**
+ * Copies a string into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to receive the copy.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to copy.
+ * @return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+ */
+errno_t wcscpy_s(wchar_t *destination, size_t size, const wchar_t *source);
+/**
+ * Appends at most count characters of a string to a string in a buffer of
+ * known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error.
+ *
+ * Pass _TRUNCATE as count to copy as much as fits and return STRUNCATE instead
+ * of failing. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to append to, holding a null-terminated string.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to append.
+ * @param count Maximum number of characters to append, or _TRUNCATE.
+ * @return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+ *         errno value such as EINVAL or ERANGE.
+ */
+errno_t wcsncat_s(wchar_t *destination, size_t size, const wchar_t *source, size_t count);
+/**
+ * Copies at most count characters of a string into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, destination[0] is
+ * set to 0. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error.
+ *
+ * Pass _TRUNCATE as count to copy as much as fits and return STRUNCATE instead
+ * of failing. Windows CE 6.0 and later.
+ *
+ * @param destination Buffer to receive the copy.
+ * @param size Size of destination in characters, including the terminator.
+ * @param source Null-terminated string to copy.
+ * @param count Maximum number of characters to copy, or _TRUNCATE.
+ * @return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+ *         errno value such as EINVAL or ERANGE.
+ */
+errno_t wcsncpy_s(wchar_t *destination, size_t size, const wchar_t *source, size_t count);
+/**
+ * Gets the length of a wide string, examining at most count characters.
+ *
+ * Windows CE 6.0 and later.
+ *
+ * @param string Null-terminated string.
+ * @param count Maximum number of characters to examine.
+ * @return Length excluding the terminator, or count if no terminator was found
+ *         in the first count characters.
+ */
+size_t wcsnlen(const wchar_t *string, size_t count);
+/**
+ * Finds the next token in a string, keeping its position in a caller-supplied
+ * context.
+ *
+ * Pass the string on the first call and NULL after that. Separate contexts let
+ * several strings be tokenised at once, unlike wcstok. The string is modified.
+ * Windows CE 6.0 and later.
+ *
+ * @param string String to tokenise, or NULL to continue.
+ * @param delimiters Set of delimiter characters.
+ * @param context Holds the position between calls.
+ * @return Pointer to the next token, or NULL when there are none left.
+ */
+wchar_t *wcstok_s(wchar_t *string, const wchar_t *delimiters, wchar_t **context);
 
 #ifdef __cplusplus
 }

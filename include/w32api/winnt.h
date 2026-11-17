@@ -373,6 +373,11 @@ typedef DWORDLONG *PDWORDLONG;
  * Unsigned 64-bit integer. A typedef of DWORDLONG (unsigned long long).
  */
 typedef DWORDLONG ULONGLONG;
+/**
+ * Pointer to a DWORDLONG.
+ *
+ * See DWORDLONG: Unsigned 64-bit integer (unsigned long long, Microsoft's unsigned __int64).
+ */
 typedef DWORDLONG *PULONGLONG;
 typedef LONGLONG USN;
 #ifdef _HAVE_INT64

@@ -8,6 +8,11 @@
 extern "C" {
 #endif
 
+#ifndef _ERRNO_T_DEFINED
+#define _ERRNO_T_DEFINED
+typedef int errno_t;
+#endif
+
 #ifndef _FILE_DEFINED
 typedef void FILE;
 #define _FILE_DEFINED
@@ -691,6 +696,19 @@ int fwscanf(FILE *stream, const wchar_t *format, ...);
 void perror(const char *prefix);
 void rewind(FILE *stream);
 int grimace_redirect_stdio(const wchar_t *path);
+/**
+ * Sets the buffering of a stream.
+ *
+ * Call it after opening the stream and before any other operation on it.
+ * Windows CE 4.1 and later.
+ *
+ * @param stream Open stream.
+ * @param buffer Buffer to use, or NULL to have one allocated.
+ * @param mode _IOFBF for full buffering, _IOLBF for line buffering or
+ *        _IONBF for none.
+ * @param size Size of the buffer in bytes.
+ * @return 0 on success, nonzero for an invalid mode or size.
+ */
 int setvbuf(FILE *stream, char *buffer, int mode, size_t size);
 void setbuf(FILE *stream, char *buffer);
 
@@ -704,6 +722,391 @@ wint_t putwc(wint_t character, FILE *stream);
 #define fileno _fileno
 #define fcloseall _fcloseall
 #define flushall _flushall
+
+/**
+ * Formats output into a buffer of known size, storing at most count
+ * characters.
+ *
+ * The result is always null-terminated. If it doesn't fit and count is
+ * _TRUNCATE, as much as fits is stored and -1 returned; otherwise buffer[0] is
+ * set to 0 and the invalid parameter handler is called. Unlike the plain
+ * version, the format string is checked: a NULL format or an invalid format
+ * specifier calls the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param count Maximum number of characters to store, or _TRUNCATE.
+ * @param format Format-control string.
+ * @return Characters written excluding the terminator, or -1 on truncation or
+ *         error.
+ */
+int _snprintf_s(char *buffer, size_t size, size_t count, const char *format, ...);
+/**
+ * Formats output into a buffer of known size, storing at most count
+ * characters.
+ *
+ * The result is always null-terminated. If it doesn't fit and count is
+ * _TRUNCATE, as much as fits is stored and -1 returned; otherwise buffer[0] is
+ * set to 0 and the invalid parameter handler is called. Unlike the plain
+ * version, the format string is checked: a NULL format or an invalid format
+ * specifier calls the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param count Maximum number of characters to store, or _TRUNCATE.
+ * @param format Format-control string.
+ * @return Characters written excluding the terminator, or -1 on truncation or
+ *         error.
+ */
+int _snwprintf_s(wchar_t *buffer, size_t size, size_t count, const wchar_t *format, ...);
+/**
+ * Formats output from a va_list into a buffer of known size, storing at most
+ * count characters.
+ *
+ * The result is always null-terminated. If it doesn't fit and count is
+ * _TRUNCATE, as much as fits is stored and -1 returned; otherwise buffer[0] is
+ * set to 0 and the invalid parameter handler is called. Unlike the plain
+ * version, the format string is checked: a NULL format or an invalid format
+ * specifier calls the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param count Maximum number of characters to store, or _TRUNCATE.
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written excluding the terminator, or -1 on truncation or
+ *         error.
+ */
+int _vsnprintf_s(char *buffer, size_t size, size_t count, const char *format, va_list arguments);
+/**
+ * Formats output from a va_list into a buffer of known size, storing at most
+ * count characters.
+ *
+ * The result is always null-terminated. If it doesn't fit and count is
+ * _TRUNCATE, as much as fits is stored and -1 returned; otherwise buffer[0] is
+ * set to 0 and the invalid parameter handler is called. Unlike the plain
+ * version, the format string is checked: a NULL format or an invalid format
+ * specifier calls the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param count Maximum number of characters to store, or _TRUNCATE.
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written excluding the terminator, or -1 on truncation or
+ *         error.
+ */
+int _vsnwprintf_s(wchar_t *buffer, size_t size, size_t count, const wchar_t *format, va_list arguments);
+/**
+ * Opens a file and returns the stream through a pointer.
+ *
+ * Takes the same mode strings as _wfopen. Files are opened without read or
+ * write sharing. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param file Receives the new stream, or NULL on failure.
+ * @param path File to open.
+ * @param mode Access mode, as for _wfopen.
+ * @return 0 on success, otherwise an errno value.
+ */
+errno_t _wfopen_s(FILE **file, const wchar_t *path, const wchar_t *mode);
+/**
+ * Closes a stream and reopens it on another file.
+ *
+ * Not listed in Microsoft's CE 6.0 table of security-enhanced functions, but
+ * exported by coredll. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param file Receives the reopened stream, or NULL on failure.
+ * @param path File to open.
+ * @param mode Access mode, as for _wfopen.
+ * @param stream Stream to close and reuse, such as stdout.
+ * @return 0 on success, otherwise an errno value.
+ */
+errno_t _wfreopen_s(FILE **file, const wchar_t *path, const wchar_t *mode, FILE *stream);
+/**
+ * Resets the error and end-of-file indicators of a stream.
+ *
+ * Unlike clearerr it reports a NULL stream. Windows CE 6.0 and later.
+ *
+ * @param stream Stream to reset.
+ * @return 0 on success, or EINVAL if stream is NULL.
+ */
+errno_t clearerr_s(FILE *stream);
+/**
+ * Opens a file and returns the stream through a pointer.
+ *
+ * Takes the same mode strings as fopen. Files are opened without read or write
+ * sharing. Bad arguments call the invalid parameter handler (see
+ * _set_invalid_parameter_handler); if it returns, the function sets errno and
+ * returns the error. Windows CE 6.0 and later.
+ *
+ * @param file Receives the new stream, or NULL on failure.
+ * @param path File to open.
+ * @param mode Access mode, as for fopen.
+ * @return 0 on success, otherwise an errno value.
+ */
+errno_t fopen_s(FILE **file, const char *path, const char *mode);
+/**
+ * Prints formatted output to a stream.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param stream Stream to write to.
+ * @param format Format-control string.
+ * @return Characters written, or a negative value on error.
+ */
+int fprintf_s(FILE *stream, const char *format, ...);
+/**
+ * Reads items from a stream into a buffer of known size.
+ *
+ * Fails rather than reading more than capacity bytes. Bad arguments call the
+ * invalid parameter handler (see _set_invalid_parameter_handler); if it
+ * returns, the function sets errno and returns the error. Windows CE 6.0 and
+ * later.
+ *
+ * @param buffer Receives the data.
+ * @param capacity Size of buffer in bytes.
+ * @param size Size of one item in bytes.
+ * @param count Maximum number of items to read.
+ * @param stream Stream to read from.
+ * @return Number of complete items read, which may be less than count at end
+ *         of file or on error.
+ */
+size_t fread_s(void *buffer, size_t capacity, size_t size, size_t count, FILE *stream);
+/**
+ * Reads formatted data from a stream.
+ *
+ * The %c, %s and %[ conversions take a buffer size, as an unsigned int
+ * argument straight after the buffer pointer, and stop rather than overrun it.
+ * Windows CE 6.0 and later.
+ *
+ * @param stream Stream to read from.
+ * @param format Format-control string.
+ * @return Number of fields converted and assigned, or EOF at end of input or
+ *         on error.
+ */
+int fscanf_s(FILE *stream, const char *format, ...);
+/**
+ * Prints formatted output to a stream.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param stream Stream to write to.
+ * @param format Format-control string.
+ * @return Characters written, or a negative value on error.
+ */
+int fwprintf_s(FILE *stream, const wchar_t *format, ...);
+/**
+ * Reads formatted data from a stream.
+ *
+ * The %c, %s and %[ conversions take a buffer size, as an unsigned int
+ * argument straight after the buffer pointer, and stop rather than overrun it.
+ * Windows CE 6.0 and later.
+ *
+ * @param stream Stream to read from.
+ * @param format Format-control string.
+ * @return Number of fields converted and assigned, or EOF at end of input or
+ *         on error.
+ */
+int fwscanf_s(FILE *stream, const wchar_t *format, ...);
+/**
+ * Reads a line from stdin into a buffer of known size.
+ *
+ * The newline is dropped. If the line doesn't fit, buffer[0] is set to 0 and
+ * the invalid parameter handler is called. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the line.
+ * @param size Size of buffer in characters, including the terminator.
+ * @return buffer, or NULL at end of file or on error.
+ */
+char *gets_s(char *buffer, size_t size);
+/**
+ * Prints formatted output to stdout.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param format Format-control string.
+ * @return Characters written, or a negative value on error.
+ */
+int printf_s(const char *format, ...);
+/**
+ * Reads formatted data from stdin.
+ *
+ * The %c, %s and %[ conversions take a buffer size, as an unsigned int
+ * argument straight after the buffer pointer, and stop rather than overrun it.
+ * Windows CE 6.0 and later.
+ *
+ * @param format Format-control string.
+ * @return Number of fields converted and assigned, or EOF at end of input or
+ *         on error.
+ */
+int scanf_s(const char *format, ...);
+/**
+ * Formats output into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, buffer[0] is set to
+ * 0 and the invalid parameter handler is called. Unlike the plain version, the
+ * format string is checked: a NULL format or an invalid format specifier calls
+ * the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param format Format-control string.
+ * @return Characters written excluding the terminator, or -1 on error.
+ */
+int sprintf_s(char *buffer, size_t size, const char *format, ...);
+/**
+ * Reads formatted data from a string.
+ *
+ * The %c, %s and %[ conversions take a buffer size, as an unsigned int
+ * argument straight after the buffer pointer, and stop rather than overrun it.
+ * Windows CE 6.0 and later.
+ *
+ * @param string String to read from.
+ * @param format Format-control string.
+ * @return Number of fields converted and assigned, or EOF if the string ends
+ *         first or on error.
+ */
+int sscanf_s(const char *string, const char *format, ...);
+/**
+ * Formats output into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, buffer[0] is set to
+ * 0 and the invalid parameter handler is called. Unlike the plain version, the
+ * format string is checked: a NULL format or an invalid format specifier calls
+ * the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param format Format-control string.
+ * @return Characters written excluding the terminator, or -1 on error.
+ */
+int swprintf_s(wchar_t *buffer, size_t size, const wchar_t *format, ...);
+/**
+ * Reads formatted data from a string.
+ *
+ * The %c, %s and %[ conversions take a buffer size, as an unsigned int
+ * argument straight after the buffer pointer, and stop rather than overrun it.
+ * Windows CE 6.0 and later.
+ *
+ * @param string String to read from.
+ * @param format Format-control string.
+ * @return Number of fields converted and assigned, or EOF if the string ends
+ *         first or on error.
+ */
+int swscanf_s(const wchar_t *string, const wchar_t *format, ...);
+/**
+ * Prints formatted output from a va_list to a stream.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param stream Stream to write to.
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written, or a negative value on error.
+ */
+int vfprintf_s(FILE *stream, const char *format, va_list arguments);
+/**
+ * Prints formatted output from a va_list to a stream.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param stream Stream to write to.
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written, or a negative value on error.
+ */
+int vfwprintf_s(FILE *stream, const wchar_t *format, va_list arguments);
+/**
+ * Prints formatted output from a va_list to stdout.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written, or a negative value on error.
+ */
+int vprintf_s(const char *format, va_list arguments);
+/**
+ * Formats output from a va_list into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, buffer[0] is set to
+ * 0 and the invalid parameter handler is called. Unlike the plain version, the
+ * format string is checked: a NULL format or an invalid format specifier calls
+ * the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written excluding the terminator, or -1 on error.
+ */
+int vsprintf_s(char *buffer, size_t size, const char *format, va_list arguments);
+/**
+ * Formats output from a va_list into a buffer of known size.
+ *
+ * The result is always null-terminated. If it doesn't fit, buffer[0] is set to
+ * 0 and the invalid parameter handler is called. Unlike the plain version, the
+ * format string is checked: a NULL format or an invalid format specifier calls
+ * the invalid parameter handler. Windows CE 6.0 and later.
+ *
+ * @param buffer Receives the formatted output.
+ * @param size Size of buffer in characters, including the terminator.
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written excluding the terminator, or -1 on error.
+ */
+int vswprintf_s(wchar_t *buffer, size_t size, const wchar_t *format, va_list arguments);
+/**
+ * Prints formatted output from a va_list to stdout.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param format Format-control string.
+ * @param arguments Argument list.
+ * @return Characters written, or a negative value on error.
+ */
+int vwprintf_s(const wchar_t *format, va_list arguments);
+/**
+ * Prints formatted output to stdout.
+ *
+ * Unlike the plain version, the format string is checked: a NULL format or an
+ * invalid format specifier calls the invalid parameter handler. Windows CE 6.0
+ * and later.
+ *
+ * @param format Format-control string.
+ * @return Characters written, or a negative value on error.
+ */
+int wprintf_s(const wchar_t *format, ...);
+/**
+ * Reads formatted data from stdin.
+ *
+ * The %c, %s and %[ conversions take a buffer size, as an unsigned int
+ * argument straight after the buffer pointer, and stop rather than overrun it.
+ * Windows CE 6.0 and later.
+ *
+ * @param format Format-control string.
+ * @return Number of fields converted and assigned, or EOF at end of input or
+ *         on error.
+ */
+int wscanf_s(const wchar_t *format, ...);
 
 #ifdef __cplusplus
 }

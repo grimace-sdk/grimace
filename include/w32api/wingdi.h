@@ -3628,7 +3628,21 @@ WINGDIAPI int WINAPI AddFontResourceA(LPCSTR);
  */
 WINGDIAPI int WINAPI AddFontResourceW(LPCWSTR lpszFilename);
 #if (_WIN32_WINNT >= 0x0500)
-WINGDIAPI HANDLE WINAPI AddFontMemResourceEx(PVOID,DWORD,PVOID,DWORD *);
+/**
+ * Installs fonts from a font image in memory, private to the calling
+ * process.
+ *
+ * The fonts are not enumerable and are removed when the process exits or
+ * RemoveFontMemResourceEx is called. The data can be freed once the call
+ * returns. Windows CE 6.0 and later.
+ *
+ * @param pbFont Font file data.
+ * @param cbFont Size of the data in bytes.
+ * @param pdv Reserved, pass NULL.
+ * @param pcFonts Receives the number of fonts installed.
+ * @return Handle for RemoveFontMemResourceEx, or 0 on failure.
+ */
+WINGDIAPI HANDLE WINAPI AddFontMemResourceEx(PVOID pbFont,DWORD cbFont,PVOID pdv,DWORD *pcFonts);
 WINGDIAPI int WINAPI AddFontResourceExA(LPCSTR,DWORD,PVOID);
 WINGDIAPI int WINAPI AddFontResourceExW(LPCWSTR,DWORD,PVOID);
 #endif
@@ -4037,7 +4051,21 @@ WINGDIAPI int WINAPI EnumFontFamiliesA(HDC,LPCSTR,FONTENUMPROCA,LPARAM);
  */
 WINGDIAPI int WINAPI EnumFontFamiliesW(HDC hdc,LPCWSTR lpszFamily,FONTENUMPROCW lpEnumFontFamProc,LPARAM lParam);
 WINGDIAPI int WINAPI EnumFontFamiliesExA(HDC,PLOGFONTA,FONTENUMPROCA,LPARAM,DWORD);
-WINGDIAPI int WINAPI EnumFontFamiliesExW(HDC,PLOGFONTW,FONTENUMPROCW,LPARAM,DWORD);
+/**
+ * Enumerates fonts matching a face name and character set.
+ *
+ * An empty lfFaceName enumerates one entry per family, and DEFAULT_CHARSET
+ * enumerates every character set. Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @param lpLogfont LOGFONTW giving lfCharSet, lfFaceName and
+ *        lfPitchAndFamily to match.
+ * @param lpEnumFontFamExProc Called for each font. Return zero to stop.
+ * @param lParam Value passed to the callback.
+ * @param dwFlags Reserved, pass 0.
+ * @return The last value returned by the callback.
+ */
+WINGDIAPI int WINAPI EnumFontFamiliesExW(HDC hdc,PLOGFONTW lpLogfont,FONTENUMPROCW lpEnumFontFamExProc,LPARAM lParam,DWORD dwFlags);
 WINGDIAPI int WINAPI EnumFontsA(HDC,LPCSTR,FONTENUMPROCA,LPARAM);
 /**
  * Enumerates the fonts available on a device.
@@ -4084,7 +4112,17 @@ WINGDIAPI int WINAPI Escape(HDC,int,int,LPCSTR,PVOID);
 WINGDIAPI int WINAPI ExcludeClipRect(HDC hdc,int nLeftRect,int nTopRect,int nRightRect,int nBottomRect);
 WINGDIAPI int WINAPI ExcludeUpdateRgn(HDC,HWND);
 WINGDIAPI HPEN WINAPI ExtCreatePen(DWORD,DWORD,const LOGBRUSH*,DWORD,const DWORD*);
-WINGDIAPI HRGN WINAPI ExtCreateRegion(const XFORM*,DWORD,const RGNDATA*);
+/**
+ * Creates a region from RGNDATA, such as the output of GetRegionData.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param lpXform Transform to apply, or NULL for none.
+ * @param nCount Size of the data at lpRgnData in bytes.
+ * @param lpRgnData Header and rectangles describing the region.
+ * @return Region handle, or NULL on failure. Free with DeleteObject.
+ */
+WINGDIAPI HRGN WINAPI ExtCreateRegion(const XFORM*lpXform,DWORD nCount,const RGNDATA*lpRgnData);
 /**
  * Sends a driver-defined escape request to a device.
  *
@@ -4184,13 +4222,41 @@ WINGDIAPI int WINAPI GetBkMode(HDC hdc);
 WINGDIAPI UINT WINAPI GetBoundsRect(HDC,LPRECT,UINT);
 WINGDIAPI BOOL WINAPI GetBrushOrgEx(HDC,LPPOINT);
 WINGDIAPI BOOL WINAPI GetCharABCWidthsA(HDC,UINT,UINT,LPABC);
-WINGDIAPI BOOL WINAPI _WNAME(GetCharABCWidths)(HDC,UINT,UINT,LPABC);
+/**
+ * Gets the ABC widths of a range of characters in the selected TrueType font.
+ *
+ * Fails for non-TrueType fonts; use GetCharWidth32 for those. A negative A or
+ * C width means the glyph overhangs. Characters outside the font's range get
+ * the default character's widths. Windows CE 4.2 and later.
+ *
+ * @param hdc Device context.
+ * @param uFirstChar First character in the range.
+ * @param uLastChar Last character in the range, inclusive.
+ * @param lpabc Array of ABC structures, one per character, that receives the
+ *        widths in logical units.
+ * @return Nonzero on success, zero on failure; call GetLastError.
+ */
+WINGDIAPI BOOL WINAPI _WNAME(GetCharABCWidths)(HDC hdc,UINT uFirstChar,UINT uLastChar,LPABC lpabc);
 WINGDIAPI BOOL WINAPI GetCharABCWidthsFloatA(HDC,UINT,UINT,LPABCFLOAT);
 WINGDIAPI BOOL WINAPI GetCharABCWidthsFloatW(HDC,UINT,UINT,LPABCFLOAT);
 WINGDIAPI DWORD WINAPI GetCharacterPlacementA(HDC,LPCSTR,int,int,LPGCP_RESULTSA,DWORD);
 WINGDIAPI DWORD WINAPI GetCharacterPlacementW(HDC,LPCWSTR,int,int,LPGCP_RESULTSW,DWORD);
 WINGDIAPI BOOL WINAPI GetCharWidth32A(HDC,UINT,UINT,LPINT);
-WINGDIAPI BOOL WINAPI _WNAME(GetCharWidth32)(HDC,UINT,UINT,LPINT);
+/**
+ * Gets the advance widths of a range of characters in the selected font.
+ *
+ * Works with any font type. Characters missing from the font get the default
+ * character's width. Windows CE 4.1 and later.
+ *
+ * @param hdc Device context.
+ * @param iFirstChar First character in the range.
+ * @param iLastChar Last character in the range, inclusive. Must not be less
+ *        than iFirstChar.
+ * @param lpBuffer Array of INTs, one per character, that receives the widths
+ *        in logical units.
+ * @return Nonzero on success, zero on failure; call GetLastError.
+ */
+WINGDIAPI BOOL WINAPI _WNAME(GetCharWidth32)(HDC hdc,UINT iFirstChar,UINT iLastChar,LPINT lpBuffer);
 #ifndef _WIN32_WCE
 WINGDIAPI BOOL WINAPI GetCharWidthA(HDC,UINT,UINT,LPINT);
 WINGDIAPI BOOL WINAPI GetCharWidthW(HDC,UINT,UINT,LPINT);
@@ -4230,7 +4296,16 @@ WINGDIAPI HANDLE WINAPI GetColorSpace(HDC);
  * @return The object, or NULL on failure.
  */
 WINGDIAPI HGDIOBJ WINAPI GetCurrentObject(HDC hdc,UINT uObjectType);
-WINGDIAPI BOOL WINAPI GetCurrentPositionEx(HDC,LPPOINT);
+/**
+ * Gets the current pen position used by LineTo.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hdc Device context.
+ * @param lpPoint Receives the position in logical units.
+ * @return Nonzero on success, zero on failure.
+ */
+WINGDIAPI BOOL WINAPI GetCurrentPositionEx(HDC hdc,LPPOINT lpPoint);
 /**
  * Retrieves the current cursor handle.
  *
@@ -4261,7 +4336,22 @@ WINGDIAPI BOOL WINAPI GetDCOrgEx(HDC,LPPOINT);
  */
 WINGDIAPI int WINAPI GetDeviceCaps(HDC hdc,int nIndex);
 WINGDIAPI BOOL WINAPI GetDeviceGammaRamp(HDC,PVOID);
-WINGDIAPI UINT WINAPI GetDIBColorTable(HDC,UINT,UINT,RGBQUAD*);
+/**
+ * Reads palette entries from the DIB section selected into a device
+ * context.
+ *
+ * Only DIB sections of 8 bits per pixel or fewer have a colour table.
+ * Windows CE 4.1 and later.
+ *
+ * @param hdc Memory device context with a DIB section selected.
+ * @param uStartIndex First entry to read.
+ * @param cEntries Number of entries to read.
+ * @param pColors Receives the entries.
+ * @return Number of entries read, or 0 on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI UINT WINAPI GetDIBColorTable(HDC hdc,UINT uStartIndex,UINT cEntries,RGBQUAD*pColors);
 WINGDIAPI int WINAPI GetDIBits(HDC,HBITMAP,UINT,UINT,PVOID,LPBITMAPINFO,UINT);
 WINGDIAPI HENHMETAFILE WINAPI GetEnhMetaFileA(LPCSTR);
 WINGDIAPI HENHMETAFILE WINAPI GetEnhMetaFileW(LPCWSTR);
@@ -4271,7 +4361,22 @@ WINGDIAPI UINT WINAPI GetEnhMetaFileDescriptionW(HENHMETAFILE,UINT,LPWSTR);
 WINGDIAPI UINT WINAPI GetEnhMetaFileHeader(HENHMETAFILE,UINT,LPENHMETAHEADER);
 WINGDIAPI UINT WINAPI GetEnhMetaFilePaletteEntries(HENHMETAFILE,UINT,LPPALETTEENTRY);
 WINGDIAPI UINT WINAPI GetEnhMetaFilePixelFormat(HENHMETAFILE,DWORD,CONST PIXELFORMATDESCRIPTOR*);
-WINGDIAPI DWORD WINAPI GetFontData(HDC,DWORD,DWORD,PVOID,DWORD);
+/**
+ * Reads raw TrueType font data for the font selected into a device
+ * context.
+ *
+ * Pass NULL and 0 for lpvBuffer and cbData to get the size. Windows CE 5.0
+ * and later.
+ *
+ * @param hdc Device context.
+ * @param dwTable Tag of the table to read, byte-reversed, or 0 for the
+ *        whole file.
+ * @param dwOffset Offset into the table.
+ * @param lpvBuffer Receives the data, or NULL.
+ * @param cbData Size of lpvBuffer in bytes.
+ * @return Number of bytes read, or GDI_ERROR on failure.
+ */
+WINGDIAPI DWORD WINAPI GetFontData(HDC hdc,DWORD dwTable,DWORD dwOffset,PVOID lpvBuffer,DWORD cbData);
 WINGDIAPI DWORD WINAPI GetFontLanguageInfo(HDC);
 WINGDIAPI DWORD WINAPI GetGlyphOutlineA(HDC,UINT,UINT,LPGLYPHMETRICS,DWORD,PVOID,const MAT2*);
 WINGDIAPI DWORD WINAPI GetGlyphOutlineW(HDC,UINT,UINT,LPGLYPHMETRICS,DWORD,PVOID,const MAT2*);
@@ -4337,7 +4442,19 @@ WINGDIAPI int WINAPI GetObjectW(HGDIOBJ hgdiobj,int cbBuffer,PVOID lpvObject);
  */
 WINGDIAPI DWORD WINAPI GetObjectType(HGDIOBJ h);
 WINGDIAPI UINT WINAPI GetOutlineTextMetricsA(HDC,UINT,LPOUTLINETEXTMETRICA);
-WINGDIAPI UINT WINAPI GetOutlineTextMetricsW(HDC,UINT,LPOUTLINETEXTMETRICW);
+/**
+ * Gets metrics for the TrueType font selected into a device context.
+ *
+ * Pass 0 and NULL for cbData and lpOTM to get the size needed: the
+ * structure is followed by its strings. Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @param cbData Size of lpOTM in bytes.
+ * @param lpOTM Receives the metrics, or NULL.
+ * @return Nonzero on success, or the size needed when lpOTM is NULL. Zero
+ *         on failure.
+ */
+WINGDIAPI UINT WINAPI GetOutlineTextMetricsW(HDC hdc,UINT cbData,LPOUTLINETEXTMETRICW lpOTM);
 /**
  * Copies a range of entries from a logical palette.
  *
@@ -4392,7 +4509,16 @@ WINGDIAPI DWORD WINAPI GetRegionData(HRGN hRgn,DWORD dwCount,LPRGNDATA lpRgnData
  *         invalid.
  */
 WINGDIAPI int WINAPI GetRgnBox(HRGN hrgn,LPRECT lprc);
-WINGDIAPI int WINAPI GetROP2(HDC);
+/**
+ * Gets the foreground mix mode used to combine pens with the
+ * destination.
+ *
+ * Windows CE 5.1 and later.
+ *
+ * @param hdc Device context.
+ * @return An R2_ mix mode, or 0 on failure.
+ */
+WINGDIAPI int WINAPI GetROP2(HDC hdc);
 /**
  * Returns a predefined pen, brush, font or palette.
  *
@@ -4406,7 +4532,16 @@ WINGDIAPI int WINAPI GetROP2(HDC);
  * @return The stock object, or NULL on failure.
  */
 WINGDIAPI HGDIOBJ WINAPI GetStockObject(int fnObject);
-WINGDIAPI int WINAPI GetStretchBltMode(HDC);
+/**
+ * Gets the mode StretchBlt uses when shrinking or enlarging bitmaps.
+ *
+ * Windows CE 4.21 and later.
+ *
+ * @param hdc Device context.
+ * @return The current mode, such as BLACKONWHITE or COLORONCOLOR, or 0
+ *         on failure.
+ */
+WINGDIAPI int WINAPI GetStretchBltMode(HDC hdc);
 /**
  * Copies a range of entries from a device's system palette.
  *
@@ -4425,8 +4560,26 @@ WINGDIAPI int WINAPI GetStretchBltMode(HDC);
  */
 WINGDIAPI UINT WINAPI GetSystemPaletteEntries(HDC hdc,UINT iStartIndex,UINT nEntries,LPPALETTEENTRY lppe);
 WINGDIAPI UINT WINAPI GetSystemPaletteUse(HDC);
-WINGDIAPI UINT WINAPI GetTextAlign(HDC);
-WINGDIAPI int WINAPI GetTextCharacterExtra(HDC);
+/**
+ * Gets the text alignment flags of a device context.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hdc Device context.
+ * @return TA_ flags, or GDI_ERROR on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI UINT WINAPI GetTextAlign(HDC hdc);
+/**
+ * Gets the extra space added between characters when drawing text.
+ *
+ * Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @return Extra space in logical units, or 0x8000000 on failure.
+ */
+WINGDIAPI int WINAPI GetTextCharacterExtra(HDC hdc);
 WINGDIAPI int WINAPI GetTextCharset(HDC);
 WINGDIAPI int WINAPI GetTextCharsetInfo(HDC,LPFONTSIGNATURE,DWORD);
 /**
@@ -4490,10 +4643,52 @@ WINGDIAPI BOOL WINAPI GetTextMetricsA(HDC,LPTEXTMETRICA);
  * @return TRUE on success, FALSE on failure (see GetLastError).
  */
 WINGDIAPI BOOL WINAPI GetTextMetricsW(HDC hdc,LPTEXTMETRICW lptm);
-WINGDIAPI BOOL WINAPI GetViewportExtEx(HDC,LPSIZE);
-WINGDIAPI BOOL WINAPI GetViewportOrgEx(HDC,LPPOINT);
-WINGDIAPI BOOL WINAPI GetWindowExtEx(HDC,LPSIZE);
-WINGDIAPI BOOL WINAPI GetWindowOrgEx(HDC,LPPOINT);
+/**
+ * Gets the viewport extents of a device context.
+ *
+ * Windows CE 5.1 and later.
+ *
+ * @param hdc Device context.
+ * @param lpSize Receives the extents in device units.
+ * @return Nonzero on success, zero on failure.
+ */
+WINGDIAPI BOOL WINAPI GetViewportExtEx(HDC hdc,LPSIZE lpSize);
+/**
+ * Gets the viewport origin of a device context.
+ *
+ * Windows CE 5.1 and later.
+ *
+ * @param hdc Device context.
+ * @param lpPoint Receives the origin in device units.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI BOOL WINAPI GetViewportOrgEx(HDC hdc,LPPOINT lpPoint);
+/**
+ * Gets the window extents of a device context.
+ *
+ * Windows CE 5.1 and later.
+ *
+ * @param hdc Device context.
+ * @param lpSize Receives the extents in logical units.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI BOOL WINAPI GetWindowExtEx(HDC hdc,LPSIZE lpSize);
+/**
+ * Gets the window origin of a device context.
+ *
+ * Windows CE 5.1 and later.
+ *
+ * @param hdc Device context.
+ * @param lpPoint Receives the origin in logical units.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI BOOL WINAPI GetWindowOrgEx(HDC hdc,LPPOINT lpPoint);
 WINGDIAPI UINT WINAPI GetWinMetaFileBits(HENHMETAFILE,UINT,LPBYTE,INT,HDC);
 WINGDIAPI BOOL WINAPI GetWorldTransform(HDC,LPXFORM);
 /**
@@ -4512,7 +4707,20 @@ WINGDIAPI BOOL WINAPI GetWorldTransform(HDC,LPXFORM);
 WINGDIAPI int WINAPI IntersectClipRect(HDC hdc,int nLeftRect,int nTopRect,int nRightRect,int nBottomRect);
 WINGDIAPI BOOL WINAPI InvertRgn(HDC,HRGN);
 WINGDIAPI BOOL WINAPI LineDDA(int,int,int,int,LINEDDAPROC,LPARAM);
-WINGDIAPI BOOL WINAPI LineTo(HDC,int,int);
+/**
+ * Draws a line with the current pen from the current position up to, but
+ * not including, a point, and moves the current position there.
+ *
+ * Set the start with MoveToEx. Windows CE 4.1 and later.
+ *
+ * @param hdc Device context.
+ * @param nXEnd X of the end point, logical units.
+ * @param nYEnd Y of the end point.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI BOOL WINAPI LineTo(HDC hdc,int nXEnd,int nYEnd);
 WINGDIAPI BOOL WINAPI LPtoDP(HDC,LPPOINT,int);
 /**
  * Copies a block of pixels, choosing between two raster operations per
@@ -4542,7 +4750,20 @@ WINGDIAPI BOOL WINAPI LPtoDP(HDC,LPPOINT,int);
  */
 WINGDIAPI BOOL WINAPI MaskBlt(HDC hdcDest,int nXDest,int nYDest,int nWidth,int nHeight,HDC hdcSrc,int nXSrc,int nYSrc,HBITMAP hbmMask,int xMask,int yMask,DWORD dwRop);
 WINGDIAPI BOOL WINAPI ModifyWorldTransform(HDC,const XFORM*,DWORD);
-WINGDIAPI BOOL WINAPI MoveToEx(HDC,int,int,LPPOINT);
+/**
+ * Sets the current position used by LineTo.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hdc Device context.
+ * @param X New x, logical units.
+ * @param Y New y.
+ * @param lpPoint Receives the previous position, or NULL.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI BOOL WINAPI MoveToEx(HDC hdc,int X,int Y,LPPOINT lpPoint);
 WINGDIAPI int WINAPI OffsetClipRgn(HDC,int,int);
 /**
  * Moves a region.
@@ -4554,7 +4775,20 @@ WINGDIAPI int WINAPI OffsetClipRgn(HDC,int,int);
  *         leaving the region unchanged.
  */
 WINGDIAPI int WINAPI OffsetRgn(HRGN hrgn,int nXOffset,int nYOffset);
-WINGDIAPI BOOL WINAPI OffsetViewportOrgEx(HDC,int,int,LPPOINT);
+/**
+ * Moves the viewport origin of a device context by an offset.
+ *
+ * Windows CE 5.1 and later.
+ *
+ * @param hdc Device context.
+ * @param nXOffset Change in x, device units.
+ * @param nYOffset Change in y.
+ * @param lpPoint Receives the previous origin, or NULL.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI BOOL WINAPI OffsetViewportOrgEx(HDC hdc,int nXOffset,int nYOffset,LPPOINT lpPoint);
 WINGDIAPI BOOL WINAPI OffsetWindowOrgEx(HDC,int,int,LPPOINT);
 WINGDIAPI BOOL WINAPI PaintRgn(HDC,HRGN);
 /**
@@ -4692,7 +4926,15 @@ WINGDIAPI BOOL WINAPI RemoveFontResourceA(LPCSTR);
  */
 WINGDIAPI BOOL WINAPI RemoveFontResourceW(LPCWSTR lpFileName);
 #if (_WIN32_WINNT >= 0x0500)
-WINGDIAPI BOOL WINAPI RemoveFontMemResourceEx(HANDLE);
+/**
+ * Removes fonts added with AddFontMemResourceEx.
+ *
+ * Windows CE 6.0 and later.
+ *
+ * @param fh Handle from AddFontMemResourceEx.
+ * @return Nonzero on success, zero on failure.
+ */
+WINGDIAPI BOOL WINAPI RemoveFontMemResourceEx(HANDLE fh);
 WINGDIAPI BOOL WINAPI RemoveFontResourceExA(LPCSTR,DWORD,PVOID);
 WINGDIAPI BOOL WINAPI RemoveFontResourceExW(LPCWSTR,DWORD,PVOID);
 #endif
@@ -4790,7 +5032,17 @@ WINGDIAPI HPALETTE WINAPI SelectPalette(HDC hdc,HPALETTE hpal,BOOL bForceBackgro
  */
 WINGDIAPI int WINAPI SetAbortProc(HDC hdc,ABORTPROC lpAbortProc);
 WINGDIAPI int WINAPI SetArcDirection(HDC,int);
-WINGDIAPI LONG WINAPI SetBitmapBits(HBITMAP,DWORD,PCVOID);
+/**
+ * Copies pixel data into a device-dependent bitmap.
+ *
+ * Prefer SetDIBits or a DIB section. Windows CE 4.1 and later.
+ *
+ * @param hbmp Bitmap handle.
+ * @param cBytes Number of bytes to copy.
+ * @param lpBits Pixel data in the bitmap's format.
+ * @return Number of bytes copied, or 0 on failure.
+ */
+WINGDIAPI LONG WINAPI SetBitmapBits(HBITMAP hbmp,DWORD cBytes,PCVOID lpBits);
 WINGDIAPI BOOL WINAPI SetBitmapDimensionEx(HBITMAP,int,int,LPSIZE);
 /**
  * Sets a DC's background color.
@@ -4835,9 +5087,44 @@ WINGDIAPI COLORREF WINAPI SetDCBrushColor(HDC,COLORREF);
 WINGDIAPI COLORREF WINAPI SetDCPenColor(HDC,COLORREF);
 #endif
 WINGDIAPI BOOL WINAPI SetDeviceGammaRamp(HDC,PVOID);
-WINGDIAPI UINT WINAPI SetDIBColorTable(HDC,UINT,UINT,const RGBQUAD*);
+/**
+ * Sets palette entries of the DIB section selected into a device context.
+ *
+ * Only DIB sections of 8 bits per pixel or fewer have a colour table.
+ * Windows CE 4.1 and later.
+ *
+ * @param hdc Memory device context with a DIB section selected.
+ * @param uStartIndex First entry to set.
+ * @param cEntries Number of entries to set.
+ * @param pColors The new entries.
+ * @return Number of entries set, or 0 on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI UINT WINAPI SetDIBColorTable(HDC hdc,UINT uStartIndex,UINT cEntries,const RGBQUAD*pColors);
 WINGDIAPI int WINAPI SetDIBits(HDC,HBITMAP,UINT,UINT,PCVOID,const BITMAPINFO*,UINT);
-WINGDIAPI int WINAPI SetDIBitsToDevice(HDC,int,int,DWORD,DWORD,int,int,UINT,UINT,PCVOID,const BITMAPINFO*,UINT);
+/**
+ * Copies pixels from a device-independent bitmap to a device context
+ * without scaling.
+ *
+ * Bottom-up DIBs are the default. uStartScan and cScanLines let a large
+ * image be copied in bands. Windows CE 4.1 and later.
+ *
+ * @param hdc Destination device context.
+ * @param XDest Left of the destination rectangle, logical units.
+ * @param YDest Top of the destination rectangle.
+ * @param dwWidth Width of the rectangle in pixels.
+ * @param dwHeight Height of the rectangle in pixels.
+ * @param XSrc Left of the source rectangle in the DIB.
+ * @param YSrc Bottom of the source rectangle in the DIB.
+ * @param uStartScan First scan line in lpvBits.
+ * @param cScanLines Number of scan lines in lpvBits.
+ * @param lpvBits Pixel data.
+ * @param lpbmi Header and colour table describing lpvBits.
+ * @param fuColorUse DIB_RGB_COLORS or DIB_PAL_COLORS.
+ * @return Number of scan lines set, or 0 on failure.
+ */
+WINGDIAPI int WINAPI SetDIBitsToDevice(HDC hdc,int XDest,int YDest,DWORD dwWidth,DWORD dwHeight,int XSrc,int YSrc,UINT uStartScan,UINT cScanLines,PCVOID lpvBits,const BITMAPINFO*lpbmi,UINT fuColorUse);
 WINGDIAPI HENHMETAFILE WINAPI SetEnhMetaFileBits(UINT,const BYTE*);
 WINGDIAPI int WINAPI SetGraphicsMode(HDC,int);
 WINGDIAPI int WINAPI SetICMMode(HDC,int);
@@ -4907,10 +5194,43 @@ WINGDIAPI BOOL WINAPI SetRectRgn(HRGN hrgn,int nLeftRect,int nTopRect,int nRight
  * @note Windows CE 2.0 and later.
  */
 WINGDIAPI int WINAPI SetROP2(HDC hdc,int fnDrawMode);
-WINGDIAPI int WINAPI SetStretchBltMode(HDC,int);
+/**
+ * Sets the mode StretchBlt uses when shrinking or enlarging bitmaps.
+ *
+ * Windows CE 4.21 and later.
+ *
+ * @param hdc Device context.
+ * @param iStretchMode The new mode, such as BLACKONWHITE or COLORONCOLOR.
+ * @return The previous mode, or 0 on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI int WINAPI SetStretchBltMode(HDC hdc,int iStretchMode);
 WINGDIAPI UINT WINAPI SetSystemPaletteUse(HDC,UINT);
-WINGDIAPI UINT WINAPI SetTextAlign(HDC,UINT);
-WINGDIAPI int WINAPI SetTextCharacterExtra(HDC,int);
+/**
+ * Sets how text is aligned to the point given to ExtTextOutW.
+ *
+ * Windows CE 4.1 and later.
+ *
+ * @param hdc Device context.
+ * @param fMode TA_ flags: one of TA_LEFT, TA_CENTER or TA_RIGHT, one of
+ *        TA_TOP, TA_BASELINE or TA_BOTTOM, and TA_UPDATECP or
+ *        TA_NOUPDATECP.
+ * @return The previous flags, or GDI_ERROR on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI UINT WINAPI SetTextAlign(HDC hdc,UINT fMode);
+/**
+ * Sets extra space added between characters when drawing text.
+ *
+ * Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @param nCharExtra Extra space in logical units.
+ * @return The previous value, or 0x80000000 on failure.
+ */
+WINGDIAPI int WINAPI SetTextCharacterExtra(HDC hdc,int nCharExtra);
 /**
  * Sets a DC's text color.
  *
@@ -4940,7 +5260,20 @@ WINGDIAPI BOOL WINAPI SetViewportExtEx(HDC,int,int,LPSIZE);
  */
 WINGDIAPI BOOL WINAPI SetViewportOrgEx(HDC hdc,int X,int Y,LPPOINT lpPoint);
 WINGDIAPI BOOL WINAPI SetWindowExtEx(HDC,int,int,LPSIZE);
-WINGDIAPI BOOL WINAPI SetWindowOrgEx(HDC,int,int,LPPOINT);
+/**
+ * Sets which logical point maps to the viewport origin.
+ *
+ * Windows CE 5.1 and later.
+ *
+ * @param hdc Device context.
+ * @param X New window origin x, logical units.
+ * @param Y New window origin y.
+ * @param lpPoint Receives the previous origin, or NULL.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI BOOL WINAPI SetWindowOrgEx(HDC hdc,int X,int Y,LPPOINT lpPoint);
 WINGDIAPI HENHMETAFILE WINAPI SetWinMetaFileBits(UINT,const BYTE*,HDC,const METAFILEPICT*);
 WINGDIAPI BOOL WINAPI SetWorldTransform(HDC,const XFORM *);
 WINGDIAPI int WINAPI StartDocA(HDC,const DOCINFOA*);
@@ -4994,7 +5327,31 @@ WINGDIAPI int WINAPI StartPage(HDC hDC);
  * @return TRUE on success, FALSE on failure (see GetLastError).
  */
 WINGDIAPI BOOL WINAPI StretchBlt(HDC hdcDest,int nXOriginDest,int nYOriginDest,int nWidthDest,int nHeightDest,HDC hdcSrc,int nXOriginSrc,int nYOriginSrc,int nWidthSrc,int nHeightSrc,DWORD dwRop);
-WINGDIAPI int WINAPI StretchDIBits(HDC,int,int,int,int,int,int,int,int,const VOID *,const BITMAPINFO *,UINT,DWORD);
+/**
+ * Copies pixels from a device-independent bitmap to a device context,
+ * scaling them to fit the destination rectangle.
+ *
+ * Scaling uses the stretch mode of the destination. Windows CE 4.1 and
+ * later.
+ *
+ * @param hdc Destination device context.
+ * @param XDest Left of the destination rectangle, logical units.
+ * @param YDest Top of the destination rectangle.
+ * @param nDestWidth Width of the destination rectangle.
+ * @param nDestHeight Height of the destination rectangle.
+ * @param XSrc Left of the source rectangle in the DIB, pixels.
+ * @param YSrc Top of the source rectangle in the DIB.
+ * @param nSrcWidth Width of the source rectangle.
+ * @param nSrcHeight Height of the source rectangle.
+ * @param lpBits Pixel data.
+ * @param lpBitsInfo Header and colour table describing lpBits.
+ * @param iUsage DIB_RGB_COLORS or DIB_PAL_COLORS.
+ * @param dwRop Raster operation, such as SRCCOPY.
+ * @return Number of scan lines copied, or GDI_ERROR on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINGDIAPI int WINAPI StretchDIBits(HDC hdc,int XDest,int YDest,int nDestWidth,int nDestHeight,int XSrc,int YSrc,int nSrcWidth,int nSrcHeight,const VOID *lpBits,const BITMAPINFO *lpBitsInfo,UINT iUsage,DWORD dwRop);
 WINGDIAPI BOOL WINAPI StrokeAndFillPath(HDC);
 WINGDIAPI BOOL WINAPI StrokePath(HDC);
 WINGDIAPI BOOL WINAPI SwapBuffers(HDC);
@@ -5043,8 +5400,45 @@ WINGDIAPI BOOL WINAPI wglUseFontBitmapsW(HDC,DWORD,DWORD,DWORD);
 WINGDIAPI BOOL WINAPI wglUseFontOutlinesA(HDC,DWORD,DWORD,DWORD,FLOAT,FLOAT,int,LPGLYPHMETRICSFLOAT);
 WINGDIAPI BOOL WINAPI wglUseFontOutlinesW(HDC,DWORD,DWORD,DWORD,FLOAT,FLOAT,int,LPGLYPHMETRICSFLOAT);
 #if (WINVER >= 0x0410) || (_WIN32_WCE >= 0x0500)
-WINGDIAPI BOOL WINAPI AlphaBlend(HDC,int,int,int,int,HDC,int,int,int,int,BLENDFUNCTION);
-WINGDIAPI BOOL WINAPI GradientFill(HDC,PTRIVERTEX,ULONG,PVOID,ULONG,ULONG);
+/**
+ * Copies a rectangle between device contexts, blending it with the
+ * destination using constant and/or per-pixel alpha.
+ *
+ * For per-pixel alpha (AC_SRC_ALPHA) the source must be a 32bpp bitmap with
+ * premultiplied colour. The rectangles must not overlap on the same
+ * surface. Windows CE 5.0 and later.
+ *
+ * @param hdcDest Destination device context.
+ * @param nXOriginDest Left of the destination rectangle, logical units.
+ * @param nYOriginDest Top of the destination rectangle.
+ * @param nWidthDest Width of the destination rectangle.
+ * @param nHeightDest Height of the destination rectangle.
+ * @param hdcSrc Source device context.
+ * @param nXOriginSrc Left of the source rectangle.
+ * @param nYOriginSrc Top of the source rectangle.
+ * @param nWidthSrc Width of the source rectangle.
+ * @param nHeightSrc Height of the source rectangle.
+ * @param blendFunction BLENDFUNCTION giving the operation, constant alpha
+ *        and AC_SRC_ALPHA.
+ * @return Nonzero on success, zero on failure.
+ */
+WINGDIAPI BOOL WINAPI AlphaBlend(HDC hdcDest,int nXOriginDest,int nYOriginDest,int nWidthDest,int nHeightDest,HDC hdcSrc,int nXOriginSrc,int nYOriginSrc,int nWidthSrc,int nHeightSrc,BLENDFUNCTION blendFunction);
+/**
+ * Fills rectangles with a colour gradient between their corners.
+ *
+ * Windows CE supports the rectangle modes, not GRADIENT_FILL_TRIANGLE.
+ * Windows CE 4.2 and later.
+ *
+ * @param hdc Device context.
+ * @param pVertex Array of TRIVERTEX giving positions and 16-bit colours.
+ * @param dwNumVertex Number of vertices.
+ * @param pMesh Array of GRADIENT_RECT, each naming two vertices as
+ *        opposite corners.
+ * @param dwNumMesh Number of rectangles.
+ * @param dwMode GRADIENT_FILL_RECT_H or GRADIENT_FILL_RECT_V.
+ * @return Nonzero on success, zero on failure.
+ */
+WINGDIAPI BOOL WINAPI GradientFill(HDC hdc,PTRIVERTEX pVertex,ULONG dwNumVertex,PVOID pMesh,ULONG dwNumMesh,ULONG dwMode);
 #endif
 #if (WINVER >= 0x0410) || (_WIN32_WCE >= 0x0400)
 WINGDIAPI BOOL WINAPI TransparentBlt(HDC,int,int,int,int,HDC,int,int,int,int,UINT);
@@ -5055,8 +5449,26 @@ WINGDIAPI DWORD WINAPI GetGlyphIndicesA(HDC,LPCSTR,int,LPWORD,DWORD);
 WINGDIAPI DWORD WINAPI GetGlyphIndicesW(HDC,LPCWSTR,int,LPWORD,DWORD);
 #endif
 #if (WINVER >= 0x0500)
-WINGDIAPI DWORD WINAPI GetLayout(HDC);
-WINGDIAPI DWORD WINAPI SetLayout(HDC, DWORD);
+/**
+ * Gets the layout of a device context, such as right-to-left.
+ *
+ * Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @return Layout flags such as LAYOUT_RTL, or GDI_ERROR on failure.
+ */
+WINGDIAPI DWORD WINAPI GetLayout(HDC hdc);
+/**
+ * Sets the layout of a device context, such as right-to-left.
+ *
+ * With LAYOUT_RTL, x runs from the right edge. Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @param dwLayout 0 or LAYOUT_RTL, optionally with
+ *        LAYOUT_BITMAPORIENTATIONPRESERVED.
+ * @return The previous layout, or GDI_ERROR on failure.
+ */
+WINGDIAPI DWORD WINAPI SetLayout(HDC hdc, DWORD dwLayout);
 #endif
 
 #ifdef UNICODE
@@ -5174,6 +5586,20 @@ typedef DISPLAY_DEVICEW DISPLAY_DEVICE, *PDISPLAY_DEVICE, *LPDISPLAY_DEVICE;
  * @return The last value returned by the callback.
  */
 #define EnumFontFamilies EnumFontFamiliesW
+/**
+ * Enumerates fonts matching a face name and character set.
+ *
+ * An empty lfFaceName enumerates one entry per family, and DEFAULT_CHARSET
+ * enumerates every character set. Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @param lpLogfont LOGFONTW giving lfCharSet, lfFaceName and
+ *        lfPitchAndFamily to match.
+ * @param lpEnumFontFamExProc Called for each font. Return zero to stop.
+ * @param lParam Value passed to the callback.
+ * @param dwFlags Reserved, pass 0.
+ * @return The last value returned by the callback.
+ */
 #define EnumFontFamiliesEx EnumFontFamiliesExW
 /**
  * Enumerates the fonts available on a device.
@@ -5242,6 +5668,18 @@ typedef DISPLAY_DEVICEW DISPLAY_DEVICE, *PDISPLAY_DEVICE, *LPDISPLAY_DEVICE;
  *        on failure (see GetLastError).
  */
 #define GetObject GetObjectW
+/**
+ * Gets metrics for the TrueType font selected into a device context.
+ *
+ * Pass 0 and NULL for cbData and lpOTM to get the size needed: the
+ * structure is followed by its strings. Windows CE 5.0 and later.
+ *
+ * @param hdc Device context.
+ * @param cbData Size of lpOTM in bytes.
+ * @param lpOTM Receives the metrics, or NULL.
+ * @return Nonzero on success, or the size needed when lpOTM is NULL. Zero
+ *         on failure.
+ */
 #define GetOutlineTextMetrics GetOutlineTextMetricsW
 /**
  * This function computes the width and height of the specified string of

@@ -351,3 +351,139 @@ string if no conversion is possible. base must be 0 or from 2 through 36.
 @param base Number base; 0 selects it from the input prefix.
 @return Converted value, ULONG_MAX on overflow, or 0 if no conversion
         is possible.
+
+## _wcslwr_s(string, size)
+Converts a string to lowercase in place, checking it fits its buffer.
+
+Conversion follows the LC_CTYPE locale setting. Bad arguments call the
+invalid parameter handler (see _set_invalid_parameter_handler); if it
+returns, the function sets errno and returns the error. Windows CE 6.0 and
+later.
+
+@param string String to convert.
+@param size Size of the buffer in characters, including the terminator.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _wcsnset_s(string, size, character, count)
+Sets up to count characters of a string to one value.
+
+Stops at the end of the string if that comes first. Bad arguments call the
+invalid parameter handler (see _set_invalid_parameter_handler); if it
+returns, the function sets errno and returns the error. Windows CE 6.0 and
+later.
+
+@param string String to fill.
+@param size Size of the buffer in characters, including the terminator.
+@param character Fill character.
+@param count Number of characters to set.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _wcsset_s(string, size, character)
+Sets every character of a string to one value.
+
+Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error. Windows CE 6.0 and later.
+
+@param string String to fill.
+@param size Size of the buffer in characters, including the terminator.
+@param character Fill character.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## _wcsupr_s(string, size)
+Converts a string to uppercase in place, checking it fits its buffer.
+
+Conversion follows the LC_CTYPE locale setting. Bad arguments call the
+invalid parameter handler (see _set_invalid_parameter_handler); if it
+returns, the function sets errno and returns the error. Windows CE 6.0 and
+later.
+
+@param string String to convert.
+@param size Size of the buffer in characters, including the terminator.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## wcscat_s(destination, size, source)
+Appends a string to a string in a buffer of known size.
+
+The result is always null-terminated. If it doesn't fit, destination[0] is
+set to 0. Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error. Windows CE 6.0 and later.
+
+@param destination Buffer to append to, holding a null-terminated string.
+@param size Size of destination in characters, including the terminator.
+@param source Null-terminated string to append.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## wcscpy_s(destination, size, source)
+Copies a string into a buffer of known size.
+
+The result is always null-terminated. If it doesn't fit, destination[0] is
+set to 0. Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error. Windows CE 6.0 and later.
+
+@param destination Buffer to receive the copy.
+@param size Size of destination in characters, including the terminator.
+@param source Null-terminated string to copy.
+@return 0 on success, otherwise an errno value such as EINVAL or ERANGE.
+
+## wcsncat_s(destination, size, source, count)
+Appends at most count characters of a string to a string in a buffer of
+known size.
+
+The result is always null-terminated. If it doesn't fit, destination[0] is
+set to 0. Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error.
+
+Pass _TRUNCATE as count to copy as much as fits and return STRUNCATE instead
+of failing. Windows CE 6.0 and later.
+
+@param destination Buffer to append to, holding a null-terminated string.
+@param size Size of destination in characters, including the terminator.
+@param source Null-terminated string to append.
+@param count Maximum number of characters to append, or _TRUNCATE.
+@return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+        errno value such as EINVAL or ERANGE.
+
+## wcsncpy_s(destination, size, source, count)
+Copies at most count characters of a string into a buffer of known size.
+
+The result is always null-terminated. If it doesn't fit, destination[0] is
+set to 0. Bad arguments call the invalid parameter handler (see
+_set_invalid_parameter_handler); if it returns, the function sets errno and
+returns the error.
+
+Pass _TRUNCATE as count to copy as much as fits and return STRUNCATE instead
+of failing. Windows CE 6.0 and later.
+
+@param destination Buffer to receive the copy.
+@param size Size of destination in characters, including the terminator.
+@param source Null-terminated string to copy.
+@param count Maximum number of characters to copy, or _TRUNCATE.
+@return 0 on success, STRUNCATE if truncated with _TRUNCATE, otherwise an
+        errno value such as EINVAL or ERANGE.
+
+## wcsnlen(string, count)
+Gets the length of a wide string, examining at most count characters.
+
+Windows CE 6.0 and later.
+
+@param string Null-terminated string.
+@param count Maximum number of characters to examine.
+@return Length excluding the terminator, or count if no terminator was found
+        in the first count characters.
+
+## wcstok_s(string, delimiters, context)
+Finds the next token in a string, keeping its position in a caller-supplied
+context.
+
+Pass the string on the first call and NULL after that. Separate contexts let
+several strings be tokenised at once, unlike wcstok. The string is modified.
+Windows CE 6.0 and later.
+
+@param string String to tokenise, or NULL to continue.
+@param delimiters Set of delimiter characters.
+@param context Holds the position between calls.
+@return Pointer to the next token, or NULL when there are none left.

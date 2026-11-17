@@ -124,3 +124,18 @@ Free with DeleteObject.
 
 @param szFileName Full path of the file.
 @return The bitmap, or NULL on failure.
+
+## SHCreateShortcutEx(lpszDir, lpszTarget, szShortcut, lpcbShortcut)
+Creates a shortcut in a folder, naming it uniquely from its target.
+
+Quote the target path when it is followed by arguments. Despite the
+DWORD in the prototype the function returns a BOOL. Windows CE 4.1 and
+later.
+
+@param lpszDir Folder to create the shortcut in.
+@param lpszTarget Target path and any arguments, up to 256 characters.
+@param szShortcut Receives the shortcut's name, or NULL.
+@param lpcbShortcut Size of szShortcut. Receives the length needed when
+       it is too small.
+@return TRUE on success, FALSE on failure. Call GetLastError for
+        details.

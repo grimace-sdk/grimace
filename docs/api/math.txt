@@ -333,3 +333,44 @@ Returns the hyperbolic tangent of value. It has no error return.
 
 @param value Input value.
 @return The hyperbolic tangent.
+
+## ceilf(value)
+Returns the smallest whole number not less than a float.
+
+Windows CE 4.1 and later.
+
+@param value Single-precision value.
+@return The rounded-up value.
+
+## fabsf(value)
+Returns the absolute value of a float.
+
+Windows CE 4.1 and later.
+
+@param value Single-precision value.
+@return The value without its sign.
+
+## floorf(value)
+Returns the largest whole number not greater than a float.
+
+Windows CE 4.1 and later.
+
+@param value Single-precision value.
+@return The rounded-down value.
+
+## fmodf(dividend, divisor)
+Returns the floating-point remainder of a float division.
+
+The result has the sign of dividend. Windows CE 4.1 and later.
+
+@param dividend Value to divide.
+@param divisor Value to divide by.
+@return The remainder, or 0 when divisor is 0.
+
+## sqrtf(value)
+Returns the square root of a float.
+
+Windows CE 4.1 and later.
+
+@param value Non-negative single-precision value.
+@return The square root. A negative value gives an indefinite result.

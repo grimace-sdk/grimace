@@ -131,6 +131,19 @@ DWORD GetCallerVMProcessId(VOID);
 #define SH_WNET 26
 #endif
 
+/**
+ * Waits until a system API set, such as GWES or the file system, has
+ * registered.
+ *
+ * Use it in drivers and startup programs that may run before the API set
+ * they need. It replaces polling IsAPIReady. Windows CE 6.0 and later.
+ *
+ * @param dwAPISlot API set index, such as SH_WMGR, SH_GDI or
+ *        SH_FILESYS_APIS.
+ * @param dwTimeout Milliseconds to wait, 0 or INFINITE.
+ * @return WAIT_OBJECT_0 when the API set is ready, WAIT_TIMEOUT if it
+ *         isn't ready in time, or WAIT_FAILED for an invalid index.
+ */
 DWORD WaitForAPIReady(DWORD dwAPISlot, DWORD dwTimeout);
 
 #define CACHE_SYNC_DISCARD 0x001
@@ -144,6 +157,20 @@ DWORD WaitForAPIReady(DWORD dwAPISlot, DWORD dwTimeout);
 #define CACHE_SYNC_ALL 0x07F
 
 void CacheSync(int iFlags);
+/**
+ * Writes back and/or discards CPU cache lines covering a range of memory.
+ *
+ * Use it around DMA and when writing code to memory before running it.
+ * Prefer this to CacheSync where the range is known, since it can avoid
+ * flushing the whole cache. Windows CE 4.2 and later.
+ *
+ * @param pAddr Start of the range, or NULL with dwLength 0 for the whole
+ *        cache.
+ * @param dwLength Length of the range in bytes.
+ * @param dwFlags CACHE_SYNC_ flags: CACHE_SYNC_WRITEBACK,
+ *        CACHE_SYNC_DISCARD, CACHE_SYNC_INSTRUCTIONS, CACHE_SYNC_FLUSH_TLB
+ *        and so on.
+ */
 void CacheRangeFlush(LPVOID pAddr, DWORD dwLength, DWORD dwFlags);
 
 #ifdef __cplusplus

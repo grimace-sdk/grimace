@@ -420,3 +420,139 @@ WOM_DONE.
 @param cbwh sizeof(WAVEHDR).
 @return MMSYSERR_NOERROR, or an error such as WAVERR_UNPREPARED or
         MMSYSERR_INVALHANDLE.
+
+## mixerClose(hmx)
+Closes a mixer device opened with mixerOpen.
+
+Windows CE 4.1 and later.
+
+@param hmx Mixer handle.
+@return MMSYSERR_NOERROR, or an MMSYSERR_ error code.
+
+## mixerGetID(hmxobj, puMxId, fdwId)
+Gets the mixer device identifier for a mixer, waveform or other audio
+device handle.
+
+Windows CE 4.1 and later.
+
+@param hmxobj Handle or identifier of the object, as given by fdwId.
+@param puMxId Receives the mixer identifier.
+@param fdwId MIXER_OBJECTF_ flag saying what hmxobj is.
+@return MMSYSERR_NOERROR, or an MMSYSERR_ error code.
+
+## mixerGetNumDevs()
+Gets the number of mixer devices.
+
+Windows CE 4.1 and later.
+
+@return Number of mixer devices, or 0 if there are none.
+
+## mixerMessage(hmx, uMsg, dwParam1, dwParam2)
+Sends a driver-specific message to a mixer device driver.
+
+Windows CE 4.1 and later.
+
+@param hmx Mixer handle or identifier.
+@param uMsg Message, at or above MXDM_USER.
+@param dwParam1 Message parameter.
+@param dwParam2 Message parameter.
+@return Value returned by the driver.
+
+## mixerOpen(phmx, uMxId, dwCallback, dwInstance, fdwOpen)
+Opens a mixer device.
+
+Close with mixerClose. Windows CE 4.1 and later.
+
+@param phmx Receives the mixer handle.
+@param uMxId Mixer identifier, from 0 to mixerGetNumDevs() - 1, or a
+       device handle as given by fdwOpen.
+@param dwCallback Window to receive MM_MIXM_LINE_CHANGE and
+       MM_MIXM_CONTROL_CHANGE, or 0.
+@param dwInstance Reserved, pass 0.
+@param fdwOpen CALLBACK_WINDOW with dwCallback, plus a MIXER_OBJECTF_
+       flag saying what uMxId is.
+@return MMSYSERR_NOERROR, or an MMSYSERR_ error code.
+
+## mixerSetControlDetails(hmxobj, pmxcd, fdwDetails)
+Sets the value of a mixer control.
+
+Windows CE 4.1 and later.
+
+@param hmxobj Mixer handle or other object, as given by fdwDetails.
+@param pmxcd MIXERCONTROLDETAILS naming the control and holding the new
+       values.
+@param fdwDetails MIXER_SETCONTROLDETAILSF_VALUE plus a MIXER_OBJECTF_
+       flag saying what hmxobj is.
+@return MMSYSERR_NOERROR, or an MMSYSERR_ error code.
+
+## mixerGetControlDetails(hmxobj, pmxcd, fdwDetails)
+Gets the current value or item labels of one control on an audio mixer line.
+
+Initialise every member of the MIXERCONTROLDETAILS structure first. Only
+MIXER_OBJECTF_MIXER and MIXER_OBJECTF_HMIXER are supported on Windows CE;
+the wave, MIDI and aux object flags are not. Windows CE 4.1 and later.
+
+@param hmxobj Mixer device ID, or an HMIXER from mixerOpen cast to
+       HMIXEROBJ.
+@param pmxcd MIXERCONTROLDETAILS naming the control, whose paDetails buffer
+       receives the data.
+@param fdwDetails MIXER_GETCONTROLDETAILSF_VALUE or
+       MIXER_GETCONTROLDETAILSF_LISTTEXT, optionally with
+       MIXER_OBJECTF_MIXER or MIXER_OBJECTF_HMIXER.
+@return MMSYSERR_NOERROR on success, otherwise an error such as
+        MIXERR_INVALCONTROL, MIXERR_INVALLINE, MMSYSERR_BADDEVICEID,
+        MMSYSERR_INVALHANDLE, MMSYSERR_INVALFLAG, MMSYSERR_INVALPARAM or
+        MMSYSERR_NODRIVER.
+
+## mixerGetDevCaps(uMxId, pmxcaps, cbmxcaps)
+Gets the capabilities of an audio mixer device.
+
+Device IDs run from 0 to mixerGetNumDevs() - 1. An HMIXER from mixerOpen,
+cast to UINT, also works. At most cbmxcaps bytes are copied; 0 copies
+nothing and succeeds. Windows CE 4.1 and later.
+
+@param uMxId Mixer device ID or open HMIXER.
+@param pmxcaps Receives a MIXERCAPS structure.
+@param cbmxcaps Size of the buffer at pmxcaps in bytes.
+@return MMSYSERR_NOERROR on success, or MMSYSERR_BADDEVICEID,
+        MMSYSERR_INVALHANDLE or MMSYSERR_INVALPARAM.
+
+## mixerGetLineControls(hmxobj, pmxlc, fdwControls)
+Gets information about one or all of the controls on an audio mixer line.
+
+Set cbStruct, cbmxctrl and pamxctrl in the MIXERLINECONTROLS structure, plus
+cControls and dwLineID, dwControlID or dwControlType as the query needs.
+Only MIXER_OBJECTF_MIXER and MIXER_OBJECTF_HMIXER are supported on Windows
+CE; the wave, MIDI and aux object flags are not. Windows CE 4.1 and later.
+
+@param hmxobj Mixer device ID, or an HMIXER from mixerOpen cast to
+       HMIXEROBJ.
+@param pmxlc MIXERLINECONTROLS describing the query and pointing at the
+       MIXERCONTROL array to fill.
+@param fdwControls MIXER_GETLINECONTROLSF_ALL,
+       MIXER_GETLINECONTROLSF_ONEBYID or MIXER_GETLINECONTROLSF_ONEBYTYPE,
+       optionally with MIXER_OBJECTF_MIXER or MIXER_OBJECTF_HMIXER.
+@return MMSYSERR_NOERROR on success, otherwise an error such as
+        MIXERR_INVALCONTROL, MIXERR_INVALLINE, MMSYSERR_BADDEVICEID,
+        MMSYSERR_INVALHANDLE, MMSYSERR_INVALFLAG, MMSYSERR_INVALPARAM or
+        MMSYSERR_NODRIVER.
+
+## mixerGetLineInfo(hmxobj, pmxl, fdwInfo)
+Gets information about a line on an audio mixer device.
+
+Set cbStruct in the MIXERLINE structure, plus the member the query flag
+selects on: dwDestination, dwSource, dwLineID, dwComponentType or the Target
+members. Only MIXER_OBJECTF_MIXER and MIXER_OBJECTF_HMIXER are supported on
+Windows CE; the wave, MIDI and aux object flags are not. Windows CE 4.1 and
+later.
+
+@param hmxobj Mixer device ID, or an HMIXER from mixerOpen cast to
+       HMIXEROBJ.
+@param pmxl MIXERLINE that identifies the line and receives its details.
+@param fdwInfo One of MIXER_GETLINEINFOF_DESTINATION,
+       MIXER_GETLINEINFOF_SOURCE, MIXER_GETLINEINFOF_LINEID,
+       MIXER_GETLINEINFOF_COMPONENTTYPE or MIXER_GETLINEINFOF_TARGETTYPE,
+       optionally with MIXER_OBJECTF_MIXER or MIXER_OBJECTF_HMIXER.
+@return MMSYSERR_NOERROR on success, otherwise an error such as
+        MIXERR_INVALLINE, MMSYSERR_BADDEVICEID, MMSYSERR_INVALHANDLE,
+        MMSYSERR_INVALFLAG, MMSYSERR_INVALPARAM or MMSYSERR_NODRIVER.

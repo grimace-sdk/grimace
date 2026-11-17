@@ -465,7 +465,22 @@ HBITMAP WINAPI SHLoadDIBitmap(LPCTSTR szFileName);
 BOOL WINAPI SHGetSpecialFolderPath(HWND hwndOwner,LPWSTR lpszPath,int nFolder,BOOL fCreate);
 #endif
 #if (_WIN32_WCE >= 0x420)
-DWORD WINAPI SHCreateShortcutEx(LPTSTR,LPTSTR,LPTSTR,LPDWORD);
+/**
+ * Creates a shortcut in a folder, naming it uniquely from its target.
+ *
+ * Quote the target path when it is followed by arguments. Despite the
+ * DWORD in the prototype the function returns a BOOL. Windows CE 4.1 and
+ * later.
+ *
+ * @param lpszDir Folder to create the shortcut in.
+ * @param lpszTarget Target path and any arguments, up to 256 characters.
+ * @param szShortcut Receives the shortcut's name, or NULL.
+ * @param lpcbShortcut Size of szShortcut. Receives the length needed when
+ *        it is too small.
+ * @return TRUE on success, FALSE on failure. Call GetLastError for
+ *         details.
+ */
+DWORD WINAPI SHCreateShortcutEx(LPTSTR lpszDir,LPTSTR lpszTarget,LPTSTR szShortcut,LPDWORD lpcbShortcut);
 #endif
 #endif
 

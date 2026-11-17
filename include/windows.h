@@ -26,6 +26,7 @@
 #include <grimace/extras.h>
 #if !defined(RC_INVOKED) && !defined(GRIMACE_NO_SDK)
 #include <grimace/sdk/windows.h>
+#include <grimace/extras-coredll.h>
 #endif
 #else
 #define GRIMACE_INSIDE
@@ -54,6 +55,7 @@
 #include <grimace/extras.h>
 #if !defined(RC_INVOKED) && !defined(GRIMACE_NO_SDK)
 #include <grimace/sdk/windows.h>
+#include <grimace/extras-coredll.h>
 #endif
 #include <grimace/end.h>
 #undef GRIMACE_INSIDE

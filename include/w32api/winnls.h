@@ -1122,8 +1122,40 @@ WINBASEAPI BOOL WINAPI EnumSystemLanguageGroupsW(LANGUAGEGROUP_ENUMPROCW,DWORD,L
 WINBASEAPI BOOL WINAPI EnumLanguageGroupLocalesA(LANGGROUPLOCALE_ENUMPROCA,LGRPID,DWORD,LONG_PTR);
 WINBASEAPI BOOL WINAPI EnumLanguageGroupLocalesW(LANGGROUPLOCALE_ENUMPROCW,LGRPID,DWORD,LONG_PTR);
 WINBASEAPI BOOL WINAPI EnumUILanguagesA(UILANGUAGE_ENUMPROCA,DWORD,LONG_PTR);
-WINBASEAPI BOOL WINAPI EnumUILanguagesW(UILANGUAGE_ENUMPROCW,DWORD,LONG_PTR);
+/**
+ * Enumerates the user interface languages installed on the device.
+ *
+ * The callback receives each language ID as a hexadecimal string. Windows
+ * CE 4.21 and later.
+ *
+ * @param lpUILanguageEnumProc Called for each language. Return FALSE to
+ *        stop.
+ * @param dwFlags Reserved, pass 0.
+ * @param lParam Value passed to the callback.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
+WINBASEAPI BOOL WINAPI EnumUILanguagesW(UILANGUAGE_ENUMPROCW lpUILanguageEnumProc,DWORD dwFlags,LONG_PTR lParam);
+/**
+ * Gets the language of the device's base user interface.
+ *
+ * Windows CE 4.21 and later.
+ *
+ * @return Language ID.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 WINBASEAPI LANGID WINAPI GetSystemDefaultUILanguage(void);
+/**
+ * Gets the user interface language chosen for the current user.
+ *
+ * Windows CE 4.21 and later.
+ *
+ * @return Language ID.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 WINBASEAPI LANGID WINAPI GetUserDefaultUILanguage(void);
 WINBASEAPI BOOL WINAPI IsValidLanguageGroup(LGRPID,DWORD);
 #endif /* (WINVER >= 0x0500) */
@@ -1414,6 +1446,20 @@ typedef LPNUMBERFMTW LPNUMBERFMT;
 #define EnumDateFormatsEx EnumDateFormatsExW
 #define EnumSystemLanguageGroups EnumSystemLanguageGroupsW
 #define EnumLanguageGroupLocales EnumLanguageGroupLocalesW
+/**
+ * Enumerates the user interface languages installed on the device.
+ *
+ * The callback receives each language ID as a hexadecimal string. Windows
+ * CE 4.21 and later.
+ *
+ * @param lpUILanguageEnumProc Called for each language. Return FALSE to
+ *        stop.
+ * @param dwFlags Reserved, pass 0.
+ * @param lParam Value passed to the callback.
+ * @return Nonzero on success, zero on failure.
+ *
+ * @note Windows CE 3.0 and later.
+ */
 #define EnumUILanguages EnumUILanguagesW
 #endif /* (WINVER >= 0x0500) */
 #else

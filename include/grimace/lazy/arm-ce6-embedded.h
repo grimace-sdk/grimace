@@ -1,11 +1,37 @@
 #define __grimace_lazy_AbortDoc 1
 extern struct grimace_lazy_import __grimace_lazy_import_AbortDoc;
+#define __grimace_lazy_ActivateService 1
+extern struct grimace_lazy_import __grimace_lazy_import_ActivateService;
 #define __grimace_lazy_AlphaBlend 1
 extern struct grimace_lazy_import __grimace_lazy_import_AlphaBlend;
 #define __grimace_lazy_BatteryNotifyOfTimeChange 1
 extern struct grimace_lazy_import __grimace_lazy_import_BatteryNotifyOfTimeChange;
+#define __grimace_lazy_CeAddSyncPartner 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeAddSyncPartner;
+#define __grimace_lazy_CeAttachCustomTrackingData 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeAttachCustomTrackingData;
+#define __grimace_lazy_CeCallUserProc 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeCallUserProc;
 #define __grimace_lazy_CeClearUserNotification 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeClearUserNotification;
+#define __grimace_lazy_CeCreateSession 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeCreateSession;
+#define __grimace_lazy_CeEndSyncSession 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeEndSyncSession;
+#define __grimace_lazy_CeEndTransaction 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeEndTransaction;
+#define __grimace_lazy_CeFindNextChangedRecord 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeFindNextChangedRecord;
+#define __grimace_lazy_CeGetChangedRecordCnt 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeGetChangedRecordCnt;
+#define __grimace_lazy_CeGetChangedRecords 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeGetChangedRecords;
+#define __grimace_lazy_CeGetCustomTrackingData 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeGetCustomTrackingData;
+#define __grimace_lazy_CeGetDatabaseSession 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeGetDatabaseSession;
+#define __grimace_lazy_CeGetPropChangeInfo 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeGetPropChangeInfo;
 #define __grimace_lazy_CeGetUserNotification 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeGetUserNotification;
 #define __grimace_lazy_CeGetUserNotificationHandles 1
@@ -14,14 +40,42 @@ extern struct grimace_lazy_import __grimace_lazy_import_CeGetUserNotificationHan
 extern struct grimace_lazy_import __grimace_lazy_import_CeGetUserNotificationPreferences;
 #define __grimace_lazy_CeHandleAppNotifications 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeHandleAppNotifications;
+#define __grimace_lazy_CeMarkRecord 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeMarkRecord;
+#define __grimace_lazy_CeOpenStream 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeOpenStream;
+#define __grimace_lazy_CePurgeTrackingData 1
+extern struct grimace_lazy_import __grimace_lazy_import_CePurgeTrackingData;
+#define __grimace_lazy_CeRemoveDatabaseProps 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeRemoveDatabaseProps;
+#define __grimace_lazy_CeRemoveDatabaseTracking 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeRemoveDatabaseTracking;
+#define __grimace_lazy_CeRemoveSyncPartner 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeRemoveSyncPartner;
 #define __grimace_lazy_CeRunAppAtEvent 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeRunAppAtEvent;
 #define __grimace_lazy_CeRunAppAtTime 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeRunAppAtTime;
+#define __grimace_lazy_CeSetSessionOption 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeSetSessionOption;
 #define __grimace_lazy_CeSetUserNotification 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeSetUserNotification;
 #define __grimace_lazy_CeSetUserNotificationEx 1
 extern struct grimace_lazy_import __grimace_lazy_import_CeSetUserNotificationEx;
+#define __grimace_lazy_CeStreamRead 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeStreamRead;
+#define __grimace_lazy_CeStreamSaveChanges 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeStreamSaveChanges;
+#define __grimace_lazy_CeStreamSeek 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeStreamSeek;
+#define __grimace_lazy_CeStreamSetSize 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeStreamSetSize;
+#define __grimace_lazy_CeStreamWrite 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeStreamWrite;
+#define __grimace_lazy_CeTrackDatabase 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeTrackDatabase;
+#define __grimace_lazy_CeTrackProperty 1
+extern struct grimace_lazy_import __grimace_lazy_import_CeTrackProperty;
 #define __grimace_lazy_CharUpperA 1
 extern struct grimace_lazy_import __grimace_lazy_import_CharUpperA;
 #define __grimace_lazy_ChooseFontW 1
@@ -52,12 +106,20 @@ extern struct grimace_lazy_import __grimace_lazy_import_DeleteEnhMetaFile;
 extern struct grimace_lazy_import __grimace_lazy_import_DeleteFiber;
 #define __grimace_lazy_DeleteFileA 1
 extern struct grimace_lazy_import __grimace_lazy_import_DeleteFileA;
+#define __grimace_lazy_DeregisterService 1
+extern struct grimace_lazy_import __grimace_lazy_import_DeregisterService;
+#define __grimace_lazy_DisableGestures 1
+extern struct grimace_lazy_import __grimace_lazy_import_DisableGestures;
+#define __grimace_lazy_EnableGestures 1
+extern struct grimace_lazy_import __grimace_lazy_import_EnableGestures;
 #define __grimace_lazy_EndDoc 1
 extern struct grimace_lazy_import __grimace_lazy_import_EndDoc;
 #define __grimace_lazy_EndPage 1
 extern struct grimace_lazy_import __grimace_lazy_import_EndPage;
 #define __grimace_lazy_EnumChildWindows 1
 extern struct grimace_lazy_import __grimace_lazy_import_EnumChildWindows;
+#define __grimace_lazy_EnumServices 1
+extern struct grimace_lazy_import __grimace_lazy_import_EnumServices;
 #define __grimace_lazy_ExtSelectClipRgn 1
 extern struct grimace_lazy_import __grimace_lazy_import_ExtSelectClipRgn;
 #define __grimace_lazy_FindResourceA 1
@@ -76,6 +138,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_GetLastActivePopup;
 extern struct grimace_lazy_import __grimace_lazy_import_GetModuleHandleA;
 #define __grimace_lazy_GetOverlappedResult 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetOverlappedResult;
+#define __grimace_lazy_GetServiceHandle 1
+extern struct grimace_lazy_import __grimace_lazy_import_GetServiceHandle;
 #define __grimace_lazy_GetSystemPowerStatusEx 1
 extern struct grimace_lazy_import __grimace_lazy_import_GetSystemPowerStatusEx;
 #define __grimace_lazy_GetSystemPowerStatusEx2 1
@@ -104,6 +168,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_OutputDebugStringA;
 extern struct grimace_lazy_import __grimace_lazy_import_PageSetupDlgW;
 #define __grimace_lazy_PlayEnhMetaFile 1
 extern struct grimace_lazy_import __grimace_lazy_import_PlayEnhMetaFile;
+#define __grimace_lazy_QueryGestures 1
+extern struct grimace_lazy_import __grimace_lazy_import_QueryGestures;
 #define __grimace_lazy_RasDeleteEntry 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasDeleteEntry;
 #define __grimace_lazy_RasDevConfigDialogEditW 1
@@ -120,6 +186,10 @@ extern struct grimace_lazy_import __grimace_lazy_import_RasEnumEntries;
 extern struct grimace_lazy_import __grimace_lazy_import_RasGetConnectStatus;
 #define __grimace_lazy_RasGetDispPhoneNumW 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasGetDispPhoneNumW;
+#define __grimace_lazy_RasGetEapConnectionData 1
+extern struct grimace_lazy_import __grimace_lazy_import_RasGetEapConnectionData;
+#define __grimace_lazy_RasGetEapUserData 1
+extern struct grimace_lazy_import __grimace_lazy_import_RasGetEapUserData;
 #define __grimace_lazy_RasGetEntryDevConfig 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasGetEntryDevConfig;
 #define __grimace_lazy_RasGetEntryDialParams 1
@@ -136,6 +206,10 @@ extern struct grimace_lazy_import __grimace_lazy_import_RasHangUp;
 extern struct grimace_lazy_import __grimace_lazy_import_RasHangup;
 #define __grimace_lazy_RasRenameEntry 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasRenameEntry;
+#define __grimace_lazy_RasSetEapConnectionData 1
+extern struct grimace_lazy_import __grimace_lazy_import_RasSetEapConnectionData;
+#define __grimace_lazy_RasSetEapUserData 1
+extern struct grimace_lazy_import __grimace_lazy_import_RasSetEapUserData;
 #define __grimace_lazy_RasSetEntryDevConfig 1
 extern struct grimace_lazy_import __grimace_lazy_import_RasSetEntryDevConfig;
 #define __grimace_lazy_RasSetEntryDialParams 1
@@ -166,6 +240,12 @@ extern struct grimace_lazy_import __grimace_lazy_import_RegQueryValueA;
 extern struct grimace_lazy_import __grimace_lazy_import_RegQueryValueExA;
 #define __grimace_lazy_RegSetValueExA 1
 extern struct grimace_lazy_import __grimace_lazy_import_RegSetValueExA;
+#define __grimace_lazy_RegisterGesture 1
+extern struct grimace_lazy_import __grimace_lazy_import_RegisterGesture;
+#define __grimace_lazy_RegisterService 1
+extern struct grimace_lazy_import __grimace_lazy_import_RegisterService;
+#define __grimace_lazy_RequestBluetoothNotifications 1
+extern struct grimace_lazy_import __grimace_lazy_import_RequestBluetoothNotifications;
 #define __grimace_lazy_SHCreateMenuBar 1
 extern struct grimace_lazy_import __grimace_lazy_import_SHCreateMenuBar;
 #define __grimace_lazy_SHDoneButton 1
@@ -178,6 +258,10 @@ extern struct grimace_lazy_import __grimace_lazy_import_SHFullScreen;
 extern struct grimace_lazy_import __grimace_lazy_import_SHInitDialog;
 #define __grimace_lazy_SHSipPreference 1
 extern struct grimace_lazy_import __grimace_lazy_import_SHSipPreference;
+#define __grimace_lazy_ServiceIoControl 1
+extern struct grimace_lazy_import __grimace_lazy_import_ServiceIoControl;
+#define __grimace_lazy_ServiceUnbindPorts 1
+extern struct grimace_lazy_import __grimace_lazy_import_ServiceUnbindPorts;
 #define __grimace_lazy_SetAbortProc 1
 extern struct grimace_lazy_import __grimace_lazy_import_SetAbortProc;
 #define __grimace_lazy_SetErrorMode 1
@@ -206,6 +290,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_SipStatus;
 extern struct grimace_lazy_import __grimace_lazy_import_StartDocW;
 #define __grimace_lazy_StartPage 1
 extern struct grimace_lazy_import __grimace_lazy_import_StartPage;
+#define __grimace_lazy_StopBluetoothNotifications 1
+extern struct grimace_lazy_import __grimace_lazy_import_StopBluetoothNotifications;
 #define __grimace_lazy_SwitchToFiber 1
 extern struct grimace_lazy_import __grimace_lazy_import_SwitchToFiber;
 #define __grimace_lazy_WNetAddConnection3W 1
@@ -312,6 +398,12 @@ extern struct grimace_lazy_import __grimace_lazy_import_bind;
 extern struct grimace_lazy_import __grimace_lazy_import_closesocket;
 #define __grimace_lazy_connect 1
 extern struct grimace_lazy_import __grimace_lazy_import_connect;
+#define __grimace_lazy_fopen_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_fopen_s;
+#define __grimace_lazy_fprintf_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_fprintf_s;
+#define __grimace_lazy_fscanf_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_fscanf_s;
 #define __grimace_lazy_gethostbyaddr 1
 extern struct grimace_lazy_import __grimace_lazy_import_gethostbyaddr;
 #define __grimace_lazy_gethostbyname 1
@@ -324,6 +416,8 @@ extern struct grimace_lazy_import __grimace_lazy_import_getpeername;
 extern struct grimace_lazy_import __grimace_lazy_import_getprotobyname;
 #define __grimace_lazy_getprotobynumber 1
 extern struct grimace_lazy_import __grimace_lazy_import_getprotobynumber;
+#define __grimace_lazy_gets_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_gets_s;
 #define __grimace_lazy_getservbyname 1
 extern struct grimace_lazy_import __grimace_lazy_import_getservbyname;
 #define __grimace_lazy_getservbyport 1
@@ -350,10 +444,14 @@ extern struct grimace_lazy_import __grimace_lazy_import_lstrlenA;
 extern struct grimace_lazy_import __grimace_lazy_import_ntohl;
 #define __grimace_lazy_ntohs 1
 extern struct grimace_lazy_import __grimace_lazy_import_ntohs;
+#define __grimace_lazy_printf_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_printf_s;
 #define __grimace_lazy_recv 1
 extern struct grimace_lazy_import __grimace_lazy_import_recv;
 #define __grimace_lazy_recvfrom 1
 extern struct grimace_lazy_import __grimace_lazy_import_recvfrom;
+#define __grimace_lazy_scanf_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_scanf_s;
 #define __grimace_lazy_select 1
 extern struct grimace_lazy_import __grimace_lazy_import_select;
 #define __grimace_lazy_send 1
@@ -368,3 +466,7 @@ extern struct grimace_lazy_import __grimace_lazy_import_setsockopt;
 extern struct grimace_lazy_import __grimace_lazy_import_shutdown;
 #define __grimace_lazy_socket 1
 extern struct grimace_lazy_import __grimace_lazy_import_socket;
+#define __grimace_lazy_vfprintf_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_vfprintf_s;
+#define __grimace_lazy_vprintf_s 1
+extern struct grimace_lazy_import __grimace_lazy_import_vprintf_s;

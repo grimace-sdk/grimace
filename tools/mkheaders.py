@@ -15,8 +15,8 @@ UNWRAPPED = {"pshpack1.h", "pshpack2.h", "pshpack4.h", "pshpack8.h", "poppack.h"
 WINDOWS_EXTRAS = ["stdint.h", "mmsystem.h", "shellapi.h", "wchar.h", "stdlib.h", "string.h", "stdio.h", "math.h", "ctype.h", "setjmp.h", "time.h", "windbase.h"]
 WINDOWS_VERSION_EXTRAS = [("GRIMACE_WCE == 101", "windowsx.h"), ("GRIMACE_CE >= 2 || GRIMACE_WCE == 101", "tchar.h")]
 OWN_HEADERS = ["wchar.h", "stdlib.h", "string.h", "stdio.h", "math.h", "ctype.h", "setjmp.h", "time.h", "windbase.h", "tchar.h", "ceddk.h", "msgqueue.h",
-               "pm.h", "winddi.h", "pkfuncs.h", "aygshell.h"]
-DRIVER_HEADERS = ["ceddk.h", "msgqueue.h", "pm.h", "pkfuncs.h", "aygshell.h"]
+               "pm.h", "winddi.h", "pkfuncs.h", "aygshell.h", "strsafe.h", "cmnintrin.h"]
+DRIVER_HEADERS = ["ceddk.h", "msgqueue.h", "pm.h", "pkfuncs.h", "aygshell.h", "strsafe.h", "cmnintrin.h"]
 MACRO_HEADERS = {"windowsx.h"}
 MIPS_TARGET = ["--target=mipsel-unknown-none-elf", "-march=mips1", "-msoft-float"]
 ARCHITECTURES = {"mips": {"target": MIPS_TARGET, "defines": []},
@@ -47,7 +47,7 @@ def write_wrappers():
             includes += ["#if %s\n#include <%s>\n#endif" % (condition, name) for condition, name in WINDOWS_VERSION_EXTRAS]
             extra = "\n#ifndef RC_INVOKED\n%s\n#endif\n#include <grimace/extras.h>" % "\n".join(includes)
             if "windows.h" in sdk:
-                extra += "\n#if !defined(RC_INVOKED) && !defined(GRIMACE_NO_SDK)\n#include <grimace/sdk/windows.h>\n#endif"
+                extra += "\n#if !defined(RC_INVOKED) && !defined(GRIMACE_NO_SDK)\n#include <grimace/sdk/windows.h>\n#include <grimace/extras-coredll.h>\n#endif"
         elif os.path.exists(os.path.join(ROOT, "include", "grimace", "extras-" + header)):
             extra = "\n#include <grimace/extras-%s>" % header
         else:
@@ -92,7 +92,7 @@ def header_paths():
 def declaring_headers():
     texts = {}
     for path in header_paths() + sorted(glob.glob(os.path.join(ROOT, "include", "grimace", "sdk", "*.h"))):
-        texts[path] = open(path, errors="replace").read()
+        texts[path] = re.sub(r"/\*.*?\*/|//[^\n]*", "", open(path, errors="replace").read(), flags=re.S)
 
     @functools.cache
     def find(function):

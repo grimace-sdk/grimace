@@ -1899,3 +1899,566 @@ The whole range must be writable or the call fails.
 @param lpNumberOfBytesWritten Receives the number of bytes written, or
        NULL.
 @return TRUE on success, FALSE on failure (see GetLastError).
+
+## ActivateDeviceEx(lpszDevKey, lpRegEnts, cRegEnts, lpvParam)
+Loads a device driver from its registry key, adding values to its active
+key first.
+
+The values in lpRegEnts are written to the new key under
+HKLM\Drivers\Active before the driver's Init function runs, so the driver
+can read them. Unload with DeactivateDevice. Windows CE 4.1 and later.
+
+@param lpszDevKey Registry path of the device's driver key under HKLM.
+@param lpRegEnts Array of REGINI entries to add to the active key, or
+       NULL.
+@param cRegEnts Number of entries in lpRegEnts.
+@param lpvParam Value passed to the driver's Init function.
+@return Device handle, or INVALID_HANDLE_VALUE on failure. Call
+        GetLastError for details.
+
+## AddVectoredExceptionHandler(FirstHandler, VectoredHandler)
+Registers a process-wide handler that sees exceptions before frame-based
+(__try/__except) handlers.
+
+The handler returns EXCEPTION_CONTINUE_EXECUTION to resume or
+EXCEPTION_CONTINUE_SEARCH to pass the exception on. Windows CE 6.0 and
+later.
+
+@param FirstHandler Nonzero to call this handler first, zero to call it
+       last.
+@param VectoredHandler The handler function.
+@return Handle for RemoveVectoredExceptionHandler, or NULL on failure.
+
+## BackupEventLogW(hEventLog, lpBackupFileName)
+Saves an event log to a file.
+
+Windows CE 5.0 and later.
+
+@param hEventLog Handle from OpenEventLogW.
+@param lpBackupFileName Name of the file to write. Must not exist.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## CheckRemoteDebuggerPresent(hProcess, pbDebuggerPresent)
+Checks whether a process is being debugged.
+
+Windows CE 5.1 and later.
+
+@param hProcess Handle to the process.
+@param pbDebuggerPresent Receives TRUE if a debugger is attached.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## ClearEventLogW(hEventLog, lpBackupFileName)
+Empties an event log, optionally saving it to a file first.
+
+Windows CE 5.0 and later.
+
+@param hEventLog Handle from OpenEventLogW.
+@param lpBackupFileName File to save the log to first, or NULL.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## CloseEventLog(hEventLog)
+Closes a handle from OpenEventLogW.
+
+Windows CE 5.0 and later.
+
+@param hEventLog Handle to close.
+@return Nonzero on success, zero on failure.
+
+## ConvertThreadToFiber(lpParameter)
+Turns the calling thread into a fiber so it can schedule other fibers.
+
+Must be called before SwitchToFiber. Windows CE 4.1 and later.
+
+@param lpParameter Value returned by GetFiberData for this fiber.
+@return Address of the fiber, or NULL on failure. Call GetLastError for
+        details.
+
+## CopyFileExW(lpExistingFileName, lpNewFileName, lpProgressRoutine, lpData, pbCancel, dwCopyFlags)
+Copies a file, reporting progress and allowing cancellation.
+
+Attributes are copied with the data. Windows CE 5.0 and later.
+
+@param lpExistingFileName File to copy.
+@param lpNewFileName Name of the copy.
+@param lpProgressRoutine Called as chunks are copied, or NULL. Return
+       PROGRESS_CANCEL or PROGRESS_STOP from it to end the copy.
+@param lpData Value passed to lpProgressRoutine.
+@param pbCancel Set to TRUE during the copy to cancel it, or NULL.
+@param dwCopyFlags COPY_FILE_FAIL_IF_EXISTS to fail when lpNewFileName
+       exists, or 0.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## CreateFiber(dwStackSize, lpStartAddress, lpParameter)
+Creates a fiber with its own stack, ready to run from a start function.
+
+The fiber doesn't run until a fiber on the same thread calls
+SwitchToFiber with it. Returning from the start function exits the
+thread. Windows CE 4.1 and later.
+
+@param dwStackSize Stack size in bytes, or 0 for the default.
+@param lpStartAddress Function the fiber starts in.
+@param lpParameter Value returned by GetFiberData for this fiber.
+@return Address of the fiber, or NULL on failure. Call GetLastError for
+        details.
+
+## DebugActiveProcessStop(dwProcessId)
+Detaches the calling debugger from a process it is debugging.
+
+The process carries on running. Windows CE 5.1 and later.
+
+@param dwProcessId Identifier of the process to detach from.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## DebugSetProcessKillOnExit(KillOnExit)
+Sets whether processes being debugged are terminated when the calling
+debugger thread exits.
+
+Windows CE 5.1 and later.
+
+@param KillOnExit TRUE to terminate them, FALSE to detach and leave them
+       running.
+@return Nonzero on success, zero on failure.
+
+## DeleteFiber(lpFiber)
+Deletes a fiber and frees its stack.
+
+Deleting the running fiber exits the thread. Windows CE 4.1 and later.
+
+@param lpFiber Fiber address from CreateFiber or ConvertThreadToFiber.
+
+## DeregisterEventSource(hEventLog)
+Closes a handle from RegisterEventSourceW.
+
+Windows CE 5.0 and later.
+
+@param hEventLog Handle to close.
+@return Nonzero on success, zero on failure.
+
+## DuplicateHandle(hSourceProcessHandle, hSourceHandle, hTargetProcessHandle, lpTargetHandle, dwDesiredAccess, bInheritHandle, dwOptions)
+Makes a new handle to the same object, optionally in another process.
+
+Close the new handle with CloseHandle. Windows CE 4.1 and later.
+
+@param hSourceProcessHandle Process that owns hSourceHandle.
+@param hSourceHandle Handle to duplicate.
+@param hTargetProcessHandle Process to receive the new handle.
+@param lpTargetHandle Receives the new handle.
+@param dwDesiredAccess Access for the new handle. Ignored with
+       DUPLICATE_SAME_ACCESS.
+@param bInheritHandle Pass FALSE.
+@param dwOptions DUPLICATE_SAME_ACCESS, DUPLICATE_CLOSE_SOURCE, both or
+       0.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## EnumDeviceInterfaces(h, dwIndex, pClass, pszNameBuf, lpdwNameBufSize)
+Gets one of the interfaces a device driver has advertised, by index.
+
+Call with dwIndex from 0 upwards until it fails with
+ERROR_NO_MORE_ITEMS. Windows CE 5.0 and later.
+
+@param h Device handle from ActivateDeviceEx, FindFirstDevice or
+       FindNextDevice, or a handle from CreateFileW.
+@param dwIndex Zero-based interface index.
+@param pClass Receives the interface class GUID.
+@param pszNameBuf Receives the interface name, or NULL if not needed.
+@param lpdwNameBufSize Size of pszNameBuf in bytes. Receives the size
+       needed. Can be NULL with pszNameBuf.
+@return Nonzero on success, zero on failure. GetLastError returns
+        ERROR_INSUFFICIENT_BUFFER when pszNameBuf is too small.
+
+## FindCloseChangeNotification(hChangeHandle)
+Stops change notification on a handle from FindFirstChangeNotificationW
+and closes it.
+
+Windows CE 4.1 and later.
+
+@param hChangeHandle Handle to close.
+@return Nonzero on success, zero on failure.
+
+## FindFirstChangeNotificationW(lpPathName, bWatchSubtree, dwNotifyFilter)
+Creates a handle that is signalled when files in a directory change.
+
+Wait on the handle, then call FindNextChangeNotification before waiting
+again. Close with FindCloseChangeNotification. Windows CE 4.1 and later.
+
+@param lpPathName Directory to watch.
+@param bWatchSubtree TRUE to include subdirectories.
+@param dwNotifyFilter FILE_NOTIFY_CHANGE_ flags for the changes to
+       report.
+@return Notification handle, or INVALID_HANDLE_VALUE on failure. Call
+        GetLastError for details.
+
+## FindFirstDevice(searchType, pvSearchParam, pdi)
+Starts a search of the active devices.
+
+Continue with FindNextDevice and close the handle with FindClose.
+Windows CE 5.0 and later.
+
+@param searchType DeviceSearchByLegacyName, DeviceSearchByDeviceName,
+       DeviceSearchByBusName, DeviceSearchByGuid or
+       DeviceSearchByParent.
+@param pvSearchParam Name to match, which can contain wildcards, a GUID
+       pointer, or a parent device handle, as searchType requires.
+@param pdi DEVMGR_DEVICE_INFORMATION with dwSize set. Receives the first
+       match.
+@return Search handle, or INVALID_HANDLE_VALUE when nothing matches or
+        on failure.
+
+## FindNextChangeNotification(hChangeHandle)
+Resets a change notification handle so it is signalled by the next
+change.
+
+Windows CE 4.1 and later.
+
+@param hChangeHandle Handle from FindFirstChangeNotificationW.
+@return Nonzero on success, zero on failure.
+
+## FindNextDevice(h, pdi)
+Gets the next device from a FindFirstDevice search.
+
+Windows CE 5.0 and later.
+
+@param h Search handle from FindFirstDevice.
+@param pdi DEVMGR_DEVICE_INFORMATION with dwSize set. Receives the next
+       match.
+@return Nonzero on success, zero when there are no more devices.
+
+## GetDeviceInformationByDeviceHandle(hDevice, pdi)
+Gets information about an active device from its device handle.
+
+Windows CE 5.0 and later.
+
+@param hDevice Handle from ActivateDeviceEx, FindFirstDevice or
+       FindNextDevice.
+@param pdi DEVMGR_DEVICE_INFORMATION with dwSize set. Receives the
+       information.
+@return Nonzero on success, zero on failure.
+
+## GetDeviceInformationByFileHandle(hFile, pdi)
+Gets information about the device behind a handle opened with
+CreateFileW.
+
+Windows CE 5.0 and later.
+
+@param hFile Handle to an open device.
+@param pdi DEVMGR_DEVICE_INFORMATION with dwSize set. Receives the
+       information.
+@return Nonzero on success, zero on failure.
+
+## GetFileSecurityW(lpFileName, RequestedInformation, pSecurityDescriptor, nLength, lpnLengthNeeded)
+Gets the security descriptor of a file or directory.
+
+Windows CE 6.0 and later.
+
+@param lpFileName File or directory.
+@param RequestedInformation SECURITY_INFORMATION flags for the parts
+       wanted.
+@param pSecurityDescriptor Receives a self-relative security
+       descriptor.
+@param nLength Size of pSecurityDescriptor in bytes.
+@param lpnLengthNeeded Receives the size needed.
+@return Nonzero on success, zero on failure. GetLastError returns
+        ERROR_INSUFFICIENT_BUFFER when nLength is too small.
+
+## GetProcessId(Process)
+Gets the identifier of a process from a handle to it.
+
+Windows CE 6.0 and later.
+
+@param Process Process handle.
+@return Process identifier, or 0 on failure.
+
+## GetSystemTimeAsFileTime(lpSystemTimeAsFileTime)
+Gets the current UTC time as a FILETIME.
+
+Windows CE 6.0 and later.
+
+@param lpSystemTimeAsFileTime Receives the time in 100ns units since
+       1 January 1601.
+
+## GlobalAddAtomW(lpString)
+Adds a string to the global atom table, or increments its reference
+count if it is already there.
+
+Matching ignores case. Each call needs a matching GlobalDeleteAtom.
+Windows CE 4.1 and later.
+
+@param lpString String to add, or "#n" for the integer atom n.
+@return The atom, or 0 on failure.
+
+## GlobalDeleteAtom(nAtom)
+Decrements the reference count of a global atom, removing it when the
+count reaches zero.
+
+Windows CE 4.1 and later.
+
+@param nAtom Atom from GlobalAddAtomW.
+@return 0 on success, or nAtom on failure.
+
+## GlobalFindAtomW(lpString)
+Looks up a string in the global atom table without adding it.
+
+Windows CE 4.1 and later.
+
+@param lpString String to find.
+@return The atom, or 0 if the string isn't in the table.
+
+## HeapCompact(hHeap, dwFlags)
+Merges free blocks in a heap and returns unused pages to the system.
+
+Windows CE 5.0 and later.
+
+@param hHeap Heap handle.
+@param dwFlags 0 or HEAP_NO_SERIALIZE.
+@return Size of the largest free block in bytes, or 0 on failure. Call
+        GetLastError to tell failure from a full heap.
+
+## InterlockedCompareExchange(Destination, Exchange, Comperand)
+Atomically replaces a 32-bit value if it equals a given value.
+
+Safe across threads and processes for variables in shared memory. The
+variable must be 32-bit aligned. Windows CE 4.1 and later.
+
+@param Destination The variable to update.
+@param Exchange Value to store if the comparison matches.
+@param Comperand Value to compare with.
+@return The initial value of the variable.
+
+## InterlockedExchangeAdd(Addend, Value)
+Atomically adds to a 32-bit variable.
+
+The variable must be 32-bit aligned. Windows CE 4.1 and later.
+
+@param Addend The variable to add to.
+@param Value Amount to add.
+@return The initial value of the variable.
+
+## IsProcessorFeaturePresent(ProcessorFeature)
+Checks whether the processor supports a feature.
+
+Windows CE 4.1 and later.
+
+@param ProcessorFeature A PF_ constant naming the feature.
+@return Nonzero if the feature is present, zero if not.
+
+## LockFileEx(hFile, dwFlags, dwReserved, nNumberOfBytesToLockLow, nNumberOfBytesToLockHigh, lpOverlapped)
+Locks a byte range of an open file for shared or exclusive access.
+
+The range starts at the offset in lpOverlapped. Unlock with UnlockFileEx
+before closing the file. Windows CE 5.0 and later.
+
+@param hFile Open file handle.
+@param dwFlags LOCKFILE_EXCLUSIVE_LOCK and/or LOCKFILE_FAIL_IMMEDIATELY.
+@param dwReserved Pass 0.
+@param nNumberOfBytesToLockLow Low 32 bits of the length.
+@param nNumberOfBytesToLockHigh High 32 bits of the length.
+@param lpOverlapped Offset and OffsetHigh give the start of the range.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## MulDiv(nNumber, nNumerator, nDenominator)
+Multiplies two 32-bit values and divides by a third, using a 64-bit
+intermediate.
+
+The result is rounded to the nearest integer. Windows CE 5.1 and later.
+
+@param nNumber Value to multiply.
+@param nNumerator Value to multiply by.
+@param nDenominator Value to divide by.
+@return The result, or -1 on overflow or when nDenominator is zero.
+
+## OpenEventLogW(lpUNCServerName, lpSourceName)
+Opens an event log for reading, backup or clearing.
+
+Close with CloseEventLog. Windows CE 5.0 and later.
+
+@param lpUNCServerName Pass NULL for the local device.
+@param lpSourceName Name of the log or event source.
+@return Log handle, or NULL on failure. Call GetLastError for details.
+
+## OpenEventW(dwDesiredAccess, bInheritHandle, lpName)
+Opens an existing named event.
+
+Close with CloseHandle. Windows CE 4.1 and later.
+
+@param dwDesiredAccess EVENT_ALL_ACCESS or EVENT_MODIFY_STATE.
+@param bInheritHandle Pass FALSE.
+@param lpName Name of the event.
+@return Event handle, or NULL on failure. Call GetLastError for details.
+
+## OpenThread(dwDesiredAccess, bInheritHandle, dwThreadId)
+Opens a handle to an existing thread from its identifier.
+
+Close with CloseHandle. Windows CE 6.0 and later.
+
+@param dwDesiredAccess Access wanted, such as THREAD_ALL_ACCESS.
+@param bInheritHandle Pass FALSE.
+@param dwThreadId Identifier of the thread.
+@return Thread handle, or NULL on failure. Call GetLastError for
+        details.
+
+## ReadFileScatter(hFile, aSegmentArray, nNumberOfBytesToRead, lpReserved, lpOverlapped)
+Reads from a file into a set of page-sized buffers.
+
+Each buffer must be one system page in size and page aligned. The array
+ends with a NULL element. The file system must support scatter/gather.
+Windows CE 5.0 and later.
+
+@param hFile File opened with GENERIC_READ.
+@param aSegmentArray Buffers to read into, one page each, NULL
+       terminated.
+@param nNumberOfBytesToRead Total bytes to read, a multiple of the page
+       size.
+@param lpReserved Array of file offsets, one per buffer, to read
+       non-contiguous pages, or NULL to read from the file pointer.
+@param lpOverlapped Not supported, pass NULL.
+@return Nonzero on success, zero on failure. GetLastError returns
+        ERROR_HANDLE_EOF when reading past the end of the file.
+
+## RegisterEventSourceW(lpUNCServerName, lpSourceName)
+Gets a handle for writing events to an event log under a source name.
+
+Write with ReportEventW and close with DeregisterEventSource. Windows CE
+5.0 and later.
+
+@param lpUNCServerName Pass NULL for the local device.
+@param lpSourceName Event source name.
+@return Handle, or NULL on failure. Call GetLastError for details.
+
+## RemoveVectoredExceptionHandler(Handler)
+Unregisters a handler added with AddVectoredExceptionHandler.
+
+Windows CE 6.0 and later.
+
+@param Handler Handle from AddVectoredExceptionHandler.
+@return Nonzero on success, zero on failure.
+
+## ReportEventW(hEventLog, wType, wCategory, dwEventID, lpUserSid, wNumStrings, dwDataSize, lpStrings, lpRawData)
+Writes an entry to the end of an event log.
+
+Windows CE 5.0 and later.
+
+@param hEventLog Handle from RegisterEventSourceW.
+@param wType EVENTLOG_ type, such as EVENTLOG_ERROR_TYPE or
+       EVENTLOG_INFORMATION_TYPE.
+@param wCategory Source-specific category.
+@param dwEventID Source-specific event identifier.
+@param lpUserSid User security identifier, or NULL.
+@param wNumStrings Number of strings in lpStrings.
+@param dwDataSize Size of lpRawData in bytes.
+@param lpStrings Insertion strings for the event message, or NULL.
+@param lpRawData Binary data to store, or NULL.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## SetFileSecurityW(lpFileName, SecurityInformation, pSecurityDescriptor)
+Sets parts of the security descriptor of a file or directory.
+
+Windows CE 6.0 and later.
+
+@param lpFileName File or directory.
+@param SecurityInformation SECURITY_INFORMATION flags for the parts to
+       set.
+@param pSecurityDescriptor The new security information.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## SwitchToFiber(lpFiber)
+Saves the running fiber's state and runs another fiber on the same
+thread.
+
+The calling thread must have called ConvertThreadToFiber. Windows CE 4.1
+and later.
+
+@param lpFiber Fiber to run, from CreateFiber or ConvertThreadToFiber.
+
+## UnlockFileEx(hFile, dwReserved, nNumberOfBytesToUnlockLow, nNumberOfBytesToUnlockHigh, lpOverlapped)
+Unlocks a byte range locked with LockFileEx.
+
+The range must match a locked range exactly. Windows CE 5.0 and later.
+
+@param hFile Open file handle.
+@param dwReserved Pass 0.
+@param nNumberOfBytesToUnlockLow Low 32 bits of the length.
+@param nNumberOfBytesToUnlockHigh High 32 bits of the length.
+@param lpOverlapped Offset and OffsetHigh give the start of the range.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## VirtualAllocEx(hProcess, lpAddress, dwSize, flAllocationType, flProtect)
+Reserves and/or commits pages in the address space of a given process.
+
+As VirtualAlloc, for another process. Release with VirtualFreeEx.
+Windows CE 6.0 and later.
+
+@param hProcess Process handle.
+@param lpAddress Start address, or NULL to let the system choose.
+@param dwSize Size in bytes.
+@param flAllocationType MEM_RESERVE, MEM_COMMIT or both, optionally with
+       MEM_TOP_DOWN.
+@param flProtect PAGE_ protection for committed pages.
+@return Base address of the region, or NULL on failure. Call
+        GetLastError for details.
+
+## VirtualFreeEx(hProcess, lpAddress, dwSize, dwFreeType)
+Decommits and/or releases pages in the address space of a given
+process.
+
+Windows CE 6.0 and later.
+
+@param hProcess Process handle.
+@param lpAddress Start of the range. For MEM_RELEASE, the base address
+       returned by VirtualAllocEx.
+@param dwSize Size in bytes. Must be 0 for MEM_RELEASE.
+@param dwFreeType MEM_DECOMMIT or MEM_RELEASE.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## VirtualProtectEx(hProcess, lpAddress, dwSize, flNewProtect, lpflOldProtect)
+Changes the protection of committed pages in a given process.
+
+Windows CE 6.0 and later.
+
+@param hProcess Process handle.
+@param lpAddress Start of the range.
+@param dwSize Size in bytes.
+@param flNewProtect New PAGE_ protection.
+@param lpflOldProtect Receives the previous protection of the first
+       page. Must not be NULL.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
+
+## VirtualQueryEx(hProcess, lpAddress, lpBuffer, dwLength)
+Gets information about a range of pages in a given process.
+
+Windows CE 6.0 and later.
+
+@param hProcess Process handle.
+@param lpAddress Address within the range to describe.
+@param lpBuffer Receives the information.
+@param dwLength Size of lpBuffer in bytes.
+@return Number of bytes written to lpBuffer, or 0 on failure.
+
+## WriteFileGather(hFile, aSegmentArray, nNumberOfBytesToWrite, lpReserved, lpOverlapped)
+Writes to a file from a set of page-sized buffers.
+
+Each buffer must be one system page in size and page aligned. The array
+ends with a NULL element. The file system must support scatter/gather.
+Windows CE 5.0 and later.
+
+@param hFile File opened with GENERIC_WRITE.
+@param aSegmentArray Buffers to write from, one page each, NULL
+       terminated.
+@param nNumberOfBytesToWrite Total bytes to write, a multiple of the
+       page size.
+@param lpReserved Array of file offsets, one per buffer, to write
+       non-contiguous pages, or NULL to write at the file pointer.
+@param lpOverlapped Not supported, pass NULL.
+@return Nonzero on success, zero on failure. Call GetLastError for
+        details.
